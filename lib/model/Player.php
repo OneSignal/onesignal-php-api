@@ -347,9 +347,6 @@ class Player implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
         if ($this->container['device_type'] === null) {
             $invalidProperties[] = "'device_type' can't be null";
         }
@@ -371,7 +368,7 @@ class Player implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets id
      *
-     * @return string
+     * @return string|null
      */
     public function getId()
     {
@@ -381,7 +378,7 @@ class Player implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets id
      *
-     * @param string $id The device's OneSignal ID
+     * @param string|null $id The device's OneSignal ID
      *
      * @return self
      */

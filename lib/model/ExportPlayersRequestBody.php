@@ -279,7 +279,7 @@ class ExportPlayersRequestBody implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets segment_name
      *
-     * @param string|null $segment_name Export al ldevices belonging to the segment.
+     * @param string|null $segment_name Export all devices belonging to the segment.
      *
      * @return self
      */
