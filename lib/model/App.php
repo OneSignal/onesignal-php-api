@@ -380,9 +380,6 @@ class App implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
         $allowedValues = $this->getApnsEnvAllowableValues();
         if (!is_null($this->container['apns_env']) && !in_array($this->container['apns_env'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -410,7 +407,7 @@ class App implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets id
      *
-     * @return string
+     * @return string|null
      */
     public function getId()
     {
@@ -420,7 +417,7 @@ class App implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets id
      *
-     * @param string $id id
+     * @param string|null $id id
      *
      * @return self
      */

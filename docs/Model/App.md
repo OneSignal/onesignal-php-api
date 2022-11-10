@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **string** |  | [readonly]
+**id** | **string** |  | [optional] [readonly]
 **name** | **string** | The name of your app, as displayed on your apps list on the dashboard.  This can be renamed. | [optional]
 **players** | **int** |  | [optional] [readonly]
 **messageable_players** | **int** |  | [optional] [readonly]

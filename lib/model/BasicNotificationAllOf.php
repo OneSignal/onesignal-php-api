@@ -147,7 +147,8 @@ class BasicNotificationAllOf implements ModelInterface, ArrayAccess, \JsonSerial
         'email_from_name' => 'string',
         'email_from_address' => 'string',
         'sms_from' => 'string',
-        'sms_media_urls' => 'string[]'
+        'sms_media_urls' => 'string[]',
+        'filters' => '\onesignal\client\model\Filter[]'
     ];
 
     /**
@@ -245,7 +246,8 @@ class BasicNotificationAllOf implements ModelInterface, ArrayAccess, \JsonSerial
         'email_from_name' => null,
         'email_from_address' => null,
         'sms_from' => null,
-        'sms_media_urls' => null
+        'sms_media_urls' => null,
+        'filters' => null
     ];
 
     /**
@@ -362,7 +364,8 @@ class BasicNotificationAllOf implements ModelInterface, ArrayAccess, \JsonSerial
         'email_from_name' => 'email_from_name',
         'email_from_address' => 'email_from_address',
         'sms_from' => 'sms_from',
-        'sms_media_urls' => 'sms_media_urls'
+        'sms_media_urls' => 'sms_media_urls',
+        'filters' => 'filters'
     ];
 
     /**
@@ -458,7 +461,8 @@ class BasicNotificationAllOf implements ModelInterface, ArrayAccess, \JsonSerial
         'email_from_name' => 'setEmailFromName',
         'email_from_address' => 'setEmailFromAddress',
         'sms_from' => 'setSmsFrom',
-        'sms_media_urls' => 'setSmsMediaUrls'
+        'sms_media_urls' => 'setSmsMediaUrls',
+        'filters' => 'setFilters'
     ];
 
     /**
@@ -554,7 +558,8 @@ class BasicNotificationAllOf implements ModelInterface, ArrayAccess, \JsonSerial
         'email_from_name' => 'getEmailFromName',
         'email_from_address' => 'getEmailFromAddress',
         'sms_from' => 'getSmsFrom',
-        'sms_media_urls' => 'getSmsMediaUrls'
+        'sms_media_urls' => 'getSmsMediaUrls',
+        'filters' => 'getFilters'
     ];
 
     /**
@@ -717,6 +722,7 @@ class BasicNotificationAllOf implements ModelInterface, ArrayAccess, \JsonSerial
         $this->container['email_from_address'] = $data['email_from_address'] ?? null;
         $this->container['sms_from'] = $data['sms_from'] ?? null;
         $this->container['sms_media_urls'] = $data['sms_media_urls'] ?? null;
+        $this->container['filters'] = $data['filters'] ?? null;
     }
 
     /**
@@ -2870,6 +2876,30 @@ class BasicNotificationAllOf implements ModelInterface, ArrayAccess, \JsonSerial
     public function setSmsMediaUrls($sms_media_urls)
     {
         $this->container['sms_media_urls'] = $sms_media_urls;
+
+        return $this;
+    }
+
+    /**
+     * Gets filters
+     *
+     * @return \onesignal\client\model\Filter[]|null
+     */
+    public function getFilters()
+    {
+        return $this->container['filters'];
+    }
+
+    /**
+     * Sets filters
+     *
+     * @param \onesignal\client\model\Filter[]|null $filters filters
+     *
+     * @return self
+     */
+    public function setFilters($filters)
+    {
+        $this->container['filters'] = $filters;
 
         return $this;
     }

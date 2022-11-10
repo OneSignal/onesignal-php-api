@@ -112,10 +112,25 @@ $scheduledNotification = $apiInstance->createNotification($notification);
 print_r($scheduledNotification);
 ```
 
-### Canceling a scheduled notification
+### Sending a notification using Filters
+Send this notification only to the users that have not spent any USD on IAP.
 ```php
-$cancelResult = $apiInstance->cancelNotification(APP_ID, $scheduledNotification->getId());
-print_r($cancelResult->getSuccess());
+$notification = createNotification('PHP Test filtered notification');
+$filter1 = new Filter();
+$filter1->setField('amount_spent');
+$filter1->setRelation('=');
+$filter1->setValue('0');
+$notification->setFilters([$filter1]);
+$result = $apiInstance->createNotification($notification);
+print_r($result);
+```
+
+### Sending a notification immediately
+```php
+$notification = createNotification('PHP Test notification');
+
+$result = $apiInstance->createNotification($notification);
+print_r($result);
 ```
 
 ### Retrieving a notification
@@ -299,7 +314,6 @@ Class | Method | HTTP request | Description
 - [ExportPlayersSuccessResponse](docs/Model/ExportPlayersSuccessResponse.md)
 - [Filter](docs/Model/Filter.md)
 - [FilterExpressions](docs/Model/FilterExpressions.md)
-- [FilterNotificationTarget](docs/Model/FilterNotificationTarget.md)
 - [GetNotificationRequestBody](docs/Model/GetNotificationRequestBody.md)
 - [InvalidIdentifierError](docs/Model/InvalidIdentifierError.md)
 - [Notification](docs/Model/Notification.md)
