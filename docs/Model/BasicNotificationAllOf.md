@@ -92,5 +92,6 @@ Name | Type | Description | Notes
 **email_from_address** | **string** | Channel: Email The email address the email is from. If not specified, will default to \&quot;from email\&quot; set in the OneSignal Dashboard Email Settings. | [optional]
 **sms_from** | **string** | Channel: SMS Phone Number used to send SMS. Should be a registered Twilio phone number in E.164 format. | [optional]
 **sms_media_urls** | **string[]** | Channel: SMS URLs for the media files to be attached to the SMS content. Limit: 10 media urls with a total max. size of 5MBs. | [optional]
+**filters** | [**\onesignal\client\model\Filter[]**](Filter.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

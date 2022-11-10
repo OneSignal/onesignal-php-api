@@ -327,7 +327,7 @@ class Filter implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets value
      *
-     * @param string|null $value Constant value to use as the second operand in the filter expression.  This value is *required* when the relation operator is a binary operator.
+     * @param string|null $value Constant value to use as the second operand in the filter expression. This value is *required* when the relation operator is a binary operator.
      *
      * @return self
      */

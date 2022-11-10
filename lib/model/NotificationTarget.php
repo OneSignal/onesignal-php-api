@@ -62,18 +62,6 @@ class NotificationTarget implements ModelInterface, ArrayAccess, \JsonSerializab
     protected static $openAPITypes = [
         'included_segments' => 'string[]',
         'excluded_segments' => 'string[]',
-        'last_session' => 'string',
-        'first_session' => 'string',
-        'session_count' => 'string',
-        'session_time' => 'string',
-        'amount_spent' => 'string',
-        'bought_sku' => 'string',
-        'tag' => 'string',
-        'language' => 'string',
-        'app_version' => 'string',
-        'location' => 'string',
-        'email' => 'string',
-        'country' => 'string',
         'include_player_ids' => 'string[]',
         'include_external_user_ids' => 'string[]',
         'include_email_tokens' => 'string[]',
@@ -96,18 +84,6 @@ class NotificationTarget implements ModelInterface, ArrayAccess, \JsonSerializab
     protected static $openAPIFormats = [
         'included_segments' => null,
         'excluded_segments' => null,
-        'last_session' => null,
-        'first_session' => null,
-        'session_count' => null,
-        'session_time' => null,
-        'amount_spent' => null,
-        'bought_sku' => null,
-        'tag' => null,
-        'language' => null,
-        'app_version' => null,
-        'location' => null,
-        'email' => null,
-        'country' => null,
         'include_player_ids' => null,
         'include_external_user_ids' => null,
         'include_email_tokens' => null,
@@ -149,18 +125,6 @@ class NotificationTarget implements ModelInterface, ArrayAccess, \JsonSerializab
     protected static $attributeMap = [
         'included_segments' => 'included_segments',
         'excluded_segments' => 'excluded_segments',
-        'last_session' => 'last_session',
-        'first_session' => 'first_session',
-        'session_count' => 'session_count',
-        'session_time' => 'session_time',
-        'amount_spent' => 'amount_spent',
-        'bought_sku' => 'bought_sku',
-        'tag' => 'tag',
-        'language' => 'language',
-        'app_version' => 'app_version',
-        'location' => 'location',
-        'email' => 'email',
-        'country' => 'country',
         'include_player_ids' => 'include_player_ids',
         'include_external_user_ids' => 'include_external_user_ids',
         'include_email_tokens' => 'include_email_tokens',
@@ -181,18 +145,6 @@ class NotificationTarget implements ModelInterface, ArrayAccess, \JsonSerializab
     protected static $setters = [
         'included_segments' => 'setIncludedSegments',
         'excluded_segments' => 'setExcludedSegments',
-        'last_session' => 'setLastSession',
-        'first_session' => 'setFirstSession',
-        'session_count' => 'setSessionCount',
-        'session_time' => 'setSessionTime',
-        'amount_spent' => 'setAmountSpent',
-        'bought_sku' => 'setBoughtSku',
-        'tag' => 'setTag',
-        'language' => 'setLanguage',
-        'app_version' => 'setAppVersion',
-        'location' => 'setLocation',
-        'email' => 'setEmail',
-        'country' => 'setCountry',
         'include_player_ids' => 'setIncludePlayerIds',
         'include_external_user_ids' => 'setIncludeExternalUserIds',
         'include_email_tokens' => 'setIncludeEmailTokens',
@@ -213,18 +165,6 @@ class NotificationTarget implements ModelInterface, ArrayAccess, \JsonSerializab
     protected static $getters = [
         'included_segments' => 'getIncludedSegments',
         'excluded_segments' => 'getExcludedSegments',
-        'last_session' => 'getLastSession',
-        'first_session' => 'getFirstSession',
-        'session_count' => 'getSessionCount',
-        'session_time' => 'getSessionTime',
-        'amount_spent' => 'getAmountSpent',
-        'bought_sku' => 'getBoughtSku',
-        'tag' => 'getTag',
-        'language' => 'getLanguage',
-        'app_version' => 'getAppVersion',
-        'location' => 'getLocation',
-        'email' => 'getEmail',
-        'country' => 'getCountry',
         'include_player_ids' => 'getIncludePlayerIds',
         'include_external_user_ids' => 'getIncludeExternalUserIds',
         'include_email_tokens' => 'getIncludeEmailTokens',
@@ -296,18 +236,6 @@ class NotificationTarget implements ModelInterface, ArrayAccess, \JsonSerializab
     {
         $this->container['included_segments'] = $data['included_segments'] ?? null;
         $this->container['excluded_segments'] = $data['excluded_segments'] ?? null;
-        $this->container['last_session'] = $data['last_session'] ?? null;
-        $this->container['first_session'] = $data['first_session'] ?? null;
-        $this->container['session_count'] = $data['session_count'] ?? null;
-        $this->container['session_time'] = $data['session_time'] ?? null;
-        $this->container['amount_spent'] = $data['amount_spent'] ?? null;
-        $this->container['bought_sku'] = $data['bought_sku'] ?? null;
-        $this->container['tag'] = $data['tag'] ?? null;
-        $this->container['language'] = $data['language'] ?? null;
-        $this->container['app_version'] = $data['app_version'] ?? null;
-        $this->container['location'] = $data['location'] ?? null;
-        $this->container['email'] = $data['email'] ?? null;
-        $this->container['country'] = $data['country'] ?? null;
         $this->container['include_player_ids'] = $data['include_player_ids'] ?? null;
         $this->container['include_external_user_ids'] = $data['include_external_user_ids'] ?? null;
         $this->container['include_email_tokens'] = $data['include_email_tokens'] ?? null;
@@ -388,294 +316,6 @@ class NotificationTarget implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setExcludedSegments($excluded_segments)
     {
         $this->container['excluded_segments'] = $excluded_segments;
-
-        return $this;
-    }
-
-    /**
-     * Gets last_session
-     *
-     * @return string|null
-     */
-    public function getLastSession()
-    {
-        return $this->container['last_session'];
-    }
-
-    /**
-     * Sets last_session
-     *
-     * @param string|null $last_session relation = \">\" or \"<\" hours_ago = number of hours before or after the users last session. Example: \"1.1\"
-     *
-     * @return self
-     */
-    public function setLastSession($last_session)
-    {
-        $this->container['last_session'] = $last_session;
-
-        return $this;
-    }
-
-    /**
-     * Gets first_session
-     *
-     * @return string|null
-     */
-    public function getFirstSession()
-    {
-        return $this->container['first_session'];
-    }
-
-    /**
-     * Sets first_session
-     *
-     * @param string|null $first_session relation = \">\" or \"<\" hours_ago = number of hours before or after the users first session. Example: \"1.1\"
-     *
-     * @return self
-     */
-    public function setFirstSession($first_session)
-    {
-        $this->container['first_session'] = $first_session;
-
-        return $this;
-    }
-
-    /**
-     * Gets session_count
-     *
-     * @return string|null
-     */
-    public function getSessionCount()
-    {
-        return $this->container['session_count'];
-    }
-
-    /**
-     * Sets session_count
-     *
-     * @param string|null $session_count relation = \">\", \"<\", \"=\" or \"!=\" value = number sessions. Example: \"1\"
-     *
-     * @return self
-     */
-    public function setSessionCount($session_count)
-    {
-        $this->container['session_count'] = $session_count;
-
-        return $this;
-    }
-
-    /**
-     * Gets session_time
-     *
-     * @return string|null
-     */
-    public function getSessionTime()
-    {
-        return $this->container['session_time'];
-    }
-
-    /**
-     * Sets session_time
-     *
-     * @param string|null $session_time relation = \">\", \"<\", \"=\" or \"!=\" value = Time in seconds the user has been in your app. Example: \"3600\"
-     *
-     * @return self
-     */
-    public function setSessionTime($session_time)
-    {
-        $this->container['session_time'] = $session_time;
-
-        return $this;
-    }
-
-    /**
-     * Gets amount_spent
-     *
-     * @return string|null
-     */
-    public function getAmountSpent()
-    {
-        return $this->container['amount_spent'];
-    }
-
-    /**
-     * Sets amount_spent
-     *
-     * @param string|null $amount_spent relation = \">\", \"<\", or \"=\" value = Amount in USD a user has spent on IAP (In App Purchases). Example: \"0.99\"
-     *
-     * @return self
-     */
-    public function setAmountSpent($amount_spent)
-    {
-        $this->container['amount_spent'] = $amount_spent;
-
-        return $this;
-    }
-
-    /**
-     * Gets bought_sku
-     *
-     * @return string|null
-     */
-    public function getBoughtSku()
-    {
-        return $this->container['bought_sku'];
-    }
-
-    /**
-     * Sets bought_sku
-     *
-     * @param string|null $bought_sku relation = \">\", \"<\" or \"=\" key = SKU purchased in your app as an IAP (In App Purchases). Example: \"com.domain.100coinpack\" value = value of SKU to compare to. Example: \"0.99\"
-     *
-     * @return self
-     */
-    public function setBoughtSku($bought_sku)
-    {
-        $this->container['bought_sku'] = $bought_sku;
-
-        return $this;
-    }
-
-    /**
-     * Gets tag
-     *
-     * @return string|null
-     */
-    public function getTag()
-    {
-        return $this->container['tag'];
-    }
-
-    /**
-     * Sets tag
-     *
-     * @param string|null $tag relation = \">\", \"<\", \"=\", \"!=\", \"exists\", \"not_exists\", \"time_elapsed_gt\" (paid plan only) or \"time_elapsed_lt\" (paid plan only) See Time Operators key = Tag key to compare. value = Tag value to compare. Not required for \"exists\" or \"not_exists\". Example: See Formatting Filters
-     *
-     * @return self
-     */
-    public function setTag($tag)
-    {
-        $this->container['tag'] = $tag;
-
-        return $this;
-    }
-
-    /**
-     * Gets language
-     *
-     * @return string|null
-     */
-    public function getLanguage()
-    {
-        return $this->container['language'];
-    }
-
-    /**
-     * Sets language
-     *
-     * @param string|null $language relation = \"=\" or \"!=\" value = 2 character language code. Example: \"en\". For a list of all language codes see Language & Localization.
-     *
-     * @return self
-     */
-    public function setLanguage($language)
-    {
-        $this->container['language'] = $language;
-
-        return $this;
-    }
-
-    /**
-     * Gets app_version
-     *
-     * @return string|null
-     */
-    public function getAppVersion()
-    {
-        return $this->container['app_version'];
-    }
-
-    /**
-     * Sets app_version
-     *
-     * @param string|null $app_version relation = \">\", \"<\", \"=\" or \"!=\" value = app version. Example: \"1.0.0\"
-     *
-     * @return self
-     */
-    public function setAppVersion($app_version)
-    {
-        $this->container['app_version'] = $app_version;
-
-        return $this;
-    }
-
-    /**
-     * Gets location
-     *
-     * @return string|null
-     */
-    public function getLocation()
-    {
-        return $this->container['location'];
-    }
-
-    /**
-     * Sets location
-     *
-     * @param string|null $location radius = in meters lat = latitude long = longitude
-     *
-     * @return self
-     */
-    public function setLocation($location)
-    {
-        $this->container['location'] = $location;
-
-        return $this;
-    }
-
-    /**
-     * Gets email
-     *
-     * @return string|null
-     */
-    public function getEmail()
-    {
-        return $this->container['email'];
-    }
-
-    /**
-     * Sets email
-     *
-     * @param string|null $email value = email address Only for sending Push Notifications Use this for targeting push subscribers associated with an email set with all SDK setEmail methods To send emails to specific email addresses use include_email_tokens parameter
-     *
-     * @return self
-     */
-    public function setEmail($email)
-    {
-        $this->container['email'] = $email;
-
-        return $this;
-    }
-
-    /**
-     * Gets country
-     *
-     * @return string|null
-     */
-    public function getCountry()
-    {
-        return $this->container['country'];
-    }
-
-    /**
-     * Sets country
-     *
-     * @param string|null $country relation = \"=\" value = 2-digit Country code Example: \"field\": \"country\", \"relation\": \"=\", \"value\", \"US\"
-     *
-     * @return self
-     */
-    public function setCountry($country)
-    {
-        $this->container['country'] = $country;
 
         return $this;
     }
