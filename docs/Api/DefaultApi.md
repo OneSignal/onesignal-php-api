@@ -4,6 +4,7 @@ All URIs are relative to https://onesignal.com/api/v1.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**beginLiveActivity()**](DefaultApi.md#beginLiveActivity) | **POST** /apps/{app_id}/live_activities/{activity_id}/token | Start Live Activity
 [**cancelNotification()**](DefaultApi.md#cancelNotification) | **DELETE** /notifications/{notification_id} | Stop a scheduled or currently outgoing notification
 [**createApp()**](DefaultApi.md#createApp) | **POST** /apps | Create an app
 [**createNotification()**](DefaultApi.md#createNotification) | **POST** /notifications | Create notification
@@ -11,6 +12,7 @@ Method | HTTP request | Description
 [**createSegments()**](DefaultApi.md#createSegments) | **POST** /apps/{app_id}/segments | Create Segments
 [**deletePlayer()**](DefaultApi.md#deletePlayer) | **DELETE** /players/{player_id} | Delete a user record
 [**deleteSegments()**](DefaultApi.md#deleteSegments) | **DELETE** /apps/{app_id}/segments/{segment_id} | Delete Segments
+[**endLiveActivity()**](DefaultApi.md#endLiveActivity) | **DELETE** /apps/{app_id}/live_activities/{activity_id}/token/{subscription_id} | Stop Live Activity
 [**exportPlayers()**](DefaultApi.md#exportPlayers) | **POST** /players/csv_export?app_id&#x3D;{app_id} | CSV export
 [**getApp()**](DefaultApi.md#getApp) | **GET** /apps/{app_id} | View an app
 [**getApps()**](DefaultApi.md#getApps) | **GET** /apps | View apps
@@ -21,9 +23,76 @@ Method | HTTP request | Description
 [**getPlayer()**](DefaultApi.md#getPlayer) | **GET** /players/{player_id} | View device
 [**getPlayers()**](DefaultApi.md#getPlayers) | **GET** /players | View devices
 [**updateApp()**](DefaultApi.md#updateApp) | **PUT** /apps/{app_id} | Update an app
+[**updateLiveActivity()**](DefaultApi.md#updateLiveActivity) | **POST** /apps/{app_id}/live_activities/{activity_id}/notifications | Update a Live Activity via Push
 [**updatePlayer()**](DefaultApi.md#updatePlayer) | **PUT** /players/{player_id} | Edit device
 [**updatePlayerTags()**](DefaultApi.md#updatePlayerTags) | **PUT** /apps/{app_id}/users/{external_user_id} | Edit tags with external user id
 
+
+## `beginLiveActivity()`
+
+```php
+beginLiveActivity($app_id, $activity_id, $begin_live_activity_request)
+```
+
+Start Live Activity
+
+Starts a Live Activity
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: app_key
+$config = onesignal\client\Configuration::getDefaultConfiguration()
+                                                ->setAppKeyToken('YOUR_APP_KEY_TOKEN')
+                                                ->setUserKeyToken('YOUR_USER_KEY_TOKEN');
+
+
+
+$apiInstance = new onesignal\client\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$app_id = 'app_id_example'; // string | The OneSignal App ID for your app.  Available in Keys & IDs.
+$activity_id = 'activity_id_example'; // string | Live Activity record ID
+$begin_live_activity_request = new \onesignal\client\model\BeginLiveActivityRequest(); // \onesignal\client\model\BeginLiveActivityRequest
+
+try {
+    $apiInstance->beginLiveActivity($app_id, $activity_id, $begin_live_activity_request);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->beginLiveActivity: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **app_id** | **string**| The OneSignal App ID for your app.  Available in Keys &amp; IDs. |
+ **activity_id** | **string**| Live Activity record ID |
+ **begin_live_activity_request** | [**\onesignal\client\model\BeginLiveActivityRequest**](../Model/BeginLiveActivityRequest.md)|  |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[app_key](../../README.md#app_key)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
 
 ## `cancelNotification()`
 
@@ -460,6 +529,72 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\onesignal\client\model\DeleteSegmentSuccessResponse**](../Model/DeleteSegmentSuccessResponse.md)
+
+### Authorization
+
+[app_key](../../README.md#app_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `endLiveActivity()`
+
+```php
+endLiveActivity($app_id, $activity_id, $subscription_id)
+```
+
+Stop Live Activity
+
+Stops a Live Activity
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: app_key
+$config = onesignal\client\Configuration::getDefaultConfiguration()
+                                                ->setAppKeyToken('YOUR_APP_KEY_TOKEN')
+                                                ->setUserKeyToken('YOUR_USER_KEY_TOKEN');
+
+
+
+$apiInstance = new onesignal\client\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$app_id = 'app_id_example'; // string | The OneSignal App ID for your app.  Available in Keys & IDs.
+$activity_id = 'activity_id_example'; // string | Live Activity record ID
+$subscription_id = 'subscription_id_example'; // string | Subscription ID
+
+try {
+    $apiInstance->endLiveActivity($app_id, $activity_id, $subscription_id);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->endLiveActivity: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **app_id** | **string**| The OneSignal App ID for your app.  Available in Keys &amp; IDs. |
+ **activity_id** | **string**| Live Activity record ID |
+ **subscription_id** | **string**| Subscription ID |
+
+### Return type
+
+void (empty response body)
 
 ### Authorization
 
@@ -1123,6 +1258,73 @@ Name | Type | Description  | Notes
 ### Authorization
 
 [user_key](../../README.md#user_key)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateLiveActivity()`
+
+```php
+updateLiveActivity($app_id, $activity_id, $update_live_activity_request): \onesignal\client\model\UpdateLiveActivitySuccessResponse
+```
+
+Update a Live Activity via Push
+
+Updates a specified live activity.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: app_key
+$config = onesignal\client\Configuration::getDefaultConfiguration()
+                                                ->setAppKeyToken('YOUR_APP_KEY_TOKEN')
+                                                ->setUserKeyToken('YOUR_USER_KEY_TOKEN');
+
+
+
+$apiInstance = new onesignal\client\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$app_id = 'app_id_example'; // string | The OneSignal App ID for your app.  Available in Keys & IDs.
+$activity_id = 'activity_id_example'; // string | Live Activity record ID
+$update_live_activity_request = new \onesignal\client\model\UpdateLiveActivityRequest(); // \onesignal\client\model\UpdateLiveActivityRequest
+
+try {
+    $result = $apiInstance->updateLiveActivity($app_id, $activity_id, $update_live_activity_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->updateLiveActivity: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **app_id** | **string**| The OneSignal App ID for your app.  Available in Keys &amp; IDs. |
+ **activity_id** | **string**| Live Activity record ID |
+ **update_live_activity_request** | [**\onesignal\client\model\UpdateLiveActivityRequest**](../Model/UpdateLiveActivityRequest.md)|  |
+
+### Return type
+
+[**\onesignal\client\model\UpdateLiveActivitySuccessResponse**](../Model/UpdateLiveActivitySuccessResponse.md)
+
+### Authorization
+
+[app_key](../../README.md#app_key)
 
 ### HTTP request headers
 

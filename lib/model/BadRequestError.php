@@ -1,6 +1,6 @@
 <?php
 /**
- * GetNotificationRequestBody
+ * BadRequestError
  *
  * PHP version 7.3
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \onesignal\client\ObjectSerializer;
 
 /**
- * GetNotificationRequestBody Class Doc Comment
+ * BadRequestError Class Doc Comment
  *
  * @category Class
  * @package  onesignal\client
@@ -43,7 +43,7 @@ use \onesignal\client\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class GetNotificationRequestBody implements ModelInterface, ArrayAccess, \JsonSerializable
+class BadRequestError implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +52,7 @@ class GetNotificationRequestBody implements ModelInterface, ArrayAccess, \JsonSe
       *
       * @var string
       */
-    protected static $openAPIModelName = 'get_notification_request_body';
+    protected static $openAPIModelName = 'BadRequestError';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,9 +60,7 @@ class GetNotificationRequestBody implements ModelInterface, ArrayAccess, \JsonSe
       * @var string[]
       */
     protected static $openAPITypes = [
-        'events' => 'string',
-        'email' => 'string',
-        'app_id' => 'string'
+        'errors' => 'string[]'
     ];
 
     /**
@@ -73,9 +71,7 @@ class GetNotificationRequestBody implements ModelInterface, ArrayAccess, \JsonSe
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'events' => null,
-        'email' => null,
-        'app_id' => null
+        'errors' => null
     ];
 
     /**
@@ -105,9 +101,7 @@ class GetNotificationRequestBody implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $attributeMap = [
-        'events' => 'events',
-        'email' => 'email',
-        'app_id' => 'app_id'
+        'errors' => 'errors'
     ];
 
     /**
@@ -116,9 +110,7 @@ class GetNotificationRequestBody implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $setters = [
-        'events' => 'setEvents',
-        'email' => 'setEmail',
-        'app_id' => 'setAppId'
+        'errors' => 'setErrors'
     ];
 
     /**
@@ -127,9 +119,7 @@ class GetNotificationRequestBody implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $getters = [
-        'events' => 'getEvents',
-        'email' => 'getEmail',
-        'app_id' => 'getAppId'
+        'errors' => 'getErrors'
     ];
 
     /**
@@ -173,21 +163,6 @@ class GetNotificationRequestBody implements ModelInterface, ArrayAccess, \JsonSe
         return self::$openAPIModelName;
     }
 
-    public const EVENTS_SENT = 'sent';
-    public const EVENTS_CLICKED = 'clicked';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getEventsAllowableValues()
-    {
-        return [
-            self::EVENTS_SENT,
-            self::EVENTS_CLICKED,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -204,9 +179,7 @@ class GetNotificationRequestBody implements ModelInterface, ArrayAccess, \JsonSe
      */
     public function __construct(array $data = null)
     {
-        $this->container['events'] = $data['events'] ?? null;
-        $this->container['email'] = $data['email'] ?? null;
-        $this->container['app_id'] = $data['app_id'] ?? null;
+        $this->container['errors'] = $data['errors'] ?? null;
     }
 
     /**
@@ -217,15 +190,6 @@ class GetNotificationRequestBody implements ModelInterface, ArrayAccess, \JsonSe
     public function listInvalidProperties()
     {
         $invalidProperties = [];
-
-        $allowedValues = $this->getEventsAllowableValues();
-        if (!is_null($this->container['events']) && !in_array($this->container['events'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'events', must be one of '%s'",
-                $this->container['events'],
-                implode("', '", $allowedValues)
-            );
-        }
 
         return $invalidProperties;
     }
@@ -243,83 +207,25 @@ class GetNotificationRequestBody implements ModelInterface, ArrayAccess, \JsonSe
 
 
     /**
-     * Gets events
+     * Gets errors
      *
-     * @return string|null
+     * @return string[]|null
      */
-    public function getEvents()
+    public function getErrors()
     {
-        return $this->container['events'];
+        return $this->container['errors'];
     }
 
     /**
-     * Sets events
+     * Sets errors
      *
-     * @param string|null $events -> \"sent\" - All the devices by player_id that were sent the specified notification_id.  Notifications targeting under 1000 recipients will not have \"sent\" events recorded, but will show \"clicked\" events. \"clicked\" - All the devices by `player_id` that clicked the specified notification_id.
+     * @param string[]|null $errors errors
      *
      * @return self
      */
-    public function setEvents($events)
+    public function setErrors($errors)
     {
-        $allowedValues = $this->getEventsAllowableValues();
-        if (!is_null($events) && !in_array($events, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'events', must be one of '%s'",
-                    $events,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['events'] = $events;
-
-        return $this;
-    }
-
-    /**
-     * Gets email
-     *
-     * @return string|null
-     */
-    public function getEmail()
-    {
-        return $this->container['email'];
-    }
-
-    /**
-     * Sets email
-     *
-     * @param string|null $email The email address you would like the report sent.
-     *
-     * @return self
-     */
-    public function setEmail($email)
-    {
-        $this->container['email'] = $email;
-
-        return $this;
-    }
-
-    /**
-     * Gets app_id
-     *
-     * @return string|null
-     */
-    public function getAppId()
-    {
-        return $this->container['app_id'];
-    }
-
-    /**
-     * Sets app_id
-     *
-     * @param string|null $app_id app_id
-     *
-     * @return self
-     */
-    public function setAppId($app_id)
-    {
-        $this->container['app_id'] = $app_id;
+        $this->container['errors'] = $errors;
 
         return $this;
     }
