@@ -1,6 +1,6 @@
 <?php
 /**
- * GetNotificationRequestBody
+ * UpdateLiveActivityRequest
  *
  * PHP version 7.3
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \onesignal\client\ObjectSerializer;
 
 /**
- * GetNotificationRequestBody Class Doc Comment
+ * UpdateLiveActivityRequest Class Doc Comment
  *
  * @category Class
  * @package  onesignal\client
@@ -43,7 +43,7 @@ use \onesignal\client\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class GetNotificationRequestBody implements ModelInterface, ArrayAccess, \JsonSerializable
+class UpdateLiveActivityRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +52,7 @@ class GetNotificationRequestBody implements ModelInterface, ArrayAccess, \JsonSe
       *
       * @var string
       */
-    protected static $openAPIModelName = 'get_notification_request_body';
+    protected static $openAPIModelName = 'UpdateLiveActivityRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,9 +60,10 @@ class GetNotificationRequestBody implements ModelInterface, ArrayAccess, \JsonSe
       * @var string[]
       */
     protected static $openAPITypes = [
-        'events' => 'string',
-        'email' => 'string',
-        'app_id' => 'string'
+        'name' => 'string',
+        'event' => 'string',
+        'event_updates' => 'object',
+        'dismiss_at' => 'float'
     ];
 
     /**
@@ -73,9 +74,10 @@ class GetNotificationRequestBody implements ModelInterface, ArrayAccess, \JsonSe
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'events' => null,
-        'email' => null,
-        'app_id' => null
+        'name' => null,
+        'event' => null,
+        'event_updates' => null,
+        'dismiss_at' => null
     ];
 
     /**
@@ -105,9 +107,10 @@ class GetNotificationRequestBody implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $attributeMap = [
-        'events' => 'events',
-        'email' => 'email',
-        'app_id' => 'app_id'
+        'name' => 'name',
+        'event' => 'event',
+        'event_updates' => 'event_updates',
+        'dismiss_at' => 'dismiss_at'
     ];
 
     /**
@@ -116,9 +119,10 @@ class GetNotificationRequestBody implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $setters = [
-        'events' => 'setEvents',
-        'email' => 'setEmail',
-        'app_id' => 'setAppId'
+        'name' => 'setName',
+        'event' => 'setEvent',
+        'event_updates' => 'setEventUpdates',
+        'dismiss_at' => 'setDismissAt'
     ];
 
     /**
@@ -127,9 +131,10 @@ class GetNotificationRequestBody implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $getters = [
-        'events' => 'getEvents',
-        'email' => 'getEmail',
-        'app_id' => 'getAppId'
+        'name' => 'getName',
+        'event' => 'getEvent',
+        'event_updates' => 'getEventUpdates',
+        'dismiss_at' => 'getDismissAt'
     ];
 
     /**
@@ -173,19 +178,38 @@ class GetNotificationRequestBody implements ModelInterface, ArrayAccess, \JsonSe
         return self::$openAPIModelName;
     }
 
-    public const EVENTS_SENT = 'sent';
-    public const EVENTS_CLICKED = 'clicked';
+    public const NAME_HEADINGS = 'headings';
+    public const NAME_CONTENTS = 'contents';
+    public const NAME_IOS_SOUND = 'ios_sound';
+    public const NAME_PRIORITY_LEVEL = 'priority_level';
+    public const EVENT_UPDATE = 'update';
+    public const EVENT_END = 'end';
 
     /**
      * Gets allowable values of the enum
      *
      * @return string[]
      */
-    public function getEventsAllowableValues()
+    public function getNameAllowableValues()
     {
         return [
-            self::EVENTS_SENT,
-            self::EVENTS_CLICKED,
+            self::NAME_HEADINGS,
+            self::NAME_CONTENTS,
+            self::NAME_IOS_SOUND,
+            self::NAME_PRIORITY_LEVEL,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getEventAllowableValues()
+    {
+        return [
+            self::EVENT_UPDATE,
+            self::EVENT_END,
         ];
     }
 
@@ -204,9 +228,10 @@ class GetNotificationRequestBody implements ModelInterface, ArrayAccess, \JsonSe
      */
     public function __construct(array $data = null)
     {
-        $this->container['events'] = $data['events'] ?? null;
-        $this->container['email'] = $data['email'] ?? null;
-        $this->container['app_id'] = $data['app_id'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
+        $this->container['event'] = $data['event'] ?? null;
+        $this->container['event_updates'] = $data['event_updates'] ?? null;
+        $this->container['dismiss_at'] = $data['dismiss_at'] ?? null;
     }
 
     /**
@@ -218,15 +243,33 @@ class GetNotificationRequestBody implements ModelInterface, ArrayAccess, \JsonSe
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getEventsAllowableValues();
-        if (!is_null($this->container['events']) && !in_array($this->container['events'], $allowedValues, true)) {
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
+        }
+        $allowedValues = $this->getNameAllowableValues();
+        if (!is_null($this->container['name']) && !in_array($this->container['name'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'events', must be one of '%s'",
-                $this->container['events'],
+                "invalid value '%s' for 'name', must be one of '%s'",
+                $this->container['name'],
                 implode("', '", $allowedValues)
             );
         }
 
+        if ($this->container['event'] === null) {
+            $invalidProperties[] = "'event' can't be null";
+        }
+        $allowedValues = $this->getEventAllowableValues();
+        if (!is_null($this->container['event']) && !in_array($this->container['event'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'event', must be one of '%s'",
+                $this->container['event'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['event_updates'] === null) {
+            $invalidProperties[] = "'event_updates' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -243,83 +286,117 @@ class GetNotificationRequestBody implements ModelInterface, ArrayAccess, \JsonSe
 
 
     /**
-     * Gets events
+     * Gets name
      *
-     * @return string|null
+     * @return string
      */
-    public function getEvents()
+    public function getName()
     {
-        return $this->container['events'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets events
+     * Sets name
      *
-     * @param string|null $events -> \"sent\" - All the devices by player_id that were sent the specified notification_id.  Notifications targeting under 1000 recipients will not have \"sent\" events recorded, but will show \"clicked\" events. \"clicked\" - All the devices by `player_id` that clicked the specified notification_id.
+     * @param string $name Type of live activity
      *
      * @return self
      */
-    public function setEvents($events)
+    public function setName($name)
     {
-        $allowedValues = $this->getEventsAllowableValues();
-        if (!is_null($events) && !in_array($events, $allowedValues, true)) {
+        $allowedValues = $this->getNameAllowableValues();
+        if (!in_array($name, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value '%s' for 'events', must be one of '%s'",
-                    $events,
+                    "Invalid value '%s' for 'name', must be one of '%s'",
+                    $name,
                     implode("', '", $allowedValues)
                 )
             );
         }
-        $this->container['events'] = $events;
+        $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets email
+     * Gets event
      *
-     * @return string|null
+     * @return string
      */
-    public function getEmail()
+    public function getEvent()
     {
-        return $this->container['email'];
+        return $this->container['event'];
     }
 
     /**
-     * Sets email
+     * Sets event
      *
-     * @param string|null $email The email address you would like the report sent.
+     * @param string $event event
      *
      * @return self
      */
-    public function setEmail($email)
+    public function setEvent($event)
     {
-        $this->container['email'] = $email;
+        $allowedValues = $this->getEventAllowableValues();
+        if (!in_array($event, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'event', must be one of '%s'",
+                    $event,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['event'] = $event;
 
         return $this;
     }
 
     /**
-     * Gets app_id
+     * Gets event_updates
      *
-     * @return string|null
+     * @return object
      */
-    public function getAppId()
+    public function getEventUpdates()
     {
-        return $this->container['app_id'];
+        return $this->container['event_updates'];
     }
 
     /**
-     * Sets app_id
+     * Sets event_updates
      *
-     * @param string|null $app_id app_id
+     * @param object $event_updates event_updates
      *
      * @return self
      */
-    public function setAppId($app_id)
+    public function setEventUpdates($event_updates)
     {
-        $this->container['app_id'] = $app_id;
+        $this->container['event_updates'] = $event_updates;
+
+        return $this;
+    }
+
+    /**
+     * Gets dismiss_at
+     *
+     * @return float|null
+     */
+    public function getDismissAt()
+    {
+        return $this->container['dismiss_at'];
+    }
+
+    /**
+     * Sets dismiss_at
+     *
+     * @param float|null $dismiss_at Timestamp; only allowed if event is \"end\"
+     *
+     * @return self
+     */
+    public function setDismissAt($dismiss_at)
+    {
+        $this->container['dismiss_at'] = $dismiss_at;
 
         return $this;
     }

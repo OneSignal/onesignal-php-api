@@ -263,12 +263,44 @@ $outcomesResponse = $apiInstance->getOutcomes(APP_ID, $outcomeNames, null, $outc
 print_r($outcomesResponse->getOutcomes());
 ```
 
+## Live Activities
+### Begin Live Activity
+```php
+$activityId = "activity_id_example";
+$beginLiveActivityRequest = new BeginLiveActivityRequest(array(
+    'push_token' => "push_token_example",
+    'subscription_id' => "player_id_example"
+));
+
+self::$apiInstance->beginLiveActivity(APP_ID, $activityId, $beginLiveActivityRequest);
+```
+
+### Update Live Activity
+```php
+$activityId = "activity_id_example";
+$updateLiveActivityRequest = new UpdateLiveActivityRequest(array(
+    'event' => 'update',
+    'name' => 'contents',
+    'event_updates' => array('data' => 'test')
+));
+
+self::$apiInstance->updateLiveActivity(APP_ID, $activityId, $updateLiveActivityRequest);
+```
+
+### End Live Activity
+```php
+$activityId = "activity_id_example";
+$subscriptionId = "player_id_example";
+self::$apiInstance->endLiveActivity(APP_ID, $activityId, $subscriptionId);
+```
+
 ## API Endpoints
 
 All URIs are relative to *https://onesignal.com/api/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*DefaultApi* | [**beginLiveActivity**](docs/Api/DefaultApi.md#beginliveactivity) | **POST** /apps/{app_id}/live_activities/{activity_id}/token | Start Live Activity
 *DefaultApi* | [**cancelNotification**](docs/Api/DefaultApi.md#cancelnotification) | **DELETE** /notifications/{notification_id} | Stop a scheduled or currently outgoing notification
 *DefaultApi* | [**createApp**](docs/Api/DefaultApi.md#createapp) | **POST** /apps | Create an app
 *DefaultApi* | [**createNotification**](docs/Api/DefaultApi.md#createnotification) | **POST** /notifications | Create notification
@@ -276,6 +308,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**createSegments**](docs/Api/DefaultApi.md#createsegments) | **POST** /apps/{app_id}/segments | Create Segments
 *DefaultApi* | [**deletePlayer**](docs/Api/DefaultApi.md#deleteplayer) | **DELETE** /players/{player_id} | Delete a user record
 *DefaultApi* | [**deleteSegments**](docs/Api/DefaultApi.md#deletesegments) | **DELETE** /apps/{app_id}/segments/{segment_id} | Delete Segments
+*DefaultApi* | [**endLiveActivity**](docs/Api/DefaultApi.md#endliveactivity) | **DELETE** /apps/{app_id}/live_activities/{activity_id}/token/{subscription_id} | Stop Live Activity
 *DefaultApi* | [**exportPlayers**](docs/Api/DefaultApi.md#exportplayers) | **POST** /players/csv_export?app_id&#x3D;{app_id} | CSV export
 *DefaultApi* | [**getApp**](docs/Api/DefaultApi.md#getapp) | **GET** /apps/{app_id} | View an app
 *DefaultApi* | [**getApps**](docs/Api/DefaultApi.md#getapps) | **GET** /apps | View apps
@@ -286,27 +319,26 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**getPlayer**](docs/Api/DefaultApi.md#getplayer) | **GET** /players/{player_id} | View device
 *DefaultApi* | [**getPlayers**](docs/Api/DefaultApi.md#getplayers) | **GET** /players | View devices
 *DefaultApi* | [**updateApp**](docs/Api/DefaultApi.md#updateapp) | **PUT** /apps/{app_id} | Update an app
+*DefaultApi* | [**updateLiveActivity**](docs/Api/DefaultApi.md#updateliveactivity) | **POST** /apps/{app_id}/live_activities/{activity_id}/notifications | Update a Live Activity via Push
 *DefaultApi* | [**updatePlayer**](docs/Api/DefaultApi.md#updateplayer) | **PUT** /players/{player_id} | Edit device
 *DefaultApi* | [**updatePlayerTags**](docs/Api/DefaultApi.md#updateplayertags) | **PUT** /apps/{app_id}/users/{external_user_id} | Edit tags with external user id
 
 ## Models
 
 - [App](docs/Model/App.md)
+- [BadRequestError](docs/Model/BadRequestError.md)
 - [BasicNotification](docs/Model/BasicNotification.md)
 - [BasicNotificationAllOf](docs/Model/BasicNotificationAllOf.md)
 - [BasicNotificationAllOfAndroidBackgroundLayout](docs/Model/BasicNotificationAllOfAndroidBackgroundLayout.md)
+- [BeginLiveActivityRequest](docs/Model/BeginLiveActivityRequest.md)
 - [Button](docs/Model/Button.md)
 - [CancelNotificationSuccessResponse](docs/Model/CancelNotificationSuccessResponse.md)
-- [CreateNotificationBadRequestResponse](docs/Model/CreateNotificationBadRequestResponse.md)
 - [CreateNotificationSuccessResponse](docs/Model/CreateNotificationSuccessResponse.md)
 - [CreatePlayerSuccessResponse](docs/Model/CreatePlayerSuccessResponse.md)
-- [CreateSegmentBadRequestResponse](docs/Model/CreateSegmentBadRequestResponse.md)
 - [CreateSegmentConflictResponse](docs/Model/CreateSegmentConflictResponse.md)
 - [CreateSegmentSuccessResponse](docs/Model/CreateSegmentSuccessResponse.md)
-- [DeletePlayerBadRequestResponse](docs/Model/DeletePlayerBadRequestResponse.md)
 - [DeletePlayerNotFoundResponse](docs/Model/DeletePlayerNotFoundResponse.md)
 - [DeletePlayerSuccessResponse](docs/Model/DeletePlayerSuccessResponse.md)
-- [DeleteSegmentBadRequestResponse](docs/Model/DeleteSegmentBadRequestResponse.md)
 - [DeleteSegmentNotFoundResponse](docs/Model/DeleteSegmentNotFoundResponse.md)
 - [DeleteSegmentSuccessResponse](docs/Model/DeleteSegmentSuccessResponse.md)
 - [DeliveryData](docs/Model/DeliveryData.md)
@@ -319,7 +351,6 @@ Class | Method | HTTP request | Description
 - [Notification](docs/Model/Notification.md)
 - [Notification200Errors](docs/Model/Notification200Errors.md)
 - [NotificationAllOf](docs/Model/NotificationAllOf.md)
-- [NotificationHistoryBadRequestResponse](docs/Model/NotificationHistoryBadRequestResponse.md)
 - [NotificationHistorySuccessResponse](docs/Model/NotificationHistorySuccessResponse.md)
 - [NotificationSlice](docs/Model/NotificationSlice.md)
 - [NotificationTarget](docs/Model/NotificationTarget.md)
@@ -338,6 +369,8 @@ Class | Method | HTTP request | Description
 - [Segment](docs/Model/Segment.md)
 - [SegmentNotificationTarget](docs/Model/SegmentNotificationTarget.md)
 - [StringMap](docs/Model/StringMap.md)
+- [UpdateLiveActivityRequest](docs/Model/UpdateLiveActivityRequest.md)
+- [UpdateLiveActivitySuccessResponse](docs/Model/UpdateLiveActivitySuccessResponse.md)
 - [UpdatePlayerSuccessResponse](docs/Model/UpdatePlayerSuccessResponse.md)
 - [UpdatePlayerTagsRequestBody](docs/Model/UpdatePlayerTagsRequestBody.md)
 - [UpdatePlayerTagsSuccessResponse](docs/Model/UpdatePlayerTagsSuccessResponse.md)
@@ -365,5 +398,5 @@ requires app_key and which user_key. You can get the value of these keys from yo
 devrel@onesignal.com
 
 
-- API version: `1.0.1`
-    - Package version: `1.0.0`
+- API version: `1.0.2`
+    - Package version: `1.0.4`
