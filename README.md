@@ -23,21 +23,12 @@ To install the bindings via [Composer](https://getcomposer.org/), add the follow
     }
   ],
   "require": {
-    "onesignal/onesignal-php-api": "*@dev"
+    "OneSignal/onesignal-php-api": "*@dev"
   }
 }
 ```
 
 Then run `composer install`
-
-### Manual Installation
-
-Download the files and include `autoload.php`:
-
-```php
-<?php
-require_once('/path/to/OneSignal/vendor/autoload.php');
-```
 
 
 ## Usage examples
@@ -439,7 +430,8 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**deleteSubscription**](docs/Api/DefaultApi.md#deletesubscription) | **DELETE** /apps/{app_id}/subscriptions/{subscription_id} | 
 *DefaultApi* | [**deleteUser**](docs/Api/DefaultApi.md#deleteuser) | **DELETE** /apps/{app_id}/users/by/{alias_label}/{alias_id} | 
 *DefaultApi* | [**endLiveActivity**](docs/Api/DefaultApi.md#endliveactivity) | **DELETE** /apps/{app_id}/live_activities/{activity_id}/token/{subscription_id} | Stop Live Activity
-*DefaultApi* | [**exportPlayers**](docs/Api/DefaultApi.md#exportplayers) | **POST** /players/csv_export?app_id&#x3D;{app_id} | CSV export
+*DefaultApi* | [**exportEvents**](docs/Api/DefaultApi.md#exportevents) | **POST** /notifications/{notification_id}/export_events?app_id&#x3D;{app_id} | Export CSV of Events
+*DefaultApi* | [**exportPlayers**](docs/Api/DefaultApi.md#exportplayers) | **POST** /players/csv_export?app_id&#x3D;{app_id} | Export CSV of Players
 *DefaultApi* | [**fetchAliases**](docs/Api/DefaultApi.md#fetchaliases) | **GET** /apps/{app_id}/subscriptions/{subscription_id}/user/identity | 
 *DefaultApi* | [**fetchUser**](docs/Api/DefaultApi.md#fetchuser) | **GET** /apps/{app_id}/users/by/{alias_label}/{alias_id} | 
 *DefaultApi* | [**fetchUserIdentity**](docs/Api/DefaultApi.md#fetchuseridentity) | **GET** /apps/{app_id}/users/by/{alias_label}/{alias_id}/identity | 
@@ -465,7 +457,6 @@ Class | Method | HTTP request | Description
 ## Models
 
 - [App](docs/Model/App.md)
-- [BadRequestError](docs/Model/BadRequestError.md)
 - [BasicNotification](docs/Model/BasicNotification.md)
 - [BasicNotificationAllOf](docs/Model/BasicNotificationAllOf.md)
 - [BasicNotificationAllOfAndroidBackgroundLayout](docs/Model/BasicNotificationAllOfAndroidBackgroundLayout.md)
@@ -485,13 +476,14 @@ Class | Method | HTTP request | Description
 - [DeleteSegmentNotFoundResponse](docs/Model/DeleteSegmentNotFoundResponse.md)
 - [DeleteSegmentSuccessResponse](docs/Model/DeleteSegmentSuccessResponse.md)
 - [DeliveryData](docs/Model/DeliveryData.md)
+- [ExportEventsSuccessResponse](docs/Model/ExportEventsSuccessResponse.md)
 - [ExportPlayersRequestBody](docs/Model/ExportPlayersRequestBody.md)
 - [ExportPlayersSuccessResponse](docs/Model/ExportPlayersSuccessResponse.md)
 - [Filter](docs/Model/Filter.md)
 - [FilterExpressions](docs/Model/FilterExpressions.md)
+- [GenericError](docs/Model/GenericError.md)
+- [GenericErrorErrorsInner](docs/Model/GenericErrorErrorsInner.md)
 - [GetNotificationRequestBody](docs/Model/GetNotificationRequestBody.md)
-- [IdentifyUserConflictResponse](docs/Model/IdentifyUserConflictResponse.md)
-- [IdentifyUserConflictResponseErrorsInner](docs/Model/IdentifyUserConflictResponseErrorsInner.md)
 - [InlineResponse200](docs/Model/InlineResponse200.md)
 - [InlineResponse2003](docs/Model/InlineResponse2003.md)
 - [InlineResponse201](docs/Model/InlineResponse201.md)
@@ -518,6 +510,7 @@ Class | Method | HTTP request | Description
 - [PropertiesDeltas](docs/Model/PropertiesDeltas.md)
 - [PropertiesObject](docs/Model/PropertiesObject.md)
 - [Purchase](docs/Model/Purchase.md)
+- [RateLimiterError](docs/Model/RateLimiterError.md)
 - [Segment](docs/Model/Segment.md)
 - [SegmentNotificationTarget](docs/Model/SegmentNotificationTarget.md)
 - [StringMap](docs/Model/StringMap.md)
@@ -558,5 +551,5 @@ requires app_key and which user_key. You can get the value of these keys from yo
 devrel@onesignal.com
 
 
-- API version: `1.2.1`
-    - Package version: `2.0.0`
+- API version: `1.2.2`
+    - Package version: `2.0.2`
