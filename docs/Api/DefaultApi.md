@@ -1,6 +1,6 @@
 # onesignal\client\DefaultApi
 
-All URIs are relative to https://onesignal.com/api/v1.
+All URIs are relative to https://api.onesignal.com.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -842,11 +842,18 @@ Removes the User identified by (:alias_label, :alias_id), and all Subscriptions 
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: app_key
+$config = onesignal\client\Configuration::getDefaultConfiguration()
+                                                ->setAppKeyToken('YOUR_APP_KEY_TOKEN')
+                                                ->setUserKeyToken('YOUR_USER_KEY_TOKEN');
+
+
 
 $apiInstance = new onesignal\client\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $app_id = 'app_id_example'; // string
 $alias_label = 'alias_label_example'; // string
@@ -873,7 +880,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[app_key](../../README.md#app_key)
 
 ### HTTP request headers
 

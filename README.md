@@ -412,7 +412,7 @@ $getEligibleIamsResponse = self::$apiInstance->getEligibleIams(APP_ID, '<SUBSCRI
 
 ## API Endpoints
 
-All URIs are relative to *https://onesignal.com/api/v1*
+All URIs are relative to *https://api.onesignal.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -551,5 +551,5 @@ requires app_key and which user_key. You can get the value of these keys from yo
 devrel@onesignal.com
 
 
-- API version: `1.2.2`
+- API version: `1.3.0`
     - Package version: `2.0.2`
