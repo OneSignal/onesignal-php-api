@@ -551,5 +551,5 @@ requires app_key and which user_key. You can get the value of these keys from yo
 devrel@onesignal.com
 
 
-- API version: `1.3.0`
-    - Package version: `2.1.0`
+- API version: `1.4.0`
+    - Package version: `2.2.0`
