@@ -52,15 +52,15 @@ use GuzzleHttp;
 ### Constants
 ```php
 const APP_ID = '<YOUR_APP_ID>';
-const APP_KEY_TOKEN = '<YOUR_APP_KEY_TOKEN>';
-const USER_KEY_TOKEN = '<YOUR_USER_KEY_TOKEN>';
+const REST_KEY_TOKEN = '<YOUR_REST_API_KEY>'; // App REST API key required for most endpoints
+const ORG_KEY_TOKEN = '<YOUR_ORGANIZATION_API_KEY>'; // Organization key is only required for creating new apps and other top-level endpoints
 ```
 
 ### Configure authorization
 ```php
 $config = Configuration::getDefaultConfiguration()
-    ->setAppKeyToken(APP_KEY_TOKEN)
-    ->setUserKeyToken(USER_KEY_TOKEN);
+    ->setAppKeyToken(REST_KEY_TOKEN)
+    ->setUserKeyToken(ORG_KEY_TOKEN);
 
 $apiInstance = new DefaultApi(
     new GuzzleHttp\Client(),
