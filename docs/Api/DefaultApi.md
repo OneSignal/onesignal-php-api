@@ -55,8 +55,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure Bearer authorization: rest_api_key
 $config = onesignal\client\Configuration::getDefaultConfiguration()
-                                                ->setAppKeyToken('YOUR_APP_KEY_TOKEN')
-                                                ->setUserKeyToken('YOUR_USER_KEY_TOKEN');
+                                                ->setRestApiKeyToken('YOUR_REST_API_KEY')
+                                                ->setOrganizationApiKeyToken('YOUR_ORGANIZATION_API_KEY');
 
 
 
@@ -120,8 +120,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure Bearer authorization: rest_api_key
 $config = onesignal\client\Configuration::getDefaultConfiguration()
-                                                ->setAppKeyToken('YOUR_APP_KEY_TOKEN')
-                                                ->setUserKeyToken('YOUR_USER_KEY_TOKEN');
+                                                ->setRestApiKeyToken('YOUR_REST_API_KEY')
+                                                ->setOrganizationApiKeyToken('YOUR_ORGANIZATION_API_KEY');
 
 
 
@@ -189,8 +189,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure Bearer authorization: rest_api_key
 $config = onesignal\client\Configuration::getDefaultConfiguration()
-                                                ->setAppKeyToken('YOUR_APP_KEY_TOKEN')
-                                                ->setUserKeyToken('YOUR_USER_KEY_TOKEN');
+                                                ->setRestApiKeyToken('YOUR_REST_API_KEY')
+                                                ->setOrganizationApiKeyToken('YOUR_ORGANIZATION_API_KEY');
 
 
 
@@ -254,10 +254,10 @@ Creates a new OneSignal app
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure Bearer authorization: user_auth_key
+// Configure Bearer authorization: organization_api_key
 $config = onesignal\client\Configuration::getDefaultConfiguration()
-                                                ->setAppKeyToken('YOUR_APP_KEY_TOKEN')
-                                                ->setUserKeyToken('YOUR_USER_KEY_TOKEN');
+                                                ->setRestApiKeyToken('YOUR_REST_API_KEY')
+                                                ->setOrganizationApiKeyToken('YOUR_ORGANIZATION_API_KEY');
 
 
 
@@ -289,7 +289,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[user_auth_key](../../README.md#user_auth_key)
+[organization_api_key](../../README.md#organization_api_key)
 
 ### HTTP request headers
 
@@ -319,8 +319,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure Bearer authorization: rest_api_key
 $config = onesignal\client\Configuration::getDefaultConfiguration()
-                                                ->setAppKeyToken('YOUR_APP_KEY_TOKEN')
-                                                ->setUserKeyToken('YOUR_USER_KEY_TOKEN');
+                                                ->setRestApiKeyToken('YOUR_REST_API_KEY')
+                                                ->setOrganizationApiKeyToken('YOUR_ORGANIZATION_API_KEY');
 
 
 
@@ -382,8 +382,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure Bearer authorization: rest_api_key
 $config = onesignal\client\Configuration::getDefaultConfiguration()
-                                                ->setAppKeyToken('YOUR_APP_KEY_TOKEN')
-                                                ->setUserKeyToken('YOUR_USER_KEY_TOKEN');
+                                                ->setRestApiKeyToken('YOUR_REST_API_KEY')
+                                                ->setOrganizationApiKeyToken('YOUR_ORGANIZATION_API_KEY');
 
 
 
@@ -447,8 +447,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure Bearer authorization: rest_api_key
 $config = onesignal\client\Configuration::getDefaultConfiguration()
-                                                ->setAppKeyToken('YOUR_APP_KEY_TOKEN')
-                                                ->setUserKeyToken('YOUR_USER_KEY_TOKEN');
+                                                ->setRestApiKeyToken('YOUR_REST_API_KEY')
+                                                ->setOrganizationApiKeyToken('YOUR_ORGANIZATION_API_KEY');
 
 
 
@@ -516,8 +516,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure Bearer authorization: rest_api_key
 $config = onesignal\client\Configuration::getDefaultConfiguration()
-                                                ->setAppKeyToken('YOUR_APP_KEY_TOKEN')
-                                                ->setUserKeyToken('YOUR_USER_KEY_TOKEN');
+                                                ->setRestApiKeyToken('YOUR_REST_API_KEY')
+                                                ->setOrganizationApiKeyToken('YOUR_ORGANIZATION_API_KEY');
 
 
 
@@ -581,8 +581,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure Bearer authorization: rest_api_key
 $config = onesignal\client\Configuration::getDefaultConfiguration()
-                                                ->setAppKeyToken('YOUR_APP_KEY_TOKEN')
-                                                ->setUserKeyToken('YOUR_USER_KEY_TOKEN');
+                                                ->setRestApiKeyToken('YOUR_REST_API_KEY')
+                                                ->setOrganizationApiKeyToken('YOUR_ORGANIZATION_API_KEY');
 
 
 
@@ -650,8 +650,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure Bearer authorization: rest_api_key
 $config = onesignal\client\Configuration::getDefaultConfiguration()
-                                                ->setAppKeyToken('YOUR_APP_KEY_TOKEN')
-                                                ->setUserKeyToken('YOUR_USER_KEY_TOKEN');
+                                                ->setRestApiKeyToken('YOUR_REST_API_KEY')
+                                                ->setOrganizationApiKeyToken('YOUR_ORGANIZATION_API_KEY');
 
 
 
@@ -715,8 +715,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure Bearer authorization: rest_api_key
 $config = onesignal\client\Configuration::getDefaultConfiguration()
-                                                ->setAppKeyToken('YOUR_APP_KEY_TOKEN')
-                                                ->setUserKeyToken('YOUR_USER_KEY_TOKEN');
+                                                ->setRestApiKeyToken('YOUR_REST_API_KEY')
+                                                ->setOrganizationApiKeyToken('YOUR_ORGANIZATION_API_KEY');
 
 
 
@@ -779,8 +779,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure Bearer authorization: rest_api_key
 $config = onesignal\client\Configuration::getDefaultConfiguration()
-                                                ->setAppKeyToken('YOUR_APP_KEY_TOKEN')
-                                                ->setUserKeyToken('YOUR_USER_KEY_TOKEN');
+                                                ->setRestApiKeyToken('YOUR_REST_API_KEY')
+                                                ->setOrganizationApiKeyToken('YOUR_ORGANIZATION_API_KEY');
 
 
 
@@ -845,8 +845,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure Bearer authorization: rest_api_key
 $config = onesignal\client\Configuration::getDefaultConfiguration()
-                                                ->setAppKeyToken('YOUR_APP_KEY_TOKEN')
-                                                ->setUserKeyToken('YOUR_USER_KEY_TOKEN');
+                                                ->setRestApiKeyToken('YOUR_REST_API_KEY')
+                                                ->setOrganizationApiKeyToken('YOUR_ORGANIZATION_API_KEY');
 
 
 
@@ -910,8 +910,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure Bearer authorization: rest_api_key
 $config = onesignal\client\Configuration::getDefaultConfiguration()
-                                                ->setAppKeyToken('YOUR_APP_KEY_TOKEN')
-                                                ->setUserKeyToken('YOUR_USER_KEY_TOKEN');
+                                                ->setRestApiKeyToken('YOUR_REST_API_KEY')
+                                                ->setOrganizationApiKeyToken('YOUR_ORGANIZATION_API_KEY');
 
 
 
@@ -975,8 +975,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure Bearer authorization: rest_api_key
 $config = onesignal\client\Configuration::getDefaultConfiguration()
-                                                ->setAppKeyToken('YOUR_APP_KEY_TOKEN')
-                                                ->setUserKeyToken('YOUR_USER_KEY_TOKEN');
+                                                ->setRestApiKeyToken('YOUR_REST_API_KEY')
+                                                ->setOrganizationApiKeyToken('YOUR_ORGANIZATION_API_KEY');
 
 
 
@@ -1042,8 +1042,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure Bearer authorization: rest_api_key
 $config = onesignal\client\Configuration::getDefaultConfiguration()
-                                                ->setAppKeyToken('YOUR_APP_KEY_TOKEN')
-                                                ->setUserKeyToken('YOUR_USER_KEY_TOKEN');
+                                                ->setRestApiKeyToken('YOUR_REST_API_KEY')
+                                                ->setOrganizationApiKeyToken('YOUR_ORGANIZATION_API_KEY');
 
 
 
@@ -1105,10 +1105,10 @@ View the details of a single OneSignal app
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure Bearer authorization: user_auth_key
+// Configure Bearer authorization: organization_api_key
 $config = onesignal\client\Configuration::getDefaultConfiguration()
-                                                ->setAppKeyToken('YOUR_APP_KEY_TOKEN')
-                                                ->setUserKeyToken('YOUR_USER_KEY_TOKEN');
+                                                ->setRestApiKeyToken('YOUR_REST_API_KEY')
+                                                ->setOrganizationApiKeyToken('YOUR_ORGANIZATION_API_KEY');
 
 
 
@@ -1140,7 +1140,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[user_auth_key](../../README.md#user_auth_key)
+[organization_api_key](../../README.md#organization_api_key)
 
 ### HTTP request headers
 
@@ -1168,10 +1168,10 @@ View the details of all of your current OneSignal apps
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure Bearer authorization: user_auth_key
+// Configure Bearer authorization: organization_api_key
 $config = onesignal\client\Configuration::getDefaultConfiguration()
-                                                ->setAppKeyToken('YOUR_APP_KEY_TOKEN')
-                                                ->setUserKeyToken('YOUR_USER_KEY_TOKEN');
+                                                ->setRestApiKeyToken('YOUR_REST_API_KEY')
+                                                ->setOrganizationApiKeyToken('YOUR_ORGANIZATION_API_KEY');
 
 
 
@@ -1200,7 +1200,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[user_auth_key](../../README.md#user_auth_key)
+[organization_api_key](../../README.md#organization_api_key)
 
 ### HTTP request headers
 
@@ -1230,8 +1230,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure Bearer authorization: rest_api_key
 $config = onesignal\client\Configuration::getDefaultConfiguration()
-                                                ->setAppKeyToken('YOUR_APP_KEY_TOKEN')
-                                                ->setUserKeyToken('YOUR_USER_KEY_TOKEN');
+                                                ->setRestApiKeyToken('YOUR_REST_API_KEY')
+                                                ->setOrganizationApiKeyToken('YOUR_ORGANIZATION_API_KEY');
 
 
 
@@ -1295,8 +1295,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure Bearer authorization: rest_api_key
 $config = onesignal\client\Configuration::getDefaultConfiguration()
-                                                ->setAppKeyToken('YOUR_APP_KEY_TOKEN')
-                                                ->setUserKeyToken('YOUR_USER_KEY_TOKEN');
+                                                ->setRestApiKeyToken('YOUR_REST_API_KEY')
+                                                ->setOrganizationApiKeyToken('YOUR_ORGANIZATION_API_KEY');
 
 
 
@@ -1360,8 +1360,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure Bearer authorization: rest_api_key
 $config = onesignal\client\Configuration::getDefaultConfiguration()
-                                                ->setAppKeyToken('YOUR_APP_KEY_TOKEN')
-                                                ->setUserKeyToken('YOUR_USER_KEY_TOKEN');
+                                                ->setRestApiKeyToken('YOUR_REST_API_KEY')
+                                                ->setOrganizationApiKeyToken('YOUR_ORGANIZATION_API_KEY');
 
 
 
@@ -1429,8 +1429,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure Bearer authorization: rest_api_key
 $config = onesignal\client\Configuration::getDefaultConfiguration()
-                                                ->setAppKeyToken('YOUR_APP_KEY_TOKEN')
-                                                ->setUserKeyToken('YOUR_USER_KEY_TOKEN');
+                                                ->setRestApiKeyToken('YOUR_REST_API_KEY')
+                                                ->setOrganizationApiKeyToken('YOUR_ORGANIZATION_API_KEY');
 
 
 
@@ -1502,8 +1502,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure Bearer authorization: rest_api_key
 $config = onesignal\client\Configuration::getDefaultConfiguration()
-                                                ->setAppKeyToken('YOUR_APP_KEY_TOKEN')
-                                                ->setUserKeyToken('YOUR_USER_KEY_TOKEN');
+                                                ->setRestApiKeyToken('YOUR_REST_API_KEY')
+                                                ->setOrganizationApiKeyToken('YOUR_ORGANIZATION_API_KEY');
 
 
 
@@ -1569,8 +1569,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure Bearer authorization: rest_api_key
 $config = onesignal\client\Configuration::getDefaultConfiguration()
-                                                ->setAppKeyToken('YOUR_APP_KEY_TOKEN')
-                                                ->setUserKeyToken('YOUR_USER_KEY_TOKEN');
+                                                ->setRestApiKeyToken('YOUR_REST_API_KEY')
+                                                ->setOrganizationApiKeyToken('YOUR_ORGANIZATION_API_KEY');
 
 
 
@@ -1636,8 +1636,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure Bearer authorization: rest_api_key
 $config = onesignal\client\Configuration::getDefaultConfiguration()
-                                                ->setAppKeyToken('YOUR_APP_KEY_TOKEN')
-                                                ->setUserKeyToken('YOUR_USER_KEY_TOKEN');
+                                                ->setRestApiKeyToken('YOUR_REST_API_KEY')
+                                                ->setOrganizationApiKeyToken('YOUR_ORGANIZATION_API_KEY');
 
 
 
@@ -1703,8 +1703,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure Bearer authorization: rest_api_key
 $config = onesignal\client\Configuration::getDefaultConfiguration()
-                                                ->setAppKeyToken('YOUR_APP_KEY_TOKEN')
-                                                ->setUserKeyToken('YOUR_USER_KEY_TOKEN');
+                                                ->setRestApiKeyToken('YOUR_REST_API_KEY')
+                                                ->setOrganizationApiKeyToken('YOUR_ORGANIZATION_API_KEY');
 
 
 
@@ -1768,10 +1768,10 @@ Updates the name or configuration settings of an existing OneSignal app
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure Bearer authorization: user_auth_key
+// Configure Bearer authorization: organization_api_key
 $config = onesignal\client\Configuration::getDefaultConfiguration()
-                                                ->setAppKeyToken('YOUR_APP_KEY_TOKEN')
-                                                ->setUserKeyToken('YOUR_USER_KEY_TOKEN');
+                                                ->setRestApiKeyToken('YOUR_REST_API_KEY')
+                                                ->setOrganizationApiKeyToken('YOUR_ORGANIZATION_API_KEY');
 
 
 
@@ -1805,7 +1805,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[user_auth_key](../../README.md#user_auth_key)
+[organization_api_key](../../README.md#organization_api_key)
 
 ### HTTP request headers
 
@@ -1835,8 +1835,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure Bearer authorization: rest_api_key
 $config = onesignal\client\Configuration::getDefaultConfiguration()
-                                                ->setAppKeyToken('YOUR_APP_KEY_TOKEN')
-                                                ->setUserKeyToken('YOUR_USER_KEY_TOKEN');
+                                                ->setRestApiKeyToken('YOUR_REST_API_KEY')
+                                                ->setOrganizationApiKeyToken('YOUR_ORGANIZATION_API_KEY');
 
 
 
@@ -1902,8 +1902,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure Bearer authorization: rest_api_key
 $config = onesignal\client\Configuration::getDefaultConfiguration()
-                                                ->setAppKeyToken('YOUR_APP_KEY_TOKEN')
-                                                ->setUserKeyToken('YOUR_USER_KEY_TOKEN');
+                                                ->setRestApiKeyToken('YOUR_REST_API_KEY')
+                                                ->setOrganizationApiKeyToken('YOUR_ORGANIZATION_API_KEY');
 
 
 
@@ -1968,8 +1968,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure Bearer authorization: rest_api_key
 $config = onesignal\client\Configuration::getDefaultConfiguration()
-                                                ->setAppKeyToken('YOUR_APP_KEY_TOKEN')
-                                                ->setUserKeyToken('YOUR_USER_KEY_TOKEN');
+                                                ->setRestApiKeyToken('YOUR_REST_API_KEY')
+                                                ->setOrganizationApiKeyToken('YOUR_ORGANIZATION_API_KEY');
 
 
 
