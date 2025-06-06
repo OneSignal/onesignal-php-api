@@ -52,15 +52,15 @@ use GuzzleHttp;
 ### Constants
 ```php
 const APP_ID = '<YOUR_APP_ID>';
-const APP_KEY_TOKEN = '<YOUR_APP_KEY_TOKEN>';
-const USER_KEY_TOKEN = '<YOUR_USER_KEY_TOKEN>';
+const REST_API_KEY_TOKEN = '<YOUR_REST_API_KEY>'; // App REST API key required for most endpoints
+const ORGANIZATION_API_KEY_TOKEN = '<YOUR_ORGANIZATION_API_KEY>'; // Organization key is only required for creating new apps and other top-level endpoints
 ```
 
 ### Configure authorization
 ```php
 $config = Configuration::getDefaultConfiguration()
-    ->setAppKeyToken(APP_KEY_TOKEN)
-    ->setUserKeyToken(USER_KEY_TOKEN);
+    ->setRestApiKeyToken(REST_API_KEY_TOKEN)
+    ->setOrganizationApiKeyToken(ORGANIZATION_API_KEY_TOKEN);
 
 $apiInstance = new DefaultApi(
     new GuzzleHttp\Client(),
@@ -511,12 +511,12 @@ requires app_key and which user_key. You can get the value of these keys from yo
 
 
 
-### rest_api_key
+### organization_api_key
 
 - **Type**: Bearer authentication
 
 
-### user_auth_key
+### rest_api_key
 
 - **Type**: Bearer authentication
 
@@ -526,5 +526,5 @@ requires app_key and which user_key. You can get the value of these keys from yo
 devrel@onesignal.com
 
 
-- API version: `5.0.1`
-    - Package version: `5.0.0-beta1`
+- API version: `5.1.0`
+    - Package version: `5.1.0-beta1`
