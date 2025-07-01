@@ -23,12 +23,12 @@ To install the bindings via [Composer](https://getcomposer.org/), add the follow
     }
   ],
   "require": {
-    "OneSignal/onesignal-php-api": "*@dev"
+    "onesignal/onesignal-php-api": "*@dev"
   }
 }
 ```
 
-Then run `composer install`
+Then run `composer update`
 
 
 ## Usage examples
