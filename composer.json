@@ -1,6 +1,6 @@
 {
     "name": "onesignal/onesignal-php-api",
-    "version": "5.1.0-beta1",
+    "version": "5.2.0-beta1",
     "description": "A powerful way to send personalized messages at scale and build effective customer engagement strategies. Learn more at onesignal.com",
     "keywords": [
         "onesignal",
