@@ -123,5 +123,6 @@ Name | Type | Description | Notes
 **send_after** | **int** | Unix timestamp indicating when notification delivery should begin. | [optional]
 **completed_at** | **int** | Unix timestamp indicating when notification delivery completed. The delivery duration from start to finish can be calculated with completed_at - send_after. | [optional]
 **platform_delivery_stats** | [**\onesignal\client\model\PlatformDeliveryData**](PlatformDeliveryData.md) |  | [optional]
+**canceled** | **bool** | Indicates whether the notification was canceled before it could be sent. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
