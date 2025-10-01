@@ -526,5 +526,5 @@ requires app_key and which user_key. You can get the value of these keys from yo
 devrel@onesignal.com
 
 
-- API version: `5.2.0`
-    - Package version: `5.2.0-beta1`
+- API version: `5.2.1`
+    - Package version: `5.2.1-beta1`

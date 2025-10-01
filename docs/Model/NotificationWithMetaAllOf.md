@@ -15,5 +15,6 @@ Name | Type | Description | Notes
 **platform_delivery_stats** | [**\onesignal\client\model\PlatformDeliveryData**](PlatformDeliveryData.md) |  | [optional]
 **received** | **int** | Confirmed Deliveries number of devices that received the push notification. Paid Feature Only. Free accounts will see 0. | [optional]
 **throttle_rate_per_minute** | **int** | number of push notifications sent per minute. Paid Feature Only. If throttling is not enabled for the app or the notification, and for free accounts, null is returned. Refer to Throttling for more details. | [optional]
+**canceled** | **bool** | Indicates whether the notification was canceled before it could be sent. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
