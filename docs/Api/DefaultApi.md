@@ -5,16 +5,22 @@ All URIs are relative to https://api.onesignal.com.
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**cancelNotification()**](DefaultApi.md#cancelNotification) | **DELETE** /notifications/{notification_id} | Stop a scheduled or currently outgoing notification
+[**copyTemplateToApp()**](DefaultApi.md#copyTemplateToApp) | **POST** /templates/{template_id}/copy_to_app | Copy template to another app
 [**createAlias()**](DefaultApi.md#createAlias) | **PATCH** /apps/{app_id}/users/by/{alias_label}/{alias_id}/identity | 
 [**createAliasBySubscription()**](DefaultApi.md#createAliasBySubscription) | **PATCH** /apps/{app_id}/subscriptions/{subscription_id}/user/identity | 
+[**createApiKey()**](DefaultApi.md#createApiKey) | **POST** /apps/{app_id}/auth/tokens | Create API key
 [**createApp()**](DefaultApi.md#createApp) | **POST** /apps | Create an app
+[**createCustomEvents()**](DefaultApi.md#createCustomEvents) | **POST** /apps/{app_id}/integrations/custom_events | Create custom events
 [**createNotification()**](DefaultApi.md#createNotification) | **POST** /notifications | Create notification
 [**createSegment()**](DefaultApi.md#createSegment) | **POST** /apps/{app_id}/segments | Create Segment
 [**createSubscription()**](DefaultApi.md#createSubscription) | **POST** /apps/{app_id}/users/by/{alias_label}/{alias_id}/subscriptions | 
+[**createTemplate()**](DefaultApi.md#createTemplate) | **POST** /templates | Create template
 [**createUser()**](DefaultApi.md#createUser) | **POST** /apps/{app_id}/users | 
 [**deleteAlias()**](DefaultApi.md#deleteAlias) | **DELETE** /apps/{app_id}/users/by/{alias_label}/{alias_id}/identity/{alias_label_to_delete} | 
+[**deleteApiKey()**](DefaultApi.md#deleteApiKey) | **DELETE** /apps/{app_id}/auth/tokens/{token_id} | Delete API key
 [**deleteSegment()**](DefaultApi.md#deleteSegment) | **DELETE** /apps/{app_id}/segments/{segment_id} | Delete Segment
 [**deleteSubscription()**](DefaultApi.md#deleteSubscription) | **DELETE** /apps/{app_id}/subscriptions/{subscription_id} | 
+[**deleteTemplate()**](DefaultApi.md#deleteTemplate) | **DELETE** /templates/{template_id} | Delete template
 [**deleteUser()**](DefaultApi.md#deleteUser) | **DELETE** /apps/{app_id}/users/by/{alias_label}/{alias_id} | 
 [**exportEvents()**](DefaultApi.md#exportEvents) | **POST** /notifications/{notification_id}/export_events?app_id&#x3D;{app_id} | Export CSV of Events
 [**exportSubscriptions()**](DefaultApi.md#exportSubscriptions) | **POST** /players/csv_export?app_id&#x3D;{app_id} | Export CSV of Subscriptions
@@ -28,12 +34,20 @@ Method | HTTP request | Description
 [**getOutcomes()**](DefaultApi.md#getOutcomes) | **GET** /apps/{app_id}/outcomes | View Outcomes
 [**getSegments()**](DefaultApi.md#getSegments) | **GET** /apps/{app_id}/segments | Get Segments
 [**getUser()**](DefaultApi.md#getUser) | **GET** /apps/{app_id}/users/by/{alias_label}/{alias_id} | 
+[**rotateApiKey()**](DefaultApi.md#rotateApiKey) | **POST** /apps/{app_id}/auth/tokens/{token_id}/rotate | Rotate API key
+[**startLiveActivity()**](DefaultApi.md#startLiveActivity) | **POST** /apps/{app_id}/activities/activity/{activity_type} | Start Live Activity
 [**transferSubscription()**](DefaultApi.md#transferSubscription) | **PATCH** /apps/{app_id}/subscriptions/{subscription_id}/owner | 
 [**unsubscribeEmailWithToken()**](DefaultApi.md#unsubscribeEmailWithToken) | **POST** /apps/{app_id}/notifications/{notification_id}/unsubscribe | Unsubscribe with token
+[**updateApiKey()**](DefaultApi.md#updateApiKey) | **PATCH** /apps/{app_id}/auth/tokens/{token_id} | Update API key
 [**updateApp()**](DefaultApi.md#updateApp) | **PUT** /apps/{app_id} | Update an app
 [**updateLiveActivity()**](DefaultApi.md#updateLiveActivity) | **POST** /apps/{app_id}/live_activities/{activity_id}/notifications | Update a Live Activity via Push
 [**updateSubscription()**](DefaultApi.md#updateSubscription) | **PATCH** /apps/{app_id}/subscriptions/{subscription_id} | 
+[**updateSubscriptionByToken()**](DefaultApi.md#updateSubscriptionByToken) | **PATCH** /apps/{app_id}/subscriptions_by_token/{token_type}/{token} | Update subscription by token
+[**updateTemplate()**](DefaultApi.md#updateTemplate) | **PATCH** /templates/{template_id} | Update template
 [**updateUser()**](DefaultApi.md#updateUser) | **PATCH** /apps/{app_id}/users/by/{alias_label}/{alias_id} | 
+[**viewApiKeys()**](DefaultApi.md#viewApiKeys) | **GET** /apps/{app_id}/auth/tokens | View API keys
+[**viewTemplate()**](DefaultApi.md#viewTemplate) | **GET** /templates/{template_id} | View template
+[**viewTemplates()**](DefaultApi.md#viewTemplates) | **GET** /templates | View templates
 
 
 ## `cancelNotification()`
@@ -95,6 +109,73 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `copyTemplateToApp()`
+
+```php
+copyTemplateToApp($template_id, $app_id, $copy_template_request): \onesignal\client\model\TemplateResource
+```
+
+Copy template to another app
+
+Copy a template to a destination app.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: organization_api_key
+$config = onesignal\client\Configuration::getDefaultConfiguration()
+                                                ->setRestApiKeyToken('YOUR_REST_API_KEY')
+                                                ->setOrganizationApiKeyToken('YOUR_ORGANIZATION_API_KEY');
+
+
+
+$apiInstance = new onesignal\client\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$template_id = 'template_id_example'; // string
+$app_id = 'app_id_example'; // string
+$copy_template_request = new \onesignal\client\model\CopyTemplateRequest(); // \onesignal\client\model\CopyTemplateRequest
+
+try {
+    $result = $apiInstance->copyTemplateToApp($template_id, $app_id, $copy_template_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->copyTemplateToApp: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **template_id** | **string**|  |
+ **app_id** | **string**|  |
+ **copy_template_request** | [**\onesignal\client\model\CopyTemplateRequest**](../Model/CopyTemplateRequest.md)|  |
+
+### Return type
+
+[**\onesignal\client\model\TemplateResource**](../Model/TemplateResource.md)
+
+### Authorization
+
+[organization_api_key](../../README.md#organization_api_key)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
@@ -237,6 +318,71 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `createApiKey()`
+
+```php
+createApiKey($app_id, $create_api_key_request): \onesignal\client\model\CreateApiKeyResponse
+```
+
+Create API key
+
+Use this API to create a new App API Key (also called a Rich Authentication Token) for a specific OneSignal app. These keys are used to authenticate API requests at the app level and offer enhanced security features, including optional IP allowlisting.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: organization_api_key
+$config = onesignal\client\Configuration::getDefaultConfiguration()
+                                                ->setRestApiKeyToken('YOUR_REST_API_KEY')
+                                                ->setOrganizationApiKeyToken('YOUR_ORGANIZATION_API_KEY');
+
+
+
+$apiInstance = new onesignal\client\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$app_id = 'app_id_example'; // string
+$create_api_key_request = new \onesignal\client\model\CreateApiKeyRequest(); // \onesignal\client\model\CreateApiKeyRequest
+
+try {
+    $result = $apiInstance->createApiKey($app_id, $create_api_key_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->createApiKey: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **app_id** | **string**|  |
+ **create_api_key_request** | [**\onesignal\client\model\CreateApiKeyRequest**](../Model/CreateApiKeyRequest.md)|  |
+
+### Return type
+
+[**\onesignal\client\model\CreateApiKeyResponse**](../Model/CreateApiKeyResponse.md)
+
+### Authorization
+
+[organization_api_key](../../README.md#organization_api_key)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `createApp()`
 
 ```php
@@ -290,6 +436,71 @@ Name | Type | Description  | Notes
 ### Authorization
 
 [organization_api_key](../../README.md#organization_api_key)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `createCustomEvents()`
+
+```php
+createCustomEvents($app_id, $custom_events_request): object
+```
+
+Create custom events
+
+The Custom Events API allows you to record user events. Custom events can represent any action users take in your application, such as completing a purchase, viewing content, or achieving milestones.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: rest_api_key
+$config = onesignal\client\Configuration::getDefaultConfiguration()
+                                                ->setRestApiKeyToken('YOUR_REST_API_KEY')
+                                                ->setOrganizationApiKeyToken('YOUR_ORGANIZATION_API_KEY');
+
+
+
+$apiInstance = new onesignal\client\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$app_id = 'app_id_example'; // string | Your OneSignal App ID in UUID v4 format.
+$custom_events_request = new \onesignal\client\model\CustomEventsRequest(); // \onesignal\client\model\CustomEventsRequest
+
+try {
+    $result = $apiInstance->createCustomEvents($app_id, $custom_events_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->createCustomEvents: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **app_id** | **string**| Your OneSignal App ID in UUID v4 format. |
+ **custom_events_request** | [**\onesignal\client\model\CustomEventsRequest**](../Model/CustomEventsRequest.md)|  |
+
+### Return type
+
+**object**
+
+### Authorization
+
+[rest_api_key](../../README.md#rest_api_key)
 
 ### HTTP request headers
 
@@ -497,6 +708,69 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `createTemplate()`
+
+```php
+createTemplate($create_template_request): \onesignal\client\model\TemplateResource
+```
+
+Create template
+
+Create reusable message templates for push, email, and SMS channels.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: rest_api_key
+$config = onesignal\client\Configuration::getDefaultConfiguration()
+                                                ->setRestApiKeyToken('YOUR_REST_API_KEY')
+                                                ->setOrganizationApiKeyToken('YOUR_ORGANIZATION_API_KEY');
+
+
+
+$apiInstance = new onesignal\client\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$create_template_request = new \onesignal\client\model\CreateTemplateRequest(); // \onesignal\client\model\CreateTemplateRequest
+
+try {
+    $result = $apiInstance->createTemplate($create_template_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->createTemplate: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **create_template_request** | [**\onesignal\client\model\CreateTemplateRequest**](../Model/CreateTemplateRequest.md)|  |
+
+### Return type
+
+[**\onesignal\client\model\TemplateResource**](../Model/TemplateResource.md)
+
+### Authorization
+
+[rest_api_key](../../README.md#rest_api_key)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `createUser()`
 
 ```php
@@ -631,6 +905,71 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `deleteApiKey()`
+
+```php
+deleteApiKey($app_id, $token_id): object
+```
+
+Delete API key
+
+Delete a specific Rich Authentication Token (App API Key) for a OneSignal app. Requires your Organization API Key and the token’s unique ID, not the token value itself.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: organization_api_key
+$config = onesignal\client\Configuration::getDefaultConfiguration()
+                                                ->setRestApiKeyToken('YOUR_REST_API_KEY')
+                                                ->setOrganizationApiKeyToken('YOUR_ORGANIZATION_API_KEY');
+
+
+
+$apiInstance = new onesignal\client\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$app_id = 'app_id_example'; // string
+$token_id = 'token_id_example'; // string
+
+try {
+    $result = $apiInstance->deleteApiKey($app_id, $token_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->deleteApiKey: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **app_id** | **string**|  |
+ **token_id** | **string**|  |
+
+### Return type
+
+**object**
+
+### Authorization
+
+[organization_api_key](../../README.md#organization_api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `deleteSegment()`
 
 ```php
@@ -746,6 +1085,71 @@ Name | Type | Description  | Notes
 ### Return type
 
 void (empty response body)
+
+### Authorization
+
+[rest_api_key](../../README.md#rest_api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `deleteTemplate()`
+
+```php
+deleteTemplate($template_id, $app_id): \onesignal\client\model\GenericSuccessBoolResponse
+```
+
+Delete template
+
+Delete a template by id.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: rest_api_key
+$config = onesignal\client\Configuration::getDefaultConfiguration()
+                                                ->setRestApiKeyToken('YOUR_REST_API_KEY')
+                                                ->setOrganizationApiKeyToken('YOUR_ORGANIZATION_API_KEY');
+
+
+
+$apiInstance = new onesignal\client\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$template_id = 'template_id_example'; // string
+$app_id = 'app_id_example'; // string
+
+try {
+    $result = $apiInstance->deleteTemplate($template_id, $app_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->deleteTemplate: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **template_id** | **string**|  |
+ **app_id** | **string**|  |
+
+### Return type
+
+[**\onesignal\client\model\GenericSuccessBoolResponse**](../Model/GenericSuccessBoolResponse.md)
 
 ### Authorization
 
@@ -1617,6 +2021,138 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `rotateApiKey()`
+
+```php
+rotateApiKey($app_id, $token_id): \onesignal\client\model\CreateApiKeyResponse
+```
+
+Rotate API key
+
+Rotate a Rich Authentication Token (App API Key) for a OneSignal app. Rotating a key revokes the current token and generates a new one under the same configuration—ideal when a token is lost or compromised but you don’t want to recreate and reconfigure it from scratch.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: organization_api_key
+$config = onesignal\client\Configuration::getDefaultConfiguration()
+                                                ->setRestApiKeyToken('YOUR_REST_API_KEY')
+                                                ->setOrganizationApiKeyToken('YOUR_ORGANIZATION_API_KEY');
+
+
+
+$apiInstance = new onesignal\client\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$app_id = 'app_id_example'; // string
+$token_id = 'token_id_example'; // string
+
+try {
+    $result = $apiInstance->rotateApiKey($app_id, $token_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->rotateApiKey: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **app_id** | **string**|  |
+ **token_id** | **string**|  |
+
+### Return type
+
+[**\onesignal\client\model\CreateApiKeyResponse**](../Model/CreateApiKeyResponse.md)
+
+### Authorization
+
+[organization_api_key](../../README.md#organization_api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `startLiveActivity()`
+
+```php
+startLiveActivity($app_id, $activity_type, $start_live_activity_request): \onesignal\client\model\StartLiveActivitySuccessResponse
+```
+
+Start Live Activity
+
+Remotely start a Live Activity on iOS devices via OneSignal’s REST API.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: rest_api_key
+$config = onesignal\client\Configuration::getDefaultConfiguration()
+                                                ->setRestApiKeyToken('YOUR_REST_API_KEY')
+                                                ->setOrganizationApiKeyToken('YOUR_ORGANIZATION_API_KEY');
+
+
+
+$apiInstance = new onesignal\client\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$app_id = 'app_id_example'; // string | Your OneSignal App ID in UUID v4 format.
+$activity_type = 'activity_type_example'; // string | The name of the Live Activity defined in your app. This should match the attributes struct used in your app's Live Activity implementation.
+$start_live_activity_request = new \onesignal\client\model\StartLiveActivityRequest(); // \onesignal\client\model\StartLiveActivityRequest
+
+try {
+    $result = $apiInstance->startLiveActivity($app_id, $activity_type, $start_live_activity_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->startLiveActivity: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **app_id** | **string**| Your OneSignal App ID in UUID v4 format. |
+ **activity_type** | **string**| The name of the Live Activity defined in your app. This should match the attributes struct used in your app&#39;s Live Activity implementation. |
+ **start_live_activity_request** | [**\onesignal\client\model\StartLiveActivityRequest**](../Model/StartLiveActivityRequest.md)|  |
+
+### Return type
+
+[**\onesignal\client\model\StartLiveActivitySuccessResponse**](../Model/StartLiveActivitySuccessResponse.md)
+
+### Authorization
+
+[rest_api_key](../../README.md#rest_api_key)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `transferSubscription()`
 
 ```php
@@ -1745,6 +2281,73 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateApiKey()`
+
+```php
+updateApiKey($app_id, $token_id, $update_api_key_request): object
+```
+
+Update API key
+
+Update a Rich Authentication Token (App API Key) for a OneSignal app.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: organization_api_key
+$config = onesignal\client\Configuration::getDefaultConfiguration()
+                                                ->setRestApiKeyToken('YOUR_REST_API_KEY')
+                                                ->setOrganizationApiKeyToken('YOUR_ORGANIZATION_API_KEY');
+
+
+
+$apiInstance = new onesignal\client\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$app_id = 'app_id_example'; // string
+$token_id = 'token_id_example'; // string
+$update_api_key_request = new \onesignal\client\model\UpdateApiKeyRequest(); // \onesignal\client\model\UpdateApiKeyRequest
+
+try {
+    $result = $apiInstance->updateApiKey($app_id, $token_id, $update_api_key_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->updateApiKey: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **app_id** | **string**|  |
+ **token_id** | **string**|  |
+ **update_api_key_request** | [**\onesignal\client\model\UpdateApiKeyRequest**](../Model/UpdateApiKeyRequest.md)|  |
+
+### Return type
+
+**object**
+
+### Authorization
+
+[organization_api_key](../../README.md#organization_api_key)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
@@ -1949,6 +2552,142 @@ void (empty response body)
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `updateSubscriptionByToken()`
+
+```php
+updateSubscriptionByToken($app_id, $token_type, $token, $subscription_body): object
+```
+
+Update subscription by token
+
+Update properties on an existing OneSignal subscription using its token.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: rest_api_key
+$config = onesignal\client\Configuration::getDefaultConfiguration()
+                                                ->setRestApiKeyToken('YOUR_REST_API_KEY')
+                                                ->setOrganizationApiKeyToken('YOUR_ORGANIZATION_API_KEY');
+
+
+
+$apiInstance = new onesignal\client\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$app_id = 'app_id_example'; // string | Your OneSignal App ID in UUID v4 format.
+$token_type = 'token_type_example'; // string | The type of token to use when looking up the subscription. See Subscription Types.
+$token = 'token_example'; // string | The value of the token to lookup by (e.g., email address, phone number).
+$subscription_body = new \onesignal\client\model\SubscriptionBody(); // \onesignal\client\model\SubscriptionBody
+
+try {
+    $result = $apiInstance->updateSubscriptionByToken($app_id, $token_type, $token, $subscription_body);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->updateSubscriptionByToken: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **app_id** | **string**| Your OneSignal App ID in UUID v4 format. |
+ **token_type** | **string**| The type of token to use when looking up the subscription. See Subscription Types. |
+ **token** | **string**| The value of the token to lookup by (e.g., email address, phone number). |
+ **subscription_body** | [**\onesignal\client\model\SubscriptionBody**](../Model/SubscriptionBody.md)|  |
+
+### Return type
+
+**object**
+
+### Authorization
+
+[rest_api_key](../../README.md#rest_api_key)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateTemplate()`
+
+```php
+updateTemplate($template_id, $app_id, $update_template_request): \onesignal\client\model\TemplateResource
+```
+
+Update template
+
+Update an existing template.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: rest_api_key
+$config = onesignal\client\Configuration::getDefaultConfiguration()
+                                                ->setRestApiKeyToken('YOUR_REST_API_KEY')
+                                                ->setOrganizationApiKeyToken('YOUR_ORGANIZATION_API_KEY');
+
+
+
+$apiInstance = new onesignal\client\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$template_id = 'template_id_example'; // string
+$app_id = 'app_id_example'; // string
+$update_template_request = new \onesignal\client\model\UpdateTemplateRequest(); // \onesignal\client\model\UpdateTemplateRequest
+
+try {
+    $result = $apiInstance->updateTemplate($template_id, $app_id, $update_template_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->updateTemplate: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **template_id** | **string**|  |
+ **app_id** | **string**|  |
+ **update_template_request** | [**\onesignal\client\model\UpdateTemplateRequest**](../Model/UpdateTemplateRequest.md)|  |
+
+### Return type
+
+[**\onesignal\client\model\TemplateResource**](../Model/TemplateResource.md)
+
+### Authorization
+
+[rest_api_key](../../README.md#rest_api_key)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `updateUser()`
 
 ```php
@@ -2012,6 +2751,203 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `viewApiKeys()`
+
+```php
+viewApiKeys($app_id): \onesignal\client\model\ApiKeyTokensListResponse
+```
+
+View API keys
+
+View the details of all of your current app API keys (Rich Authentication Token) for a single OneSignal app.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: organization_api_key
+$config = onesignal\client\Configuration::getDefaultConfiguration()
+                                                ->setRestApiKeyToken('YOUR_REST_API_KEY')
+                                                ->setOrganizationApiKeyToken('YOUR_ORGANIZATION_API_KEY');
+
+
+
+$apiInstance = new onesignal\client\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$app_id = 'app_id_example'; // string
+
+try {
+    $result = $apiInstance->viewApiKeys($app_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->viewApiKeys: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **app_id** | **string**|  |
+
+### Return type
+
+[**\onesignal\client\model\ApiKeyTokensListResponse**](../Model/ApiKeyTokensListResponse.md)
+
+### Authorization
+
+[organization_api_key](../../README.md#organization_api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `viewTemplate()`
+
+```php
+viewTemplate($template_id, $app_id): \onesignal\client\model\TemplateResource
+```
+
+View template
+
+Fetch a single template by id.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: rest_api_key
+$config = onesignal\client\Configuration::getDefaultConfiguration()
+                                                ->setRestApiKeyToken('YOUR_REST_API_KEY')
+                                                ->setOrganizationApiKeyToken('YOUR_ORGANIZATION_API_KEY');
+
+
+
+$apiInstance = new onesignal\client\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$template_id = 'template_id_example'; // string
+$app_id = 'app_id_example'; // string
+
+try {
+    $result = $apiInstance->viewTemplate($template_id, $app_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->viewTemplate: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **template_id** | **string**|  |
+ **app_id** | **string**|  |
+
+### Return type
+
+[**\onesignal\client\model\TemplateResource**](../Model/TemplateResource.md)
+
+### Authorization
+
+[rest_api_key](../../README.md#rest_api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `viewTemplates()`
+
+```php
+viewTemplates($app_id, $limit, $offset, $channel): \onesignal\client\model\TemplatesListResponse
+```
+
+View templates
+
+List templates for an app.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: rest_api_key
+$config = onesignal\client\Configuration::getDefaultConfiguration()
+                                                ->setRestApiKeyToken('YOUR_REST_API_KEY')
+                                                ->setOrganizationApiKeyToken('YOUR_ORGANIZATION_API_KEY');
+
+
+
+$apiInstance = new onesignal\client\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$app_id = 'app_id_example'; // string | Your OneSignal App ID in UUID v4 format.
+$limit = 50; // int | Maximum number of templates. Default and max is 50.
+$offset = 0; // int | Pagination offset.
+$channel = 'channel_example'; // string | Filter by delivery channel.
+
+try {
+    $result = $apiInstance->viewTemplates($app_id, $limit, $offset, $channel);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->viewTemplates: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **app_id** | **string**| Your OneSignal App ID in UUID v4 format. |
+ **limit** | **int**| Maximum number of templates. Default and max is 50. | [optional] [default to 50]
+ **offset** | **int**| Pagination offset. | [optional] [default to 0]
+ **channel** | **string**| Filter by delivery channel. | [optional]
+
+### Return type
+
+[**\onesignal\client\model\TemplatesListResponse**](../Model/TemplatesListResponse.md)
+
+### Authorization
+
+[rest_api_key](../../README.md#rest_api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

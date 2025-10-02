@@ -417,16 +417,22 @@ All URIs are relative to *https://api.onesignal.com*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *DefaultApi* | [**cancelNotification**](docs/Api/DefaultApi.md#cancelnotification) | **DELETE** /notifications/{notification_id} | Stop a scheduled or currently outgoing notification
+*DefaultApi* | [**copyTemplateToApp**](docs/Api/DefaultApi.md#copytemplatetoapp) | **POST** /templates/{template_id}/copy_to_app | Copy template to another app
 *DefaultApi* | [**createAlias**](docs/Api/DefaultApi.md#createalias) | **PATCH** /apps/{app_id}/users/by/{alias_label}/{alias_id}/identity | 
 *DefaultApi* | [**createAliasBySubscription**](docs/Api/DefaultApi.md#createaliasbysubscription) | **PATCH** /apps/{app_id}/subscriptions/{subscription_id}/user/identity | 
+*DefaultApi* | [**createApiKey**](docs/Api/DefaultApi.md#createapikey) | **POST** /apps/{app_id}/auth/tokens | Create API key
 *DefaultApi* | [**createApp**](docs/Api/DefaultApi.md#createapp) | **POST** /apps | Create an app
+*DefaultApi* | [**createCustomEvents**](docs/Api/DefaultApi.md#createcustomevents) | **POST** /apps/{app_id}/integrations/custom_events | Create custom events
 *DefaultApi* | [**createNotification**](docs/Api/DefaultApi.md#createnotification) | **POST** /notifications | Create notification
 *DefaultApi* | [**createSegment**](docs/Api/DefaultApi.md#createsegment) | **POST** /apps/{app_id}/segments | Create Segment
 *DefaultApi* | [**createSubscription**](docs/Api/DefaultApi.md#createsubscription) | **POST** /apps/{app_id}/users/by/{alias_label}/{alias_id}/subscriptions | 
+*DefaultApi* | [**createTemplate**](docs/Api/DefaultApi.md#createtemplate) | **POST** /templates | Create template
 *DefaultApi* | [**createUser**](docs/Api/DefaultApi.md#createuser) | **POST** /apps/{app_id}/users | 
 *DefaultApi* | [**deleteAlias**](docs/Api/DefaultApi.md#deletealias) | **DELETE** /apps/{app_id}/users/by/{alias_label}/{alias_id}/identity/{alias_label_to_delete} | 
+*DefaultApi* | [**deleteApiKey**](docs/Api/DefaultApi.md#deleteapikey) | **DELETE** /apps/{app_id}/auth/tokens/{token_id} | Delete API key
 *DefaultApi* | [**deleteSegment**](docs/Api/DefaultApi.md#deletesegment) | **DELETE** /apps/{app_id}/segments/{segment_id} | Delete Segment
 *DefaultApi* | [**deleteSubscription**](docs/Api/DefaultApi.md#deletesubscription) | **DELETE** /apps/{app_id}/subscriptions/{subscription_id} | 
+*DefaultApi* | [**deleteTemplate**](docs/Api/DefaultApi.md#deletetemplate) | **DELETE** /templates/{template_id} | Delete template
 *DefaultApi* | [**deleteUser**](docs/Api/DefaultApi.md#deleteuser) | **DELETE** /apps/{app_id}/users/by/{alias_label}/{alias_id} | 
 *DefaultApi* | [**exportEvents**](docs/Api/DefaultApi.md#exportevents) | **POST** /notifications/{notification_id}/export_events?app_id&#x3D;{app_id} | Export CSV of Events
 *DefaultApi* | [**exportSubscriptions**](docs/Api/DefaultApi.md#exportsubscriptions) | **POST** /players/csv_export?app_id&#x3D;{app_id} | Export CSV of Subscriptions
@@ -440,26 +446,42 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**getOutcomes**](docs/Api/DefaultApi.md#getoutcomes) | **GET** /apps/{app_id}/outcomes | View Outcomes
 *DefaultApi* | [**getSegments**](docs/Api/DefaultApi.md#getsegments) | **GET** /apps/{app_id}/segments | Get Segments
 *DefaultApi* | [**getUser**](docs/Api/DefaultApi.md#getuser) | **GET** /apps/{app_id}/users/by/{alias_label}/{alias_id} | 
+*DefaultApi* | [**rotateApiKey**](docs/Api/DefaultApi.md#rotateapikey) | **POST** /apps/{app_id}/auth/tokens/{token_id}/rotate | Rotate API key
+*DefaultApi* | [**startLiveActivity**](docs/Api/DefaultApi.md#startliveactivity) | **POST** /apps/{app_id}/activities/activity/{activity_type} | Start Live Activity
 *DefaultApi* | [**transferSubscription**](docs/Api/DefaultApi.md#transfersubscription) | **PATCH** /apps/{app_id}/subscriptions/{subscription_id}/owner | 
 *DefaultApi* | [**unsubscribeEmailWithToken**](docs/Api/DefaultApi.md#unsubscribeemailwithtoken) | **POST** /apps/{app_id}/notifications/{notification_id}/unsubscribe | Unsubscribe with token
+*DefaultApi* | [**updateApiKey**](docs/Api/DefaultApi.md#updateapikey) | **PATCH** /apps/{app_id}/auth/tokens/{token_id} | Update API key
 *DefaultApi* | [**updateApp**](docs/Api/DefaultApi.md#updateapp) | **PUT** /apps/{app_id} | Update an app
 *DefaultApi* | [**updateLiveActivity**](docs/Api/DefaultApi.md#updateliveactivity) | **POST** /apps/{app_id}/live_activities/{activity_id}/notifications | Update a Live Activity via Push
 *DefaultApi* | [**updateSubscription**](docs/Api/DefaultApi.md#updatesubscription) | **PATCH** /apps/{app_id}/subscriptions/{subscription_id} | 
+*DefaultApi* | [**updateSubscriptionByToken**](docs/Api/DefaultApi.md#updatesubscriptionbytoken) | **PATCH** /apps/{app_id}/subscriptions_by_token/{token_type}/{token} | Update subscription by token
+*DefaultApi* | [**updateTemplate**](docs/Api/DefaultApi.md#updatetemplate) | **PATCH** /templates/{template_id} | Update template
 *DefaultApi* | [**updateUser**](docs/Api/DefaultApi.md#updateuser) | **PATCH** /apps/{app_id}/users/by/{alias_label}/{alias_id} | 
+*DefaultApi* | [**viewApiKeys**](docs/Api/DefaultApi.md#viewapikeys) | **GET** /apps/{app_id}/auth/tokens | View API keys
+*DefaultApi* | [**viewTemplate**](docs/Api/DefaultApi.md#viewtemplate) | **GET** /templates/{template_id} | View template
+*DefaultApi* | [**viewTemplates**](docs/Api/DefaultApi.md#viewtemplates) | **GET** /templates | View templates
 
 ## Models
 
+- [ApiKeyToken](docs/Model/ApiKeyToken.md)
+- [ApiKeyTokensListResponse](docs/Model/ApiKeyTokensListResponse.md)
 - [App](docs/Model/App.md)
 - [BasicNotification](docs/Model/BasicNotification.md)
 - [BasicNotificationAllOf](docs/Model/BasicNotificationAllOf.md)
 - [BasicNotificationAllOfAndroidBackgroundLayout](docs/Model/BasicNotificationAllOfAndroidBackgroundLayout.md)
 - [Button](docs/Model/Button.md)
+- [CopyTemplateRequest](docs/Model/CopyTemplateRequest.md)
+- [CreateApiKeyRequest](docs/Model/CreateApiKeyRequest.md)
+- [CreateApiKeyResponse](docs/Model/CreateApiKeyResponse.md)
 - [CreateNotificationSuccessResponse](docs/Model/CreateNotificationSuccessResponse.md)
 - [CreateSegmentConflictResponse](docs/Model/CreateSegmentConflictResponse.md)
 - [CreateSegmentSuccessResponse](docs/Model/CreateSegmentSuccessResponse.md)
+- [CreateTemplateRequest](docs/Model/CreateTemplateRequest.md)
 - [CreateUserConflictResponse](docs/Model/CreateUserConflictResponse.md)
 - [CreateUserConflictResponseErrorsInner](docs/Model/CreateUserConflictResponseErrorsInner.md)
 - [CreateUserConflictResponseErrorsItemsMeta](docs/Model/CreateUserConflictResponseErrorsItemsMeta.md)
+- [CustomEvent](docs/Model/CustomEvent.md)
+- [CustomEventsRequest](docs/Model/CustomEventsRequest.md)
 - [DeliveryData](docs/Model/DeliveryData.md)
 - [ExportEventsSuccessResponse](docs/Model/ExportEventsSuccessResponse.md)
 - [ExportSubscriptionsRequestBody](docs/Model/ExportSubscriptionsRequestBody.md)
@@ -492,12 +514,18 @@ Class | Method | HTTP request | Description
 - [Segment](docs/Model/Segment.md)
 - [SegmentData](docs/Model/SegmentData.md)
 - [SegmentNotificationTarget](docs/Model/SegmentNotificationTarget.md)
+- [StartLiveActivityRequest](docs/Model/StartLiveActivityRequest.md)
+- [StartLiveActivitySuccessResponse](docs/Model/StartLiveActivitySuccessResponse.md)
 - [Subscription](docs/Model/Subscription.md)
 - [SubscriptionBody](docs/Model/SubscriptionBody.md)
 - [SubscriptionNotificationTarget](docs/Model/SubscriptionNotificationTarget.md)
+- [TemplateResource](docs/Model/TemplateResource.md)
+- [TemplatesListResponse](docs/Model/TemplatesListResponse.md)
 - [TransferSubscriptionRequestBody](docs/Model/TransferSubscriptionRequestBody.md)
+- [UpdateApiKeyRequest](docs/Model/UpdateApiKeyRequest.md)
 - [UpdateLiveActivityRequest](docs/Model/UpdateLiveActivityRequest.md)
 - [UpdateLiveActivitySuccessResponse](docs/Model/UpdateLiveActivitySuccessResponse.md)
+- [UpdateTemplateRequest](docs/Model/UpdateTemplateRequest.md)
 - [UpdateUserRequest](docs/Model/UpdateUserRequest.md)
 - [User](docs/Model/User.md)
 - [UserIdentityBody](docs/Model/UserIdentityBody.md)
@@ -526,5 +554,5 @@ requires app_key and which user_key. You can get the value of these keys from yo
 devrel@onesignal.com
 
 
-- API version: `5.2.1`
-    - Package version: `5.2.1-beta1`
+- API version: `5.3.0`
+    - Package version: `5.3.0-beta1`
