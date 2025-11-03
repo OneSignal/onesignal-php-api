@@ -1,0 +1,32 @@
+name: Publish to GitHub
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  publish:
+    name: Create GitHub Release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Create GitHub Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          npx -p semantic-release \
+              -p @semantic-release/changelog \
+              -p @semantic-release/git \
+              -p @semantic-release/github \
+              -p conventional-changelog-conventionalcommits \
+              semantic-release
