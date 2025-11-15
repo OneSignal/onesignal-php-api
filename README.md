@@ -59,7 +59,7 @@ const ORGANIZATION_API_KEY_TOKEN = '<YOUR_ORGANIZATION_API_KEY>'; // Organizatio
 ### Configure authorization
 ```php
 $config = Configuration::getDefaultConfiguration()
-    ->setRestApiKeyToken(REST_API_KEY_TOKEN)
+    ->setAppKeyToken(REST_API_KEY_TOKEN)
     ->setOrganizationApiKeyToken(ORGANIZATION_API_KEY_TOKEN);
 
 $apiInstance = new DefaultApi(
