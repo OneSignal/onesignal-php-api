@@ -148,13 +148,19 @@ class BasicNotificationAllOf implements ModelInterface, ArrayAccess, \JsonSerial
         'email_body' => 'string',
         'email_from_name' => 'string',
         'email_from_address' => 'string',
+        'email_reply_to_address' => 'string',
         'email_preheader' => 'string',
         'disable_email_click_tracking' => 'bool',
         'include_unsubscribed' => 'bool',
         'sms_from' => 'string',
         'sms_media_urls' => 'string[]',
         'filters' => '\onesignal\client\model\FilterExpression[]',
-        'custom_data' => 'object'
+        'custom_data' => 'object',
+        'huawei_badge_class' => 'string',
+        'huawei_badge_add_num' => 'int',
+        'huawei_badge_set_num' => 'int',
+        'huawei_category' => 'string',
+        'huawei_bi_tag' => 'string'
     ];
 
     /**
@@ -253,13 +259,19 @@ class BasicNotificationAllOf implements ModelInterface, ArrayAccess, \JsonSerial
         'email_body' => null,
         'email_from_name' => null,
         'email_from_address' => null,
+        'email_reply_to_address' => null,
         'email_preheader' => null,
         'disable_email_click_tracking' => null,
         'include_unsubscribed' => null,
         'sms_from' => null,
         'sms_media_urls' => null,
         'filters' => null,
-        'custom_data' => null
+        'custom_data' => null,
+        'huawei_badge_class' => null,
+        'huawei_badge_add_num' => null,
+        'huawei_badge_set_num' => null,
+        'huawei_category' => null,
+        'huawei_bi_tag' => null
     ];
 
     /**
@@ -377,13 +389,19 @@ class BasicNotificationAllOf implements ModelInterface, ArrayAccess, \JsonSerial
         'email_body' => 'email_body',
         'email_from_name' => 'email_from_name',
         'email_from_address' => 'email_from_address',
+        'email_reply_to_address' => 'email_reply_to_address',
         'email_preheader' => 'email_preheader',
         'disable_email_click_tracking' => 'disable_email_click_tracking',
         'include_unsubscribed' => 'include_unsubscribed',
         'sms_from' => 'sms_from',
         'sms_media_urls' => 'sms_media_urls',
         'filters' => 'filters',
-        'custom_data' => 'custom_data'
+        'custom_data' => 'custom_data',
+        'huawei_badge_class' => 'huawei_badge_class',
+        'huawei_badge_add_num' => 'huawei_badge_add_num',
+        'huawei_badge_set_num' => 'huawei_badge_set_num',
+        'huawei_category' => 'huawei_category',
+        'huawei_bi_tag' => 'huawei_bi_tag'
     ];
 
     /**
@@ -480,13 +498,19 @@ class BasicNotificationAllOf implements ModelInterface, ArrayAccess, \JsonSerial
         'email_body' => 'setEmailBody',
         'email_from_name' => 'setEmailFromName',
         'email_from_address' => 'setEmailFromAddress',
+        'email_reply_to_address' => 'setEmailReplyToAddress',
         'email_preheader' => 'setEmailPreheader',
         'disable_email_click_tracking' => 'setDisableEmailClickTracking',
         'include_unsubscribed' => 'setIncludeUnsubscribed',
         'sms_from' => 'setSmsFrom',
         'sms_media_urls' => 'setSmsMediaUrls',
         'filters' => 'setFilters',
-        'custom_data' => 'setCustomData'
+        'custom_data' => 'setCustomData',
+        'huawei_badge_class' => 'setHuaweiBadgeClass',
+        'huawei_badge_add_num' => 'setHuaweiBadgeAddNum',
+        'huawei_badge_set_num' => 'setHuaweiBadgeSetNum',
+        'huawei_category' => 'setHuaweiCategory',
+        'huawei_bi_tag' => 'setHuaweiBiTag'
     ];
 
     /**
@@ -583,13 +607,19 @@ class BasicNotificationAllOf implements ModelInterface, ArrayAccess, \JsonSerial
         'email_body' => 'getEmailBody',
         'email_from_name' => 'getEmailFromName',
         'email_from_address' => 'getEmailFromAddress',
+        'email_reply_to_address' => 'getEmailReplyToAddress',
         'email_preheader' => 'getEmailPreheader',
         'disable_email_click_tracking' => 'getDisableEmailClickTracking',
         'include_unsubscribed' => 'getIncludeUnsubscribed',
         'sms_from' => 'getSmsFrom',
         'sms_media_urls' => 'getSmsMediaUrls',
         'filters' => 'getFilters',
-        'custom_data' => 'getCustomData'
+        'custom_data' => 'getCustomData',
+        'huawei_badge_class' => 'getHuaweiBadgeClass',
+        'huawei_badge_add_num' => 'getHuaweiBadgeAddNum',
+        'huawei_badge_set_num' => 'getHuaweiBadgeSetNum',
+        'huawei_category' => 'getHuaweiCategory',
+        'huawei_bi_tag' => 'getHuaweiBiTag'
     ];
 
     /**
@@ -635,6 +665,18 @@ class BasicNotificationAllOf implements ModelInterface, ArrayAccess, \JsonSerial
 
     public const AGGREGATION_SUM = 'sum';
     public const AGGREGATION_COUNT = 'count';
+    public const HUAWEI_CATEGORY_IM = 'IM';
+    public const HUAWEI_CATEGORY_VOIP = 'VOIP';
+    public const HUAWEI_CATEGORY_SUBSCRIPTION = 'SUBSCRIPTION';
+    public const HUAWEI_CATEGORY_TRAVEL = 'TRAVEL';
+    public const HUAWEI_CATEGORY_HEALTH = 'HEALTH';
+    public const HUAWEI_CATEGORY_WORK = 'WORK';
+    public const HUAWEI_CATEGORY_ACCOUNT = 'ACCOUNT';
+    public const HUAWEI_CATEGORY_EXPRESS = 'EXPRESS';
+    public const HUAWEI_CATEGORY_FINANCE = 'FINANCE';
+    public const HUAWEI_CATEGORY_DEVICE_REMINDER = 'DEVICE_REMINDER';
+    public const HUAWEI_CATEGORY_MAIL = 'MAIL';
+    public const HUAWEI_CATEGORY_MARKETING = 'MARKETING';
 
     /**
      * Gets allowable values of the enum
@@ -646,6 +688,29 @@ class BasicNotificationAllOf implements ModelInterface, ArrayAccess, \JsonSerial
         return [
             self::AGGREGATION_SUM,
             self::AGGREGATION_COUNT,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getHuaweiCategoryAllowableValues()
+    {
+        return [
+            self::HUAWEI_CATEGORY_IM,
+            self::HUAWEI_CATEGORY_VOIP,
+            self::HUAWEI_CATEGORY_SUBSCRIPTION,
+            self::HUAWEI_CATEGORY_TRAVEL,
+            self::HUAWEI_CATEGORY_HEALTH,
+            self::HUAWEI_CATEGORY_WORK,
+            self::HUAWEI_CATEGORY_ACCOUNT,
+            self::HUAWEI_CATEGORY_EXPRESS,
+            self::HUAWEI_CATEGORY_FINANCE,
+            self::HUAWEI_CATEGORY_DEVICE_REMINDER,
+            self::HUAWEI_CATEGORY_MAIL,
+            self::HUAWEI_CATEGORY_MARKETING,
         ];
     }
 
@@ -752,6 +817,7 @@ class BasicNotificationAllOf implements ModelInterface, ArrayAccess, \JsonSerial
         $this->container['email_body'] = $data['email_body'] ?? null;
         $this->container['email_from_name'] = $data['email_from_name'] ?? null;
         $this->container['email_from_address'] = $data['email_from_address'] ?? null;
+        $this->container['email_reply_to_address'] = $data['email_reply_to_address'] ?? null;
         $this->container['email_preheader'] = $data['email_preheader'] ?? null;
         $this->container['disable_email_click_tracking'] = $data['disable_email_click_tracking'] ?? null;
         $this->container['include_unsubscribed'] = $data['include_unsubscribed'] ?? null;
@@ -759,6 +825,11 @@ class BasicNotificationAllOf implements ModelInterface, ArrayAccess, \JsonSerial
         $this->container['sms_media_urls'] = $data['sms_media_urls'] ?? null;
         $this->container['filters'] = $data['filters'] ?? null;
         $this->container['custom_data'] = $data['custom_data'] ?? null;
+        $this->container['huawei_badge_class'] = $data['huawei_badge_class'] ?? null;
+        $this->container['huawei_badge_add_num'] = $data['huawei_badge_add_num'] ?? null;
+        $this->container['huawei_badge_set_num'] = $data['huawei_badge_set_num'] ?? null;
+        $this->container['huawei_category'] = $data['huawei_category'] ?? null;
+        $this->container['huawei_bi_tag'] = $data['huawei_bi_tag'] ?? null;
     }
 
     /**
@@ -775,6 +846,15 @@ class BasicNotificationAllOf implements ModelInterface, ArrayAccess, \JsonSerial
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'aggregation', must be one of '%s'",
                 $this->container['aggregation'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getHuaweiCategoryAllowableValues();
+        if (!is_null($this->container['huawei_category']) && !in_array($this->container['huawei_category'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'huawei_category', must be one of '%s'",
+                $this->container['huawei_category'],
                 implode("', '", $allowedValues)
             );
         }
@@ -2919,6 +2999,30 @@ class BasicNotificationAllOf implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
+     * Gets email_reply_to_address
+     *
+     * @return string|null
+     */
+    public function getEmailReplyToAddress()
+    {
+        return $this->container['email_reply_to_address'];
+    }
+
+    /**
+     * Sets email_reply_to_address
+     *
+     * @param string|null $email_reply_to_address Channel: Email The email address where replies should be sent. If not specified, replies will go to the from address.
+     *
+     * @return self
+     */
+    public function setEmailReplyToAddress($email_reply_to_address)
+    {
+        $this->container['email_reply_to_address'] = $email_reply_to_address;
+
+        return $this;
+    }
+
+    /**
      * Gets email_preheader
      *
      * @return string|null
@@ -3082,6 +3186,136 @@ class BasicNotificationAllOf implements ModelInterface, ArrayAccess, \JsonSerial
     public function setCustomData($custom_data)
     {
         $this->container['custom_data'] = $custom_data;
+
+        return $this;
+    }
+
+    /**
+     * Gets huawei_badge_class
+     *
+     * @return string|null
+     */
+    public function getHuaweiBadgeClass()
+    {
+        return $this->container['huawei_badge_class'];
+    }
+
+    /**
+     * Sets huawei_badge_class
+     *
+     * @param string|null $huawei_badge_class Channel: Push Notifications Platform: Huawei Full path of the app entry activity class
+     *
+     * @return self
+     */
+    public function setHuaweiBadgeClass($huawei_badge_class)
+    {
+        $this->container['huawei_badge_class'] = $huawei_badge_class;
+
+        return $this;
+    }
+
+    /**
+     * Gets huawei_badge_add_num
+     *
+     * @return int|null
+     */
+    public function getHuaweiBadgeAddNum()
+    {
+        return $this->container['huawei_badge_add_num'];
+    }
+
+    /**
+     * Sets huawei_badge_add_num
+     *
+     * @param int|null $huawei_badge_add_num Channel: Push Notifications Platform: Huawei Accumulative badge number, which is an integer ranging from 1 to 99
+     *
+     * @return self
+     */
+    public function setHuaweiBadgeAddNum($huawei_badge_add_num)
+    {
+        $this->container['huawei_badge_add_num'] = $huawei_badge_add_num;
+
+        return $this;
+    }
+
+    /**
+     * Gets huawei_badge_set_num
+     *
+     * @return int|null
+     */
+    public function getHuaweiBadgeSetNum()
+    {
+        return $this->container['huawei_badge_set_num'];
+    }
+
+    /**
+     * Sets huawei_badge_set_num
+     *
+     * @param int|null $huawei_badge_set_num Channel: Push Notifications Platform: Huawei Badge number, which is an integer ranging from 0 to 99
+     *
+     * @return self
+     */
+    public function setHuaweiBadgeSetNum($huawei_badge_set_num)
+    {
+        $this->container['huawei_badge_set_num'] = $huawei_badge_set_num;
+
+        return $this;
+    }
+
+    /**
+     * Gets huawei_category
+     *
+     * @return string|null
+     */
+    public function getHuaweiCategory()
+    {
+        return $this->container['huawei_category'];
+    }
+
+    /**
+     * Sets huawei_category
+     *
+     * @param string|null $huawei_category Channel: Push Notifications Platform: Huawei Category of the push notification for HMS classification.
+     *
+     * @return self
+     */
+    public function setHuaweiCategory($huawei_category)
+    {
+        $allowedValues = $this->getHuaweiCategoryAllowableValues();
+        if (!is_null($huawei_category) && !in_array($huawei_category, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'huawei_category', must be one of '%s'",
+                    $huawei_category,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['huawei_category'] = $huawei_category;
+
+        return $this;
+    }
+
+    /**
+     * Gets huawei_bi_tag
+     *
+     * @return string|null
+     */
+    public function getHuaweiBiTag()
+    {
+        return $this->container['huawei_bi_tag'];
+    }
+
+    /**
+     * Sets huawei_bi_tag
+     *
+     * @param string|null $huawei_bi_tag Channel: Push Notifications Platform: Huawei A tag used for Huawei business intelligence and analytics.
+     *
+     * @return self
+     */
+    public function setHuaweiBiTag($huawei_bi_tag)
+    {
+        $this->container['huawei_bi_tag'] = $huawei_bi_tag;
 
         return $this;
     }
