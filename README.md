@@ -555,4 +555,4 @@ devrel@onesignal.com
 
 
 - API version: `5.3.0`
-    - Package version: `5.3.0-beta1`
+    - Package version: `5.3.0`
