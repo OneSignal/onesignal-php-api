@@ -131,4 +131,4 @@ Name | Type | Description | Notes
 **platform_delivery_stats** | [**\onesignal\client\model\PlatformDeliveryData**](PlatformDeliveryData.md) |  | [optional]
 **canceled** | **bool** | Indicates whether the notification was canceled before it could be sent. | [optional]
 
-[[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
+[[Back to API list]](https://github.com/OneSignal/onesignal-php-api#full-api-reference) [[Back to README]](https://github.com/OneSignal/onesignal-php-api)

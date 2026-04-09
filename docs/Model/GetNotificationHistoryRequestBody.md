@@ -8,4 +8,4 @@ Name | Type | Description | Notes
 **email** | **string** | The email address you would like the report sent. | [optional]
 **app_id** | **string** |  | [optional]
 
-[[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
+[[Back to API list]](https://github.com/OneSignal/onesignal-php-api#full-api-reference) [[Back to README]](https://github.com/OneSignal/onesignal-php-api)

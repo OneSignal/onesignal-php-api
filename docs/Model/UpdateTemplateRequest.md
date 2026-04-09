@@ -12,4 +12,4 @@ Name | Type | Description | Notes
 **is_sms** | **bool** | Set true for an SMS template. | [optional]
 **dynamic_content** | **string** | JSON string for dynamic content personalization. | [optional]
 
-[[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
+[[Back to API list]](https://github.com/OneSignal/onesignal-php-api#full-api-reference) [[Back to README]](https://github.com/OneSignal/onesignal-php-api)
