@@ -104,16 +104,15 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[rest_api_key](../../README.md#rest_api_key)
+[rest_api_key](https://github.com/OneSignal/onesignal-php-api#configuration)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
 - **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](https://github.com/OneSignal/onesignal-php-api#full-api-reference)
+[[Back to README]](https://github.com/OneSignal/onesignal-php-api)
 
 ## `copyTemplateToApp()`
 
@@ -171,16 +170,15 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[organization_api_key](../../README.md#organization_api_key)
+[organization_api_key](https://github.com/OneSignal/onesignal-php-api#configuration)
 
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](https://github.com/OneSignal/onesignal-php-api#full-api-reference)
+[[Back to README]](https://github.com/OneSignal/onesignal-php-api)
 
 ## `createAlias()`
 
@@ -240,16 +238,15 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[rest_api_key](../../README.md#rest_api_key)
+[rest_api_key](https://github.com/OneSignal/onesignal-php-api#configuration)
 
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](https://github.com/OneSignal/onesignal-php-api#full-api-reference)
+[[Back to README]](https://github.com/OneSignal/onesignal-php-api)
 
 ## `createAliasBySubscription()`
 
@@ -307,16 +304,15 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[rest_api_key](../../README.md#rest_api_key)
+[rest_api_key](https://github.com/OneSignal/onesignal-php-api#configuration)
 
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](https://github.com/OneSignal/onesignal-php-api#full-api-reference)
+[[Back to README]](https://github.com/OneSignal/onesignal-php-api)
 
 ## `createApiKey()`
 
@@ -372,16 +368,15 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[organization_api_key](../../README.md#organization_api_key)
+[organization_api_key](https://github.com/OneSignal/onesignal-php-api#configuration)
 
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](https://github.com/OneSignal/onesignal-php-api#full-api-reference)
+[[Back to README]](https://github.com/OneSignal/onesignal-php-api)
 
 ## `createApp()`
 
@@ -435,16 +430,15 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[organization_api_key](../../README.md#organization_api_key)
+[organization_api_key](https://github.com/OneSignal/onesignal-php-api#configuration)
 
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](https://github.com/OneSignal/onesignal-php-api#full-api-reference)
+[[Back to README]](https://github.com/OneSignal/onesignal-php-api)
 
 ## `createCustomEvents()`
 
@@ -500,16 +494,15 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[rest_api_key](../../README.md#rest_api_key)
+[rest_api_key](https://github.com/OneSignal/onesignal-php-api#configuration)
 
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](https://github.com/OneSignal/onesignal-php-api#full-api-reference)
+[[Back to README]](https://github.com/OneSignal/onesignal-php-api)
 
 ## `createNotification()`
 
@@ -563,16 +556,15 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[rest_api_key](../../README.md#rest_api_key)
+[rest_api_key](https://github.com/OneSignal/onesignal-php-api#configuration)
 
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](https://github.com/OneSignal/onesignal-php-api#full-api-reference)
+[[Back to README]](https://github.com/OneSignal/onesignal-php-api)
 
 ## `createSegment()`
 
@@ -628,16 +620,15 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[rest_api_key](../../README.md#rest_api_key)
+[rest_api_key](https://github.com/OneSignal/onesignal-php-api#configuration)
 
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](https://github.com/OneSignal/onesignal-php-api#full-api-reference)
+[[Back to README]](https://github.com/OneSignal/onesignal-php-api)
 
 ## `createSubscription()`
 
@@ -697,16 +688,15 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[rest_api_key](../../README.md#rest_api_key)
+[rest_api_key](https://github.com/OneSignal/onesignal-php-api#configuration)
 
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](https://github.com/OneSignal/onesignal-php-api#full-api-reference)
+[[Back to README]](https://github.com/OneSignal/onesignal-php-api)
 
 ## `createTemplate()`
 
@@ -760,16 +750,15 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[rest_api_key](../../README.md#rest_api_key)
+[rest_api_key](https://github.com/OneSignal/onesignal-php-api#configuration)
 
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](https://github.com/OneSignal/onesignal-php-api#full-api-reference)
+[[Back to README]](https://github.com/OneSignal/onesignal-php-api)
 
 ## `createUser()`
 
@@ -825,16 +814,15 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[rest_api_key](../../README.md#rest_api_key)
+[rest_api_key](https://github.com/OneSignal/onesignal-php-api#configuration)
 
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](https://github.com/OneSignal/onesignal-php-api#full-api-reference)
+[[Back to README]](https://github.com/OneSignal/onesignal-php-api)
 
 ## `deleteAlias()`
 
@@ -894,16 +882,15 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[rest_api_key](../../README.md#rest_api_key)
+[rest_api_key](https://github.com/OneSignal/onesignal-php-api#configuration)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
 - **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](https://github.com/OneSignal/onesignal-php-api#full-api-reference)
+[[Back to README]](https://github.com/OneSignal/onesignal-php-api)
 
 ## `deleteApiKey()`
 
@@ -959,16 +946,15 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[organization_api_key](../../README.md#organization_api_key)
+[organization_api_key](https://github.com/OneSignal/onesignal-php-api#configuration)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
 - **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](https://github.com/OneSignal/onesignal-php-api#full-api-reference)
+[[Back to README]](https://github.com/OneSignal/onesignal-php-api)
 
 ## `deleteSegment()`
 
@@ -1024,16 +1010,15 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[rest_api_key](../../README.md#rest_api_key)
+[rest_api_key](https://github.com/OneSignal/onesignal-php-api#configuration)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
 - **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](https://github.com/OneSignal/onesignal-php-api#full-api-reference)
+[[Back to README]](https://github.com/OneSignal/onesignal-php-api)
 
 ## `deleteSubscription()`
 
@@ -1088,16 +1073,15 @@ void (empty response body)
 
 ### Authorization
 
-[rest_api_key](../../README.md#rest_api_key)
+[rest_api_key](https://github.com/OneSignal/onesignal-php-api#configuration)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
 - **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](https://github.com/OneSignal/onesignal-php-api#full-api-reference)
+[[Back to README]](https://github.com/OneSignal/onesignal-php-api)
 
 ## `deleteTemplate()`
 
@@ -1153,16 +1137,15 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[rest_api_key](../../README.md#rest_api_key)
+[rest_api_key](https://github.com/OneSignal/onesignal-php-api#configuration)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
 - **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](https://github.com/OneSignal/onesignal-php-api#full-api-reference)
+[[Back to README]](https://github.com/OneSignal/onesignal-php-api)
 
 ## `deleteUser()`
 
@@ -1219,16 +1202,15 @@ void (empty response body)
 
 ### Authorization
 
-[rest_api_key](../../README.md#rest_api_key)
+[rest_api_key](https://github.com/OneSignal/onesignal-php-api#configuration)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
 - **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](https://github.com/OneSignal/onesignal-php-api#full-api-reference)
+[[Back to README]](https://github.com/OneSignal/onesignal-php-api)
 
 ## `exportEvents()`
 
@@ -1284,16 +1266,15 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[rest_api_key](../../README.md#rest_api_key)
+[rest_api_key](https://github.com/OneSignal/onesignal-php-api#configuration)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
 - **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](https://github.com/OneSignal/onesignal-php-api#full-api-reference)
+[[Back to README]](https://github.com/OneSignal/onesignal-php-api)
 
 ## `exportSubscriptions()`
 
@@ -1349,16 +1330,15 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[rest_api_key](../../README.md#rest_api_key)
+[rest_api_key](https://github.com/OneSignal/onesignal-php-api#configuration)
 
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](https://github.com/OneSignal/onesignal-php-api#full-api-reference)
+[[Back to README]](https://github.com/OneSignal/onesignal-php-api)
 
 ## `getAliases()`
 
@@ -1416,16 +1396,15 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[rest_api_key](../../README.md#rest_api_key)
+[rest_api_key](https://github.com/OneSignal/onesignal-php-api#configuration)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
 - **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](https://github.com/OneSignal/onesignal-php-api#full-api-reference)
+[[Back to README]](https://github.com/OneSignal/onesignal-php-api)
 
 ## `getAliasesBySubscription()`
 
@@ -1481,16 +1460,15 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[rest_api_key](../../README.md#rest_api_key)
+[rest_api_key](https://github.com/OneSignal/onesignal-php-api#configuration)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
 - **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](https://github.com/OneSignal/onesignal-php-api#full-api-reference)
+[[Back to README]](https://github.com/OneSignal/onesignal-php-api)
 
 ## `getApp()`
 
@@ -1544,16 +1522,15 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[organization_api_key](../../README.md#organization_api_key)
+[organization_api_key](https://github.com/OneSignal/onesignal-php-api#configuration)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
 - **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](https://github.com/OneSignal/onesignal-php-api#full-api-reference)
+[[Back to README]](https://github.com/OneSignal/onesignal-php-api)
 
 ## `getApps()`
 
@@ -1604,16 +1581,15 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[organization_api_key](../../README.md#organization_api_key)
+[organization_api_key](https://github.com/OneSignal/onesignal-php-api#configuration)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
 - **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](https://github.com/OneSignal/onesignal-php-api#full-api-reference)
+[[Back to README]](https://github.com/OneSignal/onesignal-php-api)
 
 ## `getNotification()`
 
@@ -1669,16 +1645,15 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[rest_api_key](../../README.md#rest_api_key)
+[rest_api_key](https://github.com/OneSignal/onesignal-php-api#configuration)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
 - **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](https://github.com/OneSignal/onesignal-php-api#full-api-reference)
+[[Back to README]](https://github.com/OneSignal/onesignal-php-api)
 
 ## `getNotificationHistory()`
 
@@ -1734,16 +1709,15 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[rest_api_key](../../README.md#rest_api_key)
+[rest_api_key](https://github.com/OneSignal/onesignal-php-api#configuration)
 
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](https://github.com/OneSignal/onesignal-php-api#full-api-reference)
+[[Back to README]](https://github.com/OneSignal/onesignal-php-api)
 
 ## `getNotifications()`
 
@@ -1803,16 +1777,15 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[rest_api_key](../../README.md#rest_api_key)
+[rest_api_key](https://github.com/OneSignal/onesignal-php-api#configuration)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
 - **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](https://github.com/OneSignal/onesignal-php-api#full-api-reference)
+[[Back to README]](https://github.com/OneSignal/onesignal-php-api)
 
 ## `getOutcomes()`
 
@@ -1876,16 +1849,15 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[rest_api_key](../../README.md#rest_api_key)
+[rest_api_key](https://github.com/OneSignal/onesignal-php-api#configuration)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
 - **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](https://github.com/OneSignal/onesignal-php-api#full-api-reference)
+[[Back to README]](https://github.com/OneSignal/onesignal-php-api)
 
 ## `getSegments()`
 
@@ -1943,16 +1915,15 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[rest_api_key](../../README.md#rest_api_key)
+[rest_api_key](https://github.com/OneSignal/onesignal-php-api#configuration)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
 - **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](https://github.com/OneSignal/onesignal-php-api#full-api-reference)
+[[Back to README]](https://github.com/OneSignal/onesignal-php-api)
 
 ## `getUser()`
 
@@ -2010,16 +1981,15 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[rest_api_key](../../README.md#rest_api_key)
+[rest_api_key](https://github.com/OneSignal/onesignal-php-api#configuration)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
 - **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](https://github.com/OneSignal/onesignal-php-api#full-api-reference)
+[[Back to README]](https://github.com/OneSignal/onesignal-php-api)
 
 ## `rotateApiKey()`
 
@@ -2075,16 +2045,15 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[organization_api_key](../../README.md#organization_api_key)
+[organization_api_key](https://github.com/OneSignal/onesignal-php-api#configuration)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
 - **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](https://github.com/OneSignal/onesignal-php-api#full-api-reference)
+[[Back to README]](https://github.com/OneSignal/onesignal-php-api)
 
 ## `startLiveActivity()`
 
@@ -2142,16 +2111,15 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[rest_api_key](../../README.md#rest_api_key)
+[rest_api_key](https://github.com/OneSignal/onesignal-php-api#configuration)
 
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](https://github.com/OneSignal/onesignal-php-api#full-api-reference)
+[[Back to README]](https://github.com/OneSignal/onesignal-php-api)
 
 ## `transferSubscription()`
 
@@ -2209,16 +2177,15 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[rest_api_key](../../README.md#rest_api_key)
+[rest_api_key](https://github.com/OneSignal/onesignal-php-api#configuration)
 
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](https://github.com/OneSignal/onesignal-php-api#full-api-reference)
+[[Back to README]](https://github.com/OneSignal/onesignal-php-api)
 
 ## `unsubscribeEmailWithToken()`
 
@@ -2276,16 +2243,15 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[rest_api_key](../../README.md#rest_api_key)
+[rest_api_key](https://github.com/OneSignal/onesignal-php-api#configuration)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
 - **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](https://github.com/OneSignal/onesignal-php-api#full-api-reference)
+[[Back to README]](https://github.com/OneSignal/onesignal-php-api)
 
 ## `updateApiKey()`
 
@@ -2343,16 +2309,15 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[organization_api_key](../../README.md#organization_api_key)
+[organization_api_key](https://github.com/OneSignal/onesignal-php-api#configuration)
 
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](https://github.com/OneSignal/onesignal-php-api#full-api-reference)
+[[Back to README]](https://github.com/OneSignal/onesignal-php-api)
 
 ## `updateApp()`
 
@@ -2408,16 +2373,15 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[organization_api_key](../../README.md#organization_api_key)
+[organization_api_key](https://github.com/OneSignal/onesignal-php-api#configuration)
 
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](https://github.com/OneSignal/onesignal-php-api#full-api-reference)
+[[Back to README]](https://github.com/OneSignal/onesignal-php-api)
 
 ## `updateLiveActivity()`
 
@@ -2475,16 +2439,15 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[rest_api_key](../../README.md#rest_api_key)
+[rest_api_key](https://github.com/OneSignal/onesignal-php-api#configuration)
 
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](https://github.com/OneSignal/onesignal-php-api#full-api-reference)
+[[Back to README]](https://github.com/OneSignal/onesignal-php-api)
 
 ## `updateSubscription()`
 
@@ -2541,16 +2504,15 @@ void (empty response body)
 
 ### Authorization
 
-[rest_api_key](../../README.md#rest_api_key)
+[rest_api_key](https://github.com/OneSignal/onesignal-php-api#configuration)
 
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](https://github.com/OneSignal/onesignal-php-api#full-api-reference)
+[[Back to README]](https://github.com/OneSignal/onesignal-php-api)
 
 ## `updateSubscriptionByToken()`
 
@@ -2610,16 +2572,15 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[rest_api_key](../../README.md#rest_api_key)
+[rest_api_key](https://github.com/OneSignal/onesignal-php-api#configuration)
 
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](https://github.com/OneSignal/onesignal-php-api#full-api-reference)
+[[Back to README]](https://github.com/OneSignal/onesignal-php-api)
 
 ## `updateTemplate()`
 
@@ -2677,16 +2638,15 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[rest_api_key](../../README.md#rest_api_key)
+[rest_api_key](https://github.com/OneSignal/onesignal-php-api#configuration)
 
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](https://github.com/OneSignal/onesignal-php-api#full-api-reference)
+[[Back to README]](https://github.com/OneSignal/onesignal-php-api)
 
 ## `updateUser()`
 
@@ -2746,16 +2706,15 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[rest_api_key](../../README.md#rest_api_key)
+[rest_api_key](https://github.com/OneSignal/onesignal-php-api#configuration)
 
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](https://github.com/OneSignal/onesignal-php-api#full-api-reference)
+[[Back to README]](https://github.com/OneSignal/onesignal-php-api)
 
 ## `viewApiKeys()`
 
@@ -2809,16 +2768,15 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[organization_api_key](../../README.md#organization_api_key)
+[organization_api_key](https://github.com/OneSignal/onesignal-php-api#configuration)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
 - **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](https://github.com/OneSignal/onesignal-php-api#full-api-reference)
+[[Back to README]](https://github.com/OneSignal/onesignal-php-api)
 
 ## `viewTemplate()`
 
@@ -2874,16 +2832,15 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[rest_api_key](../../README.md#rest_api_key)
+[rest_api_key](https://github.com/OneSignal/onesignal-php-api#configuration)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
 - **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](https://github.com/OneSignal/onesignal-php-api#full-api-reference)
+[[Back to README]](https://github.com/OneSignal/onesignal-php-api)
 
 ## `viewTemplates()`
 
@@ -2943,13 +2900,12 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[rest_api_key](../../README.md#rest_api_key)
+[rest_api_key](https://github.com/OneSignal/onesignal-php-api#configuration)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
 - **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](https://github.com/OneSignal/onesignal-php-api#full-api-reference)
+[[Back to README]](https://github.com/OneSignal/onesignal-php-api)

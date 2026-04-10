@@ -9,4 +9,4 @@ Name | Type | Description | Notes
 **iso** | **string** | The 3-letter ISO 4217 currency code. Required for correct storage and conversion of amount. |
 **count** | **int** |  | [optional]
 
-[[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
+[[Back to API list]](https://github.com/OneSignal/onesignal-php-api#full-api-reference) [[Back to README]](https://github.com/OneSignal/onesignal-php-api)

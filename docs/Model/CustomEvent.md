@@ -10,4 +10,4 @@ Name | Type | Description | Notes
 **timestamp** | **\DateTime** | Time the event occurred as an ISO8601 formatted string. Defaults to now if not included or past date provided. | [optional]
 **payload** | **array<string,mixed>** | Properties or data related to the event, like {\&quot;geography\&quot;: \&quot;USA\&quot;} | [optional]
 
-[[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
+[[Back to API list]](https://github.com/OneSignal/onesignal-php-api#full-api-reference) [[Back to README]](https://github.com/OneSignal/onesignal-php-api)

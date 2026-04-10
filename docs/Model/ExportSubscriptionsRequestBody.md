@@ -8,4 +8,4 @@ Name | Type | Description | Notes
 **last_active_since** | **string** | Export all devices with a last_active timestamp greater than this time.  Unixtime in seconds. | [optional]
 **segment_name** | **string** | Export all devices belonging to the segment. | [optional]
 
-[[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
+[[Back to API list]](https://github.com/OneSignal/onesignal-php-api#full-api-reference) [[Back to README]](https://github.com/OneSignal/onesignal-php-api)
