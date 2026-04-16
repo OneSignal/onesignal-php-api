@@ -7,6 +7,8 @@ Name | Type | Description | Notes
 **app_id** | **string** | Your OneSignal App ID in UUID v4 format. |
 **name** | **string** | Name of the template. |
 **contents** | [**\onesignal\client\model\LanguageStringMap**](LanguageStringMap.md) |  |
+**headings** | [**\onesignal\client\model\LanguageStringMap**](LanguageStringMap.md) |  | [optional]
+**subtitle** | [**\onesignal\client\model\LanguageStringMap**](LanguageStringMap.md) |  | [optional]
 **is_email** | **bool** | Set true for an Email template. | [optional]
 **email_subject** | **string** | Subject of the email. | [optional]
 **email_body** | **string** | Body of the email (HTML supported). | [optional]

@@ -63,6 +63,8 @@ class CreateTemplateRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'app_id' => 'string',
         'name' => 'string',
         'contents' => '\onesignal\client\model\LanguageStringMap',
+        'headings' => '\onesignal\client\model\LanguageStringMap',
+        'subtitle' => '\onesignal\client\model\LanguageStringMap',
         'is_email' => 'bool',
         'email_subject' => 'string',
         'email_body' => 'string',
@@ -81,6 +83,8 @@ class CreateTemplateRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'app_id' => null,
         'name' => null,
         'contents' => null,
+        'headings' => null,
+        'subtitle' => null,
         'is_email' => null,
         'email_subject' => null,
         'email_body' => null,
@@ -118,6 +122,8 @@ class CreateTemplateRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'app_id' => 'app_id',
         'name' => 'name',
         'contents' => 'contents',
+        'headings' => 'headings',
+        'subtitle' => 'subtitle',
         'is_email' => 'isEmail',
         'email_subject' => 'email_subject',
         'email_body' => 'email_body',
@@ -134,6 +140,8 @@ class CreateTemplateRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'app_id' => 'setAppId',
         'name' => 'setName',
         'contents' => 'setContents',
+        'headings' => 'setHeadings',
+        'subtitle' => 'setSubtitle',
         'is_email' => 'setIsEmail',
         'email_subject' => 'setEmailSubject',
         'email_body' => 'setEmailBody',
@@ -150,6 +158,8 @@ class CreateTemplateRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'app_id' => 'getAppId',
         'name' => 'getName',
         'contents' => 'getContents',
+        'headings' => 'getHeadings',
+        'subtitle' => 'getSubtitle',
         'is_email' => 'getIsEmail',
         'email_subject' => 'getEmailSubject',
         'email_body' => 'getEmailBody',
@@ -217,6 +227,8 @@ class CreateTemplateRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         $this->container['app_id'] = $data['app_id'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
         $this->container['contents'] = $data['contents'] ?? null;
+        $this->container['headings'] = $data['headings'] ?? null;
+        $this->container['subtitle'] = $data['subtitle'] ?? null;
         $this->container['is_email'] = $data['is_email'] ?? null;
         $this->container['email_subject'] = $data['email_subject'] ?? null;
         $this->container['email_body'] = $data['email_body'] ?? null;
@@ -325,6 +337,54 @@ class CreateTemplateRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setContents($contents)
     {
         $this->container['contents'] = $contents;
+
+        return $this;
+    }
+
+    /**
+     * Gets headings
+     *
+     * @return \onesignal\client\model\LanguageStringMap|null
+     */
+    public function getHeadings()
+    {
+        return $this->container['headings'];
+    }
+
+    /**
+     * Sets headings
+     *
+     * @param \onesignal\client\model\LanguageStringMap|null $headings headings
+     *
+     * @return self
+     */
+    public function setHeadings($headings)
+    {
+        $this->container['headings'] = $headings;
+
+        return $this;
+    }
+
+    /**
+     * Gets subtitle
+     *
+     * @return \onesignal\client\model\LanguageStringMap|null
+     */
+    public function getSubtitle()
+    {
+        return $this->container['subtitle'];
+    }
+
+    /**
+     * Sets subtitle
+     *
+     * @param \onesignal\client\model\LanguageStringMap|null $subtitle subtitle
+     *
+     * @return self
+     */
+    public function setSubtitle($subtitle)
+    {
+        $this->container['subtitle'] = $subtitle;
 
         return $this;
     }
