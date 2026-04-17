@@ -1,5 +1,11 @@
 # Changelog
 
+## [5.4.0](https://github.com/OneSignal/onesignal-php-api/compare/v5.3.0...v5.4.0) (2026-04-17)
+
+### Features
+
+* add v5.4.0 package updates ([#56](https://github.com/OneSignal/onesignal-php-api/issues/56)) ([1d9a3ce](https://github.com/OneSignal/onesignal-php-api/commit/1d9a3ce8fcfcba783b5ba3b1fd85bf5ac92e9542))
+
 ## [5.3.0](https://github.com/OneSignal/onesignal-php-api/compare/v5.2.0...v5.3.0) (2026-03-24)
 
 ### Features
