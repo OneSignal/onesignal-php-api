@@ -6,6 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **string** | Updated name of the template. | [optional]
 **contents** | [**\onesignal\client\model\LanguageStringMap**](LanguageStringMap.md) |  | [optional]
+**headings** | [**\onesignal\client\model\LanguageStringMap**](LanguageStringMap.md) |  | [optional]
+**subtitle** | [**\onesignal\client\model\LanguageStringMap**](LanguageStringMap.md) |  | [optional]
 **is_email** | **bool** | Set true for an Email template. | [optional]
 **email_subject** | **string** | Subject of the email. | [optional]
 **email_body** | **string** | Body of the email (HTML supported). | [optional]
