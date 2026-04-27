@@ -529,12 +529,17 @@ $config = onesignal\client\Configuration::getDefaultConfiguration()
 
 
 $apiInstance = new onesignal\client\Api\DefaultApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$notification = new \onesignal\client\model\Notification(); // \onesignal\client\model\Notification
+
+$notification = new onesignal\client\Model\Notification();
+$notification->setAppId('YOUR_APP_ID');
+$contents = new onesignal\client\Model\LanguageStringMap();
+$contents->setEn('Hello from OneSignal!');
+$notification->setContents($contents);
+$notification->setIncludeAliases(['external_id' => ['YOUR_USER_EXTERNAL_ID']]);
+$notification->setTargetChannel('push');
 
 try {
     $result = $apiInstance->createNotification($notification);
