@@ -71,7 +71,9 @@ class NotificationWithMetaAllOf implements ModelInterface, ArrayAccess, \JsonSer
         'platform_delivery_stats' => '\onesignal\client\model\PlatformDeliveryData',
         'received' => 'int',
         'throttle_rate_per_minute' => 'int',
-        'canceled' => 'bool'
+        'canceled' => 'bool',
+        'email_bcc' => 'string[]',
+        'bcc_sent' => 'int'
     ];
 
     /**
@@ -93,7 +95,9 @@ class NotificationWithMetaAllOf implements ModelInterface, ArrayAccess, \JsonSer
         'platform_delivery_stats' => null,
         'received' => null,
         'throttle_rate_per_minute' => null,
-        'canceled' => null
+        'canceled' => null,
+        'email_bcc' => null,
+        'bcc_sent' => null
     ];
 
     /**
@@ -134,7 +138,9 @@ class NotificationWithMetaAllOf implements ModelInterface, ArrayAccess, \JsonSer
         'platform_delivery_stats' => 'platform_delivery_stats',
         'received' => 'received',
         'throttle_rate_per_minute' => 'throttle_rate_per_minute',
-        'canceled' => 'canceled'
+        'canceled' => 'canceled',
+        'email_bcc' => 'email_bcc',
+        'bcc_sent' => 'bcc_sent'
     ];
 
     /**
@@ -154,7 +160,9 @@ class NotificationWithMetaAllOf implements ModelInterface, ArrayAccess, \JsonSer
         'platform_delivery_stats' => 'setPlatformDeliveryStats',
         'received' => 'setReceived',
         'throttle_rate_per_minute' => 'setThrottleRatePerMinute',
-        'canceled' => 'setCanceled'
+        'canceled' => 'setCanceled',
+        'email_bcc' => 'setEmailBcc',
+        'bcc_sent' => 'setBccSent'
     ];
 
     /**
@@ -174,7 +182,9 @@ class NotificationWithMetaAllOf implements ModelInterface, ArrayAccess, \JsonSer
         'platform_delivery_stats' => 'getPlatformDeliveryStats',
         'received' => 'getReceived',
         'throttle_rate_per_minute' => 'getThrottleRatePerMinute',
-        'canceled' => 'getCanceled'
+        'canceled' => 'getCanceled',
+        'email_bcc' => 'getEmailBcc',
+        'bcc_sent' => 'getBccSent'
     ];
 
     /**
@@ -246,6 +256,8 @@ class NotificationWithMetaAllOf implements ModelInterface, ArrayAccess, \JsonSer
         $this->container['received'] = $data['received'] ?? null;
         $this->container['throttle_rate_per_minute'] = $data['throttle_rate_per_minute'] ?? null;
         $this->container['canceled'] = $data['canceled'] ?? null;
+        $this->container['email_bcc'] = $data['email_bcc'] ?? null;
+        $this->container['bcc_sent'] = $data['bcc_sent'] ?? null;
     }
 
     /**
@@ -556,6 +568,54 @@ class NotificationWithMetaAllOf implements ModelInterface, ArrayAccess, \JsonSer
     public function setCanceled($canceled)
     {
         $this->container['canceled'] = $canceled;
+
+        return $this;
+    }
+
+    /**
+     * Gets email_bcc
+     *
+     * @return string[]|null
+     */
+    public function getEmailBcc()
+    {
+        return $this->container['email_bcc'];
+    }
+
+    /**
+     * Sets email_bcc
+     *
+     * @param string[]|null $email_bcc BCC recipients that were set on this email notification.
+     *
+     * @return self
+     */
+    public function setEmailBcc($email_bcc)
+    {
+        $this->container['email_bcc'] = $email_bcc;
+
+        return $this;
+    }
+
+    /**
+     * Gets bcc_sent
+     *
+     * @return int|null
+     */
+    public function getBccSent()
+    {
+        return $this->container['bcc_sent'];
+    }
+
+    /**
+     * Sets bcc_sent
+     *
+     * @param int|null $bcc_sent Number of BCC copies successfully sent for this notification.
+     *
+     * @return self
+     */
+    public function setBccSent($bcc_sent)
+    {
+        $this->container['bcc_sent'] = $bcc_sent;
 
         return $this;
     }

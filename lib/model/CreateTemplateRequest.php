@@ -68,6 +68,7 @@ class CreateTemplateRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'is_email' => 'bool',
         'email_subject' => 'string',
         'email_body' => 'string',
+        'email_bcc' => 'string[]',
         'is_sms' => 'bool',
         'dynamic_content' => 'string'
     ];
@@ -88,6 +89,7 @@ class CreateTemplateRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'is_email' => null,
         'email_subject' => null,
         'email_body' => null,
+        'email_bcc' => null,
         'is_sms' => null,
         'dynamic_content' => null
     ];
@@ -127,6 +129,7 @@ class CreateTemplateRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'is_email' => 'isEmail',
         'email_subject' => 'email_subject',
         'email_body' => 'email_body',
+        'email_bcc' => 'email_bcc',
         'is_sms' => 'isSMS',
         'dynamic_content' => 'dynamic_content'
     ];
@@ -145,6 +148,7 @@ class CreateTemplateRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'is_email' => 'setIsEmail',
         'email_subject' => 'setEmailSubject',
         'email_body' => 'setEmailBody',
+        'email_bcc' => 'setEmailBcc',
         'is_sms' => 'setIsSms',
         'dynamic_content' => 'setDynamicContent'
     ];
@@ -163,6 +167,7 @@ class CreateTemplateRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'is_email' => 'getIsEmail',
         'email_subject' => 'getEmailSubject',
         'email_body' => 'getEmailBody',
+        'email_bcc' => 'getEmailBcc',
         'is_sms' => 'getIsSms',
         'dynamic_content' => 'getDynamicContent'
     ];
@@ -232,6 +237,7 @@ class CreateTemplateRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         $this->container['is_email'] = $data['is_email'] ?? null;
         $this->container['email_subject'] = $data['email_subject'] ?? null;
         $this->container['email_body'] = $data['email_body'] ?? null;
+        $this->container['email_bcc'] = $data['email_bcc'] ?? null;
         $this->container['is_sms'] = $data['is_sms'] ?? null;
         $this->container['dynamic_content'] = $data['dynamic_content'] ?? null;
     }
@@ -254,6 +260,10 @@ class CreateTemplateRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         if ($this->container['contents'] === null) {
             $invalidProperties[] = "'contents' can't be null";
         }
+        if (!is_null($this->container['email_bcc']) && (count($this->container['email_bcc']) > 5)) {
+            $invalidProperties[] = "invalid value for 'email_bcc', number of items must be less than or equal to 5.";
+        }
+
         return $invalidProperties;
     }
 
@@ -457,6 +467,34 @@ class CreateTemplateRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setEmailBody($email_body)
     {
         $this->container['email_body'] = $email_body;
+
+        return $this;
+    }
+
+    /**
+     * Gets email_bcc
+     *
+     * @return string[]|null
+     */
+    public function getEmailBcc()
+    {
+        return $this->container['email_bcc'];
+    }
+
+    /**
+     * Sets email_bcc
+     *
+     * @param string[]|null $email_bcc BCC recipients for the email template. Maximum 5 addresses. Only supported when the email service provider is OneSignal Email.
+     *
+     * @return self
+     */
+    public function setEmailBcc($email_bcc)
+    {
+
+        if (!is_null($email_bcc) && (count($email_bcc) > 5)) {
+            throw new \InvalidArgumentException('invalid value for $email_bcc when calling CreateTemplateRequest., number of items must be less than or equal to 5.');
+        }
+        $this->container['email_bcc'] = $email_bcc;
 
         return $this;
     }

@@ -152,6 +152,7 @@ class BasicNotificationAllOf implements ModelInterface, ArrayAccess, \JsonSerial
         'email_preheader' => 'string',
         'disable_email_click_tracking' => 'bool',
         'include_unsubscribed' => 'bool',
+        'email_bcc' => 'string[]',
         'sms_from' => 'string',
         'sms_media_urls' => 'string[]',
         'filters' => '\onesignal\client\model\FilterExpression[]',
@@ -263,6 +264,7 @@ class BasicNotificationAllOf implements ModelInterface, ArrayAccess, \JsonSerial
         'email_preheader' => null,
         'disable_email_click_tracking' => null,
         'include_unsubscribed' => null,
+        'email_bcc' => null,
         'sms_from' => null,
         'sms_media_urls' => null,
         'filters' => null,
@@ -393,6 +395,7 @@ class BasicNotificationAllOf implements ModelInterface, ArrayAccess, \JsonSerial
         'email_preheader' => 'email_preheader',
         'disable_email_click_tracking' => 'disable_email_click_tracking',
         'include_unsubscribed' => 'include_unsubscribed',
+        'email_bcc' => 'email_bcc',
         'sms_from' => 'sms_from',
         'sms_media_urls' => 'sms_media_urls',
         'filters' => 'filters',
@@ -502,6 +505,7 @@ class BasicNotificationAllOf implements ModelInterface, ArrayAccess, \JsonSerial
         'email_preheader' => 'setEmailPreheader',
         'disable_email_click_tracking' => 'setDisableEmailClickTracking',
         'include_unsubscribed' => 'setIncludeUnsubscribed',
+        'email_bcc' => 'setEmailBcc',
         'sms_from' => 'setSmsFrom',
         'sms_media_urls' => 'setSmsMediaUrls',
         'filters' => 'setFilters',
@@ -611,6 +615,7 @@ class BasicNotificationAllOf implements ModelInterface, ArrayAccess, \JsonSerial
         'email_preheader' => 'getEmailPreheader',
         'disable_email_click_tracking' => 'getDisableEmailClickTracking',
         'include_unsubscribed' => 'getIncludeUnsubscribed',
+        'email_bcc' => 'getEmailBcc',
         'sms_from' => 'getSmsFrom',
         'sms_media_urls' => 'getSmsMediaUrls',
         'filters' => 'getFilters',
@@ -821,6 +826,7 @@ class BasicNotificationAllOf implements ModelInterface, ArrayAccess, \JsonSerial
         $this->container['email_preheader'] = $data['email_preheader'] ?? null;
         $this->container['disable_email_click_tracking'] = $data['disable_email_click_tracking'] ?? null;
         $this->container['include_unsubscribed'] = $data['include_unsubscribed'] ?? null;
+        $this->container['email_bcc'] = $data['email_bcc'] ?? null;
         $this->container['sms_from'] = $data['sms_from'] ?? null;
         $this->container['sms_media_urls'] = $data['sms_media_urls'] ?? null;
         $this->container['filters'] = $data['filters'] ?? null;
@@ -848,6 +854,10 @@ class BasicNotificationAllOf implements ModelInterface, ArrayAccess, \JsonSerial
                 $this->container['aggregation'],
                 implode("', '", $allowedValues)
             );
+        }
+
+        if (!is_null($this->container['email_bcc']) && (count($this->container['email_bcc']) > 5)) {
+            $invalidProperties[] = "invalid value for 'email_bcc', number of items must be less than or equal to 5.";
         }
 
         $allowedValues = $this->getHuaweiCategoryAllowableValues();
@@ -3090,6 +3100,34 @@ class BasicNotificationAllOf implements ModelInterface, ArrayAccess, \JsonSerial
     public function setIncludeUnsubscribed($include_unsubscribed)
     {
         $this->container['include_unsubscribed'] = $include_unsubscribed;
+
+        return $this;
+    }
+
+    /**
+     * Gets email_bcc
+     *
+     * @return string[]|null
+     */
+    public function getEmailBcc()
+    {
+        return $this->container['email_bcc'];
+    }
+
+    /**
+     * Sets email_bcc
+     *
+     * @param string[]|null $email_bcc Channel: Email BCC recipients for the email. Maximum 5 addresses. Only supported when the email service provider is OneSignal Email.
+     *
+     * @return self
+     */
+    public function setEmailBcc($email_bcc)
+    {
+
+        if (!is_null($email_bcc) && (count($email_bcc) > 5)) {
+            throw new \InvalidArgumentException('invalid value for $email_bcc when calling BasicNotificationAllOf., number of items must be less than or equal to 5.');
+        }
+        $this->container['email_bcc'] = $email_bcc;
 
         return $this;
     }
