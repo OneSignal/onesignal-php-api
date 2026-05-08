@@ -109,6 +109,7 @@ Name | Type | Description | Notes
 **email_preheader** | **string** | Channel: Email The preheader text of the email. Preheader is the preview text displayed immediately after an email subject that provides additional context about the email content. If not specified, will default to null. | [optional]
 **disable_email_click_tracking** | **bool** | Channel: Email Default is &#x60;false&#x60;. If set to &#x60;true&#x60;, the URLs sent within the email will not include link tracking and will be the same as originally set; otherwise, all the URLs in the email will be tracked. | [optional]
 **include_unsubscribed** | **bool** | Channel: Email Default is &#x60;false&#x60;. This field is used to send transactional notifications. If set to &#x60;true&#x60;, this notification will also be sent to unsubscribed emails. If a &#x60;template_id&#x60; is provided, the &#x60;include_unsubscribed&#x60; value from the template will be inherited. If you are using a third-party ESP, this field requires the ESP&#39;s list of unsubscribed emails to be cleared. | [optional]
+**email_bcc** | **string[]** | BCC recipients that were set on this email notification. | [optional]
 **sms_from** | **string** | Channel: SMS Phone Number used to send SMS. Should be a registered Twilio phone number in E.164 format. | [optional]
 **sms_media_urls** | **string[]** | Channel: SMS URLs for the media files to be attached to the SMS content. Limit: 10 media urls with a total max. size of 5MBs. | [optional]
 **filters** | [**\onesignal\client\model\FilterExpression[]**](FilterExpression.md) |  | [optional]
@@ -130,5 +131,6 @@ Name | Type | Description | Notes
 **completed_at** | **int** | Unix timestamp indicating when notification delivery completed. The delivery duration from start to finish can be calculated with completed_at - send_after. | [optional]
 **platform_delivery_stats** | [**\onesignal\client\model\PlatformDeliveryData**](PlatformDeliveryData.md) |  | [optional]
 **canceled** | **bool** | Indicates whether the notification was canceled before it could be sent. | [optional]
+**bcc_sent** | **int** | Number of BCC copies successfully sent for this notification. | [optional]
 
 [[Back to API list]](https://github.com/OneSignal/onesignal-php-api#full-api-reference) [[Back to README]](https://github.com/OneSignal/onesignal-php-api)
