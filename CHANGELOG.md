@@ -1,5 +1,11 @@
 # Changelog
 
+## [5.5.0](https://github.com/OneSignal/onesignal-php-api/compare/v5.4.0...v5.5.0) (2026-05-08)
+
+### Features
+
+* add `email_bcc` and `bcc_sent` to Notification and Template models ([#62](https://github.com/OneSignal/onesignal-php-api/issues/62)) ([4ff2df3](https://github.com/OneSignal/onesignal-php-api/commit/4ff2df358742cf88c9ac3a79cd88f96d4a8f7513))
+
 ## [5.4.0](https://github.com/OneSignal/onesignal-php-api/compare/v5.3.0...v5.4.0) (2026-04-17)
 
 ### Features
