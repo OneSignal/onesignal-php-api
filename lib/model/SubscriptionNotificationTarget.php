@@ -62,6 +62,7 @@ class SubscriptionNotificationTarget implements ModelInterface, ArrayAccess, \Js
     protected static $openAPITypes = [
         'include_subscription_ids' => 'string[]',
         'include_email_tokens' => 'string[]',
+        'email_to' => 'string[]',
         'include_phone_numbers' => 'string[]',
         'include_ios_tokens' => 'string[]',
         'include_wp_wns_uris' => 'string[]',
@@ -83,6 +84,7 @@ class SubscriptionNotificationTarget implements ModelInterface, ArrayAccess, \Js
     protected static $openAPIFormats = [
         'include_subscription_ids' => null,
         'include_email_tokens' => null,
+        'email_to' => null,
         'include_phone_numbers' => null,
         'include_ios_tokens' => null,
         'include_wp_wns_uris' => null,
@@ -123,6 +125,7 @@ class SubscriptionNotificationTarget implements ModelInterface, ArrayAccess, \Js
     protected static $attributeMap = [
         'include_subscription_ids' => 'include_subscription_ids',
         'include_email_tokens' => 'include_email_tokens',
+        'email_to' => 'email_to',
         'include_phone_numbers' => 'include_phone_numbers',
         'include_ios_tokens' => 'include_ios_tokens',
         'include_wp_wns_uris' => 'include_wp_wns_uris',
@@ -142,6 +145,7 @@ class SubscriptionNotificationTarget implements ModelInterface, ArrayAccess, \Js
     protected static $setters = [
         'include_subscription_ids' => 'setIncludeSubscriptionIds',
         'include_email_tokens' => 'setIncludeEmailTokens',
+        'email_to' => 'setEmailTo',
         'include_phone_numbers' => 'setIncludePhoneNumbers',
         'include_ios_tokens' => 'setIncludeIosTokens',
         'include_wp_wns_uris' => 'setIncludeWpWnsUris',
@@ -161,6 +165,7 @@ class SubscriptionNotificationTarget implements ModelInterface, ArrayAccess, \Js
     protected static $getters = [
         'include_subscription_ids' => 'getIncludeSubscriptionIds',
         'include_email_tokens' => 'getIncludeEmailTokens',
+        'email_to' => 'getEmailTo',
         'include_phone_numbers' => 'getIncludePhoneNumbers',
         'include_ios_tokens' => 'getIncludeIosTokens',
         'include_wp_wns_uris' => 'getIncludeWpWnsUris',
@@ -248,6 +253,7 @@ class SubscriptionNotificationTarget implements ModelInterface, ArrayAccess, \Js
     {
         $this->container['include_subscription_ids'] = $data['include_subscription_ids'] ?? null;
         $this->container['include_email_tokens'] = $data['include_email_tokens'] ?? null;
+        $this->container['email_to'] = $data['email_to'] ?? null;
         $this->container['include_phone_numbers'] = $data['include_phone_numbers'] ?? null;
         $this->container['include_ios_tokens'] = $data['include_ios_tokens'] ?? null;
         $this->container['include_wp_wns_uris'] = $data['include_wp_wns_uris'] ?? null;
@@ -320,6 +326,7 @@ class SubscriptionNotificationTarget implements ModelInterface, ArrayAccess, \Js
      * Gets include_email_tokens
      *
      * @return string[]|null
+     * @deprecated
      */
     public function getIncludeEmailTokens()
     {
@@ -329,13 +336,38 @@ class SubscriptionNotificationTarget implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets include_email_tokens
      *
-     * @param string[]|null $include_email_tokens Recommended for Sending Emails - Target specific email addresses. If an email does not correspond to an existing user, a new user will be created. Example: nick@catfac.ts Limit of 2,000 entries per REST API call
+     * @param string[]|null $include_email_tokens Deprecated alias for `email_to`. Target specific email addresses. If an email does not correspond to an existing user, a new user will be created. Example: nick@catfac.ts. Limit of 2,000 entries per REST API call. Prefer `email_to` in new integrations.
      *
      * @return self
+     * @deprecated
      */
     public function setIncludeEmailTokens($include_email_tokens)
     {
         $this->container['include_email_tokens'] = $include_email_tokens;
+
+        return $this;
+    }
+
+    /**
+     * Gets email_to
+     *
+     * @return string[]|null
+     */
+    public function getEmailTo()
+    {
+        return $this->container['email_to'];
+    }
+
+    /**
+     * Sets email_to
+     *
+     * @param string[]|null $email_to Recommended for Sending Emails - Target specific email addresses. If an email does not correspond to an existing user, a new user will be created. Example: nick@catfac.ts. Limit of 2,000 entries per REST API call. Supersedes the deprecated `include_email_tokens` field.
+     *
+     * @return self
+     */
+    public function setEmailTo($email_to)
+    {
+        $this->container['email_to'] = $email_to;
 
         return $this;
     }

@@ -64,6 +64,7 @@ class NotificationWithMeta implements ModelInterface, ArrayAccess, \JsonSerializ
         'excluded_segments' => 'string[]',
         'include_subscription_ids' => 'string[]',
         'include_email_tokens' => 'string[]',
+        'email_to' => 'string[]',
         'include_phone_numbers' => 'string[]',
         'include_ios_tokens' => 'string[]',
         'include_wp_wns_uris' => 'string[]',
@@ -166,6 +167,7 @@ class NotificationWithMeta implements ModelInterface, ArrayAccess, \JsonSerializ
         'disable_email_click_tracking' => 'bool',
         'include_unsubscribed' => 'bool',
         'email_bcc' => 'string[]',
+        'email_sender_domain' => 'string',
         'sms_from' => 'string',
         'sms_media_urls' => 'string[]',
         'filters' => '\onesignal\client\model\FilterExpression[]',
@@ -202,6 +204,7 @@ class NotificationWithMeta implements ModelInterface, ArrayAccess, \JsonSerializ
         'excluded_segments' => null,
         'include_subscription_ids' => null,
         'include_email_tokens' => null,
+        'email_to' => null,
         'include_phone_numbers' => null,
         'include_ios_tokens' => null,
         'include_wp_wns_uris' => null,
@@ -304,6 +307,7 @@ class NotificationWithMeta implements ModelInterface, ArrayAccess, \JsonSerializ
         'disable_email_click_tracking' => null,
         'include_unsubscribed' => null,
         'email_bcc' => null,
+        'email_sender_domain' => null,
         'sms_from' => null,
         'sms_media_urls' => null,
         'filters' => null,
@@ -359,6 +363,7 @@ class NotificationWithMeta implements ModelInterface, ArrayAccess, \JsonSerializ
         'excluded_segments' => 'excluded_segments',
         'include_subscription_ids' => 'include_subscription_ids',
         'include_email_tokens' => 'include_email_tokens',
+        'email_to' => 'email_to',
         'include_phone_numbers' => 'include_phone_numbers',
         'include_ios_tokens' => 'include_ios_tokens',
         'include_wp_wns_uris' => 'include_wp_wns_uris',
@@ -461,6 +466,7 @@ class NotificationWithMeta implements ModelInterface, ArrayAccess, \JsonSerializ
         'disable_email_click_tracking' => 'disable_email_click_tracking',
         'include_unsubscribed' => 'include_unsubscribed',
         'email_bcc' => 'email_bcc',
+        'email_sender_domain' => 'email_sender_domain',
         'sms_from' => 'sms_from',
         'sms_media_urls' => 'sms_media_urls',
         'filters' => 'filters',
@@ -495,6 +501,7 @@ class NotificationWithMeta implements ModelInterface, ArrayAccess, \JsonSerializ
         'excluded_segments' => 'setExcludedSegments',
         'include_subscription_ids' => 'setIncludeSubscriptionIds',
         'include_email_tokens' => 'setIncludeEmailTokens',
+        'email_to' => 'setEmailTo',
         'include_phone_numbers' => 'setIncludePhoneNumbers',
         'include_ios_tokens' => 'setIncludeIosTokens',
         'include_wp_wns_uris' => 'setIncludeWpWnsUris',
@@ -597,6 +604,7 @@ class NotificationWithMeta implements ModelInterface, ArrayAccess, \JsonSerializ
         'disable_email_click_tracking' => 'setDisableEmailClickTracking',
         'include_unsubscribed' => 'setIncludeUnsubscribed',
         'email_bcc' => 'setEmailBcc',
+        'email_sender_domain' => 'setEmailSenderDomain',
         'sms_from' => 'setSmsFrom',
         'sms_media_urls' => 'setSmsMediaUrls',
         'filters' => 'setFilters',
@@ -631,6 +639,7 @@ class NotificationWithMeta implements ModelInterface, ArrayAccess, \JsonSerializ
         'excluded_segments' => 'getExcludedSegments',
         'include_subscription_ids' => 'getIncludeSubscriptionIds',
         'include_email_tokens' => 'getIncludeEmailTokens',
+        'email_to' => 'getEmailTo',
         'include_phone_numbers' => 'getIncludePhoneNumbers',
         'include_ios_tokens' => 'getIncludeIosTokens',
         'include_wp_wns_uris' => 'getIncludeWpWnsUris',
@@ -733,6 +742,7 @@ class NotificationWithMeta implements ModelInterface, ArrayAccess, \JsonSerializ
         'disable_email_click_tracking' => 'getDisableEmailClickTracking',
         'include_unsubscribed' => 'getIncludeUnsubscribed',
         'email_bcc' => 'getEmailBcc',
+        'email_sender_domain' => 'getEmailSenderDomain',
         'sms_from' => 'getSmsFrom',
         'sms_media_urls' => 'getSmsMediaUrls',
         'filters' => 'getFilters',
@@ -885,6 +895,7 @@ class NotificationWithMeta implements ModelInterface, ArrayAccess, \JsonSerializ
         $this->container['excluded_segments'] = $data['excluded_segments'] ?? null;
         $this->container['include_subscription_ids'] = $data['include_subscription_ids'] ?? null;
         $this->container['include_email_tokens'] = $data['include_email_tokens'] ?? null;
+        $this->container['email_to'] = $data['email_to'] ?? null;
         $this->container['include_phone_numbers'] = $data['include_phone_numbers'] ?? null;
         $this->container['include_ios_tokens'] = $data['include_ios_tokens'] ?? null;
         $this->container['include_wp_wns_uris'] = $data['include_wp_wns_uris'] ?? null;
@@ -987,6 +998,7 @@ class NotificationWithMeta implements ModelInterface, ArrayAccess, \JsonSerializ
         $this->container['disable_email_click_tracking'] = $data['disable_email_click_tracking'] ?? null;
         $this->container['include_unsubscribed'] = $data['include_unsubscribed'] ?? null;
         $this->container['email_bcc'] = $data['email_bcc'] ?? null;
+        $this->container['email_sender_domain'] = $data['email_sender_domain'] ?? null;
         $this->container['sms_from'] = $data['sms_from'] ?? null;
         $this->container['sms_media_urls'] = $data['sms_media_urls'] ?? null;
         $this->container['filters'] = $data['filters'] ?? null;
@@ -1141,6 +1153,7 @@ class NotificationWithMeta implements ModelInterface, ArrayAccess, \JsonSerializ
      * Gets include_email_tokens
      *
      * @return string[]|null
+     * @deprecated
      */
     public function getIncludeEmailTokens()
     {
@@ -1150,13 +1163,38 @@ class NotificationWithMeta implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets include_email_tokens
      *
-     * @param string[]|null $include_email_tokens Recommended for Sending Emails - Target specific email addresses. If an email does not correspond to an existing user, a new user will be created. Example: nick@catfac.ts Limit of 2,000 entries per REST API call
+     * @param string[]|null $include_email_tokens Deprecated alias for `email_to`. Target specific email addresses. If an email does not correspond to an existing user, a new user will be created. Example: nick@catfac.ts. Limit of 2,000 entries per REST API call. Prefer `email_to` in new integrations.
      *
      * @return self
+     * @deprecated
      */
     public function setIncludeEmailTokens($include_email_tokens)
     {
         $this->container['include_email_tokens'] = $include_email_tokens;
+
+        return $this;
+    }
+
+    /**
+     * Gets email_to
+     *
+     * @return string[]|null
+     */
+    public function getEmailTo()
+    {
+        return $this->container['email_to'];
+    }
+
+    /**
+     * Sets email_to
+     *
+     * @param string[]|null $email_to Recommended for Sending Emails - Target specific email addresses. If an email does not correspond to an existing user, a new user will be created. Example: nick@catfac.ts. Limit of 2,000 entries per REST API call. Supersedes the deprecated `include_email_tokens` field.
+     *
+     * @return self
+     */
+    public function setEmailTo($email_to)
+    {
+        $this->container['email_to'] = $email_to;
 
         return $this;
     }
@@ -3627,6 +3665,30 @@ class NotificationWithMeta implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setEmailBcc($email_bcc)
     {
         $this->container['email_bcc'] = $email_bcc;
+
+        return $this;
+    }
+
+    /**
+     * Gets email_sender_domain
+     *
+     * @return string|null
+     */
+    public function getEmailSenderDomain()
+    {
+        return $this->container['email_sender_domain'];
+    }
+
+    /**
+     * Sets email_sender_domain
+     *
+     * @param string|null $email_sender_domain Channel: Email Sender domain to use for the email message. Overrides the default sender domain configured for the app. Only supported when the email service provider is OneSignal Email.
+     *
+     * @return self
+     */
+    public function setEmailSenderDomain($email_sender_domain)
+    {
+        $this->container['email_sender_domain'] = $email_sender_domain;
 
         return $this;
     }
