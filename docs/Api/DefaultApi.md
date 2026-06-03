@@ -80,13 +80,17 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$app_id = 'app_id_example'; // string
-$notification_id = 'notification_id_example'; // string
+$app_id = '00000000-0000-0000-0000-000000000000'; // string
+$notification_id = 'b3a0c8bd-3a4c-4b22-9a73-3f1a8c2d1b88'; // string
 
 try {
     $result = $apiInstance->cancelNotification($app_id, $notification_id);
     print_r($result);
-} catch (Exception $e) {
+} catch (\onesignal\client\ApiException $e) {
+    echo 'Exception when calling DefaultApi->cancelNotification: ', $e->getMessage(), PHP_EOL;
+    echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
+} catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->cancelNotification: ', $e->getMessage(), PHP_EOL;
 }
 ```
@@ -144,14 +148,18 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$template_id = 'template_id_example'; // string
-$app_id = 'app_id_example'; // string
+$template_id = 'e4d3c2b1-a09f-4f1e-8d7c-6b5a4f3e2d1c'; // string
+$app_id = '00000000-0000-0000-0000-000000000000'; // string
 $copy_template_request = new \onesignal\client\model\CopyTemplateRequest(); // \onesignal\client\model\CopyTemplateRequest
 
 try {
     $result = $apiInstance->copyTemplateToApp($template_id, $app_id, $copy_template_request);
     print_r($result);
-} catch (Exception $e) {
+} catch (\onesignal\client\ApiException $e) {
+    echo 'Exception when calling DefaultApi->copyTemplateToApp: ', $e->getMessage(), PHP_EOL;
+    echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
+} catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->copyTemplateToApp: ', $e->getMessage(), PHP_EOL;
 }
 ```
@@ -210,15 +218,19 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$app_id = 'app_id_example'; // string
-$alias_label = 'alias_label_example'; // string
-$alias_id = 'alias_id_example'; // string
+$app_id = '00000000-0000-0000-0000-000000000000'; // string
+$alias_label = 'external_id'; // string
+$alias_id = 'YOUR_USER_EXTERNAL_ID'; // string
 $user_identity_body = new \onesignal\client\model\UserIdentityBody(); // \onesignal\client\model\UserIdentityBody
 
 try {
     $result = $apiInstance->createAlias($app_id, $alias_label, $alias_id, $user_identity_body);
     print_r($result);
-} catch (Exception $e) {
+} catch (\onesignal\client\ApiException $e) {
+    echo 'Exception when calling DefaultApi->createAlias: ', $e->getMessage(), PHP_EOL;
+    echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
+} catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->createAlias: ', $e->getMessage(), PHP_EOL;
 }
 ```
@@ -278,14 +290,18 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$app_id = 'app_id_example'; // string
-$subscription_id = 'subscription_id_example'; // string
+$app_id = '00000000-0000-0000-0000-000000000000'; // string
+$subscription_id = '7e4c5b9a-1f60-4d07-9b1a-2e8c8d2cae51'; // string
 $user_identity_body = new \onesignal\client\model\UserIdentityBody(); // \onesignal\client\model\UserIdentityBody
 
 try {
     $result = $apiInstance->createAliasBySubscription($app_id, $subscription_id, $user_identity_body);
     print_r($result);
-} catch (Exception $e) {
+} catch (\onesignal\client\ApiException $e) {
+    echo 'Exception when calling DefaultApi->createAliasBySubscription: ', $e->getMessage(), PHP_EOL;
+    echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
+} catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->createAliasBySubscription: ', $e->getMessage(), PHP_EOL;
 }
 ```
@@ -344,13 +360,17 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$app_id = 'app_id_example'; // string
+$app_id = '00000000-0000-0000-0000-000000000000'; // string
 $create_api_key_request = new \onesignal\client\model\CreateApiKeyRequest(); // \onesignal\client\model\CreateApiKeyRequest
 
 try {
     $result = $apiInstance->createApiKey($app_id, $create_api_key_request);
     print_r($result);
-} catch (Exception $e) {
+} catch (\onesignal\client\ApiException $e) {
+    echo 'Exception when calling DefaultApi->createApiKey: ', $e->getMessage(), PHP_EOL;
+    echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
+} catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->createApiKey: ', $e->getMessage(), PHP_EOL;
 }
 ```
@@ -413,7 +433,11 @@ $app = new \onesignal\client\model\App(); // \onesignal\client\model\App
 try {
     $result = $apiInstance->createApp($app);
     print_r($result);
-} catch (Exception $e) {
+} catch (\onesignal\client\ApiException $e) {
+    echo 'Exception when calling DefaultApi->createApp: ', $e->getMessage(), PHP_EOL;
+    echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
+} catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->createApp: ', $e->getMessage(), PHP_EOL;
 }
 ```
@@ -470,13 +494,17 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$app_id = 'app_id_example'; // string | Your OneSignal App ID in UUID v4 format.
+$app_id = '00000000-0000-0000-0000-000000000000'; // string | Your OneSignal App ID in UUID v4 format.
 $custom_events_request = new \onesignal\client\model\CustomEventsRequest(); // \onesignal\client\model\CustomEventsRequest
 
 try {
     $result = $apiInstance->createCustomEvents($app_id, $custom_events_request);
     print_r($result);
-} catch (Exception $e) {
+} catch (\onesignal\client\ApiException $e) {
+    echo 'Exception when calling DefaultApi->createCustomEvents: ', $e->getMessage(), PHP_EOL;
+    echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
+} catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->createCustomEvents: ', $e->getMessage(), PHP_EOL;
 }
 ```
@@ -540,11 +568,39 @@ $contents->setEn('Hello from OneSignal!');
 $notification->setContents($contents);
 $notification->setIncludeAliases(['external_id' => ['YOUR_USER_EXTERNAL_ID']]);
 $notification->setTargetChannel('push');
+// Idempotency key: a client-generated UUID that lets you safely retry on network failure.
+// If two requests arrive with the same key inside the 30-day window, only the first is sent
+// and the second returns the original response. Use a strong source of randomness — DO NOT
+// reuse keys across logically distinct sends. We use PHP 7+'s built-in random_bytes() here
+// so the snippet works against this SDK's declared composer.json deps (Guzzle + PSR-7) with
+// no extra install; projects that already pull in ramsey/uuid can swap in
+// `\Ramsey\Uuid\Uuid::uuid4()->toString()` instead.
+$idempotencyKeyBytes = random_bytes(16);
+$idempotencyKeyBytes[6] = chr(ord($idempotencyKeyBytes[6]) & 0x0f | 0x40);
+$idempotencyKeyBytes[8] = chr(ord($idempotencyKeyBytes[8]) & 0x3f | 0x80);
+$idempotencyKey = vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex($idempotencyKeyBytes), 4));
+$notification->setIdempotencyKey($idempotencyKey);
 
 try {
     $result = $apiInstance->createNotification($notification);
-    print_r($result);
-} catch (Exception $e) {
+    // `$result->getId()` discriminates the two HTTP 200 shapes. A falsy value (empty
+    // string or null) means no notification was created (e.g. all targets were
+    // unreachable / not subscribed). `$result->getErrors()` is polymorphic: a `string[]`
+    // in the no-subscribers case, or an object keyed by recipient-identifier type
+    // (`invalid_player_ids`, `invalid_external_user_ids`, `invalid_aliases`, ...) when
+    // the notification WAS created but some recipients were skipped.
+    if (!$result->getId()) {
+        echo 'Notification was not sent: ', print_r($result->getErrors(), true), PHP_EOL;
+    } elseif ($result->getErrors()) {
+        echo 'Notification created: ', $result->getId(), ' (partial failures: ', print_r($result->getErrors(), true), ')', PHP_EOL;
+    } else {
+        echo 'Notification created: ', $result->getId(), PHP_EOL;
+    }
+} catch (\onesignal\client\ApiException $e) {
+    echo 'Exception when calling DefaultApi->createNotification: ', $e->getMessage(), PHP_EOL;
+    echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
+} catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->createNotification: ', $e->getMessage(), PHP_EOL;
 }
 ```
@@ -601,13 +657,17 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$app_id = 'app_id_example'; // string | The OneSignal App ID for your app.  Available in Keys & IDs.
+$app_id = '00000000-0000-0000-0000-000000000000'; // string | The OneSignal App ID for your app.  Available in Keys & IDs.
 $segment = new \onesignal\client\model\Segment(); // \onesignal\client\model\Segment
 
 try {
     $result = $apiInstance->createSegment($app_id, $segment);
     print_r($result);
-} catch (Exception $e) {
+} catch (\onesignal\client\ApiException $e) {
+    echo 'Exception when calling DefaultApi->createSegment: ', $e->getMessage(), PHP_EOL;
+    echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
+} catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->createSegment: ', $e->getMessage(), PHP_EOL;
 }
 ```
@@ -665,15 +725,19 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$app_id = 'app_id_example'; // string
-$alias_label = 'alias_label_example'; // string
-$alias_id = 'alias_id_example'; // string
+$app_id = '00000000-0000-0000-0000-000000000000'; // string
+$alias_label = 'external_id'; // string
+$alias_id = 'YOUR_USER_EXTERNAL_ID'; // string
 $subscription_body = new \onesignal\client\model\SubscriptionBody(); // \onesignal\client\model\SubscriptionBody
 
 try {
     $result = $apiInstance->createSubscription($app_id, $alias_label, $alias_id, $subscription_body);
     print_r($result);
-} catch (Exception $e) {
+} catch (\onesignal\client\ApiException $e) {
+    echo 'Exception when calling DefaultApi->createSubscription: ', $e->getMessage(), PHP_EOL;
+    echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
+} catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->createSubscription: ', $e->getMessage(), PHP_EOL;
 }
 ```
@@ -738,7 +802,11 @@ $create_template_request = new \onesignal\client\model\CreateTemplateRequest(); 
 try {
     $result = $apiInstance->createTemplate($create_template_request);
     print_r($result);
-} catch (Exception $e) {
+} catch (\onesignal\client\ApiException $e) {
+    echo 'Exception when calling DefaultApi->createTemplate: ', $e->getMessage(), PHP_EOL;
+    echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
+} catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->createTemplate: ', $e->getMessage(), PHP_EOL;
 }
 ```
@@ -795,13 +863,17 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$app_id = 'app_id_example'; // string
+$app_id = '00000000-0000-0000-0000-000000000000'; // string
 $user = new \onesignal\client\model\User(); // \onesignal\client\model\User
 
 try {
     $result = $apiInstance->createUser($app_id, $user);
     print_r($result);
-} catch (Exception $e) {
+} catch (\onesignal\client\ApiException $e) {
+    echo 'Exception when calling DefaultApi->createUser: ', $e->getMessage(), PHP_EOL;
+    echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
+} catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->createUser: ', $e->getMessage(), PHP_EOL;
 }
 ```
@@ -859,15 +931,19 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$app_id = 'app_id_example'; // string
-$alias_label = 'alias_label_example'; // string
-$alias_id = 'alias_id_example'; // string
-$alias_label_to_delete = 'alias_label_to_delete_example'; // string
+$app_id = '00000000-0000-0000-0000-000000000000'; // string
+$alias_label = 'external_id'; // string
+$alias_id = 'YOUR_USER_EXTERNAL_ID'; // string
+$alias_label_to_delete = 'external_id'; // string
 
 try {
     $result = $apiInstance->deleteAlias($app_id, $alias_label, $alias_id, $alias_label_to_delete);
     print_r($result);
-} catch (Exception $e) {
+} catch (\onesignal\client\ApiException $e) {
+    echo 'Exception when calling DefaultApi->deleteAlias: ', $e->getMessage(), PHP_EOL;
+    echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
+} catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->deleteAlias: ', $e->getMessage(), PHP_EOL;
 }
 ```
@@ -927,13 +1003,17 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$app_id = 'app_id_example'; // string
-$token_id = 'token_id_example'; // string
+$app_id = '00000000-0000-0000-0000-000000000000'; // string
+$token_id = '0aa1b2c3-d4e5-46f7-8899-aabbccddeeff'; // string
 
 try {
     $result = $apiInstance->deleteApiKey($app_id, $token_id);
     print_r($result);
-} catch (Exception $e) {
+} catch (\onesignal\client\ApiException $e) {
+    echo 'Exception when calling DefaultApi->deleteApiKey: ', $e->getMessage(), PHP_EOL;
+    echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
+} catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->deleteApiKey: ', $e->getMessage(), PHP_EOL;
 }
 ```
@@ -991,13 +1071,17 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$app_id = 'app_id_example'; // string | The OneSignal App ID for your app.  Available in Keys & IDs.
-$segment_id = 'segment_id_example'; // string | The segment_id can be found in the URL of the segment when viewing it in the dashboard.
+$app_id = '00000000-0000-0000-0000-000000000000'; // string | The OneSignal App ID for your app.  Available in Keys & IDs.
+$segment_id = 'd6c5a3e1-9f17-44a1-9d10-7c0e4a2b1c8e'; // string | The segment_id can be found in the URL of the segment when viewing it in the dashboard.
 
 try {
     $result = $apiInstance->deleteSegment($app_id, $segment_id);
     print_r($result);
-} catch (Exception $e) {
+} catch (\onesignal\client\ApiException $e) {
+    echo 'Exception when calling DefaultApi->deleteSegment: ', $e->getMessage(), PHP_EOL;
+    echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
+} catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->deleteSegment: ', $e->getMessage(), PHP_EOL;
 }
 ```
@@ -1055,12 +1139,16 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$app_id = 'app_id_example'; // string
-$subscription_id = 'subscription_id_example'; // string
+$app_id = '00000000-0000-0000-0000-000000000000'; // string
+$subscription_id = '7e4c5b9a-1f60-4d07-9b1a-2e8c8d2cae51'; // string
 
 try {
     $apiInstance->deleteSubscription($app_id, $subscription_id);
-} catch (Exception $e) {
+} catch (\onesignal\client\ApiException $e) {
+    echo 'Exception when calling DefaultApi->deleteSubscription: ', $e->getMessage(), PHP_EOL;
+    echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
+} catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->deleteSubscription: ', $e->getMessage(), PHP_EOL;
 }
 ```
@@ -1118,13 +1206,17 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$template_id = 'template_id_example'; // string
-$app_id = 'app_id_example'; // string
+$template_id = 'e4d3c2b1-a09f-4f1e-8d7c-6b5a4f3e2d1c'; // string
+$app_id = '00000000-0000-0000-0000-000000000000'; // string
 
 try {
     $result = $apiInstance->deleteTemplate($template_id, $app_id);
     print_r($result);
-} catch (Exception $e) {
+} catch (\onesignal\client\ApiException $e) {
+    echo 'Exception when calling DefaultApi->deleteTemplate: ', $e->getMessage(), PHP_EOL;
+    echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
+} catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->deleteTemplate: ', $e->getMessage(), PHP_EOL;
 }
 ```
@@ -1182,13 +1274,17 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$app_id = 'app_id_example'; // string
-$alias_label = 'alias_label_example'; // string
-$alias_id = 'alias_id_example'; // string
+$app_id = '00000000-0000-0000-0000-000000000000'; // string
+$alias_label = 'external_id'; // string
+$alias_id = 'YOUR_USER_EXTERNAL_ID'; // string
 
 try {
     $apiInstance->deleteUser($app_id, $alias_label, $alias_id);
-} catch (Exception $e) {
+} catch (\onesignal\client\ApiException $e) {
+    echo 'Exception when calling DefaultApi->deleteUser: ', $e->getMessage(), PHP_EOL;
+    echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
+} catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->deleteUser: ', $e->getMessage(), PHP_EOL;
 }
 ```
@@ -1247,13 +1343,17 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$notification_id = 'notification_id_example'; // string | The ID of the notification to export events from.
-$app_id = 'app_id_example'; // string | The ID of the app that the notification belongs to.
+$notification_id = 'b3a0c8bd-3a4c-4b22-9a73-3f1a8c2d1b88'; // string | The ID of the notification to export events from.
+$app_id = '00000000-0000-0000-0000-000000000000'; // string | The ID of the app that the notification belongs to.
 
 try {
     $result = $apiInstance->exportEvents($notification_id, $app_id);
     print_r($result);
-} catch (Exception $e) {
+} catch (\onesignal\client\ApiException $e) {
+    echo 'Exception when calling DefaultApi->exportEvents: ', $e->getMessage(), PHP_EOL;
+    echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
+} catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->exportEvents: ', $e->getMessage(), PHP_EOL;
 }
 ```
@@ -1311,13 +1411,17 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$app_id = 'app_id_example'; // string | The app ID that you want to export devices from
+$app_id = '00000000-0000-0000-0000-000000000000'; // string | The app ID that you want to export devices from
 $export_subscriptions_request_body = new \onesignal\client\model\ExportSubscriptionsRequestBody(); // \onesignal\client\model\ExportSubscriptionsRequestBody
 
 try {
     $result = $apiInstance->exportSubscriptions($app_id, $export_subscriptions_request_body);
     print_r($result);
-} catch (Exception $e) {
+} catch (\onesignal\client\ApiException $e) {
+    echo 'Exception when calling DefaultApi->exportSubscriptions: ', $e->getMessage(), PHP_EOL;
+    echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
+} catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->exportSubscriptions: ', $e->getMessage(), PHP_EOL;
 }
 ```
@@ -1375,14 +1479,18 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$app_id = 'app_id_example'; // string
-$alias_label = 'alias_label_example'; // string
-$alias_id = 'alias_id_example'; // string
+$app_id = '00000000-0000-0000-0000-000000000000'; // string
+$alias_label = 'external_id'; // string
+$alias_id = 'YOUR_USER_EXTERNAL_ID'; // string
 
 try {
     $result = $apiInstance->getAliases($app_id, $alias_label, $alias_id);
     print_r($result);
-} catch (Exception $e) {
+} catch (\onesignal\client\ApiException $e) {
+    echo 'Exception when calling DefaultApi->getAliases: ', $e->getMessage(), PHP_EOL;
+    echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
+} catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->getAliases: ', $e->getMessage(), PHP_EOL;
 }
 ```
@@ -1441,13 +1549,17 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$app_id = 'app_id_example'; // string
-$subscription_id = 'subscription_id_example'; // string
+$app_id = '00000000-0000-0000-0000-000000000000'; // string
+$subscription_id = '7e4c5b9a-1f60-4d07-9b1a-2e8c8d2cae51'; // string
 
 try {
     $result = $apiInstance->getAliasesBySubscription($app_id, $subscription_id);
     print_r($result);
-} catch (Exception $e) {
+} catch (\onesignal\client\ApiException $e) {
+    echo 'Exception when calling DefaultApi->getAliasesBySubscription: ', $e->getMessage(), PHP_EOL;
+    echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
+} catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->getAliasesBySubscription: ', $e->getMessage(), PHP_EOL;
 }
 ```
@@ -1505,12 +1617,16 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$app_id = 'app_id_example'; // string | An app id
+$app_id = '00000000-0000-0000-0000-000000000000'; // string | An app id
 
 try {
     $result = $apiInstance->getApp($app_id);
     print_r($result);
-} catch (Exception $e) {
+} catch (\onesignal\client\ApiException $e) {
+    echo 'Exception when calling DefaultApi->getApp: ', $e->getMessage(), PHP_EOL;
+    echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
+} catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->getApp: ', $e->getMessage(), PHP_EOL;
 }
 ```
@@ -1571,7 +1687,11 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
 try {
     $result = $apiInstance->getApps();
     print_r($result);
-} catch (Exception $e) {
+} catch (\onesignal\client\ApiException $e) {
+    echo 'Exception when calling DefaultApi->getApps: ', $e->getMessage(), PHP_EOL;
+    echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
+} catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->getApps: ', $e->getMessage(), PHP_EOL;
 }
 ```
@@ -1626,13 +1746,17 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$app_id = 'app_id_example'; // string
-$notification_id = 'notification_id_example'; // string
+$app_id = '00000000-0000-0000-0000-000000000000'; // string
+$notification_id = 'b3a0c8bd-3a4c-4b22-9a73-3f1a8c2d1b88'; // string
 
 try {
     $result = $apiInstance->getNotification($app_id, $notification_id);
     print_r($result);
-} catch (Exception $e) {
+} catch (\onesignal\client\ApiException $e) {
+    echo 'Exception when calling DefaultApi->getNotification: ', $e->getMessage(), PHP_EOL;
+    echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
+} catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->getNotification: ', $e->getMessage(), PHP_EOL;
 }
 ```
@@ -1690,13 +1814,17 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$notification_id = 'notification_id_example'; // string | The \"id\" of the message found in the Notification object
+$notification_id = 'b3a0c8bd-3a4c-4b22-9a73-3f1a8c2d1b88'; // string | The \"id\" of the message found in the Notification object
 $get_notification_history_request_body = new \onesignal\client\model\GetNotificationHistoryRequestBody(); // \onesignal\client\model\GetNotificationHistoryRequestBody
 
 try {
     $result = $apiInstance->getNotificationHistory($notification_id, $get_notification_history_request_body);
     print_r($result);
-} catch (Exception $e) {
+} catch (\onesignal\client\ApiException $e) {
+    echo 'Exception when calling DefaultApi->getNotificationHistory: ', $e->getMessage(), PHP_EOL;
+    echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
+} catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->getNotificationHistory: ', $e->getMessage(), PHP_EOL;
 }
 ```
@@ -1754,15 +1882,19 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$app_id = 'app_id_example'; // string | The app ID that you want to view notifications from
-$limit = 56; // int | How many notifications to return.  Max is 50.  Default is 50.
-$offset = 56; // int | Page offset.  Default is 0.  Results are sorted by queued_at in descending order.  queued_at is a representation of the time that the notification was queued at.
-$kind = 56; // int | Kind of notifications returned:   * unset - All notification types (default)   * `0` - Dashboard only   * `1` - API only   * `3` - Automated only
+$app_id = '00000000-0000-0000-0000-000000000000'; // string | The app ID that you want to view notifications from
+$limit = 10; // int | How many notifications to return.  Max is 50.  Default is 50.
+$offset = 0; // int | Page offset.  Default is 0.  Results are sorted by queued_at in descending order.  queued_at is a representation of the time that the notification was queued at.
+$kind = 0; // int | Kind of notifications returned:   * unset - All notification types (default)   * `0` - Dashboard only   * `1` - API only   * `3` - Automated only
 
 try {
     $result = $apiInstance->getNotifications($app_id, $limit, $offset, $kind);
     print_r($result);
-} catch (Exception $e) {
+} catch (\onesignal\client\ApiException $e) {
+    echo 'Exception when calling DefaultApi->getNotifications: ', $e->getMessage(), PHP_EOL;
+    echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
+} catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->getNotifications: ', $e->getMessage(), PHP_EOL;
 }
 ```
@@ -1822,17 +1954,21 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$app_id = 'app_id_example'; // string | The OneSignal App ID for your app.  Available in Keys & IDs.
-$outcome_names = 'outcome_names_example'; // string | Required Comma-separated list of names and the value (sum/count) for the returned outcome data. Note: Clicks only support count aggregation. For out-of-the-box OneSignal outcomes such as click and session duration, please use the \"os\" prefix with two underscores. For other outcomes, please use the name specified by the user. Example:os__session_duration.count,os__click.count,CustomOutcomeName.sum
-$outcome_names2 = 'outcome_names_example'; // string | Optional If outcome names contain any commas, then please specify only one value at a time. Example: outcome_names[]=os__click.count&outcome_names[]=Sales, Purchase.count where \"Sales, Purchase\" is the custom outcomes with a comma in the name.
-$outcome_time_range = 'outcome_time_range_example'; // string | Optional Time range for the returned data. The values can be 1h (for the last 1 hour data), 1d (for the last 1 day data), or 1mo (for the last 1 month data). Default is 1h if the parameter is omitted.
-$outcome_platforms = 'outcome_platforms_example'; // string | Optional Platform id. Refer device's platform ids for values. Example: outcome_platform=0 for iOS outcome_platform=7,8 for Safari and Firefox Default is data from all platforms if the parameter is omitted.
-$outcome_attribution = 'outcome_attribution_example'; // string | Optional Attribution type for the outcomes. The values can be direct or influenced or unattributed. Example: outcome_attribution=direct Default is total (returns direct+influenced+unattributed) if the parameter is omitted.
+$app_id = '00000000-0000-0000-0000-000000000000'; // string | The OneSignal App ID for your app.  Available in Keys & IDs.
+$outcome_names = 'os__session_duration.count,os__click.count'; // string | Required Comma-separated list of names and the value (sum/count) for the returned outcome data. Note: Clicks only support count aggregation. For out-of-the-box OneSignal outcomes such as click and session duration, please use the \"os\" prefix with two underscores. For other outcomes, please use the name specified by the user. Example:os__session_duration.count,os__click.count,CustomOutcomeName.sum
+$outcome_names2 = 'os__session_duration.count'; // string | Optional If outcome names contain any commas, then please specify only one value at a time. Example: outcome_names[]=os__click.count&outcome_names[]=Sales, Purchase.count where \"Sales, Purchase\" is the custom outcomes with a comma in the name.
+$outcome_time_range = '1d'; // string | Optional Time range for the returned data. The values can be 1h (for the last 1 hour data), 1d (for the last 1 day data), or 1mo (for the last 1 month data). Default is 1h if the parameter is omitted.
+$outcome_platforms = '0,1'; // string | Optional Platform id. Refer device's platform ids for values. Example: outcome_platform=0 for iOS outcome_platform=7,8 for Safari and Firefox Default is data from all platforms if the parameter is omitted.
+$outcome_attribution = 'direct'; // string | Optional Attribution type for the outcomes. The values can be direct or influenced or unattributed. Example: outcome_attribution=direct Default is total (returns direct+influenced+unattributed) if the parameter is omitted.
 
 try {
     $result = $apiInstance->getOutcomes($app_id, $outcome_names, $outcome_names2, $outcome_time_range, $outcome_platforms, $outcome_attribution);
     print_r($result);
-} catch (Exception $e) {
+} catch (\onesignal\client\ApiException $e) {
+    echo 'Exception when calling DefaultApi->getOutcomes: ', $e->getMessage(), PHP_EOL;
+    echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
+} catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->getOutcomes: ', $e->getMessage(), PHP_EOL;
 }
 ```
@@ -1894,14 +2030,18 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$app_id = 'app_id_example'; // string | The OneSignal App ID for your app.  Available in Keys & IDs.
-$offset = 56; // int | Segments are listed in ascending order of created_at date. offset will omit that number of segments from the beginning of the list. Eg offset 5, will remove the 5 earliest created Segments.
-$limit = 56; // int | The amount of Segments in the response. Maximum 300.
+$app_id = '00000000-0000-0000-0000-000000000000'; // string | The OneSignal App ID for your app.  Available in Keys & IDs.
+$offset = 0; // int | Segments are listed in ascending order of created_at date. offset will omit that number of segments from the beginning of the list. Eg offset 5, will remove the 5 earliest created Segments.
+$limit = 10; // int | The amount of Segments in the response. Maximum 300.
 
 try {
     $result = $apiInstance->getSegments($app_id, $offset, $limit);
     print_r($result);
-} catch (Exception $e) {
+} catch (\onesignal\client\ApiException $e) {
+    echo 'Exception when calling DefaultApi->getSegments: ', $e->getMessage(), PHP_EOL;
+    echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
+} catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->getSegments: ', $e->getMessage(), PHP_EOL;
 }
 ```
@@ -1960,14 +2100,18 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$app_id = 'app_id_example'; // string
-$alias_label = 'alias_label_example'; // string
-$alias_id = 'alias_id_example'; // string
+$app_id = '00000000-0000-0000-0000-000000000000'; // string
+$alias_label = 'external_id'; // string
+$alias_id = 'YOUR_USER_EXTERNAL_ID'; // string
 
 try {
     $result = $apiInstance->getUser($app_id, $alias_label, $alias_id);
     print_r($result);
-} catch (Exception $e) {
+} catch (\onesignal\client\ApiException $e) {
+    echo 'Exception when calling DefaultApi->getUser: ', $e->getMessage(), PHP_EOL;
+    echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
+} catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->getUser: ', $e->getMessage(), PHP_EOL;
 }
 ```
@@ -2026,13 +2170,17 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$app_id = 'app_id_example'; // string
-$token_id = 'token_id_example'; // string
+$app_id = '00000000-0000-0000-0000-000000000000'; // string
+$token_id = '0aa1b2c3-d4e5-46f7-8899-aabbccddeeff'; // string
 
 try {
     $result = $apiInstance->rotateApiKey($app_id, $token_id);
     print_r($result);
-} catch (Exception $e) {
+} catch (\onesignal\client\ApiException $e) {
+    echo 'Exception when calling DefaultApi->rotateApiKey: ', $e->getMessage(), PHP_EOL;
+    echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
+} catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->rotateApiKey: ', $e->getMessage(), PHP_EOL;
 }
 ```
@@ -2090,14 +2238,18 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$app_id = 'app_id_example'; // string | Your OneSignal App ID in UUID v4 format.
-$activity_type = 'activity_type_example'; // string | The name of the Live Activity defined in your app. This should match the attributes struct used in your app's Live Activity implementation.
+$app_id = '00000000-0000-0000-0000-000000000000'; // string | Your OneSignal App ID in UUID v4 format.
+$activity_type = 'order_status'; // string | The name of the Live Activity defined in your app. This should match the attributes struct used in your app's Live Activity implementation.
 $start_live_activity_request = new \onesignal\client\model\StartLiveActivityRequest(); // \onesignal\client\model\StartLiveActivityRequest
 
 try {
     $result = $apiInstance->startLiveActivity($app_id, $activity_type, $start_live_activity_request);
     print_r($result);
-} catch (Exception $e) {
+} catch (\onesignal\client\ApiException $e) {
+    echo 'Exception when calling DefaultApi->startLiveActivity: ', $e->getMessage(), PHP_EOL;
+    echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
+} catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->startLiveActivity: ', $e->getMessage(), PHP_EOL;
 }
 ```
@@ -2156,14 +2308,18 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$app_id = 'app_id_example'; // string
-$subscription_id = 'subscription_id_example'; // string
+$app_id = '00000000-0000-0000-0000-000000000000'; // string
+$subscription_id = '7e4c5b9a-1f60-4d07-9b1a-2e8c8d2cae51'; // string
 $transfer_subscription_request_body = new \onesignal\client\model\TransferSubscriptionRequestBody(); // \onesignal\client\model\TransferSubscriptionRequestBody
 
 try {
     $result = $apiInstance->transferSubscription($app_id, $subscription_id, $transfer_subscription_request_body);
     print_r($result);
-} catch (Exception $e) {
+} catch (\onesignal\client\ApiException $e) {
+    echo 'Exception when calling DefaultApi->transferSubscription: ', $e->getMessage(), PHP_EOL;
+    echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
+} catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->transferSubscription: ', $e->getMessage(), PHP_EOL;
 }
 ```
@@ -2222,14 +2378,18 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$app_id = 'app_id_example'; // string | The OneSignal App ID for your app.  Available in Keys & IDs.
-$notification_id = 'notification_id_example'; // string | The id of the message found in the creation notification POST response, View Notifications GET response, or URL within the Message Report.
-$token = 'token_example'; // string | The unsubscribe token that is generated via liquid syntax in {{subscription.unsubscribe_token}} when personalizing an email.
+$app_id = '00000000-0000-0000-0000-000000000000'; // string | The OneSignal App ID for your app.  Available in Keys & IDs.
+$notification_id = 'b3a0c8bd-3a4c-4b22-9a73-3f1a8c2d1b88'; // string | The id of the message found in the creation notification POST response, View Notifications GET response, or URL within the Message Report.
+$token = 'YOUR_TOKEN_ID'; // string | The unsubscribe token that is generated via liquid syntax in {{subscription.unsubscribe_token}} when personalizing an email.
 
 try {
     $result = $apiInstance->unsubscribeEmailWithToken($app_id, $notification_id, $token);
     print_r($result);
-} catch (Exception $e) {
+} catch (\onesignal\client\ApiException $e) {
+    echo 'Exception when calling DefaultApi->unsubscribeEmailWithToken: ', $e->getMessage(), PHP_EOL;
+    echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
+} catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->unsubscribeEmailWithToken: ', $e->getMessage(), PHP_EOL;
 }
 ```
@@ -2288,14 +2448,18 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$app_id = 'app_id_example'; // string
-$token_id = 'token_id_example'; // string
+$app_id = '00000000-0000-0000-0000-000000000000'; // string
+$token_id = '0aa1b2c3-d4e5-46f7-8899-aabbccddeeff'; // string
 $update_api_key_request = new \onesignal\client\model\UpdateApiKeyRequest(); // \onesignal\client\model\UpdateApiKeyRequest
 
 try {
     $result = $apiInstance->updateApiKey($app_id, $token_id, $update_api_key_request);
     print_r($result);
-} catch (Exception $e) {
+} catch (\onesignal\client\ApiException $e) {
+    echo 'Exception when calling DefaultApi->updateApiKey: ', $e->getMessage(), PHP_EOL;
+    echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
+} catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->updateApiKey: ', $e->getMessage(), PHP_EOL;
 }
 ```
@@ -2354,13 +2518,17 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$app_id = 'app_id_example'; // string | An app id
+$app_id = '00000000-0000-0000-0000-000000000000'; // string | An app id
 $app = new \onesignal\client\model\App(); // \onesignal\client\model\App
 
 try {
     $result = $apiInstance->updateApp($app_id, $app);
     print_r($result);
-} catch (Exception $e) {
+} catch (\onesignal\client\ApiException $e) {
+    echo 'Exception when calling DefaultApi->updateApp: ', $e->getMessage(), PHP_EOL;
+    echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
+} catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->updateApp: ', $e->getMessage(), PHP_EOL;
 }
 ```
@@ -2418,14 +2586,18 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$app_id = 'app_id_example'; // string | The OneSignal App ID for your app.  Available in Keys & IDs.
-$activity_id = 'activity_id_example'; // string | Live Activity record ID
+$app_id = '00000000-0000-0000-0000-000000000000'; // string | The OneSignal App ID for your app.  Available in Keys & IDs.
+$activity_id = '12345'; // string | Live Activity record ID
 $update_live_activity_request = new \onesignal\client\model\UpdateLiveActivityRequest(); // \onesignal\client\model\UpdateLiveActivityRequest
 
 try {
     $result = $apiInstance->updateLiveActivity($app_id, $activity_id, $update_live_activity_request);
     print_r($result);
-} catch (Exception $e) {
+} catch (\onesignal\client\ApiException $e) {
+    echo 'Exception when calling DefaultApi->updateLiveActivity: ', $e->getMessage(), PHP_EOL;
+    echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
+} catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->updateLiveActivity: ', $e->getMessage(), PHP_EOL;
 }
 ```
@@ -2484,13 +2656,17 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$app_id = 'app_id_example'; // string
-$subscription_id = 'subscription_id_example'; // string
+$app_id = '00000000-0000-0000-0000-000000000000'; // string
+$subscription_id = '7e4c5b9a-1f60-4d07-9b1a-2e8c8d2cae51'; // string
 $subscription_body = new \onesignal\client\model\SubscriptionBody(); // \onesignal\client\model\SubscriptionBody
 
 try {
     $apiInstance->updateSubscription($app_id, $subscription_id, $subscription_body);
-} catch (Exception $e) {
+} catch (\onesignal\client\ApiException $e) {
+    echo 'Exception when calling DefaultApi->updateSubscription: ', $e->getMessage(), PHP_EOL;
+    echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
+} catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->updateSubscription: ', $e->getMessage(), PHP_EOL;
 }
 ```
@@ -2549,15 +2725,19 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$app_id = 'app_id_example'; // string | Your OneSignal App ID in UUID v4 format.
-$token_type = 'token_type_example'; // string | The type of token to use when looking up the subscription. See Subscription Types.
-$token = 'token_example'; // string | The value of the token to lookup by (e.g., email address, phone number).
+$app_id = '00000000-0000-0000-0000-000000000000'; // string | Your OneSignal App ID in UUID v4 format.
+$token_type = 'Email'; // string | The type of token to use when looking up the subscription. See Subscription Types.
+$token = 'user@example.com'; // string | The value of the token to lookup by (e.g., email address, phone number).
 $subscription_body = new \onesignal\client\model\SubscriptionBody(); // \onesignal\client\model\SubscriptionBody
 
 try {
     $result = $apiInstance->updateSubscriptionByToken($app_id, $token_type, $token, $subscription_body);
     print_r($result);
-} catch (Exception $e) {
+} catch (\onesignal\client\ApiException $e) {
+    echo 'Exception when calling DefaultApi->updateSubscriptionByToken: ', $e->getMessage(), PHP_EOL;
+    echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
+} catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->updateSubscriptionByToken: ', $e->getMessage(), PHP_EOL;
 }
 ```
@@ -2617,14 +2797,18 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$template_id = 'template_id_example'; // string
-$app_id = 'app_id_example'; // string
+$template_id = 'e4d3c2b1-a09f-4f1e-8d7c-6b5a4f3e2d1c'; // string
+$app_id = '00000000-0000-0000-0000-000000000000'; // string
 $update_template_request = new \onesignal\client\model\UpdateTemplateRequest(); // \onesignal\client\model\UpdateTemplateRequest
 
 try {
     $result = $apiInstance->updateTemplate($template_id, $app_id, $update_template_request);
     print_r($result);
-} catch (Exception $e) {
+} catch (\onesignal\client\ApiException $e) {
+    echo 'Exception when calling DefaultApi->updateTemplate: ', $e->getMessage(), PHP_EOL;
+    echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
+} catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->updateTemplate: ', $e->getMessage(), PHP_EOL;
 }
 ```
@@ -2683,15 +2867,19 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$app_id = 'app_id_example'; // string
-$alias_label = 'alias_label_example'; // string
-$alias_id = 'alias_id_example'; // string
+$app_id = '00000000-0000-0000-0000-000000000000'; // string
+$alias_label = 'external_id'; // string
+$alias_id = 'YOUR_USER_EXTERNAL_ID'; // string
 $update_user_request = new \onesignal\client\model\UpdateUserRequest(); // \onesignal\client\model\UpdateUserRequest
 
 try {
     $result = $apiInstance->updateUser($app_id, $alias_label, $alias_id, $update_user_request);
     print_r($result);
-} catch (Exception $e) {
+} catch (\onesignal\client\ApiException $e) {
+    echo 'Exception when calling DefaultApi->updateUser: ', $e->getMessage(), PHP_EOL;
+    echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
+} catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->updateUser: ', $e->getMessage(), PHP_EOL;
 }
 ```
@@ -2751,12 +2939,16 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$app_id = 'app_id_example'; // string
+$app_id = '00000000-0000-0000-0000-000000000000'; // string
 
 try {
     $result = $apiInstance->viewApiKeys($app_id);
     print_r($result);
-} catch (Exception $e) {
+} catch (\onesignal\client\ApiException $e) {
+    echo 'Exception when calling DefaultApi->viewApiKeys: ', $e->getMessage(), PHP_EOL;
+    echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
+} catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->viewApiKeys: ', $e->getMessage(), PHP_EOL;
 }
 ```
@@ -2813,13 +3005,17 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$template_id = 'template_id_example'; // string
-$app_id = 'app_id_example'; // string
+$template_id = 'e4d3c2b1-a09f-4f1e-8d7c-6b5a4f3e2d1c'; // string
+$app_id = '00000000-0000-0000-0000-000000000000'; // string
 
 try {
     $result = $apiInstance->viewTemplate($template_id, $app_id);
     print_r($result);
-} catch (Exception $e) {
+} catch (\onesignal\client\ApiException $e) {
+    echo 'Exception when calling DefaultApi->viewTemplate: ', $e->getMessage(), PHP_EOL;
+    echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
+} catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->viewTemplate: ', $e->getMessage(), PHP_EOL;
 }
 ```
@@ -2877,15 +3073,19 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$app_id = 'app_id_example'; // string | Your OneSignal App ID in UUID v4 format.
-$limit = 50; // int | Maximum number of templates. Default and max is 50.
+$app_id = '00000000-0000-0000-0000-000000000000'; // string | Your OneSignal App ID in UUID v4 format.
+$limit = 10; // int | Maximum number of templates. Default and max is 50.
 $offset = 0; // int | Pagination offset.
-$channel = 'channel_example'; // string | Filter by delivery channel.
+$channel = 'push'; // string | Filter by delivery channel.
 
 try {
     $result = $apiInstance->viewTemplates($app_id, $limit, $offset, $channel);
     print_r($result);
-} catch (Exception $e) {
+} catch (\onesignal\client\ApiException $e) {
+    echo 'Exception when calling DefaultApi->viewTemplates: ', $e->getMessage(), PHP_EOL;
+    echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
+} catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->viewTemplates: ', $e->getMessage(), PHP_EOL;
 }
 ```
