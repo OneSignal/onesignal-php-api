@@ -64,7 +64,7 @@ Every operation requires either a **REST API Key** (App-scoped, used by ~77% of 
 
 ### Error handling
 
-When a request fails, the SDK throws `\onesignal\client\ApiException` (catch the generic `\Exception` as a fallback). The HTTP status code is `$e->getCode()` (int); the parsed error body is `$e->getResponseBody()`. Most envelopes match `{ "errors": ["..."] }` (an array of strings) but a few endpoints return `{ "errors": [{"code": ..., "title": ..., "meta": {...}}] }` (an array of structured error objects — used by `POST /apps/{app_id}/users` 409 conflict, see `CreateUserConflictResponse`), `{ "errors": "..." }` (string), or `{ "success": false }` (no `errors` field at all). Robust error-handling code should tolerate all four shapes.
+When a request fails, the SDK throws `\onesignal\client\ApiException` (catch the generic `\Exception` as a fallback). The HTTP status code is `$e->getCode()` (int); the parsed error body is `$e->getResponseBody()`. Most envelopes match `{ "errors": ["..."] }` (an array of strings) but a few endpoints return `{ "errors": [{"code": ..., "title": ..., "meta": {...}}] }` (an array of structured error objects — used by `POST /apps/{app_id}/users` 409 conflict, see `CreateUserConflictResponse`), `{ "errors": "..." }` (string), or `{ "success": false }` (no `errors` field at all). Robust error-handling code should tolerate all four shapes. The `$e->getErrorMessages()` method does this for you, normalizing every shape to a flat `string[]` (empty when the body carries no `errors`).
 
 ### Polymorphic 200 from POST /notifications
 
@@ -119,6 +119,9 @@ try {
 } catch (\onesignal\client\ApiException $e) {
     echo 'Exception when calling DefaultApi->cancelNotification: ', $e->getMessage(), PHP_EOL;
     echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    // getErrorMessages() flattens any error-envelope shape to a string[];
+    // the raw body remains on getResponseBody().
+    echo 'Error Messages: ', implode(', ', $e->getErrorMessages()), PHP_EOL;
     echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
 } catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->cancelNotification: ', $e->getMessage(), PHP_EOL;
@@ -188,6 +191,9 @@ try {
 } catch (\onesignal\client\ApiException $e) {
     echo 'Exception when calling DefaultApi->copyTemplateToApp: ', $e->getMessage(), PHP_EOL;
     echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    // getErrorMessages() flattens any error-envelope shape to a string[];
+    // the raw body remains on getResponseBody().
+    echo 'Error Messages: ', implode(', ', $e->getErrorMessages()), PHP_EOL;
     echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
 } catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->copyTemplateToApp: ', $e->getMessage(), PHP_EOL;
@@ -259,6 +265,9 @@ try {
 } catch (\onesignal\client\ApiException $e) {
     echo 'Exception when calling DefaultApi->createAlias: ', $e->getMessage(), PHP_EOL;
     echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    // getErrorMessages() flattens any error-envelope shape to a string[];
+    // the raw body remains on getResponseBody().
+    echo 'Error Messages: ', implode(', ', $e->getErrorMessages()), PHP_EOL;
     echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
 } catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->createAlias: ', $e->getMessage(), PHP_EOL;
@@ -330,6 +339,9 @@ try {
 } catch (\onesignal\client\ApiException $e) {
     echo 'Exception when calling DefaultApi->createAliasBySubscription: ', $e->getMessage(), PHP_EOL;
     echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    // getErrorMessages() flattens any error-envelope shape to a string[];
+    // the raw body remains on getResponseBody().
+    echo 'Error Messages: ', implode(', ', $e->getErrorMessages()), PHP_EOL;
     echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
 } catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->createAliasBySubscription: ', $e->getMessage(), PHP_EOL;
@@ -399,6 +411,9 @@ try {
 } catch (\onesignal\client\ApiException $e) {
     echo 'Exception when calling DefaultApi->createApiKey: ', $e->getMessage(), PHP_EOL;
     echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    // getErrorMessages() flattens any error-envelope shape to a string[];
+    // the raw body remains on getResponseBody().
+    echo 'Error Messages: ', implode(', ', $e->getErrorMessages()), PHP_EOL;
     echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
 } catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->createApiKey: ', $e->getMessage(), PHP_EOL;
@@ -466,6 +481,9 @@ try {
 } catch (\onesignal\client\ApiException $e) {
     echo 'Exception when calling DefaultApi->createApp: ', $e->getMessage(), PHP_EOL;
     echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    // getErrorMessages() flattens any error-envelope shape to a string[];
+    // the raw body remains on getResponseBody().
+    echo 'Error Messages: ', implode(', ', $e->getErrorMessages()), PHP_EOL;
     echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
 } catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->createApp: ', $e->getMessage(), PHP_EOL;
@@ -533,6 +551,9 @@ try {
 } catch (\onesignal\client\ApiException $e) {
     echo 'Exception when calling DefaultApi->createCustomEvents: ', $e->getMessage(), PHP_EOL;
     echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    // getErrorMessages() flattens any error-envelope shape to a string[];
+    // the raw body remains on getResponseBody().
+    echo 'Error Messages: ', implode(', ', $e->getErrorMessages()), PHP_EOL;
     echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
 } catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->createCustomEvents: ', $e->getMessage(), PHP_EOL;
@@ -696,6 +717,9 @@ try {
 } catch (\onesignal\client\ApiException $e) {
     echo 'Exception when calling DefaultApi->createSegment: ', $e->getMessage(), PHP_EOL;
     echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    // getErrorMessages() flattens any error-envelope shape to a string[];
+    // the raw body remains on getResponseBody().
+    echo 'Error Messages: ', implode(', ', $e->getErrorMessages()), PHP_EOL;
     echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
 } catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->createSegment: ', $e->getMessage(), PHP_EOL;
@@ -766,6 +790,9 @@ try {
 } catch (\onesignal\client\ApiException $e) {
     echo 'Exception when calling DefaultApi->createSubscription: ', $e->getMessage(), PHP_EOL;
     echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    // getErrorMessages() flattens any error-envelope shape to a string[];
+    // the raw body remains on getResponseBody().
+    echo 'Error Messages: ', implode(', ', $e->getErrorMessages()), PHP_EOL;
     echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
 } catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->createSubscription: ', $e->getMessage(), PHP_EOL;
@@ -835,6 +862,9 @@ try {
 } catch (\onesignal\client\ApiException $e) {
     echo 'Exception when calling DefaultApi->createTemplate: ', $e->getMessage(), PHP_EOL;
     echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    // getErrorMessages() flattens any error-envelope shape to a string[];
+    // the raw body remains on getResponseBody().
+    echo 'Error Messages: ', implode(', ', $e->getErrorMessages()), PHP_EOL;
     echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
 } catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->createTemplate: ', $e->getMessage(), PHP_EOL;
@@ -902,6 +932,9 @@ try {
 } catch (\onesignal\client\ApiException $e) {
     echo 'Exception when calling DefaultApi->createUser: ', $e->getMessage(), PHP_EOL;
     echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    // getErrorMessages() flattens any error-envelope shape to a string[];
+    // the raw body remains on getResponseBody().
+    echo 'Error Messages: ', implode(', ', $e->getErrorMessages()), PHP_EOL;
     echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
 } catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->createUser: ', $e->getMessage(), PHP_EOL;
@@ -972,6 +1005,9 @@ try {
 } catch (\onesignal\client\ApiException $e) {
     echo 'Exception when calling DefaultApi->deleteAlias: ', $e->getMessage(), PHP_EOL;
     echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    // getErrorMessages() flattens any error-envelope shape to a string[];
+    // the raw body remains on getResponseBody().
+    echo 'Error Messages: ', implode(', ', $e->getErrorMessages()), PHP_EOL;
     echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
 } catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->deleteAlias: ', $e->getMessage(), PHP_EOL;
@@ -1042,6 +1078,9 @@ try {
 } catch (\onesignal\client\ApiException $e) {
     echo 'Exception when calling DefaultApi->deleteApiKey: ', $e->getMessage(), PHP_EOL;
     echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    // getErrorMessages() flattens any error-envelope shape to a string[];
+    // the raw body remains on getResponseBody().
+    echo 'Error Messages: ', implode(', ', $e->getErrorMessages()), PHP_EOL;
     echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
 } catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->deleteApiKey: ', $e->getMessage(), PHP_EOL;
@@ -1110,6 +1149,9 @@ try {
 } catch (\onesignal\client\ApiException $e) {
     echo 'Exception when calling DefaultApi->deleteSegment: ', $e->getMessage(), PHP_EOL;
     echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    // getErrorMessages() flattens any error-envelope shape to a string[];
+    // the raw body remains on getResponseBody().
+    echo 'Error Messages: ', implode(', ', $e->getErrorMessages()), PHP_EOL;
     echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
 } catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->deleteSegment: ', $e->getMessage(), PHP_EOL;
@@ -1177,6 +1219,9 @@ try {
 } catch (\onesignal\client\ApiException $e) {
     echo 'Exception when calling DefaultApi->deleteSubscription: ', $e->getMessage(), PHP_EOL;
     echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    // getErrorMessages() flattens any error-envelope shape to a string[];
+    // the raw body remains on getResponseBody().
+    echo 'Error Messages: ', implode(', ', $e->getErrorMessages()), PHP_EOL;
     echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
 } catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->deleteSubscription: ', $e->getMessage(), PHP_EOL;
@@ -1245,6 +1290,9 @@ try {
 } catch (\onesignal\client\ApiException $e) {
     echo 'Exception when calling DefaultApi->deleteTemplate: ', $e->getMessage(), PHP_EOL;
     echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    // getErrorMessages() flattens any error-envelope shape to a string[];
+    // the raw body remains on getResponseBody().
+    echo 'Error Messages: ', implode(', ', $e->getErrorMessages()), PHP_EOL;
     echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
 } catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->deleteTemplate: ', $e->getMessage(), PHP_EOL;
@@ -1313,6 +1361,9 @@ try {
 } catch (\onesignal\client\ApiException $e) {
     echo 'Exception when calling DefaultApi->deleteUser: ', $e->getMessage(), PHP_EOL;
     echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    // getErrorMessages() flattens any error-envelope shape to a string[];
+    // the raw body remains on getResponseBody().
+    echo 'Error Messages: ', implode(', ', $e->getErrorMessages()), PHP_EOL;
     echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
 } catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->deleteUser: ', $e->getMessage(), PHP_EOL;
@@ -1382,6 +1433,9 @@ try {
 } catch (\onesignal\client\ApiException $e) {
     echo 'Exception when calling DefaultApi->exportEvents: ', $e->getMessage(), PHP_EOL;
     echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    // getErrorMessages() flattens any error-envelope shape to a string[];
+    // the raw body remains on getResponseBody().
+    echo 'Error Messages: ', implode(', ', $e->getErrorMessages()), PHP_EOL;
     echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
 } catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->exportEvents: ', $e->getMessage(), PHP_EOL;
@@ -1450,6 +1504,9 @@ try {
 } catch (\onesignal\client\ApiException $e) {
     echo 'Exception when calling DefaultApi->exportSubscriptions: ', $e->getMessage(), PHP_EOL;
     echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    // getErrorMessages() flattens any error-envelope shape to a string[];
+    // the raw body remains on getResponseBody().
+    echo 'Error Messages: ', implode(', ', $e->getErrorMessages()), PHP_EOL;
     echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
 } catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->exportSubscriptions: ', $e->getMessage(), PHP_EOL;
@@ -1519,6 +1576,9 @@ try {
 } catch (\onesignal\client\ApiException $e) {
     echo 'Exception when calling DefaultApi->getAliases: ', $e->getMessage(), PHP_EOL;
     echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    // getErrorMessages() flattens any error-envelope shape to a string[];
+    // the raw body remains on getResponseBody().
+    echo 'Error Messages: ', implode(', ', $e->getErrorMessages()), PHP_EOL;
     echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
 } catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->getAliases: ', $e->getMessage(), PHP_EOL;
@@ -1588,6 +1648,9 @@ try {
 } catch (\onesignal\client\ApiException $e) {
     echo 'Exception when calling DefaultApi->getAliasesBySubscription: ', $e->getMessage(), PHP_EOL;
     echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    // getErrorMessages() flattens any error-envelope shape to a string[];
+    // the raw body remains on getResponseBody().
+    echo 'Error Messages: ', implode(', ', $e->getErrorMessages()), PHP_EOL;
     echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
 } catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->getAliasesBySubscription: ', $e->getMessage(), PHP_EOL;
@@ -1655,6 +1718,9 @@ try {
 } catch (\onesignal\client\ApiException $e) {
     echo 'Exception when calling DefaultApi->getApp: ', $e->getMessage(), PHP_EOL;
     echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    // getErrorMessages() flattens any error-envelope shape to a string[];
+    // the raw body remains on getResponseBody().
+    echo 'Error Messages: ', implode(', ', $e->getErrorMessages()), PHP_EOL;
     echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
 } catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->getApp: ', $e->getMessage(), PHP_EOL;
@@ -1720,6 +1786,9 @@ try {
 } catch (\onesignal\client\ApiException $e) {
     echo 'Exception when calling DefaultApi->getApps: ', $e->getMessage(), PHP_EOL;
     echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    // getErrorMessages() flattens any error-envelope shape to a string[];
+    // the raw body remains on getResponseBody().
+    echo 'Error Messages: ', implode(', ', $e->getErrorMessages()), PHP_EOL;
     echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
 } catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->getApps: ', $e->getMessage(), PHP_EOL;
@@ -1785,6 +1854,9 @@ try {
 } catch (\onesignal\client\ApiException $e) {
     echo 'Exception when calling DefaultApi->getNotification: ', $e->getMessage(), PHP_EOL;
     echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    // getErrorMessages() flattens any error-envelope shape to a string[];
+    // the raw body remains on getResponseBody().
+    echo 'Error Messages: ', implode(', ', $e->getErrorMessages()), PHP_EOL;
     echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
 } catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->getNotification: ', $e->getMessage(), PHP_EOL;
@@ -1853,6 +1925,9 @@ try {
 } catch (\onesignal\client\ApiException $e) {
     echo 'Exception when calling DefaultApi->getNotificationHistory: ', $e->getMessage(), PHP_EOL;
     echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    // getErrorMessages() flattens any error-envelope shape to a string[];
+    // the raw body remains on getResponseBody().
+    echo 'Error Messages: ', implode(', ', $e->getErrorMessages()), PHP_EOL;
     echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
 } catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->getNotificationHistory: ', $e->getMessage(), PHP_EOL;
@@ -1923,6 +1998,9 @@ try {
 } catch (\onesignal\client\ApiException $e) {
     echo 'Exception when calling DefaultApi->getNotifications: ', $e->getMessage(), PHP_EOL;
     echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    // getErrorMessages() flattens any error-envelope shape to a string[];
+    // the raw body remains on getResponseBody().
+    echo 'Error Messages: ', implode(', ', $e->getErrorMessages()), PHP_EOL;
     echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
 } catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->getNotifications: ', $e->getMessage(), PHP_EOL;
@@ -1997,6 +2075,9 @@ try {
 } catch (\onesignal\client\ApiException $e) {
     echo 'Exception when calling DefaultApi->getOutcomes: ', $e->getMessage(), PHP_EOL;
     echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    // getErrorMessages() flattens any error-envelope shape to a string[];
+    // the raw body remains on getResponseBody().
+    echo 'Error Messages: ', implode(', ', $e->getErrorMessages()), PHP_EOL;
     echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
 } catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->getOutcomes: ', $e->getMessage(), PHP_EOL;
@@ -2070,6 +2151,9 @@ try {
 } catch (\onesignal\client\ApiException $e) {
     echo 'Exception when calling DefaultApi->getSegments: ', $e->getMessage(), PHP_EOL;
     echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    // getErrorMessages() flattens any error-envelope shape to a string[];
+    // the raw body remains on getResponseBody().
+    echo 'Error Messages: ', implode(', ', $e->getErrorMessages()), PHP_EOL;
     echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
 } catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->getSegments: ', $e->getMessage(), PHP_EOL;
@@ -2140,6 +2224,9 @@ try {
 } catch (\onesignal\client\ApiException $e) {
     echo 'Exception when calling DefaultApi->getUser: ', $e->getMessage(), PHP_EOL;
     echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    // getErrorMessages() flattens any error-envelope shape to a string[];
+    // the raw body remains on getResponseBody().
+    echo 'Error Messages: ', implode(', ', $e->getErrorMessages()), PHP_EOL;
     echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
 } catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->getUser: ', $e->getMessage(), PHP_EOL;
@@ -2209,6 +2296,9 @@ try {
 } catch (\onesignal\client\ApiException $e) {
     echo 'Exception when calling DefaultApi->rotateApiKey: ', $e->getMessage(), PHP_EOL;
     echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    // getErrorMessages() flattens any error-envelope shape to a string[];
+    // the raw body remains on getResponseBody().
+    echo 'Error Messages: ', implode(', ', $e->getErrorMessages()), PHP_EOL;
     echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
 } catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->rotateApiKey: ', $e->getMessage(), PHP_EOL;
@@ -2278,6 +2368,9 @@ try {
 } catch (\onesignal\client\ApiException $e) {
     echo 'Exception when calling DefaultApi->startLiveActivity: ', $e->getMessage(), PHP_EOL;
     echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    // getErrorMessages() flattens any error-envelope shape to a string[];
+    // the raw body remains on getResponseBody().
+    echo 'Error Messages: ', implode(', ', $e->getErrorMessages()), PHP_EOL;
     echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
 } catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->startLiveActivity: ', $e->getMessage(), PHP_EOL;
@@ -2348,6 +2441,9 @@ try {
 } catch (\onesignal\client\ApiException $e) {
     echo 'Exception when calling DefaultApi->transferSubscription: ', $e->getMessage(), PHP_EOL;
     echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    // getErrorMessages() flattens any error-envelope shape to a string[];
+    // the raw body remains on getResponseBody().
+    echo 'Error Messages: ', implode(', ', $e->getErrorMessages()), PHP_EOL;
     echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
 } catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->transferSubscription: ', $e->getMessage(), PHP_EOL;
@@ -2418,6 +2514,9 @@ try {
 } catch (\onesignal\client\ApiException $e) {
     echo 'Exception when calling DefaultApi->unsubscribeEmailWithToken: ', $e->getMessage(), PHP_EOL;
     echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    // getErrorMessages() flattens any error-envelope shape to a string[];
+    // the raw body remains on getResponseBody().
+    echo 'Error Messages: ', implode(', ', $e->getErrorMessages()), PHP_EOL;
     echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
 } catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->unsubscribeEmailWithToken: ', $e->getMessage(), PHP_EOL;
@@ -2488,6 +2587,9 @@ try {
 } catch (\onesignal\client\ApiException $e) {
     echo 'Exception when calling DefaultApi->updateApiKey: ', $e->getMessage(), PHP_EOL;
     echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    // getErrorMessages() flattens any error-envelope shape to a string[];
+    // the raw body remains on getResponseBody().
+    echo 'Error Messages: ', implode(', ', $e->getErrorMessages()), PHP_EOL;
     echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
 } catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->updateApiKey: ', $e->getMessage(), PHP_EOL;
@@ -2557,6 +2659,9 @@ try {
 } catch (\onesignal\client\ApiException $e) {
     echo 'Exception when calling DefaultApi->updateApp: ', $e->getMessage(), PHP_EOL;
     echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    // getErrorMessages() flattens any error-envelope shape to a string[];
+    // the raw body remains on getResponseBody().
+    echo 'Error Messages: ', implode(', ', $e->getErrorMessages()), PHP_EOL;
     echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
 } catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->updateApp: ', $e->getMessage(), PHP_EOL;
@@ -2626,6 +2731,9 @@ try {
 } catch (\onesignal\client\ApiException $e) {
     echo 'Exception when calling DefaultApi->updateLiveActivity: ', $e->getMessage(), PHP_EOL;
     echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    // getErrorMessages() flattens any error-envelope shape to a string[];
+    // the raw body remains on getResponseBody().
+    echo 'Error Messages: ', implode(', ', $e->getErrorMessages()), PHP_EOL;
     echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
 } catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->updateLiveActivity: ', $e->getMessage(), PHP_EOL;
@@ -2695,6 +2803,9 @@ try {
 } catch (\onesignal\client\ApiException $e) {
     echo 'Exception when calling DefaultApi->updateSubscription: ', $e->getMessage(), PHP_EOL;
     echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    // getErrorMessages() flattens any error-envelope shape to a string[];
+    // the raw body remains on getResponseBody().
+    echo 'Error Messages: ', implode(', ', $e->getErrorMessages()), PHP_EOL;
     echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
 } catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->updateSubscription: ', $e->getMessage(), PHP_EOL;
@@ -2766,6 +2877,9 @@ try {
 } catch (\onesignal\client\ApiException $e) {
     echo 'Exception when calling DefaultApi->updateSubscriptionByToken: ', $e->getMessage(), PHP_EOL;
     echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    // getErrorMessages() flattens any error-envelope shape to a string[];
+    // the raw body remains on getResponseBody().
+    echo 'Error Messages: ', implode(', ', $e->getErrorMessages()), PHP_EOL;
     echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
 } catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->updateSubscriptionByToken: ', $e->getMessage(), PHP_EOL;
@@ -2837,6 +2951,9 @@ try {
 } catch (\onesignal\client\ApiException $e) {
     echo 'Exception when calling DefaultApi->updateTemplate: ', $e->getMessage(), PHP_EOL;
     echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    // getErrorMessages() flattens any error-envelope shape to a string[];
+    // the raw body remains on getResponseBody().
+    echo 'Error Messages: ', implode(', ', $e->getErrorMessages()), PHP_EOL;
     echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
 } catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->updateTemplate: ', $e->getMessage(), PHP_EOL;
@@ -2908,6 +3025,9 @@ try {
 } catch (\onesignal\client\ApiException $e) {
     echo 'Exception when calling DefaultApi->updateUser: ', $e->getMessage(), PHP_EOL;
     echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    // getErrorMessages() flattens any error-envelope shape to a string[];
+    // the raw body remains on getResponseBody().
+    echo 'Error Messages: ', implode(', ', $e->getErrorMessages()), PHP_EOL;
     echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
 } catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->updateUser: ', $e->getMessage(), PHP_EOL;
@@ -2977,6 +3097,9 @@ try {
 } catch (\onesignal\client\ApiException $e) {
     echo 'Exception when calling DefaultApi->viewApiKeys: ', $e->getMessage(), PHP_EOL;
     echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    // getErrorMessages() flattens any error-envelope shape to a string[];
+    // the raw body remains on getResponseBody().
+    echo 'Error Messages: ', implode(', ', $e->getErrorMessages()), PHP_EOL;
     echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
 } catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->viewApiKeys: ', $e->getMessage(), PHP_EOL;
@@ -3044,6 +3167,9 @@ try {
 } catch (\onesignal\client\ApiException $e) {
     echo 'Exception when calling DefaultApi->viewTemplate: ', $e->getMessage(), PHP_EOL;
     echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    // getErrorMessages() flattens any error-envelope shape to a string[];
+    // the raw body remains on getResponseBody().
+    echo 'Error Messages: ', implode(', ', $e->getErrorMessages()), PHP_EOL;
     echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
 } catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->viewTemplate: ', $e->getMessage(), PHP_EOL;
@@ -3114,6 +3240,9 @@ try {
 } catch (\onesignal\client\ApiException $e) {
     echo 'Exception when calling DefaultApi->viewTemplates: ', $e->getMessage(), PHP_EOL;
     echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    // getErrorMessages() flattens any error-envelope shape to a string[];
+    // the raw body remains on getResponseBody().
+    echo 'Error Messages: ', implode(', ', $e->getErrorMessages()), PHP_EOL;
     echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
 } catch (\Exception $e) {
     echo 'Exception when calling DefaultApi->viewTemplates: ', $e->getMessage(), PHP_EOL;
