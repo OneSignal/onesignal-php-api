@@ -9469,14 +9469,15 @@ class DefaultApi
      * @param  int $limit How many notifications to return.  Max is 50.  Default is 50. (optional)
      * @param  int $offset Page offset.  Default is 0.  Results are sorted by queued_at in descending order.  queued_at is a representation of the time that the notification was queued at. (optional)
      * @param  int $kind Kind of notifications returned:   * unset - All notification types (default)   * &#x60;0&#x60; - Dashboard only   * &#x60;1&#x60; - API only   * &#x60;3&#x60; - Automated only (optional)
+     * @param  string $time_offset Time-offset pagination cursor for sequential pulls of all messages.  Accepts either an ISO 8601 formatted timestamp (e.g. &#x60;2025-01-01T00:00:00.000Z&#x60;) or the opaque Base64 cursor token returned as &#x60;next_time_offset&#x60; in a prior response.  When set, results are sorted ascending by send_after and the standard &#x60;offset&#x60; parameter cannot be used.  Repeat the request with each &#x60;next_time_offset&#x60; until an empty notifications array is returned. (optional)
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \onesignal\client\model\NotificationSlice|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError
      */
-    public function getNotifications($app_id, $limit = null, $offset = null, $kind = null)
+    public function getNotifications($app_id, $limit = null, $offset = null, $kind = null, $time_offset = null)
     {
-        list($response) = $this->getNotificationsWithHttpInfo($app_id, $limit, $offset, $kind);
+        list($response) = $this->getNotificationsWithHttpInfo($app_id, $limit, $offset, $kind, $time_offset);
         return $response;
     }
 
@@ -9489,14 +9490,15 @@ class DefaultApi
      * @param  int $limit How many notifications to return.  Max is 50.  Default is 50. (optional)
      * @param  int $offset Page offset.  Default is 0.  Results are sorted by queued_at in descending order.  queued_at is a representation of the time that the notification was queued at. (optional)
      * @param  int $kind Kind of notifications returned:   * unset - All notification types (default)   * &#x60;0&#x60; - Dashboard only   * &#x60;1&#x60; - API only   * &#x60;3&#x60; - Automated only (optional)
+     * @param  string $time_offset Time-offset pagination cursor for sequential pulls of all messages.  Accepts either an ISO 8601 formatted timestamp (e.g. &#x60;2025-01-01T00:00:00.000Z&#x60;) or the opaque Base64 cursor token returned as &#x60;next_time_offset&#x60; in a prior response.  When set, results are sorted ascending by send_after and the standard &#x60;offset&#x60; parameter cannot be used.  Repeat the request with each &#x60;next_time_offset&#x60; until an empty notifications array is returned. (optional)
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \onesignal\client\model\NotificationSlice|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getNotificationsWithHttpInfo($app_id, $limit = null, $offset = null, $kind = null)
+    public function getNotificationsWithHttpInfo($app_id, $limit = null, $offset = null, $kind = null, $time_offset = null)
     {
-        $request = $this->getNotificationsRequest($app_id, $limit, $offset, $kind);
+        $request = $this->getNotificationsRequest($app_id, $limit, $offset, $kind, $time_offset);
 
         try {
             $options = $this->createHttpClientOption();
@@ -9637,13 +9639,14 @@ class DefaultApi
      * @param  int $limit How many notifications to return.  Max is 50.  Default is 50. (optional)
      * @param  int $offset Page offset.  Default is 0.  Results are sorted by queued_at in descending order.  queued_at is a representation of the time that the notification was queued at. (optional)
      * @param  int $kind Kind of notifications returned:   * unset - All notification types (default)   * &#x60;0&#x60; - Dashboard only   * &#x60;1&#x60; - API only   * &#x60;3&#x60; - Automated only (optional)
+     * @param  string $time_offset Time-offset pagination cursor for sequential pulls of all messages.  Accepts either an ISO 8601 formatted timestamp (e.g. &#x60;2025-01-01T00:00:00.000Z&#x60;) or the opaque Base64 cursor token returned as &#x60;next_time_offset&#x60; in a prior response.  When set, results are sorted ascending by send_after and the standard &#x60;offset&#x60; parameter cannot be used.  Repeat the request with each &#x60;next_time_offset&#x60; until an empty notifications array is returned. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getNotificationsAsync($app_id, $limit = null, $offset = null, $kind = null)
+    public function getNotificationsAsync($app_id, $limit = null, $offset = null, $kind = null, $time_offset = null)
     {
-        return $this->getNotificationsAsyncWithHttpInfo($app_id, $limit, $offset, $kind)
+        return $this->getNotificationsAsyncWithHttpInfo($app_id, $limit, $offset, $kind, $time_offset)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -9660,14 +9663,15 @@ class DefaultApi
      * @param  int $limit How many notifications to return.  Max is 50.  Default is 50. (optional)
      * @param  int $offset Page offset.  Default is 0.  Results are sorted by queued_at in descending order.  queued_at is a representation of the time that the notification was queued at. (optional)
      * @param  int $kind Kind of notifications returned:   * unset - All notification types (default)   * &#x60;0&#x60; - Dashboard only   * &#x60;1&#x60; - API only   * &#x60;3&#x60; - Automated only (optional)
+     * @param  string $time_offset Time-offset pagination cursor for sequential pulls of all messages.  Accepts either an ISO 8601 formatted timestamp (e.g. &#x60;2025-01-01T00:00:00.000Z&#x60;) or the opaque Base64 cursor token returned as &#x60;next_time_offset&#x60; in a prior response.  When set, results are sorted ascending by send_after and the standard &#x60;offset&#x60; parameter cannot be used.  Repeat the request with each &#x60;next_time_offset&#x60; until an empty notifications array is returned. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getNotificationsAsyncWithHttpInfo($app_id, $limit = null, $offset = null, $kind = null)
+    public function getNotificationsAsyncWithHttpInfo($app_id, $limit = null, $offset = null, $kind = null, $time_offset = null)
     {
         $returnType = '\onesignal\client\model\NotificationSlice';
-        $request = $this->getNotificationsRequest($app_id, $limit, $offset, $kind);
+        $request = $this->getNotificationsRequest($app_id, $limit, $offset, $kind, $time_offset);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -9712,11 +9716,12 @@ class DefaultApi
      * @param  int $limit How many notifications to return.  Max is 50.  Default is 50. (optional)
      * @param  int $offset Page offset.  Default is 0.  Results are sorted by queued_at in descending order.  queued_at is a representation of the time that the notification was queued at. (optional)
      * @param  int $kind Kind of notifications returned:   * unset - All notification types (default)   * &#x60;0&#x60; - Dashboard only   * &#x60;1&#x60; - API only   * &#x60;3&#x60; - Automated only (optional)
+     * @param  string $time_offset Time-offset pagination cursor for sequential pulls of all messages.  Accepts either an ISO 8601 formatted timestamp (e.g. &#x60;2025-01-01T00:00:00.000Z&#x60;) or the opaque Base64 cursor token returned as &#x60;next_time_offset&#x60; in a prior response.  When set, results are sorted ascending by send_after and the standard &#x60;offset&#x60; parameter cannot be used.  Repeat the request with each &#x60;next_time_offset&#x60; until an empty notifications array is returned. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getNotificationsRequest($app_id, $limit = null, $offset = null, $kind = null)
+    public function getNotificationsRequest($app_id, $limit = null, $offset = null, $kind = null, $time_offset = null)
     {
         // verify the required parameter 'app_id' is set
         if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
@@ -9764,6 +9769,15 @@ class DefaultApi
             $kind,
             'kind', // param base name
             'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $time_offset,
+            'time_offset', // param base name
+            'string', // openApiType
             'form', // style
             true, // explode
             false // required

@@ -74,6 +74,41 @@ class NotificationHelpers
         }
     }
 
+    /**
+     * Whether a POST /notifications 200 response is the "message sent" branch.
+     *
+     * POST /notifications returns 200 in two cases that share the
+     * CreateNotificationSuccessResponse shape: a notification was created
+     * (non-empty id), or none was (empty id, with errors carrying the reason).
+     * Prefer this guard over inspecting id directly.
+     *
+     * @param \onesignal\client\model\CreateNotificationSuccessResponse $response
+     *
+     * @return bool true when a notification was created
+     */
+    public static function isMessageSent($response)
+    {
+        if ($response === null) {
+            return false;
+        }
+        $id = $response->getId();
+        return is_string($id) && $id !== '';
+    }
+
+    /**
+     * Whether a POST /notifications 200 response is the "message not sent"
+     * branch -- no notification was created (id absent or empty); inspect
+     * errors for why.
+     *
+     * @param \onesignal\client\model\CreateNotificationSuccessResponse $response
+     *
+     * @return bool true when no notification was created
+     */
+    public static function isMessageNotSent($response)
+    {
+        return !self::isMessageSent($response);
+    }
+
     private static function headerValue($headers, $name)
     {
         if (!is_array($headers)) {
