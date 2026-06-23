@@ -126,7 +126,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \onesignal\client\model\GenericSuccessBoolResponse|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError
+     * @return \onesignal\client\model\GenericSuccessBoolResponse|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError
      */
     public function cancelNotification($app_id, $notification_id)
     {
@@ -144,7 +144,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \onesignal\client\model\GenericSuccessBoolResponse|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \onesignal\client\model\GenericSuccessBoolResponse|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError, HTTP status code, HTTP response headers (array of strings)
      */
     public function cancelNotificationWithHttpInfo($app_id, $notification_id)
     {
@@ -294,6 +294,14 @@ class DefaultApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\onesignal\client\model\RateLimitError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -502,7 +510,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \onesignal\client\model\TemplateResource|\onesignal\client\model\GenericError
+     * @return \onesignal\client\model\TemplateResource|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError
      */
     public function copyTemplateToApp($template_id, $app_id, $copy_template_request)
     {
@@ -521,7 +529,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \onesignal\client\model\TemplateResource|\onesignal\client\model\GenericError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \onesignal\client\model\TemplateResource|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError, HTTP status code, HTTP response headers (array of strings)
      */
     public function copyTemplateToAppWithHttpInfo($template_id, $app_id, $copy_template_request)
     {
@@ -622,6 +630,14 @@ class DefaultApi
                     $e->setResponseObject($data);
                     break;
                 case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\onesignal\client\model\GenericError',
@@ -847,7 +863,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \onesignal\client\model\UserIdentityBody|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError
+     * @return \onesignal\client\model\UserIdentityBody|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError
      */
     public function createAlias($app_id, $alias_label, $alias_id, $user_identity_body)
     {
@@ -865,7 +881,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \onesignal\client\model\UserIdentityBody|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \onesignal\client\model\UserIdentityBody|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError, HTTP status code, HTTP response headers (array of strings)
      */
     public function createAliasWithHttpInfo($app_id, $alias_label, $alias_id, $user_identity_body)
     {
@@ -1038,6 +1054,14 @@ class DefaultApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\onesignal\client\model\RateLimitError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1271,7 +1295,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \onesignal\client\model\UserIdentityBody|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError
+     * @return \onesignal\client\model\UserIdentityBody|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError
      */
     public function createAliasBySubscription($app_id, $subscription_id, $user_identity_body)
     {
@@ -1288,7 +1312,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \onesignal\client\model\UserIdentityBody|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \onesignal\client\model\UserIdentityBody|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError, HTTP status code, HTTP response headers (array of strings)
      */
     public function createAliasBySubscriptionWithHttpInfo($app_id, $subscription_id, $user_identity_body)
     {
@@ -1461,6 +1485,14 @@ class DefaultApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\onesignal\client\model\RateLimitError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1678,7 +1710,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \onesignal\client\model\CreateApiKeyResponse|\onesignal\client\model\GenericError
+     * @return \onesignal\client\model\CreateApiKeyResponse|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError
      */
     public function createApiKey($app_id, $create_api_key_request)
     {
@@ -1696,7 +1728,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \onesignal\client\model\CreateApiKeyResponse|\onesignal\client\model\GenericError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \onesignal\client\model\CreateApiKeyResponse|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError, HTTP status code, HTTP response headers (array of strings)
      */
     public function createApiKeyWithHttpInfo($app_id, $create_api_key_request)
     {
@@ -1797,6 +1829,14 @@ class DefaultApi
                     $e->setResponseObject($data);
                     break;
                 case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\onesignal\client\model\GenericError',
@@ -2003,7 +2043,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \onesignal\client\model\App|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError
+     * @return \onesignal\client\model\App|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError
      */
     public function createApp($app)
     {
@@ -2020,7 +2060,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \onesignal\client\model\App|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \onesignal\client\model\App|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError, HTTP status code, HTTP response headers (array of strings)
      */
     public function createAppWithHttpInfo($app)
     {
@@ -2147,6 +2187,14 @@ class DefaultApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\onesignal\client\model\RateLimitError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2334,7 +2382,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return object|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError
+     * @return object|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError
      */
     public function createCustomEvents($app_id, $custom_events_request)
     {
@@ -2352,7 +2400,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of object|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of object|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError, HTTP status code, HTTP response headers (array of strings)
      */
     public function createCustomEventsWithHttpInfo($app_id, $custom_events_request)
     {
@@ -2502,6 +2550,14 @@ class DefaultApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\onesignal\client\model\RateLimitError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2705,7 +2761,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \onesignal\client\model\CreateNotificationSuccessResponse|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError
+     * @return \onesignal\client\model\CreateNotificationSuccessResponse|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError
      */
     public function createNotification($notification)
     {
@@ -2722,7 +2778,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \onesignal\client\model\CreateNotificationSuccessResponse|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \onesignal\client\model\CreateNotificationSuccessResponse|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError, HTTP status code, HTTP response headers (array of strings)
      */
     public function createNotificationWithHttpInfo($notification)
     {
@@ -2849,6 +2905,14 @@ class DefaultApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\onesignal\client\model\RateLimitError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3036,7 +3100,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \onesignal\client\model\CreateSegmentSuccessResponse|\onesignal\client\model\GenericError|\onesignal\client\model\CreateSegmentConflictResponse|\onesignal\client\model\RateLimitError
+     * @return \onesignal\client\model\CreateSegmentSuccessResponse|\onesignal\client\model\GenericError|\onesignal\client\model\CreateSegmentConflictResponse|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError
      */
     public function createSegment($app_id, $segment = null)
     {
@@ -3054,7 +3118,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \onesignal\client\model\CreateSegmentSuccessResponse|\onesignal\client\model\GenericError|\onesignal\client\model\CreateSegmentConflictResponse|\onesignal\client\model\RateLimitError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \onesignal\client\model\CreateSegmentSuccessResponse|\onesignal\client\model\GenericError|\onesignal\client\model\CreateSegmentConflictResponse|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError, HTTP status code, HTTP response headers (array of strings)
      */
     public function createSegmentWithHttpInfo($app_id, $segment = null)
     {
@@ -3204,6 +3268,14 @@ class DefaultApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\onesignal\client\model\RateLimitError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3402,7 +3474,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \onesignal\client\model\SubscriptionBody|\onesignal\client\model\SubscriptionBody|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError
+     * @return \onesignal\client\model\SubscriptionBody|\onesignal\client\model\SubscriptionBody|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError
      */
     public function createSubscription($app_id, $alias_label, $alias_id, $subscription_body)
     {
@@ -3420,7 +3492,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \onesignal\client\model\SubscriptionBody|\onesignal\client\model\SubscriptionBody|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \onesignal\client\model\SubscriptionBody|\onesignal\client\model\SubscriptionBody|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError, HTTP status code, HTTP response headers (array of strings)
      */
     public function createSubscriptionWithHttpInfo($app_id, $alias_label, $alias_id, $subscription_body)
     {
@@ -3616,6 +3688,14 @@ class DefaultApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\onesignal\client\model\RateLimitError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3849,7 +3929,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \onesignal\client\model\TemplateResource|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError
+     * @return \onesignal\client\model\TemplateResource|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError
      */
     public function createTemplate($create_template_request)
     {
@@ -3866,7 +3946,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \onesignal\client\model\TemplateResource|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \onesignal\client\model\TemplateResource|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError, HTTP status code, HTTP response headers (array of strings)
      */
     public function createTemplateWithHttpInfo($create_template_request)
     {
@@ -3990,6 +4070,14 @@ class DefaultApi
                     $e->setResponseObject($data);
                     break;
                 case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\onesignal\client\model\GenericError',
@@ -4178,7 +4266,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \onesignal\client\model\User|\onesignal\client\model\User|\onesignal\client\model\User|\onesignal\client\model\GenericError|\onesignal\client\model\CreateUserConflictResponse|\onesignal\client\model\RateLimitError
+     * @return \onesignal\client\model\User|\onesignal\client\model\User|\onesignal\client\model\User|\onesignal\client\model\GenericError|\onesignal\client\model\CreateUserConflictResponse|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError
      */
     public function createUser($app_id, $user)
     {
@@ -4194,7 +4282,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \onesignal\client\model\User|\onesignal\client\model\User|\onesignal\client\model\User|\onesignal\client\model\GenericError|\onesignal\client\model\CreateUserConflictResponse|\onesignal\client\model\RateLimitError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \onesignal\client\model\User|\onesignal\client\model\User|\onesignal\client\model\User|\onesignal\client\model\GenericError|\onesignal\client\model\CreateUserConflictResponse|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError, HTTP status code, HTTP response headers (array of strings)
      */
     public function createUserWithHttpInfo($app_id, $user)
     {
@@ -4390,6 +4478,14 @@ class DefaultApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\onesignal\client\model\RateLimitError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4590,7 +4686,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \onesignal\client\model\UserIdentityBody|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError
+     * @return \onesignal\client\model\UserIdentityBody|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError
      */
     public function deleteAlias($app_id, $alias_label, $alias_id, $alias_label_to_delete)
     {
@@ -4608,7 +4704,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \onesignal\client\model\UserIdentityBody|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \onesignal\client\model\UserIdentityBody|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteAliasWithHttpInfo($app_id, $alias_label, $alias_id, $alias_label_to_delete)
     {
@@ -4781,6 +4877,14 @@ class DefaultApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\onesignal\client\model\RateLimitError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5017,7 +5121,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return object|\onesignal\client\model\GenericError
+     * @return object|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError
      */
     public function deleteApiKey($app_id, $token_id)
     {
@@ -5035,7 +5139,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of object|\onesignal\client\model\GenericError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of object|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteApiKeyWithHttpInfo($app_id, $token_id)
     {
@@ -5136,6 +5240,14 @@ class DefaultApi
                     $e->setResponseObject($data);
                     break;
                 case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\onesignal\client\model\GenericError',
@@ -5345,7 +5457,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \onesignal\client\model\GenericSuccessBoolResponse|\onesignal\client\model\GenericError|\onesignal\client\model\GenericSuccessBoolResponse|\onesignal\client\model\RateLimitError
+     * @return \onesignal\client\model\GenericSuccessBoolResponse|\onesignal\client\model\GenericError|\onesignal\client\model\GenericSuccessBoolResponse|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError
      */
     public function deleteSegment($app_id, $segment_id)
     {
@@ -5363,7 +5475,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \onesignal\client\model\GenericSuccessBoolResponse|\onesignal\client\model\GenericError|\onesignal\client\model\GenericSuccessBoolResponse|\onesignal\client\model\RateLimitError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \onesignal\client\model\GenericSuccessBoolResponse|\onesignal\client\model\GenericError|\onesignal\client\model\GenericSuccessBoolResponse|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteSegmentWithHttpInfo($app_id, $segment_id)
     {
@@ -5513,6 +5625,14 @@ class DefaultApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\onesignal\client\model\RateLimitError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5809,6 +5929,14 @@ class DefaultApi
                     );
                     $e->setResponseObject($data);
                     break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -5994,7 +6122,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \onesignal\client\model\GenericSuccessBoolResponse|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError
+     * @return \onesignal\client\model\GenericSuccessBoolResponse|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError
      */
     public function deleteTemplate($template_id, $app_id)
     {
@@ -6012,7 +6140,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \onesignal\client\model\GenericSuccessBoolResponse|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \onesignal\client\model\GenericSuccessBoolResponse|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteTemplateWithHttpInfo($template_id, $app_id)
     {
@@ -6136,6 +6264,14 @@ class DefaultApi
                     $e->setResponseObject($data);
                     break;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\onesignal\client\model\GenericError',
@@ -6430,6 +6566,14 @@ class DefaultApi
                     );
                     $e->setResponseObject($data);
                     break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -6632,7 +6776,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \onesignal\client\model\ExportEventsSuccessResponse|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError
+     * @return \onesignal\client\model\ExportEventsSuccessResponse|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError
      */
     public function exportEvents($notification_id, $app_id)
     {
@@ -6650,7 +6794,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \onesignal\client\model\ExportEventsSuccessResponse|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \onesignal\client\model\ExportEventsSuccessResponse|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError, HTTP status code, HTTP response headers (array of strings)
      */
     public function exportEventsWithHttpInfo($notification_id, $app_id)
     {
@@ -6800,6 +6944,14 @@ class DefaultApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\onesignal\client\model\RateLimitError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7007,7 +7159,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \onesignal\client\model\ExportSubscriptionsSuccessResponse|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError
+     * @return \onesignal\client\model\ExportSubscriptionsSuccessResponse|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError
      */
     public function exportSubscriptions($app_id, $export_subscriptions_request_body = null)
     {
@@ -7025,7 +7177,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \onesignal\client\model\ExportSubscriptionsSuccessResponse|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \onesignal\client\model\ExportSubscriptionsSuccessResponse|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError, HTTP status code, HTTP response headers (array of strings)
      */
     public function exportSubscriptionsWithHttpInfo($app_id, $export_subscriptions_request_body = null)
     {
@@ -7152,6 +7304,14 @@ class DefaultApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\onesignal\client\model\RateLimitError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7349,7 +7509,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \onesignal\client\model\UserIdentityBody|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError
+     * @return \onesignal\client\model\UserIdentityBody|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError
      */
     public function getAliases($app_id, $alias_label, $alias_id)
     {
@@ -7366,7 +7526,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \onesignal\client\model\UserIdentityBody|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \onesignal\client\model\UserIdentityBody|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAliasesWithHttpInfo($app_id, $alias_label, $alias_id)
     {
@@ -7516,6 +7676,14 @@ class DefaultApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\onesignal\client\model\RateLimitError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7733,7 +7901,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \onesignal\client\model\UserIdentityBody|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError
+     * @return \onesignal\client\model\UserIdentityBody|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError
      */
     public function getAliasesBySubscription($app_id, $subscription_id)
     {
@@ -7749,7 +7917,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \onesignal\client\model\UserIdentityBody|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \onesignal\client\model\UserIdentityBody|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAliasesBySubscriptionWithHttpInfo($app_id, $subscription_id)
     {
@@ -7873,6 +8041,14 @@ class DefaultApi
                     $e->setResponseObject($data);
                     break;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\onesignal\client\model\GenericError',
@@ -8077,7 +8253,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \onesignal\client\model\App|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError
+     * @return \onesignal\client\model\App|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError
      */
     public function getApp($app_id)
     {
@@ -8094,7 +8270,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \onesignal\client\model\App|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \onesignal\client\model\App|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAppWithHttpInfo($app_id)
     {
@@ -8221,6 +8397,14 @@ class DefaultApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\onesignal\client\model\RateLimitError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8408,7 +8592,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \onesignal\client\model\App[]|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError
+     * @return \onesignal\client\model\App[]|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError
      */
     public function getApps()
     {
@@ -8424,7 +8608,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \onesignal\client\model\App[]|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \onesignal\client\model\App[]|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAppsWithHttpInfo()
     {
@@ -8551,6 +8735,14 @@ class DefaultApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\onesignal\client\model\RateLimitError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8723,7 +8915,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \onesignal\client\model\NotificationWithMeta|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError
+     * @return \onesignal\client\model\NotificationWithMeta|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError
      */
     public function getNotification($app_id, $notification_id)
     {
@@ -8741,7 +8933,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \onesignal\client\model\NotificationWithMeta|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \onesignal\client\model\NotificationWithMeta|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getNotificationWithHttpInfo($app_id, $notification_id)
     {
@@ -8891,6 +9083,14 @@ class DefaultApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\onesignal\client\model\RateLimitError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -9098,7 +9298,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \onesignal\client\model\NotificationHistorySuccessResponse|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError
+     * @return \onesignal\client\model\NotificationHistorySuccessResponse|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError
      */
     public function getNotificationHistory($notification_id, $get_notification_history_request_body)
     {
@@ -9116,7 +9316,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \onesignal\client\model\NotificationHistorySuccessResponse|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \onesignal\client\model\NotificationHistorySuccessResponse|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getNotificationHistoryWithHttpInfo($notification_id, $get_notification_history_request_body)
     {
@@ -9266,6 +9466,14 @@ class DefaultApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\onesignal\client\model\RateLimitError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -9469,14 +9677,15 @@ class DefaultApi
      * @param  int $limit How many notifications to return.  Max is 50.  Default is 50. (optional)
      * @param  int $offset Page offset.  Default is 0.  Results are sorted by queued_at in descending order.  queued_at is a representation of the time that the notification was queued at. (optional)
      * @param  int $kind Kind of notifications returned:   * unset - All notification types (default)   * &#x60;0&#x60; - Dashboard only   * &#x60;1&#x60; - API only   * &#x60;3&#x60; - Automated only (optional)
+     * @param  string $time_offset Time-offset pagination cursor for sequential pulls of all messages.  Accepts either an ISO 8601 formatted timestamp (e.g. &#x60;2025-01-01T00:00:00.000Z&#x60;) or the opaque Base64 cursor token returned as &#x60;next_time_offset&#x60; in a prior response.  When set, results are sorted ascending by send_after and the standard &#x60;offset&#x60; parameter cannot be used.  Repeat the request with each &#x60;next_time_offset&#x60; until an empty notifications array is returned. (optional)
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \onesignal\client\model\NotificationSlice|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError
+     * @return \onesignal\client\model\NotificationSlice|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError
      */
-    public function getNotifications($app_id, $limit = null, $offset = null, $kind = null)
+    public function getNotifications($app_id, $limit = null, $offset = null, $kind = null, $time_offset = null)
     {
-        list($response) = $this->getNotificationsWithHttpInfo($app_id, $limit, $offset, $kind);
+        list($response) = $this->getNotificationsWithHttpInfo($app_id, $limit, $offset, $kind, $time_offset);
         return $response;
     }
 
@@ -9489,14 +9698,15 @@ class DefaultApi
      * @param  int $limit How many notifications to return.  Max is 50.  Default is 50. (optional)
      * @param  int $offset Page offset.  Default is 0.  Results are sorted by queued_at in descending order.  queued_at is a representation of the time that the notification was queued at. (optional)
      * @param  int $kind Kind of notifications returned:   * unset - All notification types (default)   * &#x60;0&#x60; - Dashboard only   * &#x60;1&#x60; - API only   * &#x60;3&#x60; - Automated only (optional)
+     * @param  string $time_offset Time-offset pagination cursor for sequential pulls of all messages.  Accepts either an ISO 8601 formatted timestamp (e.g. &#x60;2025-01-01T00:00:00.000Z&#x60;) or the opaque Base64 cursor token returned as &#x60;next_time_offset&#x60; in a prior response.  When set, results are sorted ascending by send_after and the standard &#x60;offset&#x60; parameter cannot be used.  Repeat the request with each &#x60;next_time_offset&#x60; until an empty notifications array is returned. (optional)
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \onesignal\client\model\NotificationSlice|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \onesignal\client\model\NotificationSlice|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getNotificationsWithHttpInfo($app_id, $limit = null, $offset = null, $kind = null)
+    public function getNotificationsWithHttpInfo($app_id, $limit = null, $offset = null, $kind = null, $time_offset = null)
     {
-        $request = $this->getNotificationsRequest($app_id, $limit, $offset, $kind);
+        $request = $this->getNotificationsRequest($app_id, $limit, $offset, $kind, $time_offset);
 
         try {
             $options = $this->createHttpClientOption();
@@ -9623,6 +9833,14 @@ class DefaultApi
                     );
                     $e->setResponseObject($data);
                     break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -9637,13 +9855,14 @@ class DefaultApi
      * @param  int $limit How many notifications to return.  Max is 50.  Default is 50. (optional)
      * @param  int $offset Page offset.  Default is 0.  Results are sorted by queued_at in descending order.  queued_at is a representation of the time that the notification was queued at. (optional)
      * @param  int $kind Kind of notifications returned:   * unset - All notification types (default)   * &#x60;0&#x60; - Dashboard only   * &#x60;1&#x60; - API only   * &#x60;3&#x60; - Automated only (optional)
+     * @param  string $time_offset Time-offset pagination cursor for sequential pulls of all messages.  Accepts either an ISO 8601 formatted timestamp (e.g. &#x60;2025-01-01T00:00:00.000Z&#x60;) or the opaque Base64 cursor token returned as &#x60;next_time_offset&#x60; in a prior response.  When set, results are sorted ascending by send_after and the standard &#x60;offset&#x60; parameter cannot be used.  Repeat the request with each &#x60;next_time_offset&#x60; until an empty notifications array is returned. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getNotificationsAsync($app_id, $limit = null, $offset = null, $kind = null)
+    public function getNotificationsAsync($app_id, $limit = null, $offset = null, $kind = null, $time_offset = null)
     {
-        return $this->getNotificationsAsyncWithHttpInfo($app_id, $limit, $offset, $kind)
+        return $this->getNotificationsAsyncWithHttpInfo($app_id, $limit, $offset, $kind, $time_offset)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -9660,14 +9879,15 @@ class DefaultApi
      * @param  int $limit How many notifications to return.  Max is 50.  Default is 50. (optional)
      * @param  int $offset Page offset.  Default is 0.  Results are sorted by queued_at in descending order.  queued_at is a representation of the time that the notification was queued at. (optional)
      * @param  int $kind Kind of notifications returned:   * unset - All notification types (default)   * &#x60;0&#x60; - Dashboard only   * &#x60;1&#x60; - API only   * &#x60;3&#x60; - Automated only (optional)
+     * @param  string $time_offset Time-offset pagination cursor for sequential pulls of all messages.  Accepts either an ISO 8601 formatted timestamp (e.g. &#x60;2025-01-01T00:00:00.000Z&#x60;) or the opaque Base64 cursor token returned as &#x60;next_time_offset&#x60; in a prior response.  When set, results are sorted ascending by send_after and the standard &#x60;offset&#x60; parameter cannot be used.  Repeat the request with each &#x60;next_time_offset&#x60; until an empty notifications array is returned. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getNotificationsAsyncWithHttpInfo($app_id, $limit = null, $offset = null, $kind = null)
+    public function getNotificationsAsyncWithHttpInfo($app_id, $limit = null, $offset = null, $kind = null, $time_offset = null)
     {
         $returnType = '\onesignal\client\model\NotificationSlice';
-        $request = $this->getNotificationsRequest($app_id, $limit, $offset, $kind);
+        $request = $this->getNotificationsRequest($app_id, $limit, $offset, $kind, $time_offset);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -9712,11 +9932,12 @@ class DefaultApi
      * @param  int $limit How many notifications to return.  Max is 50.  Default is 50. (optional)
      * @param  int $offset Page offset.  Default is 0.  Results are sorted by queued_at in descending order.  queued_at is a representation of the time that the notification was queued at. (optional)
      * @param  int $kind Kind of notifications returned:   * unset - All notification types (default)   * &#x60;0&#x60; - Dashboard only   * &#x60;1&#x60; - API only   * &#x60;3&#x60; - Automated only (optional)
+     * @param  string $time_offset Time-offset pagination cursor for sequential pulls of all messages.  Accepts either an ISO 8601 formatted timestamp (e.g. &#x60;2025-01-01T00:00:00.000Z&#x60;) or the opaque Base64 cursor token returned as &#x60;next_time_offset&#x60; in a prior response.  When set, results are sorted ascending by send_after and the standard &#x60;offset&#x60; parameter cannot be used.  Repeat the request with each &#x60;next_time_offset&#x60; until an empty notifications array is returned. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getNotificationsRequest($app_id, $limit = null, $offset = null, $kind = null)
+    public function getNotificationsRequest($app_id, $limit = null, $offset = null, $kind = null, $time_offset = null)
     {
         // verify the required parameter 'app_id' is set
         if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
@@ -9764,6 +9985,15 @@ class DefaultApi
             $kind,
             'kind', // param base name
             'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $time_offset,
+            'time_offset', // param base name
+            'string', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -9849,7 +10079,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \onesignal\client\model\OutcomesData|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError
+     * @return \onesignal\client\model\OutcomesData|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError
      */
     public function getOutcomes($app_id, $outcome_names, $outcome_names2 = null, $outcome_time_range = null, $outcome_platforms = null, $outcome_attribution = null)
     {
@@ -9871,7 +10101,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \onesignal\client\model\OutcomesData|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \onesignal\client\model\OutcomesData|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getOutcomesWithHttpInfo($app_id, $outcome_names, $outcome_names2 = null, $outcome_time_range = null, $outcome_platforms = null, $outcome_attribution = null)
     {
@@ -9998,6 +10228,14 @@ class DefaultApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\onesignal\client\model\RateLimitError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -10254,7 +10492,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \onesignal\client\model\GetSegmentsSuccessResponse|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError
+     * @return \onesignal\client\model\GetSegmentsSuccessResponse|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError
      */
     public function getSegments($app_id, $offset = null, $limit = null)
     {
@@ -10273,7 +10511,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \onesignal\client\model\GetSegmentsSuccessResponse|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \onesignal\client\model\GetSegmentsSuccessResponse|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getSegmentsWithHttpInfo($app_id, $offset = null, $limit = null)
     {
@@ -10400,6 +10638,14 @@ class DefaultApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\onesignal\client\model\RateLimitError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -10612,7 +10858,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \onesignal\client\model\User|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError
+     * @return \onesignal\client\model\User|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError
      */
     public function getUser($app_id, $alias_label, $alias_id)
     {
@@ -10629,7 +10875,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \onesignal\client\model\User|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \onesignal\client\model\User|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getUserWithHttpInfo($app_id, $alias_label, $alias_id)
     {
@@ -10779,6 +11025,14 @@ class DefaultApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\onesignal\client\model\RateLimitError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -10998,7 +11252,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \onesignal\client\model\CreateApiKeyResponse|\onesignal\client\model\GenericError
+     * @return \onesignal\client\model\CreateApiKeyResponse|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError
      */
     public function rotateApiKey($app_id, $token_id)
     {
@@ -11016,7 +11270,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \onesignal\client\model\CreateApiKeyResponse|\onesignal\client\model\GenericError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \onesignal\client\model\CreateApiKeyResponse|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError, HTTP status code, HTTP response headers (array of strings)
      */
     public function rotateApiKeyWithHttpInfo($app_id, $token_id)
     {
@@ -11117,6 +11371,14 @@ class DefaultApi
                     $e->setResponseObject($data);
                     break;
                 case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\onesignal\client\model\GenericError',
@@ -11327,7 +11589,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \onesignal\client\model\StartLiveActivitySuccessResponse|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError
+     * @return \onesignal\client\model\StartLiveActivitySuccessResponse|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError
      */
     public function startLiveActivity($app_id, $activity_type, $start_live_activity_request)
     {
@@ -11346,7 +11608,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \onesignal\client\model\StartLiveActivitySuccessResponse|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \onesignal\client\model\StartLiveActivitySuccessResponse|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError, HTTP status code, HTTP response headers (array of strings)
      */
     public function startLiveActivityWithHttpInfo($app_id, $activity_type, $start_live_activity_request)
     {
@@ -11473,6 +11735,14 @@ class DefaultApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\onesignal\client\model\RateLimitError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -11693,7 +11963,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \onesignal\client\model\UserIdentityBody|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError
+     * @return \onesignal\client\model\UserIdentityBody|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError
      */
     public function transferSubscription($app_id, $subscription_id, $transfer_subscription_request_body)
     {
@@ -11710,7 +11980,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \onesignal\client\model\UserIdentityBody|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \onesignal\client\model\UserIdentityBody|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError, HTTP status code, HTTP response headers (array of strings)
      */
     public function transferSubscriptionWithHttpInfo($app_id, $subscription_id, $transfer_subscription_request_body)
     {
@@ -11883,6 +12153,14 @@ class DefaultApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\onesignal\client\model\RateLimitError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -12101,7 +12379,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \onesignal\client\model\GenericSuccessBoolResponse|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError
+     * @return \onesignal\client\model\GenericSuccessBoolResponse|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError
      */
     public function unsubscribeEmailWithToken($app_id, $notification_id, $token)
     {
@@ -12120,7 +12398,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \onesignal\client\model\GenericSuccessBoolResponse|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \onesignal\client\model\GenericSuccessBoolResponse|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError, HTTP status code, HTTP response headers (array of strings)
      */
     public function unsubscribeEmailWithTokenWithHttpInfo($app_id, $notification_id, $token)
     {
@@ -12247,6 +12525,14 @@ class DefaultApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\onesignal\client\model\RateLimitError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -12472,7 +12758,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return object|\onesignal\client\model\GenericError
+     * @return object|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError
      */
     public function updateApiKey($app_id, $token_id, $update_api_key_request)
     {
@@ -12491,7 +12777,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of object|\onesignal\client\model\GenericError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of object|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateApiKeyWithHttpInfo($app_id, $token_id, $update_api_key_request)
     {
@@ -12592,6 +12878,14 @@ class DefaultApi
                     $e->setResponseObject($data);
                     break;
                 case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\onesignal\client\model\GenericError',
@@ -12816,7 +13110,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \onesignal\client\model\App|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError
+     * @return \onesignal\client\model\App|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError
      */
     public function updateApp($app_id, $app)
     {
@@ -12834,7 +13128,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \onesignal\client\model\App|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \onesignal\client\model\App|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateAppWithHttpInfo($app_id, $app)
     {
@@ -12961,6 +13255,14 @@ class DefaultApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\onesignal\client\model\RateLimitError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -13166,7 +13468,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \onesignal\client\model\UpdateLiveActivitySuccessResponse|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError
+     * @return \onesignal\client\model\UpdateLiveActivitySuccessResponse|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError
      */
     public function updateLiveActivity($app_id, $activity_id, $update_live_activity_request)
     {
@@ -13185,7 +13487,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \onesignal\client\model\UpdateLiveActivitySuccessResponse|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \onesignal\client\model\UpdateLiveActivitySuccessResponse|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateLiveActivityWithHttpInfo($app_id, $activity_id, $update_live_activity_request)
     {
@@ -13312,6 +13614,14 @@ class DefaultApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\onesignal\client\model\RateLimitError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -13625,6 +13935,14 @@ class DefaultApi
                     );
                     $e->setResponseObject($data);
                     break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -13827,7 +14145,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return object|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError
+     * @return object|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError
      */
     public function updateSubscriptionByToken($app_id, $token_type, $token, $subscription_body)
     {
@@ -13847,7 +14165,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of object|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of object|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateSubscriptionByTokenWithHttpInfo($app_id, $token_type, $token, $subscription_body)
     {
@@ -13971,6 +14289,14 @@ class DefaultApi
                     $e->setResponseObject($data);
                     break;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\onesignal\client\model\GenericError',
@@ -14213,7 +14539,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \onesignal\client\model\TemplateResource|\onesignal\client\model\GenericError
+     * @return \onesignal\client\model\TemplateResource|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError
      */
     public function updateTemplate($template_id, $app_id, $update_template_request)
     {
@@ -14232,7 +14558,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \onesignal\client\model\TemplateResource|\onesignal\client\model\GenericError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \onesignal\client\model\TemplateResource|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateTemplateWithHttpInfo($template_id, $app_id, $update_template_request)
     {
@@ -14333,6 +14659,14 @@ class DefaultApi
                     $e->setResponseObject($data);
                     break;
                 case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\onesignal\client\model\GenericError',
@@ -14558,7 +14892,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \onesignal\client\model\PropertiesBody|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError
+     * @return \onesignal\client\model\PropertiesBody|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError
      */
     public function updateUser($app_id, $alias_label, $alias_id, $update_user_request)
     {
@@ -14576,7 +14910,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \onesignal\client\model\PropertiesBody|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \onesignal\client\model\PropertiesBody|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateUserWithHttpInfo($app_id, $alias_label, $alias_id, $update_user_request)
     {
@@ -14726,6 +15060,14 @@ class DefaultApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\onesignal\client\model\RateLimitError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -14959,7 +15301,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \onesignal\client\model\ApiKeyTokensListResponse|\onesignal\client\model\GenericError
+     * @return \onesignal\client\model\ApiKeyTokensListResponse|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError
      */
     public function viewApiKeys($app_id)
     {
@@ -14976,7 +15318,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \onesignal\client\model\ApiKeyTokensListResponse|\onesignal\client\model\GenericError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \onesignal\client\model\ApiKeyTokensListResponse|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError, HTTP status code, HTTP response headers (array of strings)
      */
     public function viewApiKeysWithHttpInfo($app_id)
     {
@@ -15077,6 +15419,14 @@ class DefaultApi
                     $e->setResponseObject($data);
                     break;
                 case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\onesignal\client\model\GenericError',
@@ -15269,7 +15619,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \onesignal\client\model\TemplateResource|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError
+     * @return \onesignal\client\model\TemplateResource|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError
      */
     public function viewTemplate($template_id, $app_id)
     {
@@ -15287,7 +15637,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \onesignal\client\model\TemplateResource|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \onesignal\client\model\TemplateResource|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError, HTTP status code, HTTP response headers (array of strings)
      */
     public function viewTemplateWithHttpInfo($template_id, $app_id)
     {
@@ -15411,6 +15761,14 @@ class DefaultApi
                     $e->setResponseObject($data);
                     break;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\onesignal\client\model\GenericError',
@@ -15623,7 +15981,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \onesignal\client\model\TemplatesListResponse|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError
+     * @return \onesignal\client\model\TemplatesListResponse|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError
      */
     public function viewTemplates($app_id, $limit = 50, $offset = 0, $channel = null)
     {
@@ -15643,7 +16001,7 @@ class DefaultApi
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \onesignal\client\model\TemplatesListResponse|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \onesignal\client\model\TemplatesListResponse|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError, HTTP status code, HTTP response headers (array of strings)
      */
     public function viewTemplatesWithHttpInfo($app_id, $limit = 50, $offset = 0, $channel = null)
     {
@@ -15770,6 +16128,14 @@ class DefaultApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\onesignal\client\model\RateLimitError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
