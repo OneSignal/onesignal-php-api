@@ -6,8 +6,8 @@ A powerful way to send personalized messages at scale and build effective custom
 
 For more information, please visit [https://onesignal.com](https://onesignal.com).
 
-- API version: 5.8.0
-- Package version: 5.8.0
+- API version: 5.9.0
+- Package version: 5.9.0
 
 ## Requirements
 
