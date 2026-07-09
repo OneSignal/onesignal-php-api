@@ -1,5 +1,7 @@
 # Changelog
 
+## [5.9.0](https://github.com/OneSignal/onesignal-php-api/compare/v5.8.0...v5.9.0) (2026-07-09)
+
 ## [5.8.0](https://github.com/OneSignal/onesignal-php-api/compare/v5.7.0...v5.8.0) (2026-06-24)
 
 ### Features
