@@ -119,7 +119,7 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$app_id = '00000000-0000-0000-0000-000000000000'; // string
+$app_id = 'YOUR_APP_ID'; // string
 $notification_id = 'b3a0c8bd-3a4c-4b22-9a73-3f1a8c2d1b88'; // string
 
 try {
@@ -191,7 +191,7 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     $config
 );
 $template_id = 'e4d3c2b1-a09f-4f1e-8d7c-6b5a4f3e2d1c'; // string
-$app_id = '00000000-0000-0000-0000-000000000000'; // string
+$app_id = 'YOUR_APP_ID'; // string
 $copy_template_request = new \onesignal\client\model\CopyTemplateRequest(); // \onesignal\client\model\CopyTemplateRequest
 
 try {
@@ -263,7 +263,7 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$app_id = '00000000-0000-0000-0000-000000000000'; // string
+$app_id = 'YOUR_APP_ID'; // string
 $alias_label = 'external_id'; // string
 $alias_id = 'YOUR_USER_EXTERNAL_ID'; // string
 $user_identity_body = new \onesignal\client\model\UserIdentityBody(); // \onesignal\client\model\UserIdentityBody
@@ -338,7 +338,7 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$app_id = '00000000-0000-0000-0000-000000000000'; // string
+$app_id = 'YOUR_APP_ID'; // string
 $subscription_id = '7e4c5b9a-1f60-4d07-9b1a-2e8c8d2cae51'; // string
 $user_identity_body = new \onesignal\client\model\UserIdentityBody(); // \onesignal\client\model\UserIdentityBody
 
@@ -411,7 +411,7 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$app_id = '00000000-0000-0000-0000-000000000000'; // string
+$app_id = 'YOUR_APP_ID'; // string
 $create_api_key_request = new \onesignal\client\model\CreateApiKeyRequest(); // \onesignal\client\model\CreateApiKeyRequest
 
 try {
@@ -551,7 +551,7 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$app_id = '00000000-0000-0000-0000-000000000000'; // string | Your OneSignal App ID in UUID v4 format.
+$app_id = 'YOUR_APP_ID'; // string | Your OneSignal App ID in UUID v4 format.
 $custom_events_request = new \onesignal\client\model\CustomEventsRequest(); // \onesignal\client\model\CustomEventsRequest
 
 try {
@@ -626,6 +626,9 @@ $notification->setAppId('YOUR_APP_ID');
 $contents = new onesignal\client\Model\LanguageStringMap();
 $contents->setEn('Hello from OneSignal!');
 $notification->setContents($contents);
+$headings = new onesignal\client\Model\LanguageStringMap();
+$headings->setEn('Push Notification');
+$notification->setHeadings($headings);
 $notification->setIncludeAliases(['external_id' => ['YOUR_USER_EXTERNAL_ID']]);
 $notification->setTargetChannel('push');
 // Idempotency key: a client-generated UUID that lets you safely retry on network failure.
@@ -687,6 +690,9 @@ $notification->setAppId('YOUR_APP_ID');
 $contents = new onesignal\client\Model\LanguageStringMap();
 $contents->setEn('Hello from OneSignal!');
 $notification->setContents($contents);
+$headings = new onesignal\client\Model\LanguageStringMap();
+$headings->setEn('Push Notification');
+$notification->setHeadings($headings);
 $notification->setIncludeAliases(['external_id' => ['YOUR_USER_EXTERNAL_ID']]);
 $notification->setTargetChannel('push');
 // No idempotency key set: the helper generates a UUIDv4 and reuses it across retries.
@@ -758,7 +764,7 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$app_id = '00000000-0000-0000-0000-000000000000'; // string | The OneSignal App ID for your app.  Available in Keys & IDs.
+$app_id = 'YOUR_APP_ID'; // string | The OneSignal App ID for your app.  Available in Keys & IDs.
 $segment = new \onesignal\client\model\Segment(); // \onesignal\client\model\Segment
 
 try {
@@ -829,7 +835,7 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$app_id = '00000000-0000-0000-0000-000000000000'; // string
+$app_id = 'YOUR_APP_ID'; // string
 $alias_label = 'external_id'; // string
 $alias_id = 'YOUR_USER_EXTERNAL_ID'; // string
 $subscription_body = new \onesignal\client\model\SubscriptionBody(); // \onesignal\client\model\SubscriptionBody
@@ -973,7 +979,7 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$app_id = '00000000-0000-0000-0000-000000000000'; // string
+$app_id = 'YOUR_APP_ID'; // string
 $user = new \onesignal\client\model\User(); // \onesignal\client\model\User
 
 try {
@@ -1057,7 +1063,7 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$app_id = '00000000-0000-0000-0000-000000000000'; // string
+$app_id = 'YOUR_APP_ID'; // string
 $alias_label = 'external_id'; // string
 $alias_id = 'YOUR_USER_EXTERNAL_ID'; // string
 $alias_label_to_delete = 'external_id'; // string
@@ -1132,7 +1138,7 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$app_id = '00000000-0000-0000-0000-000000000000'; // string
+$app_id = 'YOUR_APP_ID'; // string
 $token_id = '0aa1b2c3-d4e5-46f7-8899-aabbccddeeff'; // string
 
 try {
@@ -1203,7 +1209,7 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$app_id = '00000000-0000-0000-0000-000000000000'; // string | The OneSignal App ID for your app.  Available in Keys & IDs.
+$app_id = 'YOUR_APP_ID'; // string | The OneSignal App ID for your app.  Available in Keys & IDs.
 $segment_id = 'd6c5a3e1-9f17-44a1-9d10-7c0e4a2b1c8e'; // string | The segment_id can be found in the URL of the segment when viewing it in the dashboard.
 
 try {
@@ -1274,7 +1280,7 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$app_id = '00000000-0000-0000-0000-000000000000'; // string
+$app_id = 'YOUR_APP_ID'; // string
 $subscription_id = '7e4c5b9a-1f60-4d07-9b1a-2e8c8d2cae51'; // string
 
 try {
@@ -1345,7 +1351,7 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     $config
 );
 $template_id = 'e4d3c2b1-a09f-4f1e-8d7c-6b5a4f3e2d1c'; // string
-$app_id = '00000000-0000-0000-0000-000000000000'; // string
+$app_id = 'YOUR_APP_ID'; // string
 
 try {
     $result = $apiInstance->deleteTemplate($template_id, $app_id);
@@ -1415,7 +1421,7 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$app_id = '00000000-0000-0000-0000-000000000000'; // string
+$app_id = 'YOUR_APP_ID'; // string
 $alias_label = 'external_id'; // string
 $alias_id = 'YOUR_USER_EXTERNAL_ID'; // string
 
@@ -1488,7 +1494,7 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     $config
 );
 $notification_id = 'b3a0c8bd-3a4c-4b22-9a73-3f1a8c2d1b88'; // string | The ID of the notification to export events from.
-$app_id = '00000000-0000-0000-0000-000000000000'; // string | The ID of the app that the notification belongs to.
+$app_id = 'YOUR_APP_ID'; // string | The ID of the app that the notification belongs to.
 
 try {
     $result = $apiInstance->exportEvents($notification_id, $app_id);
@@ -1558,7 +1564,7 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$app_id = '00000000-0000-0000-0000-000000000000'; // string | The app ID that you want to export devices from
+$app_id = 'YOUR_APP_ID'; // string | The app ID that you want to export devices from
 $export_subscriptions_request_body = new \onesignal\client\model\ExportSubscriptionsRequestBody(); // \onesignal\client\model\ExportSubscriptionsRequestBody
 
 try {
@@ -1629,7 +1635,7 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$app_id = '00000000-0000-0000-0000-000000000000'; // string
+$app_id = 'YOUR_APP_ID'; // string
 $alias_label = 'external_id'; // string
 $alias_id = 'YOUR_USER_EXTERNAL_ID'; // string
 
@@ -1702,7 +1708,7 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$app_id = '00000000-0000-0000-0000-000000000000'; // string
+$app_id = 'YOUR_APP_ID'; // string
 $subscription_id = '7e4c5b9a-1f60-4d07-9b1a-2e8c8d2cae51'; // string
 
 try {
@@ -1773,7 +1779,7 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$app_id = '00000000-0000-0000-0000-000000000000'; // string | An app id
+$app_id = 'YOUR_APP_ID'; // string | An app id
 
 try {
     $result = $apiInstance->getApp($app_id);
@@ -1908,7 +1914,7 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$app_id = '00000000-0000-0000-0000-000000000000'; // string
+$app_id = 'YOUR_APP_ID'; // string
 $notification_id = 'b3a0c8bd-3a4c-4b22-9a73-3f1a8c2d1b88'; // string
 
 try {
@@ -2050,7 +2056,7 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$app_id = '00000000-0000-0000-0000-000000000000'; // string | The app ID that you want to view notifications from
+$app_id = 'YOUR_APP_ID'; // string | The app ID that you want to view notifications from
 $limit = 10; // int | How many notifications to return.  Max is 50.  Default is 50.
 $offset = 0; // int | Page offset.  Default is 0.  Results are sorted by queued_at in descending order.  queued_at is a representation of the time that the notification was queued at.
 $kind = 0; // int | Kind of notifications returned:   * unset - All notification types (default)   * `0` - Dashboard only   * `1` - API only   * `3` - Automated only
@@ -2127,7 +2133,7 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$app_id = '00000000-0000-0000-0000-000000000000'; // string | The OneSignal App ID for your app.  Available in Keys & IDs.
+$app_id = 'YOUR_APP_ID'; // string | The OneSignal App ID for your app.  Available in Keys & IDs.
 $outcome_names = 'os__session_duration.count,os__click.count'; // string | Required Comma-separated list of names and the value (sum/count) for the returned outcome data. Note: Clicks only support count aggregation. For out-of-the-box OneSignal outcomes such as click and session duration, please use the \"os\" prefix with two underscores. For other outcomes, please use the name specified by the user. Example:os__session_duration.count,os__click.count,CustomOutcomeName.sum
 $outcome_names2 = 'os__session_duration.count'; // string | Optional If outcome names contain any commas, then please specify only one value at a time. Example: outcome_names[]=os__click.count&outcome_names[]=Sales, Purchase.count where \"Sales, Purchase\" is the custom outcomes with a comma in the name.
 $outcome_time_range = '1d'; // string | Optional Time range for the returned data. The values can be 1h (for the last 1 hour data), 1d (for the last 1 day data), or 1mo (for the last 1 month data). Default is 1h if the parameter is omitted.
@@ -2206,7 +2212,7 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$app_id = '00000000-0000-0000-0000-000000000000'; // string | The OneSignal App ID for your app.  Available in Keys & IDs.
+$app_id = 'YOUR_APP_ID'; // string | The OneSignal App ID for your app.  Available in Keys & IDs.
 $offset = 0; // int | Segments are listed in ascending order of created_at date. offset will omit that number of segments from the beginning of the list. Eg offset 5, will remove the 5 earliest created Segments.
 $limit = 10; // int | The amount of Segments in the response. Maximum 300.
 
@@ -2279,7 +2285,7 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$app_id = '00000000-0000-0000-0000-000000000000'; // string
+$app_id = 'YOUR_APP_ID'; // string
 $alias_label = 'external_id'; // string
 $alias_id = 'YOUR_USER_EXTERNAL_ID'; // string
 
@@ -2352,7 +2358,7 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$app_id = '00000000-0000-0000-0000-000000000000'; // string
+$app_id = 'YOUR_APP_ID'; // string
 $token_id = '0aa1b2c3-d4e5-46f7-8899-aabbccddeeff'; // string
 
 try {
@@ -2423,7 +2429,7 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$app_id = '00000000-0000-0000-0000-000000000000'; // string | Your OneSignal App ID in UUID v4 format.
+$app_id = 'YOUR_APP_ID'; // string | Your OneSignal App ID in UUID v4 format.
 $activity_type = 'order_status'; // string | The name of the Live Activity defined in your app. This should match the attributes struct used in your app's Live Activity implementation.
 $start_live_activity_request = new \onesignal\client\model\StartLiveActivityRequest(); // \onesignal\client\model\StartLiveActivityRequest
 
@@ -2496,7 +2502,7 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$app_id = '00000000-0000-0000-0000-000000000000'; // string
+$app_id = 'YOUR_APP_ID'; // string
 $subscription_id = '7e4c5b9a-1f60-4d07-9b1a-2e8c8d2cae51'; // string
 $transfer_subscription_request_body = new \onesignal\client\model\TransferSubscriptionRequestBody(); // \onesignal\client\model\TransferSubscriptionRequestBody
 
@@ -2569,7 +2575,7 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$app_id = '00000000-0000-0000-0000-000000000000'; // string | The OneSignal App ID for your app.  Available in Keys & IDs.
+$app_id = 'YOUR_APP_ID'; // string | The OneSignal App ID for your app.  Available in Keys & IDs.
 $notification_id = 'b3a0c8bd-3a4c-4b22-9a73-3f1a8c2d1b88'; // string | The id of the message found in the creation notification POST response, View Notifications GET response, or URL within the Message Report.
 $token = 'YOUR_TOKEN_ID'; // string | The unsubscribe token that is generated via liquid syntax in {{subscription.unsubscribe_token}} when personalizing an email.
 
@@ -2642,7 +2648,7 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$app_id = '00000000-0000-0000-0000-000000000000'; // string
+$app_id = 'YOUR_APP_ID'; // string
 $token_id = '0aa1b2c3-d4e5-46f7-8899-aabbccddeeff'; // string
 $update_api_key_request = new \onesignal\client\model\UpdateApiKeyRequest(); // \onesignal\client\model\UpdateApiKeyRequest
 
@@ -2715,7 +2721,7 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$app_id = '00000000-0000-0000-0000-000000000000'; // string | An app id
+$app_id = 'YOUR_APP_ID'; // string | An app id
 $app = new \onesignal\client\model\App(); // \onesignal\client\model\App
 
 try {
@@ -2786,7 +2792,7 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$app_id = '00000000-0000-0000-0000-000000000000'; // string | The OneSignal App ID for your app.  Available in Keys & IDs.
+$app_id = 'YOUR_APP_ID'; // string | The OneSignal App ID for your app.  Available in Keys & IDs.
 $activity_id = '12345'; // string | Live Activity record ID
 $update_live_activity_request = new \onesignal\client\model\UpdateLiveActivityRequest(); // \onesignal\client\model\UpdateLiveActivityRequest
 
@@ -2859,7 +2865,7 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$app_id = '00000000-0000-0000-0000-000000000000'; // string
+$app_id = 'YOUR_APP_ID'; // string
 $subscription_id = '7e4c5b9a-1f60-4d07-9b1a-2e8c8d2cae51'; // string
 $subscription_body = new \onesignal\client\model\SubscriptionBody(); // \onesignal\client\model\SubscriptionBody
 
@@ -2931,7 +2937,7 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$app_id = '00000000-0000-0000-0000-000000000000'; // string | Your OneSignal App ID in UUID v4 format.
+$app_id = 'YOUR_APP_ID'; // string | Your OneSignal App ID in UUID v4 format.
 $token_type = 'Email'; // string | The type of token to use when looking up the subscription. See Subscription Types.
 $token = 'user@example.com'; // string | The value of the token to lookup by (e.g., email address, phone number).
 $subscription_body = new \onesignal\client\model\SubscriptionBody(); // \onesignal\client\model\SubscriptionBody
@@ -3007,7 +3013,7 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     $config
 );
 $template_id = 'e4d3c2b1-a09f-4f1e-8d7c-6b5a4f3e2d1c'; // string
-$app_id = '00000000-0000-0000-0000-000000000000'; // string
+$app_id = 'YOUR_APP_ID'; // string
 $update_template_request = new \onesignal\client\model\UpdateTemplateRequest(); // \onesignal\client\model\UpdateTemplateRequest
 
 try {
@@ -3079,7 +3085,7 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$app_id = '00000000-0000-0000-0000-000000000000'; // string
+$app_id = 'YOUR_APP_ID'; // string
 $alias_label = 'external_id'; // string
 $alias_id = 'YOUR_USER_EXTERNAL_ID'; // string
 $update_user_request = new \onesignal\client\model\UpdateUserRequest(); // \onesignal\client\model\UpdateUserRequest
@@ -3154,7 +3160,7 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$app_id = '00000000-0000-0000-0000-000000000000'; // string
+$app_id = 'YOUR_APP_ID'; // string
 
 try {
     $result = $apiInstance->viewApiKeys($app_id);
@@ -3224,7 +3230,7 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     $config
 );
 $template_id = 'e4d3c2b1-a09f-4f1e-8d7c-6b5a4f3e2d1c'; // string
-$app_id = '00000000-0000-0000-0000-000000000000'; // string
+$app_id = 'YOUR_APP_ID'; // string
 
 try {
     $result = $apiInstance->viewTemplate($template_id, $app_id);
@@ -3294,7 +3300,7 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$app_id = '00000000-0000-0000-0000-000000000000'; // string | Your OneSignal App ID in UUID v4 format.
+$app_id = 'YOUR_APP_ID'; // string | Your OneSignal App ID in UUID v4 format.
 $limit = 10; // int | Maximum number of templates. Default and max is 50.
 $offset = 0; // int | Pagination offset.
 $channel = 'push'; // string | Filter by delivery channel.
