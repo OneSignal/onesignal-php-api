@@ -211,6 +211,8 @@ class FilterExpression implements ModelInterface, ArrayAccess, \JsonSerializable
     public const RELATION_NOT_EXISTS = 'not_exists';
     public const RELATION_TIME_ELAPSED_GT = 'time_elapsed_gt';
     public const RELATION_TIME_ELAPSED_LT = 'time_elapsed_lt';
+    public const RELATION_IN_ARRAY = 'in_array';
+    public const RELATION_NOT_IN_ARRAY = 'not_in_array';
     public const OPERATOR__OR = 'OR';
     public const OPERATOR__AND = 'AND';
 
@@ -230,6 +232,8 @@ class FilterExpression implements ModelInterface, ArrayAccess, \JsonSerializable
             self::RELATION_NOT_EXISTS,
             self::RELATION_TIME_ELAPSED_GT,
             self::RELATION_TIME_ELAPSED_LT,
+            self::RELATION_IN_ARRAY,
+            self::RELATION_NOT_IN_ARRAY,
         ];
     }
 
@@ -375,7 +379,7 @@ class FilterExpression implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets value
      *
-     * @param string|null $value Constant value to use as the second operand in the filter expression. This value is *required* when the relation operator is a binary operator.
+     * @param string|null $value Constant value to use as the second operand in the filter expression. This value is *required* when the relation operator is a binary operator. For `in_array` and `not_in_array` relations, provide a comma-separated list of up to 20 values.
      *
      * @return self
      */
