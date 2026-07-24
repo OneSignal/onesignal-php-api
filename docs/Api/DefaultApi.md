@@ -32,6 +32,7 @@ Method | HTTP request | Description
 [**getNotificationHistory()**](DefaultApi.md#getNotificationHistory) | **POST** /notifications/{notification_id}/history | Notification History
 [**getNotifications()**](DefaultApi.md#getNotifications) | **GET** /notifications | View notifications
 [**getOutcomes()**](DefaultApi.md#getOutcomes) | **GET** /apps/{app_id}/outcomes | View Outcomes
+[**getSegment()**](DefaultApi.md#getSegment) | **GET** /apps/{app_id}/segments/{segment_id} | View Segment
 [**getSegments()**](DefaultApi.md#getSegments) | **GET** /apps/{app_id}/segments | Get Segments
 [**getUser()**](DefaultApi.md#getUser) | **GET** /apps/{app_id}/users/by/{alias_label}/{alias_id} | 
 [**rotateApiKey()**](DefaultApi.md#rotateApiKey) | **POST** /apps/{app_id}/auth/tokens/{token_id}/rotate | Rotate API key
@@ -2169,6 +2170,79 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\onesignal\client\model\OutcomesData**](../Model/OutcomesData.md)
+
+### Authorization
+
+[rest_api_key](https://github.com/OneSignal/onesignal-php-api#configuration)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](https://github.com/OneSignal/onesignal-php-api#full-api-reference)
+[[Back to README]](https://github.com/OneSignal/onesignal-php-api)
+
+## `getSegment()`
+
+```php
+getSegment($app_id, $segment_id, $include_segment_detail): \onesignal\client\model\GetSegmentSuccessResponse
+```
+
+View Segment
+
+Retrieve details for a single segment by its ID, including subscriber count and optionally segment metadata and filters.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: rest_api_key
+$config = onesignal\client\Configuration::getDefaultConfiguration()
+                                                ->setRestApiKeyToken('YOUR_REST_API_KEY')
+                                                ->setOrganizationApiKeyToken('YOUR_ORGANIZATION_API_KEY');
+
+
+
+$apiInstance = new onesignal\client\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$app_id = 'YOUR_APP_ID'; // string | The OneSignal App ID for your app.  Available in Keys & IDs.
+$segment_id = 'd6c5a3e1-9f17-44a1-9d10-7c0e4a2b1c8e'; // string | The segment's unique identifier. Can be found using the View Segments API or in the URL of the segment when viewing it in the dashboard.
+$include_segment_detail = true; // bool | Set to true to include segment metadata and filters in the response.
+
+try {
+    $result = $apiInstance->getSegment($app_id, $segment_id, $include_segment_detail);
+    print_r($result);
+} catch (\onesignal\client\ApiException $e) {
+    echo 'Exception when calling DefaultApi->getSegment: ', $e->getMessage(), PHP_EOL;
+    echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    // getErrorMessages() flattens any error-envelope shape to a string[];
+    // the raw body remains on getResponseBody().
+    echo 'Error Messages: ', implode(', ', $e->getErrorMessages()), PHP_EOL;
+    echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
+} catch (\Exception $e) {
+    echo 'Exception when calling DefaultApi->getSegment: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **app_id** | **string**| The OneSignal App ID for your app.  Available in Keys &amp; IDs. |
+ **segment_id** | **string**| The segment&#39;s unique identifier. Can be found using the View Segments API or in the URL of the segment when viewing it in the dashboard. |
+ **include_segment_detail** | **bool**| Set to true to include segment metadata and filters in the response. | [optional]
+
+### Return type
+
+[**\onesignal\client\model\GetSegmentSuccessResponse**](../Model/GetSegmentSuccessResponse.md)
 
 ### Authorization
 
