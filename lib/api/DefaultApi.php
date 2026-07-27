@@ -10482,6 +10482,402 @@ class DefaultApi
     }
 
     /**
+     * Operation getSegment
+     *
+     * View Segment
+     *
+     * @param  string $app_id The OneSignal App ID for your app.  Available in Keys &amp; IDs. (required)
+     * @param  string $segment_id The segment&#39;s unique identifier. Can be found using the View Segments API or in the URL of the segment when viewing it in the dashboard. (required)
+     * @param  bool $include_segment_detail Set to true to include segment metadata and filters in the response. (optional)
+     *
+     * @throws \onesignal\client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \onesignal\client\model\GetSegmentSuccessResponse|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError
+     */
+    public function getSegment($app_id, $segment_id, $include_segment_detail = null)
+    {
+        list($response) = $this->getSegmentWithHttpInfo($app_id, $segment_id, $include_segment_detail);
+        return $response;
+    }
+
+    /**
+     * Operation getSegmentWithHttpInfo
+     *
+     * View Segment
+     *
+     * @param  string $app_id The OneSignal App ID for your app.  Available in Keys &amp; IDs. (required)
+     * @param  string $segment_id The segment&#39;s unique identifier. Can be found using the View Segments API or in the URL of the segment when viewing it in the dashboard. (required)
+     * @param  bool $include_segment_detail Set to true to include segment metadata and filters in the response. (optional)
+     *
+     * @throws \onesignal\client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \onesignal\client\model\GetSegmentSuccessResponse|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getSegmentWithHttpInfo($app_id, $segment_id, $include_segment_detail = null)
+    {
+        $request = $this->getSegmentRequest($app_id, $segment_id, $include_segment_detail);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\onesignal\client\model\GetSegmentSuccessResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\onesignal\client\model\GetSegmentSuccessResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\onesignal\client\model\GetSegmentSuccessResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\onesignal\client\model\GenericError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\onesignal\client\model\GenericError' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\onesignal\client\model\GenericError', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\onesignal\client\model\GenericError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\onesignal\client\model\GenericError' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\onesignal\client\model\GenericError', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 429:
+                    if ('\onesignal\client\model\RateLimitError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\onesignal\client\model\RateLimitError' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\onesignal\client\model\RateLimitError', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\onesignal\client\model\GetSegmentSuccessResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GetSegmentSuccessResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\RateLimitError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getSegmentAsync
+     *
+     * View Segment
+     *
+     * @param  string $app_id The OneSignal App ID for your app.  Available in Keys &amp; IDs. (required)
+     * @param  string $segment_id The segment&#39;s unique identifier. Can be found using the View Segments API or in the URL of the segment when viewing it in the dashboard. (required)
+     * @param  bool $include_segment_detail Set to true to include segment metadata and filters in the response. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getSegmentAsync($app_id, $segment_id, $include_segment_detail = null)
+    {
+        return $this->getSegmentAsyncWithHttpInfo($app_id, $segment_id, $include_segment_detail)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getSegmentAsyncWithHttpInfo
+     *
+     * View Segment
+     *
+     * @param  string $app_id The OneSignal App ID for your app.  Available in Keys &amp; IDs. (required)
+     * @param  string $segment_id The segment&#39;s unique identifier. Can be found using the View Segments API or in the URL of the segment when viewing it in the dashboard. (required)
+     * @param  bool $include_segment_detail Set to true to include segment metadata and filters in the response. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getSegmentAsyncWithHttpInfo($app_id, $segment_id, $include_segment_detail = null)
+    {
+        $returnType = '\onesignal\client\model\GetSegmentSuccessResponse';
+        $request = $this->getSegmentRequest($app_id, $segment_id, $include_segment_detail);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getSegment'
+     *
+     * @param  string $app_id The OneSignal App ID for your app.  Available in Keys &amp; IDs. (required)
+     * @param  string $segment_id The segment&#39;s unique identifier. Can be found using the View Segments API or in the URL of the segment when viewing it in the dashboard. (required)
+     * @param  bool $include_segment_detail Set to true to include segment metadata and filters in the response. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getSegmentRequest($app_id, $segment_id, $include_segment_detail = null)
+    {
+        // verify the required parameter 'app_id' is set
+        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $app_id when calling getSegment'
+            );
+        }
+        // verify the required parameter 'segment_id' is set
+        if ($segment_id === null || (is_array($segment_id) && count($segment_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $segment_id when calling getSegment'
+            );
+        }
+
+        $resourcePath = '/apps/{app_id}/segments/{segment_id}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $include_segment_detail,
+            'include-segment-detail', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+        // path params
+        if ($app_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app_id' . '}',
+                ObjectSerializer::toPathValue($app_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($segment_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'segment_id' . '}',
+                ObjectSerializer::toPathValue($segment_id),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        if (!empty($this->config->getRestApiKeyToken())) {
+            $headers['Authorization'] = 'Key ' . $this->config->getRestApiKeyToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        // Adding the telemetry header
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.10.0';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation getSegments
      *
      * Get Segments
@@ -11217,6 +11613,574 @@ class DefaultApi
 
         if (!empty($this->config->getRestApiKeyToken())) {
             $headers['Authorization'] = 'Key ' . $this->config->getRestApiKeyToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        // Adding the telemetry header
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.10.0';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation listAuditLogs
+     *
+     * List audit logs
+     *
+     * @param  string $organization_id The UUID of the organization to retrieve audit logs for. Must match the authenticated Organization API Key. (required)
+     * @param  string $start_time Start of the time range in ISO 8601 format (e.g. 2026-02-01T00:00:00Z). Required unless cursor is provided. Must be within the last 90 days. (optional)
+     * @param  string $end_time End of the time range in ISO 8601 format. Defaults to the current time. Must be after start_time. (optional)
+     * @param  string $cursor Pagination cursor returned in a previous response as next_cursor. When provided, start_time and end_time are ignored. (optional)
+     * @param  int $limit Maximum number of events to return per page. Minimum 1, maximum 100. Values outside this range are clamped automatically by the server. (optional)
+     * @param  string[] $app_ids Filter events by app UUID. Accepts up to 10 values. Org-level events are always included. (optional)
+     * @param  string[] $actions Filter by action type (e.g. notification.sent, segment.created). Accepts up to 20 values. (optional)
+     * @param  string[] $actor_ids Filter by actor UUID (the user or service that performed the action). Accepts up to 10 values. (optional)
+     * @param  string[] $actor_emails Filter by actor email address. Accepts up to 10 values. (optional)
+     * @param  string[] $target_types Filter by the type of resource the action was performed on (e.g. notification, segment, journey). Accepts up to 10 values. (optional)
+     * @param  string[] $target_ids Filter by the UUID of the resource the action was performed on. Accepts up to 10 values. (optional)
+     * @param  string[] $ip_addresses Filter by the IP address the action originated from. Accepts up to 10 values. (optional)
+     *
+     * @throws \onesignal\client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \onesignal\client\model\ListAuditLogsSuccessResponse|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError
+     */
+    public function listAuditLogs($organization_id, $start_time = null, $end_time = null, $cursor = null, $limit = null, $app_ids = null, $actions = null, $actor_ids = null, $actor_emails = null, $target_types = null, $target_ids = null, $ip_addresses = null)
+    {
+        list($response) = $this->listAuditLogsWithHttpInfo($organization_id, $start_time, $end_time, $cursor, $limit, $app_ids, $actions, $actor_ids, $actor_emails, $target_types, $target_ids, $ip_addresses);
+        return $response;
+    }
+
+    /**
+     * Operation listAuditLogsWithHttpInfo
+     *
+     * List audit logs
+     *
+     * @param  string $organization_id The UUID of the organization to retrieve audit logs for. Must match the authenticated Organization API Key. (required)
+     * @param  string $start_time Start of the time range in ISO 8601 format (e.g. 2026-02-01T00:00:00Z). Required unless cursor is provided. Must be within the last 90 days. (optional)
+     * @param  string $end_time End of the time range in ISO 8601 format. Defaults to the current time. Must be after start_time. (optional)
+     * @param  string $cursor Pagination cursor returned in a previous response as next_cursor. When provided, start_time and end_time are ignored. (optional)
+     * @param  int $limit Maximum number of events to return per page. Minimum 1, maximum 100. Values outside this range are clamped automatically by the server. (optional)
+     * @param  string[] $app_ids Filter events by app UUID. Accepts up to 10 values. Org-level events are always included. (optional)
+     * @param  string[] $actions Filter by action type (e.g. notification.sent, segment.created). Accepts up to 20 values. (optional)
+     * @param  string[] $actor_ids Filter by actor UUID (the user or service that performed the action). Accepts up to 10 values. (optional)
+     * @param  string[] $actor_emails Filter by actor email address. Accepts up to 10 values. (optional)
+     * @param  string[] $target_types Filter by the type of resource the action was performed on (e.g. notification, segment, journey). Accepts up to 10 values. (optional)
+     * @param  string[] $target_ids Filter by the UUID of the resource the action was performed on. Accepts up to 10 values. (optional)
+     * @param  string[] $ip_addresses Filter by the IP address the action originated from. Accepts up to 10 values. (optional)
+     *
+     * @throws \onesignal\client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \onesignal\client\model\ListAuditLogsSuccessResponse|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function listAuditLogsWithHttpInfo($organization_id, $start_time = null, $end_time = null, $cursor = null, $limit = null, $app_ids = null, $actions = null, $actor_ids = null, $actor_emails = null, $target_types = null, $target_ids = null, $ip_addresses = null)
+    {
+        $request = $this->listAuditLogsRequest($organization_id, $start_time, $end_time, $cursor, $limit, $app_ids, $actions, $actor_ids, $actor_emails, $target_types, $target_ids, $ip_addresses);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\onesignal\client\model\ListAuditLogsSuccessResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\onesignal\client\model\ListAuditLogsSuccessResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\onesignal\client\model\ListAuditLogsSuccessResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\onesignal\client\model\GenericError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\onesignal\client\model\GenericError' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\onesignal\client\model\GenericError', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\onesignal\client\model\GenericError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\onesignal\client\model\GenericError' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\onesignal\client\model\GenericError', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\onesignal\client\model\GenericError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\onesignal\client\model\GenericError' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\onesignal\client\model\GenericError', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 429:
+                    if ('\onesignal\client\model\RateLimitError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\onesignal\client\model\RateLimitError' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\onesignal\client\model\RateLimitError', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\onesignal\client\model\ListAuditLogsSuccessResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\ListAuditLogsSuccessResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\RateLimitError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation listAuditLogsAsync
+     *
+     * List audit logs
+     *
+     * @param  string $organization_id The UUID of the organization to retrieve audit logs for. Must match the authenticated Organization API Key. (required)
+     * @param  string $start_time Start of the time range in ISO 8601 format (e.g. 2026-02-01T00:00:00Z). Required unless cursor is provided. Must be within the last 90 days. (optional)
+     * @param  string $end_time End of the time range in ISO 8601 format. Defaults to the current time. Must be after start_time. (optional)
+     * @param  string $cursor Pagination cursor returned in a previous response as next_cursor. When provided, start_time and end_time are ignored. (optional)
+     * @param  int $limit Maximum number of events to return per page. Minimum 1, maximum 100. Values outside this range are clamped automatically by the server. (optional)
+     * @param  string[] $app_ids Filter events by app UUID. Accepts up to 10 values. Org-level events are always included. (optional)
+     * @param  string[] $actions Filter by action type (e.g. notification.sent, segment.created). Accepts up to 20 values. (optional)
+     * @param  string[] $actor_ids Filter by actor UUID (the user or service that performed the action). Accepts up to 10 values. (optional)
+     * @param  string[] $actor_emails Filter by actor email address. Accepts up to 10 values. (optional)
+     * @param  string[] $target_types Filter by the type of resource the action was performed on (e.g. notification, segment, journey). Accepts up to 10 values. (optional)
+     * @param  string[] $target_ids Filter by the UUID of the resource the action was performed on. Accepts up to 10 values. (optional)
+     * @param  string[] $ip_addresses Filter by the IP address the action originated from. Accepts up to 10 values. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listAuditLogsAsync($organization_id, $start_time = null, $end_time = null, $cursor = null, $limit = null, $app_ids = null, $actions = null, $actor_ids = null, $actor_emails = null, $target_types = null, $target_ids = null, $ip_addresses = null)
+    {
+        return $this->listAuditLogsAsyncWithHttpInfo($organization_id, $start_time, $end_time, $cursor, $limit, $app_ids, $actions, $actor_ids, $actor_emails, $target_types, $target_ids, $ip_addresses)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation listAuditLogsAsyncWithHttpInfo
+     *
+     * List audit logs
+     *
+     * @param  string $organization_id The UUID of the organization to retrieve audit logs for. Must match the authenticated Organization API Key. (required)
+     * @param  string $start_time Start of the time range in ISO 8601 format (e.g. 2026-02-01T00:00:00Z). Required unless cursor is provided. Must be within the last 90 days. (optional)
+     * @param  string $end_time End of the time range in ISO 8601 format. Defaults to the current time. Must be after start_time. (optional)
+     * @param  string $cursor Pagination cursor returned in a previous response as next_cursor. When provided, start_time and end_time are ignored. (optional)
+     * @param  int $limit Maximum number of events to return per page. Minimum 1, maximum 100. Values outside this range are clamped automatically by the server. (optional)
+     * @param  string[] $app_ids Filter events by app UUID. Accepts up to 10 values. Org-level events are always included. (optional)
+     * @param  string[] $actions Filter by action type (e.g. notification.sent, segment.created). Accepts up to 20 values. (optional)
+     * @param  string[] $actor_ids Filter by actor UUID (the user or service that performed the action). Accepts up to 10 values. (optional)
+     * @param  string[] $actor_emails Filter by actor email address. Accepts up to 10 values. (optional)
+     * @param  string[] $target_types Filter by the type of resource the action was performed on (e.g. notification, segment, journey). Accepts up to 10 values. (optional)
+     * @param  string[] $target_ids Filter by the UUID of the resource the action was performed on. Accepts up to 10 values. (optional)
+     * @param  string[] $ip_addresses Filter by the IP address the action originated from. Accepts up to 10 values. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listAuditLogsAsyncWithHttpInfo($organization_id, $start_time = null, $end_time = null, $cursor = null, $limit = null, $app_ids = null, $actions = null, $actor_ids = null, $actor_emails = null, $target_types = null, $target_ids = null, $ip_addresses = null)
+    {
+        $returnType = '\onesignal\client\model\ListAuditLogsSuccessResponse';
+        $request = $this->listAuditLogsRequest($organization_id, $start_time, $end_time, $cursor, $limit, $app_ids, $actions, $actor_ids, $actor_emails, $target_types, $target_ids, $ip_addresses);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'listAuditLogs'
+     *
+     * @param  string $organization_id The UUID of the organization to retrieve audit logs for. Must match the authenticated Organization API Key. (required)
+     * @param  string $start_time Start of the time range in ISO 8601 format (e.g. 2026-02-01T00:00:00Z). Required unless cursor is provided. Must be within the last 90 days. (optional)
+     * @param  string $end_time End of the time range in ISO 8601 format. Defaults to the current time. Must be after start_time. (optional)
+     * @param  string $cursor Pagination cursor returned in a previous response as next_cursor. When provided, start_time and end_time are ignored. (optional)
+     * @param  int $limit Maximum number of events to return per page. Minimum 1, maximum 100. Values outside this range are clamped automatically by the server. (optional)
+     * @param  string[] $app_ids Filter events by app UUID. Accepts up to 10 values. Org-level events are always included. (optional)
+     * @param  string[] $actions Filter by action type (e.g. notification.sent, segment.created). Accepts up to 20 values. (optional)
+     * @param  string[] $actor_ids Filter by actor UUID (the user or service that performed the action). Accepts up to 10 values. (optional)
+     * @param  string[] $actor_emails Filter by actor email address. Accepts up to 10 values. (optional)
+     * @param  string[] $target_types Filter by the type of resource the action was performed on (e.g. notification, segment, journey). Accepts up to 10 values. (optional)
+     * @param  string[] $target_ids Filter by the UUID of the resource the action was performed on. Accepts up to 10 values. (optional)
+     * @param  string[] $ip_addresses Filter by the IP address the action originated from. Accepts up to 10 values. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function listAuditLogsRequest($organization_id, $start_time = null, $end_time = null, $cursor = null, $limit = null, $app_ids = null, $actions = null, $actor_ids = null, $actor_emails = null, $target_types = null, $target_ids = null, $ip_addresses = null)
+    {
+        // verify the required parameter 'organization_id' is set
+        if ($organization_id === null || (is_array($organization_id) && count($organization_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $organization_id when calling listAuditLogs'
+            );
+        }
+        if ($app_ids !== null && count($app_ids) > 10) {
+            throw new \InvalidArgumentException('invalid value for "$app_ids" when calling DefaultApi.listAuditLogs, number of items must be less than or equal to 10.');
+        }
+
+        if ($actions !== null && count($actions) > 20) {
+            throw new \InvalidArgumentException('invalid value for "$actions" when calling DefaultApi.listAuditLogs, number of items must be less than or equal to 20.');
+        }
+
+        if ($actor_ids !== null && count($actor_ids) > 10) {
+            throw new \InvalidArgumentException('invalid value for "$actor_ids" when calling DefaultApi.listAuditLogs, number of items must be less than or equal to 10.');
+        }
+
+        if ($actor_emails !== null && count($actor_emails) > 10) {
+            throw new \InvalidArgumentException('invalid value for "$actor_emails" when calling DefaultApi.listAuditLogs, number of items must be less than or equal to 10.');
+        }
+
+        if ($target_types !== null && count($target_types) > 10) {
+            throw new \InvalidArgumentException('invalid value for "$target_types" when calling DefaultApi.listAuditLogs, number of items must be less than or equal to 10.');
+        }
+
+        if ($target_ids !== null && count($target_ids) > 10) {
+            throw new \InvalidArgumentException('invalid value for "$target_ids" when calling DefaultApi.listAuditLogs, number of items must be less than or equal to 10.');
+        }
+
+        if ($ip_addresses !== null && count($ip_addresses) > 10) {
+            throw new \InvalidArgumentException('invalid value for "$ip_addresses" when calling DefaultApi.listAuditLogs, number of items must be less than or equal to 10.');
+        }
+
+
+        $resourcePath = '/organizations/{organization_id}/audit_logs';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $start_time,
+            'start_time', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $end_time,
+            'end_time', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $cursor,
+            'cursor', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $limit,
+            'limit', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $app_ids,
+            'app_ids', // param base name
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $actions,
+            'actions', // param base name
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $actor_ids,
+            'actor_ids', // param base name
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $actor_emails,
+            'actor_emails', // param base name
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $target_types,
+            'target_types', // param base name
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $target_ids,
+            'target_ids', // param base name
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $ip_addresses,
+            'ip_addresses', // param base name
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+        // path params
+        if ($organization_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'organization_id' . '}',
+                ObjectSerializer::toPathValue($organization_id),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        if (!empty($this->config->getOrganizationApiKeyToken())) {
+            $headers['Authorization'] = 'Key ' . $this->config->getOrganizationApiKeyToken();
         }
 
         $defaultHeaders = [];
@@ -13827,6 +14791,422 @@ class DefaultApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation updateSegment
+     *
+     * Update Segment
+     *
+     * @param  string $app_id The OneSignal App ID for your app.  Available in Keys &amp; IDs. (required)
+     * @param  string $segment_id The segment&#39;s unique identifier. Can be found using the View Segments API or in the URL of the segment when viewing it in the dashboard. (required)
+     * @param  \onesignal\client\model\UpdateSegmentRequest $update_segment_request update_segment_request (optional)
+     *
+     * @throws \onesignal\client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \onesignal\client\model\UpdateSegmentSuccessResponse|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError
+     */
+    public function updateSegment($app_id, $segment_id, $update_segment_request = null)
+    {
+        list($response) = $this->updateSegmentWithHttpInfo($app_id, $segment_id, $update_segment_request);
+        return $response;
+    }
+
+    /**
+     * Operation updateSegmentWithHttpInfo
+     *
+     * Update Segment
+     *
+     * @param  string $app_id The OneSignal App ID for your app.  Available in Keys &amp; IDs. (required)
+     * @param  string $segment_id The segment&#39;s unique identifier. Can be found using the View Segments API or in the URL of the segment when viewing it in the dashboard. (required)
+     * @param  \onesignal\client\model\UpdateSegmentRequest $update_segment_request (optional)
+     *
+     * @throws \onesignal\client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \onesignal\client\model\UpdateSegmentSuccessResponse|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function updateSegmentWithHttpInfo($app_id, $segment_id, $update_segment_request = null)
+    {
+        $request = $this->updateSegmentRequest($app_id, $segment_id, $update_segment_request);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\onesignal\client\model\UpdateSegmentSuccessResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\onesignal\client\model\UpdateSegmentSuccessResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\onesignal\client\model\UpdateSegmentSuccessResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\onesignal\client\model\GenericError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\onesignal\client\model\GenericError' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\onesignal\client\model\GenericError', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\onesignal\client\model\GenericError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\onesignal\client\model\GenericError' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\onesignal\client\model\GenericError', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\onesignal\client\model\GenericError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\onesignal\client\model\GenericError' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\onesignal\client\model\GenericError', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 429:
+                    if ('\onesignal\client\model\RateLimitError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\onesignal\client\model\RateLimitError' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\onesignal\client\model\RateLimitError', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\onesignal\client\model\UpdateSegmentSuccessResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\UpdateSegmentSuccessResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\RateLimitError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation updateSegmentAsync
+     *
+     * Update Segment
+     *
+     * @param  string $app_id The OneSignal App ID for your app.  Available in Keys &amp; IDs. (required)
+     * @param  string $segment_id The segment&#39;s unique identifier. Can be found using the View Segments API or in the URL of the segment when viewing it in the dashboard. (required)
+     * @param  \onesignal\client\model\UpdateSegmentRequest $update_segment_request (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateSegmentAsync($app_id, $segment_id, $update_segment_request = null)
+    {
+        return $this->updateSegmentAsyncWithHttpInfo($app_id, $segment_id, $update_segment_request)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation updateSegmentAsyncWithHttpInfo
+     *
+     * Update Segment
+     *
+     * @param  string $app_id The OneSignal App ID for your app.  Available in Keys &amp; IDs. (required)
+     * @param  string $segment_id The segment&#39;s unique identifier. Can be found using the View Segments API or in the URL of the segment when viewing it in the dashboard. (required)
+     * @param  \onesignal\client\model\UpdateSegmentRequest $update_segment_request (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateSegmentAsyncWithHttpInfo($app_id, $segment_id, $update_segment_request = null)
+    {
+        $returnType = '\onesignal\client\model\UpdateSegmentSuccessResponse';
+        $request = $this->updateSegmentRequest($app_id, $segment_id, $update_segment_request);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'updateSegment'
+     *
+     * @param  string $app_id The OneSignal App ID for your app.  Available in Keys &amp; IDs. (required)
+     * @param  string $segment_id The segment&#39;s unique identifier. Can be found using the View Segments API or in the URL of the segment when viewing it in the dashboard. (required)
+     * @param  \onesignal\client\model\UpdateSegmentRequest $update_segment_request (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function updateSegmentRequest($app_id, $segment_id, $update_segment_request = null)
+    {
+        // verify the required parameter 'app_id' is set
+        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $app_id when calling updateSegment'
+            );
+        }
+        // verify the required parameter 'segment_id' is set
+        if ($segment_id === null || (is_array($segment_id) && count($segment_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $segment_id when calling updateSegment'
+            );
+        }
+
+        $resourcePath = '/apps/{app_id}/segments/{segment_id}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($app_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app_id' . '}',
+                ObjectSerializer::toPathValue($app_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($segment_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'segment_id' . '}',
+                ObjectSerializer::toPathValue($segment_id),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($update_segment_request)) {
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($update_segment_request));
+            } else {
+                $httpBody = $update_segment_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        if (!empty($this->config->getRestApiKeyToken())) {
+            $headers['Authorization'] = 'Key ' . $this->config->getRestApiKeyToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        // Adding the telemetry header
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.10.0';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PATCH',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
