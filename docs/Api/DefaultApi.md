@@ -32,8 +32,10 @@ Method | HTTP request | Description
 [**getNotificationHistory()**](DefaultApi.md#getNotificationHistory) | **POST** /notifications/{notification_id}/history | Notification History
 [**getNotifications()**](DefaultApi.md#getNotifications) | **GET** /notifications | View notifications
 [**getOutcomes()**](DefaultApi.md#getOutcomes) | **GET** /apps/{app_id}/outcomes | View Outcomes
+[**getSegment()**](DefaultApi.md#getSegment) | **GET** /apps/{app_id}/segments/{segment_id} | View Segment
 [**getSegments()**](DefaultApi.md#getSegments) | **GET** /apps/{app_id}/segments | Get Segments
 [**getUser()**](DefaultApi.md#getUser) | **GET** /apps/{app_id}/users/by/{alias_label}/{alias_id} | 
+[**listAuditLogs()**](DefaultApi.md#listAuditLogs) | **GET** /organizations/{organization_id}/audit_logs | List audit logs
 [**rotateApiKey()**](DefaultApi.md#rotateApiKey) | **POST** /apps/{app_id}/auth/tokens/{token_id}/rotate | Rotate API key
 [**startLiveActivity()**](DefaultApi.md#startLiveActivity) | **POST** /apps/{app_id}/activities/activity/{activity_type} | Start Live Activity
 [**transferSubscription()**](DefaultApi.md#transferSubscription) | **PATCH** /apps/{app_id}/subscriptions/{subscription_id}/owner | 
@@ -41,6 +43,7 @@ Method | HTTP request | Description
 [**updateApiKey()**](DefaultApi.md#updateApiKey) | **PATCH** /apps/{app_id}/auth/tokens/{token_id} | Update API key
 [**updateApp()**](DefaultApi.md#updateApp) | **PUT** /apps/{app_id} | Update an app
 [**updateLiveActivity()**](DefaultApi.md#updateLiveActivity) | **POST** /apps/{app_id}/live_activities/{activity_id}/notifications | Update a Live Activity via Push
+[**updateSegment()**](DefaultApi.md#updateSegment) | **PATCH** /apps/{app_id}/segments/{segment_id} | Update Segment
 [**updateSubscription()**](DefaultApi.md#updateSubscription) | **PATCH** /apps/{app_id}/subscriptions/{subscription_id} | 
 [**updateSubscriptionByToken()**](DefaultApi.md#updateSubscriptionByToken) | **PATCH** /apps/{app_id}/subscriptions_by_token/{token_type}/{token} | Update subscription by token
 [**updateTemplate()**](DefaultApi.md#updateTemplate) | **PATCH** /templates/{template_id} | Update template
@@ -2182,6 +2185,79 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](https://github.com/OneSignal/onesignal-php-api#full-api-reference)
 [[Back to README]](https://github.com/OneSignal/onesignal-php-api)
 
+## `getSegment()`
+
+```php
+getSegment($app_id, $segment_id, $include_segment_detail): \onesignal\client\model\GetSegmentSuccessResponse
+```
+
+View Segment
+
+Retrieve details for a single segment by its ID, including subscriber count and optionally segment metadata and filters.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: rest_api_key
+$config = onesignal\client\Configuration::getDefaultConfiguration()
+                                                ->setRestApiKeyToken('YOUR_REST_API_KEY')
+                                                ->setOrganizationApiKeyToken('YOUR_ORGANIZATION_API_KEY');
+
+
+
+$apiInstance = new onesignal\client\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$app_id = 'YOUR_APP_ID'; // string | The OneSignal App ID for your app.  Available in Keys & IDs.
+$segment_id = 'd6c5a3e1-9f17-44a1-9d10-7c0e4a2b1c8e'; // string | The segment's unique identifier. Can be found using the View Segments API or in the URL of the segment when viewing it in the dashboard.
+$include_segment_detail = true; // bool | Set to true to include segment metadata and filters in the response.
+
+try {
+    $result = $apiInstance->getSegment($app_id, $segment_id, $include_segment_detail);
+    print_r($result);
+} catch (\onesignal\client\ApiException $e) {
+    echo 'Exception when calling DefaultApi->getSegment: ', $e->getMessage(), PHP_EOL;
+    echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    // getErrorMessages() flattens any error-envelope shape to a string[];
+    // the raw body remains on getResponseBody().
+    echo 'Error Messages: ', implode(', ', $e->getErrorMessages()), PHP_EOL;
+    echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
+} catch (\Exception $e) {
+    echo 'Exception when calling DefaultApi->getSegment: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **app_id** | **string**| The OneSignal App ID for your app.  Available in Keys &amp; IDs. |
+ **segment_id** | **string**| The segment&#39;s unique identifier. Can be found using the View Segments API or in the URL of the segment when viewing it in the dashboard. |
+ **include_segment_detail** | **bool**| Set to true to include segment metadata and filters in the response. | [optional]
+
+### Return type
+
+[**\onesignal\client\model\GetSegmentSuccessResponse**](../Model/GetSegmentSuccessResponse.md)
+
+### Authorization
+
+[rest_api_key](https://github.com/OneSignal/onesignal-php-api#configuration)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](https://github.com/OneSignal/onesignal-php-api#full-api-reference)
+[[Back to README]](https://github.com/OneSignal/onesignal-php-api)
+
 ## `getSegments()`
 
 ```php
@@ -2319,6 +2395,97 @@ Name | Type | Description  | Notes
 ### Authorization
 
 [rest_api_key](https://github.com/OneSignal/onesignal-php-api#configuration)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](https://github.com/OneSignal/onesignal-php-api#full-api-reference)
+[[Back to README]](https://github.com/OneSignal/onesignal-php-api)
+
+## `listAuditLogs()`
+
+```php
+listAuditLogs($organization_id, $start_time, $end_time, $cursor, $limit, $app_ids, $actions, $actor_ids, $actor_emails, $target_types, $target_ids, $ip_addresses): \onesignal\client\model\ListAuditLogsSuccessResponse
+```
+
+List audit logs
+
+Retrieve a paginated, time-scoped list of audit log events for an organization. Requires an Enterprise plan with the audit logs entitlement enabled.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: organization_api_key
+$config = onesignal\client\Configuration::getDefaultConfiguration()
+                                                ->setRestApiKeyToken('YOUR_REST_API_KEY')
+                                                ->setOrganizationApiKeyToken('YOUR_ORGANIZATION_API_KEY');
+
+
+
+$apiInstance = new onesignal\client\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$organization_id = 'YOUR_ORG_ID'; // string | The UUID of the organization to retrieve audit logs for. Must match the authenticated Organization API Key.
+$start_time = 'start_time_example'; // string | Start of the time range in ISO 8601 format (e.g. 2026-02-01T00:00:00Z). Required unless cursor is provided. Must be within the last 90 days.
+$end_time = 'end_time_example'; // string | End of the time range in ISO 8601 format. Defaults to the current time. Must be after start_time.
+$cursor = 'cursor_example'; // string | Pagination cursor returned in a previous response as next_cursor. When provided, start_time and end_time are ignored.
+$limit = 56; // int | Maximum number of events to return per page. Minimum 1, maximum 100. Values outside this range are clamped automatically by the server.
+$app_ids = array('app_ids_example'); // string[] | Filter events by app UUID. Accepts up to 10 values. Org-level events are always included.
+$actions = array('actions_example'); // string[] | Filter by action type (e.g. notification.sent, segment.created). Accepts up to 20 values.
+$actor_ids = array('actor_ids_example'); // string[] | Filter by actor UUID (the user or service that performed the action). Accepts up to 10 values.
+$actor_emails = array('actor_emails_example'); // string[] | Filter by actor email address. Accepts up to 10 values.
+$target_types = array('target_types_example'); // string[] | Filter by the type of resource the action was performed on (e.g. notification, segment, journey). Accepts up to 10 values.
+$target_ids = array('target_ids_example'); // string[] | Filter by the UUID of the resource the action was performed on. Accepts up to 10 values.
+$ip_addresses = array('ip_addresses_example'); // string[] | Filter by the IP address the action originated from. Accepts up to 10 values.
+
+try {
+    $result = $apiInstance->listAuditLogs($organization_id, $start_time, $end_time, $cursor, $limit, $app_ids, $actions, $actor_ids, $actor_emails, $target_types, $target_ids, $ip_addresses);
+    print_r($result);
+} catch (\onesignal\client\ApiException $e) {
+    echo 'Exception when calling DefaultApi->listAuditLogs: ', $e->getMessage(), PHP_EOL;
+    echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    // getErrorMessages() flattens any error-envelope shape to a string[];
+    // the raw body remains on getResponseBody().
+    echo 'Error Messages: ', implode(', ', $e->getErrorMessages()), PHP_EOL;
+    echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
+} catch (\Exception $e) {
+    echo 'Exception when calling DefaultApi->listAuditLogs: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organization_id** | **string**| The UUID of the organization to retrieve audit logs for. Must match the authenticated Organization API Key. |
+ **start_time** | **string**| Start of the time range in ISO 8601 format (e.g. 2026-02-01T00:00:00Z). Required unless cursor is provided. Must be within the last 90 days. | [optional]
+ **end_time** | **string**| End of the time range in ISO 8601 format. Defaults to the current time. Must be after start_time. | [optional]
+ **cursor** | **string**| Pagination cursor returned in a previous response as next_cursor. When provided, start_time and end_time are ignored. | [optional]
+ **limit** | **int**| Maximum number of events to return per page. Minimum 1, maximum 100. Values outside this range are clamped automatically by the server. | [optional]
+ **app_ids** | [**string[]**](../Model/string.md)| Filter events by app UUID. Accepts up to 10 values. Org-level events are always included. | [optional]
+ **actions** | [**string[]**](../Model/string.md)| Filter by action type (e.g. notification.sent, segment.created). Accepts up to 20 values. | [optional]
+ **actor_ids** | [**string[]**](../Model/string.md)| Filter by actor UUID (the user or service that performed the action). Accepts up to 10 values. | [optional]
+ **actor_emails** | [**string[]**](../Model/string.md)| Filter by actor email address. Accepts up to 10 values. | [optional]
+ **target_types** | [**string[]**](../Model/string.md)| Filter by the type of resource the action was performed on (e.g. notification, segment, journey). Accepts up to 10 values. | [optional]
+ **target_ids** | [**string[]**](../Model/string.md)| Filter by the UUID of the resource the action was performed on. Accepts up to 10 values. | [optional]
+ **ip_addresses** | [**string[]**](../Model/string.md)| Filter by the IP address the action originated from. Accepts up to 10 values. | [optional]
+
+### Return type
+
+[**\onesignal\client\model\ListAuditLogsSuccessResponse**](../Model/ListAuditLogsSuccessResponse.md)
+
+### Authorization
+
+[organization_api_key](https://github.com/OneSignal/onesignal-php-api#configuration)
 
 ### HTTP request headers
 
@@ -2822,6 +2989,79 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\onesignal\client\model\UpdateLiveActivitySuccessResponse**](../Model/UpdateLiveActivitySuccessResponse.md)
+
+### Authorization
+
+[rest_api_key](https://github.com/OneSignal/onesignal-php-api#configuration)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](https://github.com/OneSignal/onesignal-php-api#full-api-reference)
+[[Back to README]](https://github.com/OneSignal/onesignal-php-api)
+
+## `updateSegment()`
+
+```php
+updateSegment($app_id, $segment_id, $update_segment_request): \onesignal\client\model\UpdateSegmentSuccessResponse
+```
+
+Update Segment
+
+Update an existing segment's name and/or filters. The name parameter is always required. When filters are provided, all existing filters are replaced with the new ones.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: rest_api_key
+$config = onesignal\client\Configuration::getDefaultConfiguration()
+                                                ->setRestApiKeyToken('YOUR_REST_API_KEY')
+                                                ->setOrganizationApiKeyToken('YOUR_ORGANIZATION_API_KEY');
+
+
+
+$apiInstance = new onesignal\client\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$app_id = 'YOUR_APP_ID'; // string | The OneSignal App ID for your app.  Available in Keys & IDs.
+$segment_id = 'd6c5a3e1-9f17-44a1-9d10-7c0e4a2b1c8e'; // string | The segment's unique identifier. Can be found using the View Segments API or in the URL of the segment when viewing it in the dashboard.
+$update_segment_request = new \onesignal\client\model\UpdateSegmentRequest(); // \onesignal\client\model\UpdateSegmentRequest
+
+try {
+    $result = $apiInstance->updateSegment($app_id, $segment_id, $update_segment_request);
+    print_r($result);
+} catch (\onesignal\client\ApiException $e) {
+    echo 'Exception when calling DefaultApi->updateSegment: ', $e->getMessage(), PHP_EOL;
+    echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    // getErrorMessages() flattens any error-envelope shape to a string[];
+    // the raw body remains on getResponseBody().
+    echo 'Error Messages: ', implode(', ', $e->getErrorMessages()), PHP_EOL;
+    echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
+} catch (\Exception $e) {
+    echo 'Exception when calling DefaultApi->updateSegment: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **app_id** | **string**| The OneSignal App ID for your app.  Available in Keys &amp; IDs. |
+ **segment_id** | **string**| The segment&#39;s unique identifier. Can be found using the View Segments API or in the URL of the segment when viewing it in the dashboard. |
+ **update_segment_request** | [**\onesignal\client\model\UpdateSegmentRequest**](../Model/UpdateSegmentRequest.md)|  | [optional]
+
+### Return type
+
+[**\onesignal\client\model\UpdateSegmentSuccessResponse**](../Model/UpdateSegmentSuccessResponse.md)
 
 ### Authorization
 
