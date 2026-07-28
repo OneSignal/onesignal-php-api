@@ -7058,7 +7058,7 @@ class DefaultApi
             );
         }
 
-        $resourcePath = '/notifications/{notification_id}/export_events?app_id={app_id}';
+        $resourcePath = '/notifications/{notification_id}/export_events';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
