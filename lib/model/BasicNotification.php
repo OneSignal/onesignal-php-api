@@ -105,6 +105,7 @@ class BasicNotification implements ModelInterface, ArrayAccess, \JsonSerializabl
         'mutable_content' => 'bool',
         'target_content_identifier' => 'string',
         'big_picture' => 'string',
+        'global_image' => 'string',
         'huawei_big_picture' => 'string',
         'adm_big_picture' => 'string',
         'chrome_big_picture' => 'string',
@@ -232,6 +233,7 @@ class BasicNotification implements ModelInterface, ArrayAccess, \JsonSerializabl
         'mutable_content' => null,
         'target_content_identifier' => null,
         'big_picture' => null,
+        'global_image' => null,
         'huawei_big_picture' => null,
         'adm_big_picture' => null,
         'chrome_big_picture' => null,
@@ -378,6 +380,7 @@ class BasicNotification implements ModelInterface, ArrayAccess, \JsonSerializabl
         'mutable_content' => 'mutable_content',
         'target_content_identifier' => 'target_content_identifier',
         'big_picture' => 'big_picture',
+        'global_image' => 'global_image',
         'huawei_big_picture' => 'huawei_big_picture',
         'adm_big_picture' => 'adm_big_picture',
         'chrome_big_picture' => 'chrome_big_picture',
@@ -503,6 +506,7 @@ class BasicNotification implements ModelInterface, ArrayAccess, \JsonSerializabl
         'mutable_content' => 'setMutableContent',
         'target_content_identifier' => 'setTargetContentIdentifier',
         'big_picture' => 'setBigPicture',
+        'global_image' => 'setGlobalImage',
         'huawei_big_picture' => 'setHuaweiBigPicture',
         'adm_big_picture' => 'setAdmBigPicture',
         'chrome_big_picture' => 'setChromeBigPicture',
@@ -628,6 +632,7 @@ class BasicNotification implements ModelInterface, ArrayAccess, \JsonSerializabl
         'mutable_content' => 'getMutableContent',
         'target_content_identifier' => 'getTargetContentIdentifier',
         'big_picture' => 'getBigPicture',
+        'global_image' => 'getGlobalImage',
         'huawei_big_picture' => 'getHuaweiBigPicture',
         'adm_big_picture' => 'getAdmBigPicture',
         'chrome_big_picture' => 'getChromeBigPicture',
@@ -871,6 +876,7 @@ class BasicNotification implements ModelInterface, ArrayAccess, \JsonSerializabl
         $this->container['mutable_content'] = $data['mutable_content'] ?? null;
         $this->container['target_content_identifier'] = $data['target_content_identifier'] ?? null;
         $this->container['big_picture'] = $data['big_picture'] ?? null;
+        $this->container['global_image'] = $data['global_image'] ?? null;
         $this->container['huawei_big_picture'] = $data['huawei_big_picture'] ?? null;
         $this->container['adm_big_picture'] = $data['adm_big_picture'] ?? null;
         $this->container['chrome_big_picture'] = $data['chrome_big_picture'] ?? null;
@@ -2103,6 +2109,30 @@ class BasicNotification implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setBigPicture($big_picture)
     {
         $this->container['big_picture'] = $big_picture;
+
+        return $this;
+    }
+
+    /**
+     * Gets global_image
+     *
+     * @return string|null
+     */
+    public function getGlobalImage()
+    {
+        return $this->container['global_image'];
+    }
+
+    /**
+     * Sets global_image
+     *
+     * @param string|null $global_image Channel: Push Notifications Platform: All Picture to display on all platforms that support it. Must be a URL to an image file. Platform-specific picture fields (big_picture, huawei_big_picture, adm_big_picture, chrome_web_image, ios_attachments, firefox_icon) take precedence over this value when set.
+     *
+     * @return self
+     */
+    public function setGlobalImage($global_image)
+    {
+        $this->container['global_image'] = $global_image;
 
         return $this;
     }
