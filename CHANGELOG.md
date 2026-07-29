@@ -1,5 +1,7 @@
 # Changelog
 
+## [5.11.1](https://github.com/OneSignal/onesignal-php-api/compare/v5.11.0...v5.11.1) (2026-07-29)
+
 ## [5.11.0](https://github.com/OneSignal/onesignal-php-api/compare/v5.10.0...v5.11.0) (2026-07-28)
 
 ## [5.10.0](https://github.com/OneSignal/onesignal-php-api/compare/v5.9.0...v5.10.0) (2026-07-20)
