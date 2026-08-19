@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**createApiKey()**](DefaultApi.md#createApiKey) | **POST** /apps/{app_id}/auth/tokens | Create API key
 [**createApp()**](DefaultApi.md#createApp) | **POST** /apps | Create an app
 [**createCustomEvents()**](DefaultApi.md#createCustomEvents) | **POST** /apps/{app_id}/custom_events | Create custom events
+[**createJourney()**](DefaultApi.md#createJourney) | **POST** /apps/{app_id}/journeys | Create journey
 [**createNotification()**](DefaultApi.md#createNotification) | **POST** /notifications | Create notification
 [**createSegment()**](DefaultApi.md#createSegment) | **POST** /apps/{app_id}/segments | Create Segment
 [**createSubscription()**](DefaultApi.md#createSubscription) | **POST** /apps/{app_id}/users/by/{alias_label}/{alias_id}/subscriptions | 
@@ -18,6 +19,7 @@ Method | HTTP request | Description
 [**createUser()**](DefaultApi.md#createUser) | **POST** /apps/{app_id}/users | 
 [**deleteAlias()**](DefaultApi.md#deleteAlias) | **DELETE** /apps/{app_id}/users/by/{alias_label}/{alias_id}/identity/{alias_label_to_delete} | 
 [**deleteApiKey()**](DefaultApi.md#deleteApiKey) | **DELETE** /apps/{app_id}/auth/tokens/{token_id} | Delete API key
+[**deleteJourney()**](DefaultApi.md#deleteJourney) | **DELETE** /apps/{app_id}/journeys/{journey_id} | Delete journey
 [**deleteSegment()**](DefaultApi.md#deleteSegment) | **DELETE** /apps/{app_id}/segments/{segment_id} | Delete Segment
 [**deleteSubscription()**](DefaultApi.md#deleteSubscription) | **DELETE** /apps/{app_id}/subscriptions/{subscription_id} | 
 [**deleteTemplate()**](DefaultApi.md#deleteTemplate) | **DELETE** /templates/{template_id} | Delete template
@@ -42,6 +44,8 @@ Method | HTTP request | Description
 [**unsubscribeEmailWithToken()**](DefaultApi.md#unsubscribeEmailWithToken) | **POST** /apps/{app_id}/notifications/{notification_id}/unsubscribe | Unsubscribe with token
 [**updateApiKey()**](DefaultApi.md#updateApiKey) | **PATCH** /apps/{app_id}/auth/tokens/{token_id} | Update API key
 [**updateApp()**](DefaultApi.md#updateApp) | **PUT** /apps/{app_id} | Update an app
+[**updateJourney()**](DefaultApi.md#updateJourney) | **PATCH** /apps/{app_id}/journeys/{journey_id} | Update journey
+[**updateJourneyNode()**](DefaultApi.md#updateJourneyNode) | **PATCH** /apps/{app_id}/journeys/{journey_id}/nodes/{node_id} | Update journey node
 [**updateLiveActivity()**](DefaultApi.md#updateLiveActivity) | **POST** /apps/{app_id}/live_activities/{activity_id}/notifications | Update a Live Activity via Push
 [**updateSegment()**](DefaultApi.md#updateSegment) | **PATCH** /apps/{app_id}/segments/{segment_id} | Update Segment
 [**updateSubscription()**](DefaultApi.md#updateSubscription) | **PATCH** /apps/{app_id}/subscriptions/{subscription_id} | 
@@ -49,6 +53,9 @@ Method | HTTP request | Description
 [**updateTemplate()**](DefaultApi.md#updateTemplate) | **PATCH** /templates/{template_id} | Update template
 [**updateUser()**](DefaultApi.md#updateUser) | **PATCH** /apps/{app_id}/users/by/{alias_label}/{alias_id} | 
 [**viewApiKeys()**](DefaultApi.md#viewApiKeys) | **GET** /apps/{app_id}/auth/tokens | View API keys
+[**viewJourney()**](DefaultApi.md#viewJourney) | **GET** /apps/{app_id}/journeys/{journey_id} | View journey
+[**viewJourneyStats()**](DefaultApi.md#viewJourneyStats) | **GET** /apps/{app_id}/journeys/{journey_id}/stats | View journey stats
+[**viewJourneys()**](DefaultApi.md#viewJourneys) | **GET** /apps/{app_id}/journeys | View journeys
 [**viewTemplate()**](DefaultApi.md#viewTemplate) | **GET** /templates/{template_id} | View template
 [**viewTemplates()**](DefaultApi.md#viewTemplates) | **GET** /templates | View templates
 
@@ -582,6 +589,77 @@ Name | Type | Description  | Notes
 ### Return type
 
 **object**
+
+### Authorization
+
+[rest_api_key](https://github.com/OneSignal/onesignal-php-api#configuration)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](https://github.com/OneSignal/onesignal-php-api#full-api-reference)
+[[Back to README]](https://github.com/OneSignal/onesignal-php-api)
+
+## `createJourney()`
+
+```php
+createJourney($app_id, $create_journey_request): \onesignal\client\model\Journey
+```
+
+Create journey
+
+The Journeys API is in beta. Endpoints and response fields can still change. Create a new journey with an audience and a node graph. Journeys are always created in the draft state. The authenticated App API key must have permission to create journeys.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: rest_api_key
+$config = onesignal\client\Configuration::getDefaultConfiguration()
+                                                ->setRestApiKeyToken('YOUR_REST_API_KEY')
+                                                ->setOrganizationApiKeyToken('YOUR_ORGANIZATION_API_KEY');
+
+
+
+$apiInstance = new onesignal\client\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$app_id = 'YOUR_APP_ID'; // string | Your OneSignal App ID in UUID v4 format.
+$create_journey_request = new \onesignal\client\model\CreateJourneyRequest(); // \onesignal\client\model\CreateJourneyRequest
+
+try {
+    $result = $apiInstance->createJourney($app_id, $create_journey_request);
+    print_r($result);
+} catch (\onesignal\client\ApiException $e) {
+    echo 'Exception when calling DefaultApi->createJourney: ', $e->getMessage(), PHP_EOL;
+    echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    // getErrorMessages() flattens any error-envelope shape to a string[];
+    // the raw body remains on getResponseBody().
+    echo 'Error Messages: ', implode(', ', $e->getErrorMessages()), PHP_EOL;
+    echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
+} catch (\Exception $e) {
+    echo 'Exception when calling DefaultApi->createJourney: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **app_id** | **string**| Your OneSignal App ID in UUID v4 format. |
+ **create_journey_request** | [**\onesignal\client\model\CreateJourneyRequest**](../Model/CreateJourneyRequest.md)|  |
+
+### Return type
+
+[**\onesignal\client\model\Journey**](../Model/Journey.md)
 
 ### Authorization
 
@@ -1173,6 +1251,77 @@ Name | Type | Description  | Notes
 ### Authorization
 
 [organization_api_key](https://github.com/OneSignal/onesignal-php-api#configuration)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](https://github.com/OneSignal/onesignal-php-api#full-api-reference)
+[[Back to README]](https://github.com/OneSignal/onesignal-php-api)
+
+## `deleteJourney()`
+
+```php
+deleteJourney($app_id, $journey_id): \onesignal\client\model\GenericSuccessBoolResponse
+```
+
+Delete journey
+
+The Journeys API is in beta. Endpoints and response fields can still change. Permanently delete a journey by its UUID. Returns { \"success\": true } on success. The authenticated App API key must have permission to delete journeys. Deleting a journey stops any in-flight users and cannot be undone. Archive a running journey instead if you need to keep its data.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: rest_api_key
+$config = onesignal\client\Configuration::getDefaultConfiguration()
+                                                ->setRestApiKeyToken('YOUR_REST_API_KEY')
+                                                ->setOrganizationApiKeyToken('YOUR_ORGANIZATION_API_KEY');
+
+
+
+$apiInstance = new onesignal\client\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$app_id = 'YOUR_APP_ID'; // string | Your OneSignal App ID in UUID v4 format.
+$journey_id = 'YOUR_JOURNEY_ID'; // string | UUID of the journey to delete.
+
+try {
+    $result = $apiInstance->deleteJourney($app_id, $journey_id);
+    print_r($result);
+} catch (\onesignal\client\ApiException $e) {
+    echo 'Exception when calling DefaultApi->deleteJourney: ', $e->getMessage(), PHP_EOL;
+    echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    // getErrorMessages() flattens any error-envelope shape to a string[];
+    // the raw body remains on getResponseBody().
+    echo 'Error Messages: ', implode(', ', $e->getErrorMessages()), PHP_EOL;
+    echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
+} catch (\Exception $e) {
+    echo 'Exception when calling DefaultApi->deleteJourney: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **app_id** | **string**| Your OneSignal App ID in UUID v4 format. |
+ **journey_id** | **string**| UUID of the journey to delete. |
+
+### Return type
+
+[**\onesignal\client\model\GenericSuccessBoolResponse**](../Model/GenericSuccessBoolResponse.md)
+
+### Authorization
+
+[rest_api_key](https://github.com/OneSignal/onesignal-php-api#configuration)
 
 ### HTTP request headers
 
@@ -2929,6 +3078,154 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](https://github.com/OneSignal/onesignal-php-api#full-api-reference)
 [[Back to README]](https://github.com/OneSignal/onesignal-php-api)
 
+## `updateJourney()`
+
+```php
+updateJourney($app_id, $journey_id, $update_journey_request): \onesignal\client\model\Journey
+```
+
+Update journey
+
+The Journeys API is in beta. Endpoints and response fields can still change. Apply a partial update to a journey using JSON Merge Patch (RFC 7396). Send only the fields you want to change; omitted fields are left unchanged. A null value clears a nullable field, and arrays such as nodes are replaced wholesale. Set state to active to activate a draft journey.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: rest_api_key
+$config = onesignal\client\Configuration::getDefaultConfiguration()
+                                                ->setRestApiKeyToken('YOUR_REST_API_KEY')
+                                                ->setOrganizationApiKeyToken('YOUR_ORGANIZATION_API_KEY');
+
+
+
+$apiInstance = new onesignal\client\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$app_id = 'YOUR_APP_ID'; // string | Your OneSignal App ID in UUID v4 format.
+$journey_id = 'YOUR_JOURNEY_ID'; // string | UUID of the journey to update.
+$update_journey_request = new \onesignal\client\model\UpdateJourneyRequest(); // \onesignal\client\model\UpdateJourneyRequest
+
+try {
+    $result = $apiInstance->updateJourney($app_id, $journey_id, $update_journey_request);
+    print_r($result);
+} catch (\onesignal\client\ApiException $e) {
+    echo 'Exception when calling DefaultApi->updateJourney: ', $e->getMessage(), PHP_EOL;
+    echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    // getErrorMessages() flattens any error-envelope shape to a string[];
+    // the raw body remains on getResponseBody().
+    echo 'Error Messages: ', implode(', ', $e->getErrorMessages()), PHP_EOL;
+    echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
+} catch (\Exception $e) {
+    echo 'Exception when calling DefaultApi->updateJourney: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **app_id** | **string**| Your OneSignal App ID in UUID v4 format. |
+ **journey_id** | **string**| UUID of the journey to update. |
+ **update_journey_request** | [**\onesignal\client\model\UpdateJourneyRequest**](../Model/UpdateJourneyRequest.md)|  |
+
+### Return type
+
+[**\onesignal\client\model\Journey**](../Model/Journey.md)
+
+### Authorization
+
+[rest_api_key](https://github.com/OneSignal/onesignal-php-api#configuration)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](https://github.com/OneSignal/onesignal-php-api#full-api-reference)
+[[Back to README]](https://github.com/OneSignal/onesignal-php-api)
+
+## `updateJourneyNode()`
+
+```php
+updateJourneyNode($app_id, $journey_id, $node_id, $update_journey_node_request): \onesignal\client\model\Journey
+```
+
+Update journey node
+
+The Journeys API is in beta. Endpoints and response fields can still change. Apply a partial update to a single node, located by its server-assigned id, using JSON Merge Patch (RFC 7396). Send only the node fields you want to change; the rest of the node and the rest of the journey graph are left untouched. Returns the full updated journey.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: rest_api_key
+$config = onesignal\client\Configuration::getDefaultConfiguration()
+                                                ->setRestApiKeyToken('YOUR_REST_API_KEY')
+                                                ->setOrganizationApiKeyToken('YOUR_ORGANIZATION_API_KEY');
+
+
+
+$apiInstance = new onesignal\client\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$app_id = 'YOUR_APP_ID'; // string | Your OneSignal App ID in UUID v4 format.
+$journey_id = 'YOUR_JOURNEY_ID'; // string | UUID of the journey that owns the node.
+$node_id = 'YOUR_NODE_ID'; // string | Server-assigned UUID of the node to update, from a prior View journey fetch.
+$update_journey_node_request = new \onesignal\client\model\UpdateJourneyNodeRequest(); // \onesignal\client\model\UpdateJourneyNodeRequest
+
+try {
+    $result = $apiInstance->updateJourneyNode($app_id, $journey_id, $node_id, $update_journey_node_request);
+    print_r($result);
+} catch (\onesignal\client\ApiException $e) {
+    echo 'Exception when calling DefaultApi->updateJourneyNode: ', $e->getMessage(), PHP_EOL;
+    echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    // getErrorMessages() flattens any error-envelope shape to a string[];
+    // the raw body remains on getResponseBody().
+    echo 'Error Messages: ', implode(', ', $e->getErrorMessages()), PHP_EOL;
+    echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
+} catch (\Exception $e) {
+    echo 'Exception when calling DefaultApi->updateJourneyNode: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **app_id** | **string**| Your OneSignal App ID in UUID v4 format. |
+ **journey_id** | **string**| UUID of the journey that owns the node. |
+ **node_id** | **string**| Server-assigned UUID of the node to update, from a prior View journey fetch. |
+ **update_journey_node_request** | [**\onesignal\client\model\UpdateJourneyNodeRequest**](../Model/UpdateJourneyNodeRequest.md)|  |
+
+### Return type
+
+[**\onesignal\client\model\Journey**](../Model/Journey.md)
+
+### Authorization
+
+[rest_api_key](https://github.com/OneSignal/onesignal-php-api#configuration)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](https://github.com/OneSignal/onesignal-php-api#full-api-reference)
+[[Back to README]](https://github.com/OneSignal/onesignal-php-api)
+
 ## `updateLiveActivity()`
 
 ```php
@@ -3430,6 +3727,221 @@ Name | Type | Description  | Notes
 ### Authorization
 
 [organization_api_key](https://github.com/OneSignal/onesignal-php-api#configuration)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](https://github.com/OneSignal/onesignal-php-api#full-api-reference)
+[[Back to README]](https://github.com/OneSignal/onesignal-php-api)
+
+## `viewJourney()`
+
+```php
+viewJourney($app_id, $journey_id): \onesignal\client\model\Journey
+```
+
+View journey
+
+The Journeys API is in beta. Endpoints and response fields can still change. Retrieve the full configuration of a single journey by its UUID, including its audience and node graph.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: rest_api_key
+$config = onesignal\client\Configuration::getDefaultConfiguration()
+                                                ->setRestApiKeyToken('YOUR_REST_API_KEY')
+                                                ->setOrganizationApiKeyToken('YOUR_ORGANIZATION_API_KEY');
+
+
+
+$apiInstance = new onesignal\client\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$app_id = 'YOUR_APP_ID'; // string | Your OneSignal App ID in UUID v4 format.
+$journey_id = 'YOUR_JOURNEY_ID'; // string | UUID of the journey to retrieve.
+
+try {
+    $result = $apiInstance->viewJourney($app_id, $journey_id);
+    print_r($result);
+} catch (\onesignal\client\ApiException $e) {
+    echo 'Exception when calling DefaultApi->viewJourney: ', $e->getMessage(), PHP_EOL;
+    echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    // getErrorMessages() flattens any error-envelope shape to a string[];
+    // the raw body remains on getResponseBody().
+    echo 'Error Messages: ', implode(', ', $e->getErrorMessages()), PHP_EOL;
+    echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
+} catch (\Exception $e) {
+    echo 'Exception when calling DefaultApi->viewJourney: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **app_id** | **string**| Your OneSignal App ID in UUID v4 format. |
+ **journey_id** | **string**| UUID of the journey to retrieve. |
+
+### Return type
+
+[**\onesignal\client\model\Journey**](../Model/Journey.md)
+
+### Authorization
+
+[rest_api_key](https://github.com/OneSignal/onesignal-php-api#configuration)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](https://github.com/OneSignal/onesignal-php-api#full-api-reference)
+[[Back to README]](https://github.com/OneSignal/onesignal-php-api)
+
+## `viewJourneyStats()`
+
+```php
+viewJourneyStats($app_id, $journey_id): \onesignal\client\model\JourneyStats
+```
+
+View journey stats
+
+The Journeys API is in beta. Endpoints and response fields can still change. Retrieve performance stats for a single journey: journey-level entry and exit counts, per-node counts keyed by node id, per-branch counts keyed by branch id, and channel delivery stats for message-sending nodes. The response carries no definition detail, so join it by id against the journey from View journey.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: rest_api_key
+$config = onesignal\client\Configuration::getDefaultConfiguration()
+                                                ->setRestApiKeyToken('YOUR_REST_API_KEY')
+                                                ->setOrganizationApiKeyToken('YOUR_ORGANIZATION_API_KEY');
+
+
+
+$apiInstance = new onesignal\client\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$app_id = 'YOUR_APP_ID'; // string | Your OneSignal App ID in UUID v4 format.
+$journey_id = 'YOUR_JOURNEY_ID'; // string | UUID of the journey to retrieve stats for.
+
+try {
+    $result = $apiInstance->viewJourneyStats($app_id, $journey_id);
+    print_r($result);
+} catch (\onesignal\client\ApiException $e) {
+    echo 'Exception when calling DefaultApi->viewJourneyStats: ', $e->getMessage(), PHP_EOL;
+    echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    // getErrorMessages() flattens any error-envelope shape to a string[];
+    // the raw body remains on getResponseBody().
+    echo 'Error Messages: ', implode(', ', $e->getErrorMessages()), PHP_EOL;
+    echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
+} catch (\Exception $e) {
+    echo 'Exception when calling DefaultApi->viewJourneyStats: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **app_id** | **string**| Your OneSignal App ID in UUID v4 format. |
+ **journey_id** | **string**| UUID of the journey to retrieve stats for. |
+
+### Return type
+
+[**\onesignal\client\model\JourneyStats**](../Model/JourneyStats.md)
+
+### Authorization
+
+[rest_api_key](https://github.com/OneSignal/onesignal-php-api#configuration)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](https://github.com/OneSignal/onesignal-php-api#full-api-reference)
+[[Back to README]](https://github.com/OneSignal/onesignal-php-api)
+
+## `viewJourneys()`
+
+```php
+viewJourneys($app_id, $cursor, $limit): \onesignal\client\model\JourneyListResponse
+```
+
+View journeys
+
+The Journeys API is in beta. Endpoints and response fields can still change. Retrieve a paginated list of journeys for an app. Returns a summary representation of each journey; use View journey for the full configuration. Uses forward-only cursor-based pagination.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: rest_api_key
+$config = onesignal\client\Configuration::getDefaultConfiguration()
+                                                ->setRestApiKeyToken('YOUR_REST_API_KEY')
+                                                ->setOrganizationApiKeyToken('YOUR_ORGANIZATION_API_KEY');
+
+
+
+$apiInstance = new onesignal\client\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$app_id = 'YOUR_APP_ID'; // string | Your OneSignal App ID in UUID v4 format.
+$cursor = 'cursor_example'; // string | Opaque pagination token from a previous response's next_cursor. Omit for the first page.
+$limit = 50; // int | Maximum journeys to return per page. Minimum 1, maximum 50.
+
+try {
+    $result = $apiInstance->viewJourneys($app_id, $cursor, $limit);
+    print_r($result);
+} catch (\onesignal\client\ApiException $e) {
+    echo 'Exception when calling DefaultApi->viewJourneys: ', $e->getMessage(), PHP_EOL;
+    echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    // getErrorMessages() flattens any error-envelope shape to a string[];
+    // the raw body remains on getResponseBody().
+    echo 'Error Messages: ', implode(', ', $e->getErrorMessages()), PHP_EOL;
+    echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
+} catch (\Exception $e) {
+    echo 'Exception when calling DefaultApi->viewJourneys: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **app_id** | **string**| Your OneSignal App ID in UUID v4 format. |
+ **cursor** | **string**| Opaque pagination token from a previous response&#39;s next_cursor. Omit for the first page. | [optional]
+ **limit** | **int**| Maximum journeys to return per page. Minimum 1, maximum 50. | [optional] [default to 50]
+
+### Return type
+
+[**\onesignal\client\model\JourneyListResponse**](../Model/JourneyListResponse.md)
+
+### Authorization
+
+[rest_api_key](https://github.com/OneSignal/onesignal-php-api#configuration)
 
 ### HTTP request headers
 
