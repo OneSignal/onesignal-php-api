@@ -481,7 +481,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.11.2';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.12.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -835,7 +835,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.11.2';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.12.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -1268,7 +1268,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.11.2';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.12.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -1682,7 +1682,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.11.2';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.12.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -2016,7 +2016,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.11.2';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.12.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -2354,7 +2354,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.11.2';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.12.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -2734,7 +2734,387 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.11.2';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.12.0';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation createJourney
+     *
+     * Create journey
+     *
+     * @param  string $app_id Your OneSignal App ID in UUID v4 format. (required)
+     * @param  \onesignal\client\model\CreateJourneyRequest $create_journey_request create_journey_request (required)
+     *
+     * @throws \onesignal\client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \onesignal\client\model\Journey|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError
+     */
+    public function createJourney($app_id, $create_journey_request)
+    {
+        list($response) = $this->createJourneyWithHttpInfo($app_id, $create_journey_request);
+        return $response;
+    }
+
+    /**
+     * Operation createJourneyWithHttpInfo
+     *
+     * Create journey
+     *
+     * @param  string $app_id Your OneSignal App ID in UUID v4 format. (required)
+     * @param  \onesignal\client\model\CreateJourneyRequest $create_journey_request (required)
+     *
+     * @throws \onesignal\client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \onesignal\client\model\Journey|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createJourneyWithHttpInfo($app_id, $create_journey_request)
+    {
+        $request = $this->createJourneyRequest($app_id, $create_journey_request);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 201:
+                    if ('\onesignal\client\model\Journey' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\onesignal\client\model\Journey' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\onesignal\client\model\Journey', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\onesignal\client\model\GenericError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\onesignal\client\model\GenericError' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\onesignal\client\model\GenericError', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\onesignal\client\model\GenericError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\onesignal\client\model\GenericError' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\onesignal\client\model\GenericError', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 429:
+                    if ('\onesignal\client\model\RateLimitError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\onesignal\client\model\RateLimitError' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\onesignal\client\model\RateLimitError', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\onesignal\client\model\Journey';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 201:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\Journey',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\RateLimitError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation createJourneyAsync
+     *
+     * Create journey
+     *
+     * @param  string $app_id Your OneSignal App ID in UUID v4 format. (required)
+     * @param  \onesignal\client\model\CreateJourneyRequest $create_journey_request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createJourneyAsync($app_id, $create_journey_request)
+    {
+        return $this->createJourneyAsyncWithHttpInfo($app_id, $create_journey_request)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createJourneyAsyncWithHttpInfo
+     *
+     * Create journey
+     *
+     * @param  string $app_id Your OneSignal App ID in UUID v4 format. (required)
+     * @param  \onesignal\client\model\CreateJourneyRequest $create_journey_request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createJourneyAsyncWithHttpInfo($app_id, $create_journey_request)
+    {
+        $returnType = '\onesignal\client\model\Journey';
+        $request = $this->createJourneyRequest($app_id, $create_journey_request);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'createJourney'
+     *
+     * @param  string $app_id Your OneSignal App ID in UUID v4 format. (required)
+     * @param  \onesignal\client\model\CreateJourneyRequest $create_journey_request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function createJourneyRequest($app_id, $create_journey_request)
+    {
+        // verify the required parameter 'app_id' is set
+        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $app_id when calling createJourney'
+            );
+        }
+        // verify the required parameter 'create_journey_request' is set
+        if ($create_journey_request === null || (is_array($create_journey_request) && count($create_journey_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $create_journey_request when calling createJourney'
+            );
+        }
+
+        $resourcePath = '/apps/{app_id}/journeys';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($app_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app_id' . '}',
+                ObjectSerializer::toPathValue($app_id),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($create_journey_request)) {
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($create_journey_request));
+            } else {
+                $httpBody = $create_journey_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        if (!empty($this->config->getRestApiKeyToken())) {
+            $headers['Authorization'] = 'Key ' . $this->config->getRestApiKeyToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        // Adding the telemetry header
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.12.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -3072,7 +3452,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.11.2';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.12.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -3446,7 +3826,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.11.2';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.12.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -3902,7 +4282,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.11.2';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.12.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -4240,7 +4620,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.11.2';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.12.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -4658,7 +5038,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.11.2';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.12.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -5093,7 +5473,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.11.2';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.12.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -5429,7 +5809,389 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.11.2';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.12.0';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'DELETE',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation deleteJourney
+     *
+     * Delete journey
+     *
+     * @param  string $app_id Your OneSignal App ID in UUID v4 format. (required)
+     * @param  string $journey_id UUID of the journey to delete. (required)
+     *
+     * @throws \onesignal\client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \onesignal\client\model\GenericSuccessBoolResponse|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError
+     */
+    public function deleteJourney($app_id, $journey_id)
+    {
+        list($response) = $this->deleteJourneyWithHttpInfo($app_id, $journey_id);
+        return $response;
+    }
+
+    /**
+     * Operation deleteJourneyWithHttpInfo
+     *
+     * Delete journey
+     *
+     * @param  string $app_id Your OneSignal App ID in UUID v4 format. (required)
+     * @param  string $journey_id UUID of the journey to delete. (required)
+     *
+     * @throws \onesignal\client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \onesignal\client\model\GenericSuccessBoolResponse|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function deleteJourneyWithHttpInfo($app_id, $journey_id)
+    {
+        $request = $this->deleteJourneyRequest($app_id, $journey_id);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\onesignal\client\model\GenericSuccessBoolResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\onesignal\client\model\GenericSuccessBoolResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\onesignal\client\model\GenericSuccessBoolResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\onesignal\client\model\GenericError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\onesignal\client\model\GenericError' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\onesignal\client\model\GenericError', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\onesignal\client\model\GenericError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\onesignal\client\model\GenericError' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\onesignal\client\model\GenericError', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 429:
+                    if ('\onesignal\client\model\RateLimitError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\onesignal\client\model\RateLimitError' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\onesignal\client\model\RateLimitError', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\onesignal\client\model\GenericSuccessBoolResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericSuccessBoolResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\RateLimitError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation deleteJourneyAsync
+     *
+     * Delete journey
+     *
+     * @param  string $app_id Your OneSignal App ID in UUID v4 format. (required)
+     * @param  string $journey_id UUID of the journey to delete. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteJourneyAsync($app_id, $journey_id)
+    {
+        return $this->deleteJourneyAsyncWithHttpInfo($app_id, $journey_id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation deleteJourneyAsyncWithHttpInfo
+     *
+     * Delete journey
+     *
+     * @param  string $app_id Your OneSignal App ID in UUID v4 format. (required)
+     * @param  string $journey_id UUID of the journey to delete. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteJourneyAsyncWithHttpInfo($app_id, $journey_id)
+    {
+        $returnType = '\onesignal\client\model\GenericSuccessBoolResponse';
+        $request = $this->deleteJourneyRequest($app_id, $journey_id);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'deleteJourney'
+     *
+     * @param  string $app_id Your OneSignal App ID in UUID v4 format. (required)
+     * @param  string $journey_id UUID of the journey to delete. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function deleteJourneyRequest($app_id, $journey_id)
+    {
+        // verify the required parameter 'app_id' is set
+        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $app_id when calling deleteJourney'
+            );
+        }
+        // verify the required parameter 'journey_id' is set
+        if ($journey_id === null || (is_array($journey_id) && count($journey_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $journey_id when calling deleteJourney'
+            );
+        }
+
+        $resourcePath = '/apps/{app_id}/journeys/{journey_id}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($app_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app_id' . '}',
+                ObjectSerializer::toPathValue($app_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($journey_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'journey_id' . '}',
+                ObjectSerializer::toPathValue($journey_id),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        if (!empty($this->config->getRestApiKeyToken())) {
+            $headers['Authorization'] = 'Key ' . $this->config->getRestApiKeyToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        // Adding the telemetry header
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.12.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -5811,7 +6573,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.11.2';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.12.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -6094,7 +6856,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.11.2';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.12.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -6454,7 +7216,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.11.2';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.12.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -6748,7 +7510,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.11.2';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.12.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -7131,7 +7893,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.11.2';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.12.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -7482,7 +8244,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.11.2';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.12.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -7875,7 +8637,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.11.2';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.12.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -8226,7 +8988,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.11.2';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.12.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -8566,7 +9328,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.11.2';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.12.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -8887,7 +9649,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.11.2';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.12.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -9270,7 +10032,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.11.2';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.12.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -9650,7 +10412,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.11.2';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.12.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -10047,7 +10809,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.11.2';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.12.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -10463,7 +11225,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.11.2';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.12.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -10859,7 +11621,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.11.2';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.12.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -11227,7 +11989,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.11.2';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.12.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -11620,7 +12382,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.11.2';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.12.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -12188,7 +12950,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.11.2';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.12.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -12524,7 +13286,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.11.2';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.12.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -12900,7 +13662,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.11.2';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.12.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -13314,7 +14076,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.11.2';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.12.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -13693,7 +14455,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.11.2';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.12.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -14046,7 +14808,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.11.2';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.12.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -14403,7 +15165,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.11.2';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.12.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -14414,6 +15176,961 @@ class DefaultApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'PUT',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation updateJourney
+     *
+     * Update journey
+     *
+     * @param  string $app_id Your OneSignal App ID in UUID v4 format. (required)
+     * @param  string $journey_id UUID of the journey to update. (required)
+     * @param  \onesignal\client\model\UpdateJourneyRequest $update_journey_request update_journey_request (required)
+     *
+     * @throws \onesignal\client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \onesignal\client\model\Journey|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError
+     */
+    public function updateJourney($app_id, $journey_id, $update_journey_request)
+    {
+        list($response) = $this->updateJourneyWithHttpInfo($app_id, $journey_id, $update_journey_request);
+        return $response;
+    }
+
+    /**
+     * Operation updateJourneyWithHttpInfo
+     *
+     * Update journey
+     *
+     * @param  string $app_id Your OneSignal App ID in UUID v4 format. (required)
+     * @param  string $journey_id UUID of the journey to update. (required)
+     * @param  \onesignal\client\model\UpdateJourneyRequest $update_journey_request (required)
+     *
+     * @throws \onesignal\client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \onesignal\client\model\Journey|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function updateJourneyWithHttpInfo($app_id, $journey_id, $update_journey_request)
+    {
+        $request = $this->updateJourneyRequest($app_id, $journey_id, $update_journey_request);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\onesignal\client\model\Journey' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\onesignal\client\model\Journey' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\onesignal\client\model\Journey', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\onesignal\client\model\GenericError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\onesignal\client\model\GenericError' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\onesignal\client\model\GenericError', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\onesignal\client\model\GenericError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\onesignal\client\model\GenericError' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\onesignal\client\model\GenericError', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\onesignal\client\model\GenericError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\onesignal\client\model\GenericError' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\onesignal\client\model\GenericError', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 409:
+                    if ('\onesignal\client\model\GenericError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\onesignal\client\model\GenericError' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\onesignal\client\model\GenericError', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 422:
+                    if ('\onesignal\client\model\GenericError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\onesignal\client\model\GenericError' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\onesignal\client\model\GenericError', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 429:
+                    if ('\onesignal\client\model\RateLimitError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\onesignal\client\model\RateLimitError' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\onesignal\client\model\RateLimitError', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\onesignal\client\model\Journey';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\Journey',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\RateLimitError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation updateJourneyAsync
+     *
+     * Update journey
+     *
+     * @param  string $app_id Your OneSignal App ID in UUID v4 format. (required)
+     * @param  string $journey_id UUID of the journey to update. (required)
+     * @param  \onesignal\client\model\UpdateJourneyRequest $update_journey_request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateJourneyAsync($app_id, $journey_id, $update_journey_request)
+    {
+        return $this->updateJourneyAsyncWithHttpInfo($app_id, $journey_id, $update_journey_request)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation updateJourneyAsyncWithHttpInfo
+     *
+     * Update journey
+     *
+     * @param  string $app_id Your OneSignal App ID in UUID v4 format. (required)
+     * @param  string $journey_id UUID of the journey to update. (required)
+     * @param  \onesignal\client\model\UpdateJourneyRequest $update_journey_request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateJourneyAsyncWithHttpInfo($app_id, $journey_id, $update_journey_request)
+    {
+        $returnType = '\onesignal\client\model\Journey';
+        $request = $this->updateJourneyRequest($app_id, $journey_id, $update_journey_request);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'updateJourney'
+     *
+     * @param  string $app_id Your OneSignal App ID in UUID v4 format. (required)
+     * @param  string $journey_id UUID of the journey to update. (required)
+     * @param  \onesignal\client\model\UpdateJourneyRequest $update_journey_request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function updateJourneyRequest($app_id, $journey_id, $update_journey_request)
+    {
+        // verify the required parameter 'app_id' is set
+        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $app_id when calling updateJourney'
+            );
+        }
+        // verify the required parameter 'journey_id' is set
+        if ($journey_id === null || (is_array($journey_id) && count($journey_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $journey_id when calling updateJourney'
+            );
+        }
+        // verify the required parameter 'update_journey_request' is set
+        if ($update_journey_request === null || (is_array($update_journey_request) && count($update_journey_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $update_journey_request when calling updateJourney'
+            );
+        }
+
+        $resourcePath = '/apps/{app_id}/journeys/{journey_id}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($app_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app_id' . '}',
+                ObjectSerializer::toPathValue($app_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($journey_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'journey_id' . '}',
+                ObjectSerializer::toPathValue($journey_id),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($update_journey_request)) {
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($update_journey_request));
+            } else {
+                $httpBody = $update_journey_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        if (!empty($this->config->getRestApiKeyToken())) {
+            $headers['Authorization'] = 'Key ' . $this->config->getRestApiKeyToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        // Adding the telemetry header
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.12.0';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PATCH',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation updateJourneyNode
+     *
+     * Update journey node
+     *
+     * @param  string $app_id Your OneSignal App ID in UUID v4 format. (required)
+     * @param  string $journey_id UUID of the journey that owns the node. (required)
+     * @param  string $node_id Server-assigned UUID of the node to update, from a prior View journey fetch. (required)
+     * @param  \onesignal\client\model\UpdateJourneyNodeRequest $update_journey_node_request update_journey_node_request (required)
+     *
+     * @throws \onesignal\client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \onesignal\client\model\Journey|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError
+     */
+    public function updateJourneyNode($app_id, $journey_id, $node_id, $update_journey_node_request)
+    {
+        list($response) = $this->updateJourneyNodeWithHttpInfo($app_id, $journey_id, $node_id, $update_journey_node_request);
+        return $response;
+    }
+
+    /**
+     * Operation updateJourneyNodeWithHttpInfo
+     *
+     * Update journey node
+     *
+     * @param  string $app_id Your OneSignal App ID in UUID v4 format. (required)
+     * @param  string $journey_id UUID of the journey that owns the node. (required)
+     * @param  string $node_id Server-assigned UUID of the node to update, from a prior View journey fetch. (required)
+     * @param  \onesignal\client\model\UpdateJourneyNodeRequest $update_journey_node_request (required)
+     *
+     * @throws \onesignal\client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \onesignal\client\model\Journey|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function updateJourneyNodeWithHttpInfo($app_id, $journey_id, $node_id, $update_journey_node_request)
+    {
+        $request = $this->updateJourneyNodeRequest($app_id, $journey_id, $node_id, $update_journey_node_request);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\onesignal\client\model\Journey' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\onesignal\client\model\Journey' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\onesignal\client\model\Journey', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\onesignal\client\model\GenericError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\onesignal\client\model\GenericError' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\onesignal\client\model\GenericError', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\onesignal\client\model\GenericError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\onesignal\client\model\GenericError' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\onesignal\client\model\GenericError', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\onesignal\client\model\GenericError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\onesignal\client\model\GenericError' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\onesignal\client\model\GenericError', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 409:
+                    if ('\onesignal\client\model\GenericError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\onesignal\client\model\GenericError' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\onesignal\client\model\GenericError', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 422:
+                    if ('\onesignal\client\model\GenericError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\onesignal\client\model\GenericError' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\onesignal\client\model\GenericError', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 429:
+                    if ('\onesignal\client\model\RateLimitError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\onesignal\client\model\RateLimitError' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\onesignal\client\model\RateLimitError', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\onesignal\client\model\Journey';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\Journey',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\RateLimitError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation updateJourneyNodeAsync
+     *
+     * Update journey node
+     *
+     * @param  string $app_id Your OneSignal App ID in UUID v4 format. (required)
+     * @param  string $journey_id UUID of the journey that owns the node. (required)
+     * @param  string $node_id Server-assigned UUID of the node to update, from a prior View journey fetch. (required)
+     * @param  \onesignal\client\model\UpdateJourneyNodeRequest $update_journey_node_request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateJourneyNodeAsync($app_id, $journey_id, $node_id, $update_journey_node_request)
+    {
+        return $this->updateJourneyNodeAsyncWithHttpInfo($app_id, $journey_id, $node_id, $update_journey_node_request)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation updateJourneyNodeAsyncWithHttpInfo
+     *
+     * Update journey node
+     *
+     * @param  string $app_id Your OneSignal App ID in UUID v4 format. (required)
+     * @param  string $journey_id UUID of the journey that owns the node. (required)
+     * @param  string $node_id Server-assigned UUID of the node to update, from a prior View journey fetch. (required)
+     * @param  \onesignal\client\model\UpdateJourneyNodeRequest $update_journey_node_request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateJourneyNodeAsyncWithHttpInfo($app_id, $journey_id, $node_id, $update_journey_node_request)
+    {
+        $returnType = '\onesignal\client\model\Journey';
+        $request = $this->updateJourneyNodeRequest($app_id, $journey_id, $node_id, $update_journey_node_request);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'updateJourneyNode'
+     *
+     * @param  string $app_id Your OneSignal App ID in UUID v4 format. (required)
+     * @param  string $journey_id UUID of the journey that owns the node. (required)
+     * @param  string $node_id Server-assigned UUID of the node to update, from a prior View journey fetch. (required)
+     * @param  \onesignal\client\model\UpdateJourneyNodeRequest $update_journey_node_request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function updateJourneyNodeRequest($app_id, $journey_id, $node_id, $update_journey_node_request)
+    {
+        // verify the required parameter 'app_id' is set
+        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $app_id when calling updateJourneyNode'
+            );
+        }
+        // verify the required parameter 'journey_id' is set
+        if ($journey_id === null || (is_array($journey_id) && count($journey_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $journey_id when calling updateJourneyNode'
+            );
+        }
+        // verify the required parameter 'node_id' is set
+        if ($node_id === null || (is_array($node_id) && count($node_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $node_id when calling updateJourneyNode'
+            );
+        }
+        // verify the required parameter 'update_journey_node_request' is set
+        if ($update_journey_node_request === null || (is_array($update_journey_node_request) && count($update_journey_node_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $update_journey_node_request when calling updateJourneyNode'
+            );
+        }
+
+        $resourcePath = '/apps/{app_id}/journeys/{journey_id}/nodes/{node_id}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($app_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app_id' . '}',
+                ObjectSerializer::toPathValue($app_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($journey_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'journey_id' . '}',
+                ObjectSerializer::toPathValue($journey_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($node_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'node_id' . '}',
+                ObjectSerializer::toPathValue($node_id),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($update_journey_node_request)) {
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($update_journey_node_request));
+            } else {
+                $httpBody = $update_journey_node_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        if (!empty($this->config->getRestApiKeyToken())) {
+            $headers['Authorization'] = 'Key ' . $this->config->getRestApiKeyToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        // Adding the telemetry header
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.12.0';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PATCH',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
@@ -14779,7 +16496,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.11.2';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.12.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -15195,7 +16912,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.11.2';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.12.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -15495,7 +17212,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.11.2';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.12.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -15890,7 +17607,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.11.2';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.12.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -16244,7 +17961,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.11.2';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.12.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -16654,7 +18371,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.11.2';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.12.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -16971,7 +18688,1123 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.11.2';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.12.0';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation viewJourney
+     *
+     * View journey
+     *
+     * @param  string $app_id Your OneSignal App ID in UUID v4 format. (required)
+     * @param  string $journey_id UUID of the journey to retrieve. (required)
+     *
+     * @throws \onesignal\client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \onesignal\client\model\Journey|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError
+     */
+    public function viewJourney($app_id, $journey_id)
+    {
+        list($response) = $this->viewJourneyWithHttpInfo($app_id, $journey_id);
+        return $response;
+    }
+
+    /**
+     * Operation viewJourneyWithHttpInfo
+     *
+     * View journey
+     *
+     * @param  string $app_id Your OneSignal App ID in UUID v4 format. (required)
+     * @param  string $journey_id UUID of the journey to retrieve. (required)
+     *
+     * @throws \onesignal\client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \onesignal\client\model\Journey|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function viewJourneyWithHttpInfo($app_id, $journey_id)
+    {
+        $request = $this->viewJourneyRequest($app_id, $journey_id);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\onesignal\client\model\Journey' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\onesignal\client\model\Journey' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\onesignal\client\model\Journey', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\onesignal\client\model\GenericError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\onesignal\client\model\GenericError' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\onesignal\client\model\GenericError', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 429:
+                    if ('\onesignal\client\model\RateLimitError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\onesignal\client\model\RateLimitError' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\onesignal\client\model\RateLimitError', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\onesignal\client\model\Journey';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\Journey',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\RateLimitError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation viewJourneyAsync
+     *
+     * View journey
+     *
+     * @param  string $app_id Your OneSignal App ID in UUID v4 format. (required)
+     * @param  string $journey_id UUID of the journey to retrieve. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function viewJourneyAsync($app_id, $journey_id)
+    {
+        return $this->viewJourneyAsyncWithHttpInfo($app_id, $journey_id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation viewJourneyAsyncWithHttpInfo
+     *
+     * View journey
+     *
+     * @param  string $app_id Your OneSignal App ID in UUID v4 format. (required)
+     * @param  string $journey_id UUID of the journey to retrieve. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function viewJourneyAsyncWithHttpInfo($app_id, $journey_id)
+    {
+        $returnType = '\onesignal\client\model\Journey';
+        $request = $this->viewJourneyRequest($app_id, $journey_id);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'viewJourney'
+     *
+     * @param  string $app_id Your OneSignal App ID in UUID v4 format. (required)
+     * @param  string $journey_id UUID of the journey to retrieve. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function viewJourneyRequest($app_id, $journey_id)
+    {
+        // verify the required parameter 'app_id' is set
+        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $app_id when calling viewJourney'
+            );
+        }
+        // verify the required parameter 'journey_id' is set
+        if ($journey_id === null || (is_array($journey_id) && count($journey_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $journey_id when calling viewJourney'
+            );
+        }
+
+        $resourcePath = '/apps/{app_id}/journeys/{journey_id}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($app_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app_id' . '}',
+                ObjectSerializer::toPathValue($app_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($journey_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'journey_id' . '}',
+                ObjectSerializer::toPathValue($journey_id),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        if (!empty($this->config->getRestApiKeyToken())) {
+            $headers['Authorization'] = 'Key ' . $this->config->getRestApiKeyToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        // Adding the telemetry header
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.12.0';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation viewJourneyStats
+     *
+     * View journey stats
+     *
+     * @param  string $app_id Your OneSignal App ID in UUID v4 format. (required)
+     * @param  string $journey_id UUID of the journey to retrieve stats for. (required)
+     *
+     * @throws \onesignal\client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \onesignal\client\model\JourneyStats|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError
+     */
+    public function viewJourneyStats($app_id, $journey_id)
+    {
+        list($response) = $this->viewJourneyStatsWithHttpInfo($app_id, $journey_id);
+        return $response;
+    }
+
+    /**
+     * Operation viewJourneyStatsWithHttpInfo
+     *
+     * View journey stats
+     *
+     * @param  string $app_id Your OneSignal App ID in UUID v4 format. (required)
+     * @param  string $journey_id UUID of the journey to retrieve stats for. (required)
+     *
+     * @throws \onesignal\client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \onesignal\client\model\JourneyStats|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function viewJourneyStatsWithHttpInfo($app_id, $journey_id)
+    {
+        $request = $this->viewJourneyStatsRequest($app_id, $journey_id);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\onesignal\client\model\JourneyStats' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\onesignal\client\model\JourneyStats' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\onesignal\client\model\JourneyStats', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\onesignal\client\model\GenericError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\onesignal\client\model\GenericError' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\onesignal\client\model\GenericError', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 429:
+                    if ('\onesignal\client\model\RateLimitError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\onesignal\client\model\RateLimitError' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\onesignal\client\model\RateLimitError', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\onesignal\client\model\JourneyStats';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\JourneyStats',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\RateLimitError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation viewJourneyStatsAsync
+     *
+     * View journey stats
+     *
+     * @param  string $app_id Your OneSignal App ID in UUID v4 format. (required)
+     * @param  string $journey_id UUID of the journey to retrieve stats for. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function viewJourneyStatsAsync($app_id, $journey_id)
+    {
+        return $this->viewJourneyStatsAsyncWithHttpInfo($app_id, $journey_id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation viewJourneyStatsAsyncWithHttpInfo
+     *
+     * View journey stats
+     *
+     * @param  string $app_id Your OneSignal App ID in UUID v4 format. (required)
+     * @param  string $journey_id UUID of the journey to retrieve stats for. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function viewJourneyStatsAsyncWithHttpInfo($app_id, $journey_id)
+    {
+        $returnType = '\onesignal\client\model\JourneyStats';
+        $request = $this->viewJourneyStatsRequest($app_id, $journey_id);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'viewJourneyStats'
+     *
+     * @param  string $app_id Your OneSignal App ID in UUID v4 format. (required)
+     * @param  string $journey_id UUID of the journey to retrieve stats for. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function viewJourneyStatsRequest($app_id, $journey_id)
+    {
+        // verify the required parameter 'app_id' is set
+        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $app_id when calling viewJourneyStats'
+            );
+        }
+        // verify the required parameter 'journey_id' is set
+        if ($journey_id === null || (is_array($journey_id) && count($journey_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $journey_id when calling viewJourneyStats'
+            );
+        }
+
+        $resourcePath = '/apps/{app_id}/journeys/{journey_id}/stats';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($app_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app_id' . '}',
+                ObjectSerializer::toPathValue($app_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($journey_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'journey_id' . '}',
+                ObjectSerializer::toPathValue($journey_id),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        if (!empty($this->config->getRestApiKeyToken())) {
+            $headers['Authorization'] = 'Key ' . $this->config->getRestApiKeyToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        // Adding the telemetry header
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.12.0';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation viewJourneys
+     *
+     * View journeys
+     *
+     * @param  string $app_id Your OneSignal App ID in UUID v4 format. (required)
+     * @param  string $cursor Opaque pagination token from a previous response&#39;s next_cursor. Omit for the first page. (optional)
+     * @param  int $limit Maximum journeys to return per page. Minimum 1, maximum 50. (optional, default to 50)
+     *
+     * @throws \onesignal\client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \onesignal\client\model\JourneyListResponse|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError
+     */
+    public function viewJourneys($app_id, $cursor = null, $limit = 50)
+    {
+        list($response) = $this->viewJourneysWithHttpInfo($app_id, $cursor, $limit);
+        return $response;
+    }
+
+    /**
+     * Operation viewJourneysWithHttpInfo
+     *
+     * View journeys
+     *
+     * @param  string $app_id Your OneSignal App ID in UUID v4 format. (required)
+     * @param  string $cursor Opaque pagination token from a previous response&#39;s next_cursor. Omit for the first page. (optional)
+     * @param  int $limit Maximum journeys to return per page. Minimum 1, maximum 50. (optional, default to 50)
+     *
+     * @throws \onesignal\client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \onesignal\client\model\JourneyListResponse|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function viewJourneysWithHttpInfo($app_id, $cursor = null, $limit = 50)
+    {
+        $request = $this->viewJourneysRequest($app_id, $cursor, $limit);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\onesignal\client\model\JourneyListResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\onesignal\client\model\JourneyListResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\onesignal\client\model\JourneyListResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\onesignal\client\model\GenericError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\onesignal\client\model\GenericError' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\onesignal\client\model\GenericError', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\onesignal\client\model\GenericError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\onesignal\client\model\GenericError' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\onesignal\client\model\GenericError', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 429:
+                    if ('\onesignal\client\model\RateLimitError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\onesignal\client\model\RateLimitError' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\onesignal\client\model\RateLimitError', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\onesignal\client\model\JourneyListResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\JourneyListResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\RateLimitError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation viewJourneysAsync
+     *
+     * View journeys
+     *
+     * @param  string $app_id Your OneSignal App ID in UUID v4 format. (required)
+     * @param  string $cursor Opaque pagination token from a previous response&#39;s next_cursor. Omit for the first page. (optional)
+     * @param  int $limit Maximum journeys to return per page. Minimum 1, maximum 50. (optional, default to 50)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function viewJourneysAsync($app_id, $cursor = null, $limit = 50)
+    {
+        return $this->viewJourneysAsyncWithHttpInfo($app_id, $cursor, $limit)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation viewJourneysAsyncWithHttpInfo
+     *
+     * View journeys
+     *
+     * @param  string $app_id Your OneSignal App ID in UUID v4 format. (required)
+     * @param  string $cursor Opaque pagination token from a previous response&#39;s next_cursor. Omit for the first page. (optional)
+     * @param  int $limit Maximum journeys to return per page. Minimum 1, maximum 50. (optional, default to 50)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function viewJourneysAsyncWithHttpInfo($app_id, $cursor = null, $limit = 50)
+    {
+        $returnType = '\onesignal\client\model\JourneyListResponse';
+        $request = $this->viewJourneysRequest($app_id, $cursor, $limit);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'viewJourneys'
+     *
+     * @param  string $app_id Your OneSignal App ID in UUID v4 format. (required)
+     * @param  string $cursor Opaque pagination token from a previous response&#39;s next_cursor. Omit for the first page. (optional)
+     * @param  int $limit Maximum journeys to return per page. Minimum 1, maximum 50. (optional, default to 50)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function viewJourneysRequest($app_id, $cursor = null, $limit = 50)
+    {
+        // verify the required parameter 'app_id' is set
+        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $app_id when calling viewJourneys'
+            );
+        }
+        if ($limit !== null && $limit > 50) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling DefaultApi.viewJourneys, must be smaller than or equal to 50.');
+        }
+        if ($limit !== null && $limit < 1) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling DefaultApi.viewJourneys, must be bigger than or equal to 1.');
+        }
+
+
+        $resourcePath = '/apps/{app_id}/journeys';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $cursor,
+            'cursor', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $limit,
+            'limit', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+        // path params
+        if ($app_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app_id' . '}',
+                ObjectSerializer::toPathValue($app_id),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        if (!empty($this->config->getRestApiKeyToken())) {
+            $headers['Authorization'] = 'Key ' . $this->config->getRestApiKeyToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        // Adding the telemetry header
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.12.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -17331,7 +20164,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.11.2';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.12.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -17714,7 +20547,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.11.2';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.12.0';
 
         $headers = array_merge(
             $defaultHeaders,
