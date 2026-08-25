@@ -65,9 +65,11 @@ class UpdateLiveActivityRequest implements ModelInterface, ArrayAccess, \JsonSer
         'contents' => '\onesignal\client\model\LanguageStringMap',
         'headings' => '\onesignal\client\model\LanguageStringMap',
         'sound' => 'string',
+        'ios_sound' => 'string',
         'stale_date' => 'int',
         'dismissal_date' => 'int',
-        'priority' => 'int'
+        'priority' => 'int',
+        'ios_relevance_score' => 'float'
     ];
 
     /**
@@ -84,9 +86,11 @@ class UpdateLiveActivityRequest implements ModelInterface, ArrayAccess, \JsonSer
         'contents' => null,
         'headings' => null,
         'sound' => null,
+        'ios_sound' => null,
         'stale_date' => null,
         'dismissal_date' => null,
-        'priority' => null
+        'priority' => null,
+        'ios_relevance_score' => null
     ];
 
     /**
@@ -122,9 +126,11 @@ class UpdateLiveActivityRequest implements ModelInterface, ArrayAccess, \JsonSer
         'contents' => 'contents',
         'headings' => 'headings',
         'sound' => 'sound',
+        'ios_sound' => 'ios_sound',
         'stale_date' => 'stale_date',
         'dismissal_date' => 'dismissal_date',
-        'priority' => 'priority'
+        'priority' => 'priority',
+        'ios_relevance_score' => 'ios_relevance_score'
     ];
 
     /**
@@ -139,9 +145,11 @@ class UpdateLiveActivityRequest implements ModelInterface, ArrayAccess, \JsonSer
         'contents' => 'setContents',
         'headings' => 'setHeadings',
         'sound' => 'setSound',
+        'ios_sound' => 'setIosSound',
         'stale_date' => 'setStaleDate',
         'dismissal_date' => 'setDismissalDate',
-        'priority' => 'setPriority'
+        'priority' => 'setPriority',
+        'ios_relevance_score' => 'setIosRelevanceScore'
     ];
 
     /**
@@ -156,9 +164,11 @@ class UpdateLiveActivityRequest implements ModelInterface, ArrayAccess, \JsonSer
         'contents' => 'getContents',
         'headings' => 'getHeadings',
         'sound' => 'getSound',
+        'ios_sound' => 'getIosSound',
         'stale_date' => 'getStaleDate',
         'dismissal_date' => 'getDismissalDate',
-        'priority' => 'getPriority'
+        'priority' => 'getPriority',
+        'ios_relevance_score' => 'getIosRelevanceScore'
     ];
 
     /**
@@ -239,9 +249,11 @@ class UpdateLiveActivityRequest implements ModelInterface, ArrayAccess, \JsonSer
         $this->container['contents'] = $data['contents'] ?? null;
         $this->container['headings'] = $data['headings'] ?? null;
         $this->container['sound'] = $data['sound'] ?? null;
+        $this->container['ios_sound'] = $data['ios_sound'] ?? null;
         $this->container['stale_date'] = $data['stale_date'] ?? null;
         $this->container['dismissal_date'] = $data['dismissal_date'] ?? null;
         $this->container['priority'] = $data['priority'] ?? null;
+        $this->container['ios_relevance_score'] = $data['ios_relevance_score'] ?? null;
     }
 
     /**
@@ -420,6 +432,7 @@ class UpdateLiveActivityRequest implements ModelInterface, ArrayAccess, \JsonSer
      * Gets sound
      *
      * @return string|null
+     * @deprecated
      */
     public function getSound()
     {
@@ -429,13 +442,38 @@ class UpdateLiveActivityRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets sound
      *
-     * @param string|null $sound Sound file that is included in your app to play instead of the default device notification sound. Omit to disable vibration and sound for the notification.
+     * @param string|null $sound Deprecated. The API ignores this field. Use `ios_sound`.
      *
      * @return self
+     * @deprecated
      */
     public function setSound($sound)
     {
         $this->container['sound'] = $sound;
+
+        return $this;
+    }
+
+    /**
+     * Gets ios_sound
+     *
+     * @return string|null
+     */
+    public function getIosSound()
+    {
+        return $this->container['ios_sound'];
+    }
+
+    /**
+     * Sets ios_sound
+     *
+     * @param string|null $ios_sound Sound file that is included in your app to play instead of the default device notification sound. Omit to disable vibration and sound for the notification. Requires `headings` on the same request: ActivityKit ignores an update whose alert has no title, which silently drops the sound. Supersedes the deprecated `sound` field.
+     *
+     * @return self
+     */
+    public function setIosSound($ios_sound)
+    {
+        $this->container['ios_sound'] = $ios_sound;
 
         return $this;
     }
@@ -501,13 +539,37 @@ class UpdateLiveActivityRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets priority
      *
-     * @param int|null $priority Delivery priority through the the push provider (APNs). Pass 10 for higher priority notifications, or 5 for lower priority notifications. Lower priority notifications are sent based on the power considerations of the end user's device. If not set, defaults to 10. Some providers (APNs) allow for a limited budget of high priority notifications per hour, and if that budget is exceeded, the provider may throttle notification delivery.
+     * @param int|null $priority Delivery priority through the push provider (APNs). Pass 10 for higher priority notifications, or 5 for lower priority notifications. Lower priority notifications are sent based on the power considerations of the end user's device. If not set, defaults to 10. Some providers (APNs) allow for a limited budget of high priority notifications per hour, and if that budget is exceeded, the provider may throttle notification delivery.
      *
      * @return self
      */
     public function setPriority($priority)
     {
         $this->container['priority'] = $priority;
+
+        return $this;
+    }
+
+    /**
+     * Gets ios_relevance_score
+     *
+     * @return float|null
+     */
+    public function getIosRelevanceScore()
+    {
+        return $this->container['ios_relevance_score'];
+    }
+
+    /**
+     * Sets ios_relevance_score
+     *
+     * @param float|null $ios_relevance_score A value between 0 and 1. When more than one Live Activity is active for your app, the one with the highest relevance score shows in the Dynamic Island. If the scores are equal, the system shows the Live Activity that started first. The score also sets the order of Live Activities on the Lock Screen. Only available on iOS 16.2 and later.
+     *
+     * @return self
+     */
+    public function setIosRelevanceScore($ios_relevance_score)
+    {
+        $this->container['ios_relevance_score'] = $ios_relevance_score;
 
         return $this;
     }
