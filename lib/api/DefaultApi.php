@@ -481,7 +481,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.13.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.14.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -835,7 +835,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.13.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.14.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -1268,7 +1268,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.13.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.14.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -1682,7 +1682,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.13.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.14.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -2016,7 +2016,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.13.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.14.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -2354,7 +2354,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.13.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.14.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -2734,7 +2734,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.13.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.14.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -3114,7 +3114,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.13.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.14.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -3452,7 +3452,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.13.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.14.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -3826,7 +3826,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.13.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.14.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -4282,7 +4282,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.13.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.14.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -4620,7 +4620,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.13.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.14.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -5038,7 +5038,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.13.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.14.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -5473,7 +5473,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.13.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.14.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -5809,7 +5809,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.13.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.14.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -6191,7 +6191,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.13.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.14.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -6573,7 +6573,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.13.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.14.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -6856,7 +6856,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.13.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.14.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -7216,7 +7216,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.13.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.14.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -7510,7 +7510,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.13.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.14.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -7893,7 +7893,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.13.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.14.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -8244,7 +8244,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.13.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.14.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -8637,7 +8637,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.13.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.14.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -8988,7 +8988,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.13.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.14.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -9328,7 +9328,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.13.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.14.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -9649,7 +9649,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.13.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.14.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -10032,7 +10032,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.13.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.14.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -10412,7 +10412,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.13.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.14.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -10809,7 +10809,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.13.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.14.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -11225,7 +11225,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.13.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.14.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -11621,7 +11621,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.13.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.14.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -11989,7 +11989,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.13.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.14.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -12382,7 +12382,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.13.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.14.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -12950,7 +12950,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.13.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.14.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -13286,7 +13286,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.13.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.14.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -13662,7 +13662,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.13.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.14.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -14076,7 +14076,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.13.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.14.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -14455,7 +14455,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.13.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.14.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -14808,7 +14808,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.13.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.14.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -15165,7 +15165,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.13.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.14.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -15633,7 +15633,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.13.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.14.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -16120,7 +16120,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.13.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.14.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -16496,7 +16496,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.13.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.14.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -16912,7 +16912,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.13.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.14.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -17212,7 +17212,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.13.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.14.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -17607,7 +17607,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.13.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.14.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -17961,7 +17961,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.13.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.14.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -18371,7 +18371,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.13.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.14.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -18688,7 +18688,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.13.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.14.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -19047,7 +19047,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.13.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.14.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -19406,7 +19406,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.13.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.14.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -19804,7 +19804,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.13.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.14.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -20164,7 +20164,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.13.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.14.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -20547,7 +20547,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.13.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.14.0';
 
         $headers = array_merge(
             $defaultHeaders,

@@ -72,7 +72,8 @@ class NotificationWithMetaAllOf implements ModelInterface, ArrayAccess, \JsonSer
         'throttle_rate_per_minute' => 'int',
         'canceled' => 'bool',
         'email_bcc' => 'string[]',
-        'bcc_sent' => 'int'
+        'bcc_sent' => 'int',
+        'email_warm_up' => '\onesignal\client\model\EmailWarmUp'
     ];
 
     /**
@@ -96,7 +97,8 @@ class NotificationWithMetaAllOf implements ModelInterface, ArrayAccess, \JsonSer
         'throttle_rate_per_minute' => null,
         'canceled' => null,
         'email_bcc' => null,
-        'bcc_sent' => null
+        'bcc_sent' => null,
+        'email_warm_up' => null
     ];
 
     /**
@@ -139,7 +141,8 @@ class NotificationWithMetaAllOf implements ModelInterface, ArrayAccess, \JsonSer
         'throttle_rate_per_minute' => 'throttle_rate_per_minute',
         'canceled' => 'canceled',
         'email_bcc' => 'email_bcc',
-        'bcc_sent' => 'bcc_sent'
+        'bcc_sent' => 'bcc_sent',
+        'email_warm_up' => 'email_warm_up'
     ];
 
     /**
@@ -161,7 +164,8 @@ class NotificationWithMetaAllOf implements ModelInterface, ArrayAccess, \JsonSer
         'throttle_rate_per_minute' => 'setThrottleRatePerMinute',
         'canceled' => 'setCanceled',
         'email_bcc' => 'setEmailBcc',
-        'bcc_sent' => 'setBccSent'
+        'bcc_sent' => 'setBccSent',
+        'email_warm_up' => 'setEmailWarmUp'
     ];
 
     /**
@@ -183,7 +187,8 @@ class NotificationWithMetaAllOf implements ModelInterface, ArrayAccess, \JsonSer
         'throttle_rate_per_minute' => 'getThrottleRatePerMinute',
         'canceled' => 'getCanceled',
         'email_bcc' => 'getEmailBcc',
-        'bcc_sent' => 'getBccSent'
+        'bcc_sent' => 'getBccSent',
+        'email_warm_up' => 'getEmailWarmUp'
     ];
 
     /**
@@ -257,6 +262,7 @@ class NotificationWithMetaAllOf implements ModelInterface, ArrayAccess, \JsonSer
         $this->container['canceled'] = $data['canceled'] ?? null;
         $this->container['email_bcc'] = $data['email_bcc'] ?? null;
         $this->container['bcc_sent'] = $data['bcc_sent'] ?? null;
+        $this->container['email_warm_up'] = $data['email_warm_up'] ?? null;
     }
 
     /**
@@ -615,6 +621,30 @@ class NotificationWithMetaAllOf implements ModelInterface, ArrayAccess, \JsonSer
     public function setBccSent($bcc_sent)
     {
         $this->container['bcc_sent'] = $bcc_sent;
+
+        return $this;
+    }
+
+    /**
+     * Gets email_warm_up
+     *
+     * @return \onesignal\client\model\EmailWarmUp|null
+     */
+    public function getEmailWarmUp()
+    {
+        return $this->container['email_warm_up'];
+    }
+
+    /**
+     * Sets email_warm_up
+     *
+     * @param \onesignal\client\model\EmailWarmUp|null $email_warm_up email_warm_up
+     *
+     * @return self
+     */
+    public function setEmailWarmUp($email_warm_up)
+    {
+        $this->container['email_warm_up'] = $email_warm_up;
 
         return $this;
     }

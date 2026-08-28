@@ -168,6 +168,8 @@ class Notification implements ModelInterface, ArrayAccess, \JsonSerializable
         'include_unsubscribed' => 'bool',
         'email_bcc' => 'string[]',
         'email_sender_domain' => 'string',
+        'kind' => 'string',
+        'email_warm_up' => '\onesignal\client\model\EmailWarmUpRequest',
         'sms_from' => 'string',
         'sms_media_urls' => 'string[]',
         'filters' => '\onesignal\client\model\FilterExpression[]',
@@ -297,6 +299,8 @@ class Notification implements ModelInterface, ArrayAccess, \JsonSerializable
         'include_unsubscribed' => null,
         'email_bcc' => null,
         'email_sender_domain' => null,
+        'kind' => null,
+        'email_warm_up' => null,
         'sms_from' => null,
         'sms_media_urls' => null,
         'filters' => null,
@@ -445,6 +449,8 @@ class Notification implements ModelInterface, ArrayAccess, \JsonSerializable
         'include_unsubscribed' => 'include_unsubscribed',
         'email_bcc' => 'email_bcc',
         'email_sender_domain' => 'email_sender_domain',
+        'kind' => 'kind',
+        'email_warm_up' => 'email_warm_up',
         'sms_from' => 'sms_from',
         'sms_media_urls' => 'sms_media_urls',
         'filters' => 'filters',
@@ -572,6 +578,8 @@ class Notification implements ModelInterface, ArrayAccess, \JsonSerializable
         'include_unsubscribed' => 'setIncludeUnsubscribed',
         'email_bcc' => 'setEmailBcc',
         'email_sender_domain' => 'setEmailSenderDomain',
+        'kind' => 'setKind',
+        'email_warm_up' => 'setEmailWarmUp',
         'sms_from' => 'setSmsFrom',
         'sms_media_urls' => 'setSmsMediaUrls',
         'filters' => 'setFilters',
@@ -699,6 +707,8 @@ class Notification implements ModelInterface, ArrayAccess, \JsonSerializable
         'include_unsubscribed' => 'getIncludeUnsubscribed',
         'email_bcc' => 'getEmailBcc',
         'email_sender_domain' => 'getEmailSenderDomain',
+        'kind' => 'getKind',
+        'email_warm_up' => 'getEmailWarmUp',
         'sms_from' => 'getSmsFrom',
         'sms_media_urls' => 'getSmsMediaUrls',
         'filters' => 'getFilters',
@@ -757,6 +767,7 @@ class Notification implements ModelInterface, ArrayAccess, \JsonSerializable
     public const TARGET_CHANNEL_SMS = 'sms';
     public const AGGREGATION_SUM = 'sum';
     public const AGGREGATION_COUNT = 'count';
+    public const KIND_WARMUP = 'warmup';
     public const HUAWEI_CATEGORY_IM = 'IM';
     public const HUAWEI_CATEGORY_VOIP = 'VOIP';
     public const HUAWEI_CATEGORY_SUBSCRIPTION = 'SUBSCRIPTION';
@@ -794,6 +805,18 @@ class Notification implements ModelInterface, ArrayAccess, \JsonSerializable
         return [
             self::AGGREGATION_SUM,
             self::AGGREGATION_COUNT,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getKindAllowableValues()
+    {
+        return [
+            self::KIND_WARMUP,
         ];
     }
 
@@ -944,6 +967,8 @@ class Notification implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['include_unsubscribed'] = $data['include_unsubscribed'] ?? null;
         $this->container['email_bcc'] = $data['email_bcc'] ?? null;
         $this->container['email_sender_domain'] = $data['email_sender_domain'] ?? null;
+        $this->container['kind'] = $data['kind'] ?? null;
+        $this->container['email_warm_up'] = $data['email_warm_up'] ?? null;
         $this->container['sms_from'] = $data['sms_from'] ?? null;
         $this->container['sms_media_urls'] = $data['sms_media_urls'] ?? null;
         $this->container['filters'] = $data['filters'] ?? null;
@@ -988,6 +1013,15 @@ class Notification implements ModelInterface, ArrayAccess, \JsonSerializable
         }
         if (!is_null($this->container['email_bcc']) && (count($this->container['email_bcc']) > 5)) {
             $invalidProperties[] = "invalid value for 'email_bcc', number of items must be less than or equal to 5.";
+        }
+
+        $allowedValues = $this->getKindAllowableValues();
+        if (!is_null($this->container['kind']) && !in_array($this->container['kind'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'kind', must be one of '%s'",
+                $this->container['kind'],
+                implode("', '", $allowedValues)
+            );
         }
 
         $allowedValues = $this->getHuaweiCategoryAllowableValues();
@@ -3427,7 +3461,7 @@ class Notification implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets email_subject
      *
-     * @param string|null $email_subject Channel: Email Required.  The subject of the email.
+     * @param string|null $email_subject Channel: Email Required. The subject of the email.
      *
      * @return self
      */
@@ -3654,6 +3688,64 @@ class Notification implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setEmailSenderDomain($email_sender_domain)
     {
         $this->container['email_sender_domain'] = $email_sender_domain;
+
+        return $this;
+    }
+
+    /**
+     * Gets kind
+     *
+     * @return string|null
+     */
+    public function getKind()
+    {
+        return $this->container['kind'];
+    }
+
+    /**
+     * Sets kind
+     *
+     * @param string|null $kind Channel: Email Set to \"warmup\" to send this as an Auto Warm Up campaign: a single campaign delivered gradually to your audience over several days, so you don't have to pace sends manually. OneSignal generates a sending schedule based on your past delivery volumes, scheduled Auto Warm Up emails, and the size of your current audience. When set, `email_warm_up` is required and describes the campaign's stages and (optionally) its scheduling strategy. `send_after` cannot be combined with `kind: \"warmup\"`. The campaign will be scheduled to begin at its first stage's `start` time. Only supported for Email notifications.
+     *
+     * @return self
+     */
+    public function setKind($kind)
+    {
+        $allowedValues = $this->getKindAllowableValues();
+        if (!is_null($kind) && !in_array($kind, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'kind', must be one of '%s'",
+                    $kind,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['kind'] = $kind;
+
+        return $this;
+    }
+
+    /**
+     * Gets email_warm_up
+     *
+     * @return \onesignal\client\model\EmailWarmUpRequest|null
+     */
+    public function getEmailWarmUp()
+    {
+        return $this->container['email_warm_up'];
+    }
+
+    /**
+     * Sets email_warm_up
+     *
+     * @param \onesignal\client\model\EmailWarmUpRequest|null $email_warm_up email_warm_up
+     *
+     * @return self
+     */
+    public function setEmailWarmUp($email_warm_up)
+    {
+        $this->container['email_warm_up'] = $email_warm_up;
 
         return $this;
     }

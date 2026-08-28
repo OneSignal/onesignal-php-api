@@ -18,5 +18,6 @@ Name | Type | Description | Notes
 **canceled** | **bool** | Indicates whether the notification was canceled before it could be sent. | [optional]
 **email_bcc** | **string[]** | BCC recipients that were set on this email notification. | [optional]
 **bcc_sent** | **int** | Number of BCC copies successfully sent for this notification. | [optional]
+**email_warm_up** | [**\onesignal\client\model\EmailWarmUp**](EmailWarmUp.md) |  | [optional]
 
 [[Back to API list]](https://github.com/OneSignal/onesignal-php-api#full-api-reference) [[Back to README]](https://github.com/OneSignal/onesignal-php-api)
