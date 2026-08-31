@@ -1,6 +1,6 @@
 <?php
 /**
- * SegmentNotificationTarget
+ * EstimateNotificationRecipientsRequestAllOf
  *
  * PHP version 7.3
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \onesignal\client\ObjectSerializer;
 
 /**
- * SegmentNotificationTarget Class Doc Comment
+ * EstimateNotificationRecipientsRequestAllOf Class Doc Comment
  *
  * @category Class
  * @package  onesignal\client
@@ -42,7 +42,7 @@ use \onesignal\client\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class SegmentNotificationTarget implements ModelInterface, ArrayAccess, \JsonSerializable
+class EstimateNotificationRecipientsRequestAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class SegmentNotificationTarget implements ModelInterface, ArrayAccess, \JsonSer
       *
       * @var string
       */
-    protected static $openAPIModelName = 'SegmentNotificationTarget';
+    protected static $openAPIModelName = 'EstimateNotificationRecipientsRequest_allOf';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,8 +59,10 @@ class SegmentNotificationTarget implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $openAPITypes = [
-        'included_segments' => 'string[]',
-        'excluded_segments' => 'string[]'
+        'app_id' => 'string',
+        'filters' => '\onesignal\client\model\FilterExpression[]',
+        'include_aliases' => 'array<string,string[]>',
+        'target_channel' => 'string'
     ];
 
     /**
@@ -71,8 +73,10 @@ class SegmentNotificationTarget implements ModelInterface, ArrayAccess, \JsonSer
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'included_segments' => null,
-        'excluded_segments' => null
+        'app_id' => null,
+        'filters' => null,
+        'include_aliases' => null,
+        'target_channel' => null
     ];
 
     /**
@@ -102,8 +106,10 @@ class SegmentNotificationTarget implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $attributeMap = [
-        'included_segments' => 'included_segments',
-        'excluded_segments' => 'excluded_segments'
+        'app_id' => 'app_id',
+        'filters' => 'filters',
+        'include_aliases' => 'include_aliases',
+        'target_channel' => 'target_channel'
     ];
 
     /**
@@ -112,8 +118,10 @@ class SegmentNotificationTarget implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $setters = [
-        'included_segments' => 'setIncludedSegments',
-        'excluded_segments' => 'setExcludedSegments'
+        'app_id' => 'setAppId',
+        'filters' => 'setFilters',
+        'include_aliases' => 'setIncludeAliases',
+        'target_channel' => 'setTargetChannel'
     ];
 
     /**
@@ -122,8 +130,10 @@ class SegmentNotificationTarget implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $getters = [
-        'included_segments' => 'getIncludedSegments',
-        'excluded_segments' => 'getExcludedSegments'
+        'app_id' => 'getAppId',
+        'filters' => 'getFilters',
+        'include_aliases' => 'getIncludeAliases',
+        'target_channel' => 'getTargetChannel'
     ];
 
     /**
@@ -167,6 +177,23 @@ class SegmentNotificationTarget implements ModelInterface, ArrayAccess, \JsonSer
         return self::$openAPIModelName;
     }
 
+    public const TARGET_CHANNEL_PUSH = 'push';
+    public const TARGET_CHANNEL_EMAIL = 'email';
+    public const TARGET_CHANNEL_SMS = 'sms';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTargetChannelAllowableValues()
+    {
+        return [
+            self::TARGET_CHANNEL_PUSH,
+            self::TARGET_CHANNEL_EMAIL,
+            self::TARGET_CHANNEL_SMS,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -183,8 +210,10 @@ class SegmentNotificationTarget implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(?array $data = null)
     {
-        $this->container['included_segments'] = $data['included_segments'] ?? null;
-        $this->container['excluded_segments'] = $data['excluded_segments'] ?? null;
+        $this->container['app_id'] = $data['app_id'] ?? null;
+        $this->container['filters'] = $data['filters'] ?? null;
+        $this->container['include_aliases'] = $data['include_aliases'] ?? null;
+        $this->container['target_channel'] = $data['target_channel'] ?? null;
     }
 
     /**
@@ -195,6 +224,15 @@ class SegmentNotificationTarget implements ModelInterface, ArrayAccess, \JsonSer
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        $allowedValues = $this->getTargetChannelAllowableValues();
+        if (!is_null($this->container['target_channel']) && !in_array($this->container['target_channel'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'target_channel', must be one of '%s'",
+                $this->container['target_channel'],
+                implode("', '", $allowedValues)
+            );
+        }
 
         return $invalidProperties;
     }
@@ -212,49 +250,107 @@ class SegmentNotificationTarget implements ModelInterface, ArrayAccess, \JsonSer
 
 
     /**
-     * Gets included_segments
+     * Gets app_id
      *
-     * @return string[]|null
+     * @return string|null
      */
-    public function getIncludedSegments()
+    public function getAppId()
     {
-        return $this->container['included_segments'];
+        return $this->container['app_id'];
     }
 
     /**
-     * Sets included_segments
+     * Sets app_id
      *
-     * @param string[]|null $included_segments The segment names you want to target. Users in these segments will receive a notification. This targeting parameter is only compatible with excluded_segments. Example: [\"Active Users\", \"Inactive Users\"] `\"All\"` is a shorthand for every subscribed user: if the array includes the string `\"All\"` and the app has no segment actually named `All`, it targets all subscribers instead of a literal segment lookup.
+     * @param string|null $app_id The OneSignal App ID for your app, which can be found in Keys & IDs.
      *
      * @return self
      */
-    public function setIncludedSegments($included_segments)
+    public function setAppId($app_id)
     {
-        $this->container['included_segments'] = $included_segments;
+        $this->container['app_id'] = $app_id;
 
         return $this;
     }
 
     /**
-     * Gets excluded_segments
+     * Gets filters
      *
-     * @return string[]|null
+     * @return \onesignal\client\model\FilterExpression[]|null
      */
-    public function getExcludedSegments()
+    public function getFilters()
     {
-        return $this->container['excluded_segments'];
+        return $this->container['filters'];
     }
 
     /**
-     * Sets excluded_segments
+     * Sets filters
      *
-     * @param string[]|null $excluded_segments Segment that will be excluded when sending. Users in these segments will not receive a notification, even if they were included in included_segments. This targeting parameter is only compatible with included_segments. Example: [\"Active Users\", \"Inactive Users\"]
+     * @param \onesignal\client\model\FilterExpression[]|null $filters filters
      *
      * @return self
      */
-    public function setExcludedSegments($excluded_segments)
+    public function setFilters($filters)
     {
-        $this->container['excluded_segments'] = $excluded_segments;
+        $this->container['filters'] = $filters;
+
+        return $this;
+    }
+
+    /**
+     * Gets include_aliases
+     *
+     * @return array<string,string[]>|null
+     */
+    public function getIncludeAliases()
+    {
+        return $this->container['include_aliases'];
+    }
+
+    /**
+     * Sets include_aliases
+     *
+     * @param array<string,string[]>|null $include_aliases Target specific users by aliases assigned via API. An alias can be an external_id, onesignal_id, or a custom alias. Accepts an object where keys are alias labels and values are arrays of alias IDs to include Example usage: { \"external_id\": [\"exId1\", \"extId2\"], \"internal_label\": [\"id1\", \"id2\"] } Keys must match API spellings exactly (for example the label for External ID is the string `external_id`; arbitrary keys such as camelCase variants are not aliases and may yield no recipients). Not compatible with any other targeting parameters. REQUIRED: REST API Key Authentication Limit of 2,000 entries per REST API call Note: If targeting push, email, or sms subscribers with same ids, use with target_channel to indicate you are sending a push or email or sms.
+     *
+     * @return self
+     */
+    public function setIncludeAliases($include_aliases)
+    {
+        $this->container['include_aliases'] = $include_aliases;
+
+        return $this;
+    }
+
+    /**
+     * Gets target_channel
+     *
+     * @return string|null
+     */
+    public function getTargetChannel()
+    {
+        return $this->container['target_channel'];
+    }
+
+    /**
+     * Sets target_channel
+     *
+     * @param string|null $target_channel Which platforms to count recipients for. Selects the same default platforms Create notification would use for the channel. Individual platform flags (`isIos`, `isAndroid`, etc.) are not supported by this endpoint.
+     *
+     * @return self
+     */
+    public function setTargetChannel($target_channel)
+    {
+        $allowedValues = $this->getTargetChannelAllowableValues();
+        if (!is_null($target_channel) && !in_array($target_channel, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'target_channel', must be one of '%s'",
+                    $target_channel,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['target_channel'] = $target_channel;
 
         return $this;
     }

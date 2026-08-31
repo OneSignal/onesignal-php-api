@@ -1,6 +1,6 @@
 <?php
 /**
- * SegmentNotificationTarget
+ * EstimateNotificationRecipientsRequest
  *
  * PHP version 7.3
  *
@@ -32,9 +32,10 @@ use \ArrayAccess;
 use \onesignal\client\ObjectSerializer;
 
 /**
- * SegmentNotificationTarget Class Doc Comment
+ * EstimateNotificationRecipientsRequest Class Doc Comment
  *
  * @category Class
+ * @description The targeting subset of notification fields this endpoint honors. &#x60;included_segments&#x60; (or its &#x60;\&quot;All\&quot;&#x60; shorthand) is required. &#x60;excluded_segments&#x60;, &#x60;filters&#x60;, &#x60;include_aliases&#x60;, and &#x60;target_channel&#x60; narrow that segment-based audience further when present. Use &#x60;target_channel&#x60; to select which platforms to count. Other notification targeting fields (&#x60;include_subscription_ids&#x60; and the other raw subscription id/token fields, and the individual &#x60;isIos&#x60; / &#x60;isAndroid&#x60; / etc. platform flags) are not read by this endpoint. All non-targeting notification fields (content, delivery options, and so on) are accepted, but ignored.
  * @package  onesignal\client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -42,7 +43,7 @@ use \onesignal\client\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class SegmentNotificationTarget implements ModelInterface, ArrayAccess, \JsonSerializable
+class EstimateNotificationRecipientsRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +52,7 @@ class SegmentNotificationTarget implements ModelInterface, ArrayAccess, \JsonSer
       *
       * @var string
       */
-    protected static $openAPIModelName = 'SegmentNotificationTarget';
+    protected static $openAPIModelName = 'EstimateNotificationRecipientsRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,7 +61,11 @@ class SegmentNotificationTarget implements ModelInterface, ArrayAccess, \JsonSer
       */
     protected static $openAPITypes = [
         'included_segments' => 'string[]',
-        'excluded_segments' => 'string[]'
+        'excluded_segments' => 'string[]',
+        'app_id' => 'string',
+        'filters' => '\onesignal\client\model\FilterExpression[]',
+        'include_aliases' => 'array<string,string[]>',
+        'target_channel' => 'string'
     ];
 
     /**
@@ -72,7 +77,11 @@ class SegmentNotificationTarget implements ModelInterface, ArrayAccess, \JsonSer
       */
     protected static $openAPIFormats = [
         'included_segments' => null,
-        'excluded_segments' => null
+        'excluded_segments' => null,
+        'app_id' => null,
+        'filters' => null,
+        'include_aliases' => null,
+        'target_channel' => null
     ];
 
     /**
@@ -103,7 +112,11 @@ class SegmentNotificationTarget implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $attributeMap = [
         'included_segments' => 'included_segments',
-        'excluded_segments' => 'excluded_segments'
+        'excluded_segments' => 'excluded_segments',
+        'app_id' => 'app_id',
+        'filters' => 'filters',
+        'include_aliases' => 'include_aliases',
+        'target_channel' => 'target_channel'
     ];
 
     /**
@@ -113,7 +126,11 @@ class SegmentNotificationTarget implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $setters = [
         'included_segments' => 'setIncludedSegments',
-        'excluded_segments' => 'setExcludedSegments'
+        'excluded_segments' => 'setExcludedSegments',
+        'app_id' => 'setAppId',
+        'filters' => 'setFilters',
+        'include_aliases' => 'setIncludeAliases',
+        'target_channel' => 'setTargetChannel'
     ];
 
     /**
@@ -123,7 +140,11 @@ class SegmentNotificationTarget implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $getters = [
         'included_segments' => 'getIncludedSegments',
-        'excluded_segments' => 'getExcludedSegments'
+        'excluded_segments' => 'getExcludedSegments',
+        'app_id' => 'getAppId',
+        'filters' => 'getFilters',
+        'include_aliases' => 'getIncludeAliases',
+        'target_channel' => 'getTargetChannel'
     ];
 
     /**
@@ -167,6 +188,23 @@ class SegmentNotificationTarget implements ModelInterface, ArrayAccess, \JsonSer
         return self::$openAPIModelName;
     }
 
+    public const TARGET_CHANNEL_PUSH = 'push';
+    public const TARGET_CHANNEL_EMAIL = 'email';
+    public const TARGET_CHANNEL_SMS = 'sms';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTargetChannelAllowableValues()
+    {
+        return [
+            self::TARGET_CHANNEL_PUSH,
+            self::TARGET_CHANNEL_EMAIL,
+            self::TARGET_CHANNEL_SMS,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -185,6 +223,10 @@ class SegmentNotificationTarget implements ModelInterface, ArrayAccess, \JsonSer
     {
         $this->container['included_segments'] = $data['included_segments'] ?? null;
         $this->container['excluded_segments'] = $data['excluded_segments'] ?? null;
+        $this->container['app_id'] = $data['app_id'] ?? null;
+        $this->container['filters'] = $data['filters'] ?? null;
+        $this->container['include_aliases'] = $data['include_aliases'] ?? null;
+        $this->container['target_channel'] = $data['target_channel'] ?? null;
     }
 
     /**
@@ -195,6 +237,18 @@ class SegmentNotificationTarget implements ModelInterface, ArrayAccess, \JsonSer
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        if ($this->container['app_id'] === null) {
+            $invalidProperties[] = "'app_id' can't be null";
+        }
+        $allowedValues = $this->getTargetChannelAllowableValues();
+        if (!is_null($this->container['target_channel']) && !in_array($this->container['target_channel'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'target_channel', must be one of '%s'",
+                $this->container['target_channel'],
+                implode("', '", $allowedValues)
+            );
+        }
 
         return $invalidProperties;
     }
@@ -255,6 +309,112 @@ class SegmentNotificationTarget implements ModelInterface, ArrayAccess, \JsonSer
     public function setExcludedSegments($excluded_segments)
     {
         $this->container['excluded_segments'] = $excluded_segments;
+
+        return $this;
+    }
+
+    /**
+     * Gets app_id
+     *
+     * @return string
+     */
+    public function getAppId()
+    {
+        return $this->container['app_id'];
+    }
+
+    /**
+     * Sets app_id
+     *
+     * @param string $app_id The OneSignal App ID for your app, which can be found in Keys & IDs.
+     *
+     * @return self
+     */
+    public function setAppId($app_id)
+    {
+        $this->container['app_id'] = $app_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets filters
+     *
+     * @return \onesignal\client\model\FilterExpression[]|null
+     */
+    public function getFilters()
+    {
+        return $this->container['filters'];
+    }
+
+    /**
+     * Sets filters
+     *
+     * @param \onesignal\client\model\FilterExpression[]|null $filters filters
+     *
+     * @return self
+     */
+    public function setFilters($filters)
+    {
+        $this->container['filters'] = $filters;
+
+        return $this;
+    }
+
+    /**
+     * Gets include_aliases
+     *
+     * @return array<string,string[]>|null
+     */
+    public function getIncludeAliases()
+    {
+        return $this->container['include_aliases'];
+    }
+
+    /**
+     * Sets include_aliases
+     *
+     * @param array<string,string[]>|null $include_aliases Target specific users by aliases assigned via API. An alias can be an external_id, onesignal_id, or a custom alias. Accepts an object where keys are alias labels and values are arrays of alias IDs to include Example usage: { \"external_id\": [\"exId1\", \"extId2\"], \"internal_label\": [\"id1\", \"id2\"] } Keys must match API spellings exactly (for example the label for External ID is the string `external_id`; arbitrary keys such as camelCase variants are not aliases and may yield no recipients). Not compatible with any other targeting parameters. REQUIRED: REST API Key Authentication Limit of 2,000 entries per REST API call Note: If targeting push, email, or sms subscribers with same ids, use with target_channel to indicate you are sending a push or email or sms.
+     *
+     * @return self
+     */
+    public function setIncludeAliases($include_aliases)
+    {
+        $this->container['include_aliases'] = $include_aliases;
+
+        return $this;
+    }
+
+    /**
+     * Gets target_channel
+     *
+     * @return string|null
+     */
+    public function getTargetChannel()
+    {
+        return $this->container['target_channel'];
+    }
+
+    /**
+     * Sets target_channel
+     *
+     * @param string|null $target_channel Which platforms to count recipients for. Selects the same default platforms Create notification would use for the channel. Individual platform flags (`isIos`, `isAndroid`, etc.) are not supported by this endpoint.
+     *
+     * @return self
+     */
+    public function setTargetChannel($target_channel)
+    {
+        $allowedValues = $this->getTargetChannelAllowableValues();
+        if (!is_null($target_channel) && !in_array($target_channel, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'target_channel', must be one of '%s'",
+                    $target_channel,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['target_channel'] = $target_channel;
 
         return $this;
     }
