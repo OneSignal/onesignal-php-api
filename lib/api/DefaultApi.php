@@ -7528,6 +7528,344 @@ class DefaultApi
     }
 
     /**
+     * Operation estimateNotificationRecipients
+     *
+     * Estimate notification recipients
+     *
+     * @param  \onesignal\client\model\EstimateNotificationRecipientsRequest $estimate_notification_recipients_request estimate_notification_recipients_request (required)
+     *
+     * @throws \onesignal\client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \onesignal\client\model\EstimateNotificationRecipientsSuccessResponse|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError
+     */
+    public function estimateNotificationRecipients($estimate_notification_recipients_request)
+    {
+        list($response) = $this->estimateNotificationRecipientsWithHttpInfo($estimate_notification_recipients_request);
+        return $response;
+    }
+
+    /**
+     * Operation estimateNotificationRecipientsWithHttpInfo
+     *
+     * Estimate notification recipients
+     *
+     * @param  \onesignal\client\model\EstimateNotificationRecipientsRequest $estimate_notification_recipients_request (required)
+     *
+     * @throws \onesignal\client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \onesignal\client\model\EstimateNotificationRecipientsSuccessResponse|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function estimateNotificationRecipientsWithHttpInfo($estimate_notification_recipients_request)
+    {
+        $request = $this->estimateNotificationRecipientsRequest($estimate_notification_recipients_request);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\onesignal\client\model\EstimateNotificationRecipientsSuccessResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\onesignal\client\model\EstimateNotificationRecipientsSuccessResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\onesignal\client\model\EstimateNotificationRecipientsSuccessResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\onesignal\client\model\GenericError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\onesignal\client\model\GenericError' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\onesignal\client\model\GenericError', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 429:
+                    if ('\onesignal\client\model\RateLimitError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\onesignal\client\model\RateLimitError' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\onesignal\client\model\RateLimitError', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\onesignal\client\model\EstimateNotificationRecipientsSuccessResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\EstimateNotificationRecipientsSuccessResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\RateLimitError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation estimateNotificationRecipientsAsync
+     *
+     * Estimate notification recipients
+     *
+     * @param  \onesignal\client\model\EstimateNotificationRecipientsRequest $estimate_notification_recipients_request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function estimateNotificationRecipientsAsync($estimate_notification_recipients_request)
+    {
+        return $this->estimateNotificationRecipientsAsyncWithHttpInfo($estimate_notification_recipients_request)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation estimateNotificationRecipientsAsyncWithHttpInfo
+     *
+     * Estimate notification recipients
+     *
+     * @param  \onesignal\client\model\EstimateNotificationRecipientsRequest $estimate_notification_recipients_request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function estimateNotificationRecipientsAsyncWithHttpInfo($estimate_notification_recipients_request)
+    {
+        $returnType = '\onesignal\client\model\EstimateNotificationRecipientsSuccessResponse';
+        $request = $this->estimateNotificationRecipientsRequest($estimate_notification_recipients_request);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'estimateNotificationRecipients'
+     *
+     * @param  \onesignal\client\model\EstimateNotificationRecipientsRequest $estimate_notification_recipients_request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function estimateNotificationRecipientsRequest($estimate_notification_recipients_request)
+    {
+        // verify the required parameter 'estimate_notification_recipients_request' is set
+        if ($estimate_notification_recipients_request === null || (is_array($estimate_notification_recipients_request) && count($estimate_notification_recipients_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $estimate_notification_recipients_request when calling estimateNotificationRecipients'
+            );
+        }
+
+        $resourcePath = '/notifications/count-unsaved';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($estimate_notification_recipients_request)) {
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($estimate_notification_recipients_request));
+            } else {
+                $httpBody = $estimate_notification_recipients_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        if (!empty($this->config->getRestApiKeyToken())) {
+            $headers['Authorization'] = 'Key ' . $this->config->getRestApiKeyToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        // Adding the telemetry header
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.14.0';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation exportEvents
      *
      * Export CSV of Events
