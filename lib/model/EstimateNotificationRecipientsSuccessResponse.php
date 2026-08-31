@@ -1,6 +1,6 @@
 <?php
 /**
- * SegmentNotificationTarget
+ * EstimateNotificationRecipientsSuccessResponse
  *
  * PHP version 7.3
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \onesignal\client\ObjectSerializer;
 
 /**
- * SegmentNotificationTarget Class Doc Comment
+ * EstimateNotificationRecipientsSuccessResponse Class Doc Comment
  *
  * @category Class
  * @package  onesignal\client
@@ -42,7 +42,7 @@ use \onesignal\client\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class SegmentNotificationTarget implements ModelInterface, ArrayAccess, \JsonSerializable
+class EstimateNotificationRecipientsSuccessResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class SegmentNotificationTarget implements ModelInterface, ArrayAccess, \JsonSer
       *
       * @var string
       */
-    protected static $openAPIModelName = 'SegmentNotificationTarget';
+    protected static $openAPIModelName = 'EstimateNotificationRecipientsSuccessResponse';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,8 +59,11 @@ class SegmentNotificationTarget implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $openAPITypes = [
-        'included_segments' => 'string[]',
-        'excluded_segments' => 'string[]'
+        'count' => 'int',
+        'uncapped_count' => 'int',
+        'cap_applied' => 'bool',
+        'mobile_suppressed' => 'bool',
+        'mobile_excluded_count' => 'int'
     ];
 
     /**
@@ -71,8 +74,11 @@ class SegmentNotificationTarget implements ModelInterface, ArrayAccess, \JsonSer
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'included_segments' => null,
-        'excluded_segments' => null
+        'count' => null,
+        'uncapped_count' => null,
+        'cap_applied' => null,
+        'mobile_suppressed' => null,
+        'mobile_excluded_count' => null
     ];
 
     /**
@@ -102,8 +108,11 @@ class SegmentNotificationTarget implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $attributeMap = [
-        'included_segments' => 'included_segments',
-        'excluded_segments' => 'excluded_segments'
+        'count' => 'count',
+        'uncapped_count' => 'uncapped_count',
+        'cap_applied' => 'cap_applied',
+        'mobile_suppressed' => 'mobile_suppressed',
+        'mobile_excluded_count' => 'mobile_excluded_count'
     ];
 
     /**
@@ -112,8 +121,11 @@ class SegmentNotificationTarget implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $setters = [
-        'included_segments' => 'setIncludedSegments',
-        'excluded_segments' => 'setExcludedSegments'
+        'count' => 'setCount',
+        'uncapped_count' => 'setUncappedCount',
+        'cap_applied' => 'setCapApplied',
+        'mobile_suppressed' => 'setMobileSuppressed',
+        'mobile_excluded_count' => 'setMobileExcludedCount'
     ];
 
     /**
@@ -122,8 +134,11 @@ class SegmentNotificationTarget implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $getters = [
-        'included_segments' => 'getIncludedSegments',
-        'excluded_segments' => 'getExcludedSegments'
+        'count' => 'getCount',
+        'uncapped_count' => 'getUncappedCount',
+        'cap_applied' => 'getCapApplied',
+        'mobile_suppressed' => 'getMobileSuppressed',
+        'mobile_excluded_count' => 'getMobileExcludedCount'
     ];
 
     /**
@@ -183,8 +198,11 @@ class SegmentNotificationTarget implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(?array $data = null)
     {
-        $this->container['included_segments'] = $data['included_segments'] ?? null;
-        $this->container['excluded_segments'] = $data['excluded_segments'] ?? null;
+        $this->container['count'] = $data['count'] ?? null;
+        $this->container['uncapped_count'] = $data['uncapped_count'] ?? null;
+        $this->container['cap_applied'] = $data['cap_applied'] ?? null;
+        $this->container['mobile_suppressed'] = $data['mobile_suppressed'] ?? null;
+        $this->container['mobile_excluded_count'] = $data['mobile_excluded_count'] ?? null;
     }
 
     /**
@@ -212,49 +230,121 @@ class SegmentNotificationTarget implements ModelInterface, ArrayAccess, \JsonSer
 
 
     /**
-     * Gets included_segments
+     * Gets count
      *
-     * @return string[]|null
+     * @return int|null
      */
-    public function getIncludedSegments()
+    public function getCount()
     {
-        return $this->container['included_segments'];
+        return $this->container['count'];
     }
 
     /**
-     * Sets included_segments
+     * Sets count
      *
-     * @param string[]|null $included_segments The segment names you want to target. Users in these segments will receive a notification. This targeting parameter is only compatible with excluded_segments. Example: [\"Active Users\", \"Inactive Users\"] `\"All\"` is a shorthand for every subscribed user: if the array includes the string `\"All\"` and the app has no segment actually named `All`, it targets all subscribers instead of a literal segment lookup.
+     * @param int|null $count The estimated audience size based on the user targeting method you've set on the message, and the specific platforms the message is targeted to send to.
      *
      * @return self
      */
-    public function setIncludedSegments($included_segments)
+    public function setCount($count)
     {
-        $this->container['included_segments'] = $included_segments;
+        $this->container['count'] = $count;
 
         return $this;
     }
 
     /**
-     * Gets excluded_segments
+     * Gets uncapped_count
      *
-     * @return string[]|null
+     * @return int|null
      */
-    public function getExcludedSegments()
+    public function getUncappedCount()
     {
-        return $this->container['excluded_segments'];
+        return $this->container['uncapped_count'];
     }
 
     /**
-     * Sets excluded_segments
+     * Sets uncapped_count
      *
-     * @param string[]|null $excluded_segments Segment that will be excluded when sending. Users in these segments will not receive a notification, even if they were included in included_segments. This targeting parameter is only compatible with included_segments. Example: [\"Active Users\", \"Inactive Users\"]
+     * @param int|null $uncapped_count The estimated audience size before the plan's web push subscriber cap is applied. Present only when `cap_applied` is `true`; `null` otherwise.
      *
      * @return self
      */
-    public function setExcludedSegments($excluded_segments)
+    public function setUncappedCount($uncapped_count)
     {
-        $this->container['excluded_segments'] = $excluded_segments;
+        $this->container['uncapped_count'] = $uncapped_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets cap_applied
+     *
+     * @return bool|null
+     */
+    public function getCapApplied()
+    {
+        return $this->container['cap_applied'];
+    }
+
+    /**
+     * Sets cap_applied
+     *
+     * @param bool|null $cap_applied Whether `count` was reduced because the app is on a plan that caps the number of web push subscribers it can send to.
+     *
+     * @return self
+     */
+    public function setCapApplied($cap_applied)
+    {
+        $this->container['cap_applied'] = $cap_applied;
+
+        return $this;
+    }
+
+    /**
+     * Gets mobile_suppressed
+     *
+     * @return bool|null
+     */
+    public function getMobileSuppressed()
+    {
+        return $this->container['mobile_suppressed'];
+    }
+
+    /**
+     * Sets mobile_suppressed
+     *
+     * @param bool|null $mobile_suppressed The mobile equivalent of `cap_applied`. Whether mobile push deliveries will be dropped for this send because the org is over its plan's mobile push subscriber cap. `false` when the notification doesn't target any mobile push platforms.
+     *
+     * @return self
+     */
+    public function setMobileSuppressed($mobile_suppressed)
+    {
+        $this->container['mobile_suppressed'] = $mobile_suppressed;
+
+        return $this;
+    }
+
+    /**
+     * Gets mobile_excluded_count
+     *
+     * @return int|null
+     */
+    public function getMobileExcludedCount()
+    {
+        return $this->container['mobile_excluded_count'];
+    }
+
+    /**
+     * Sets mobile_excluded_count
+     *
+     * @param int|null $mobile_excluded_count How many mobile push recipients the `count` excludes due to the plan's mobile push subscriber cap. `0` when `mobile_suppressed` is `false`.
+     *
+     * @return self
+     */
+    public function setMobileExcludedCount($mobile_excluded_count)
+    {
+        $this->container['mobile_excluded_count'] = $mobile_excluded_count;
 
         return $this;
     }

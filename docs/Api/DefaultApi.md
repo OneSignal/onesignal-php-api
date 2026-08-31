@@ -24,6 +24,7 @@ Method | HTTP request | Description
 [**deleteSubscription()**](DefaultApi.md#deleteSubscription) | **DELETE** /apps/{app_id}/subscriptions/{subscription_id} | 
 [**deleteTemplate()**](DefaultApi.md#deleteTemplate) | **DELETE** /templates/{template_id} | Delete template
 [**deleteUser()**](DefaultApi.md#deleteUser) | **DELETE** /apps/{app_id}/users/by/{alias_label}/{alias_id} | 
+[**estimateNotificationRecipients()**](DefaultApi.md#estimateNotificationRecipients) | **POST** /notifications/count-unsaved | Estimate notification recipients
 [**exportEvents()**](DefaultApi.md#exportEvents) | **POST** /notifications/{notification_id}/export_events | Export CSV of Events
 [**exportSubscriptions()**](DefaultApi.md#exportSubscriptions) | **POST** /players/csv_export?app_id&#x3D;{app_id} | Export CSV of Subscriptions
 [**getAliases()**](DefaultApi.md#getAliases) | **GET** /apps/{app_id}/users/by/{alias_label}/{alias_id}/identity | 
@@ -1610,6 +1611,75 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](https://github.com/OneSignal/onesignal-php-api#full-api-reference)
+[[Back to README]](https://github.com/OneSignal/onesignal-php-api)
+
+## `estimateNotificationRecipients()`
+
+```php
+estimateNotificationRecipients($estimate_notification_recipients_request): \onesignal\client\model\EstimateNotificationRecipientsSuccessResponse
+```
+
+Estimate notification recipients
+
+Returns the estimated number of recipients for a notification's targeting, without creating or sending anything. The returned `count` reflects the same audience-size estimate you would see under \"Choose your target audience\" when composing a message. It is based on the user targeting method you've set and the specific platforms the message is targeted to send to. This endpoint only supports a subset of targeting parameters: `included_segments` is required (its `\"All\"` shorthand targets every subscriber), and `excluded_segments`, `filters`, `include_aliases`, and `target_channel` narrow that audience further. Use `target_channel` to select platforms. `include_subscription_ids` and the other raw subscription id/token fields, and the individual `isIos` / `isAndroid` / etc. platform flags, are not supported. All other notification fields (content, delivery options, and so on) are accepted, but ignored.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: rest_api_key
+$config = onesignal\client\Configuration::getDefaultConfiguration()
+                                                ->setRestApiKeyToken('YOUR_REST_API_KEY')
+                                                ->setOrganizationApiKeyToken('YOUR_ORGANIZATION_API_KEY');
+
+
+
+$apiInstance = new onesignal\client\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$estimate_notification_recipients_request = new \onesignal\client\model\EstimateNotificationRecipientsRequest(); // \onesignal\client\model\EstimateNotificationRecipientsRequest
+
+try {
+    $result = $apiInstance->estimateNotificationRecipients($estimate_notification_recipients_request);
+    print_r($result);
+} catch (\onesignal\client\ApiException $e) {
+    echo 'Exception when calling DefaultApi->estimateNotificationRecipients: ', $e->getMessage(), PHP_EOL;
+    echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    // getErrorMessages() flattens any error-envelope shape to a string[];
+    // the raw body remains on getResponseBody().
+    echo 'Error Messages: ', implode(', ', $e->getErrorMessages()), PHP_EOL;
+    echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
+} catch (\Exception $e) {
+    echo 'Exception when calling DefaultApi->estimateNotificationRecipients: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **estimate_notification_recipients_request** | [**\onesignal\client\model\EstimateNotificationRecipientsRequest**](../Model/EstimateNotificationRecipientsRequest.md)|  |
+
+### Return type
+
+[**\onesignal\client\model\EstimateNotificationRecipientsSuccessResponse**](../Model/EstimateNotificationRecipientsSuccessResponse.md)
+
+### Authorization
+
+[rest_api_key](https://github.com/OneSignal/onesignal-php-api#configuration)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](https://github.com/OneSignal/onesignal-php-api#full-api-reference)
