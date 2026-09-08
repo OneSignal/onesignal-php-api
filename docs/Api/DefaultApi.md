@@ -31,6 +31,7 @@ Method | HTTP request | Description
 [**getAliasesBySubscription()**](DefaultApi.md#getAliasesBySubscription) | **GET** /apps/{app_id}/subscriptions/{subscription_id}/user/identity | 
 [**getApp()**](DefaultApi.md#getApp) | **GET** /apps/{app_id} | View an app
 [**getApps()**](DefaultApi.md#getApps) | **GET** /apps | View apps
+[**getEmailReputation()**](DefaultApi.md#getEmailReputation) | **GET** /apps/{app_id}/email_analytics/delivery_metrics | Get email reputation statistics
 [**getNotification()**](DefaultApi.md#getNotification) | **GET** /notifications/{notification_id} | View notification
 [**getNotificationHistory()**](DefaultApi.md#getNotificationHistory) | **POST** /notifications/{notification_id}/history | Notification History
 [**getNotifications()**](DefaultApi.md#getNotifications) | **GET** /notifications | View notifications
@@ -2097,6 +2098,75 @@ This endpoint does not need any parameter.
 ### Authorization
 
 [organization_api_key](https://github.com/OneSignal/onesignal-php-api#configuration)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](https://github.com/OneSignal/onesignal-php-api#full-api-reference)
+[[Back to README]](https://github.com/OneSignal/onesignal-php-api)
+
+## `getEmailReputation()`
+
+```php
+getEmailReputation($app_id): \onesignal\client\model\EmailReputationResponse
+```
+
+Get email reputation statistics
+
+The email bounce and spam complaint rates received for the app over the last 24 hours, 7 days, and 30 days. Rates are expressed as fractions of successfully delivered emails (for example, `0.02` means 2%). A window reports `0` for both rates when the app has not successfully delivered any email in that period.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: rest_api_key
+$config = onesignal\client\Configuration::getDefaultConfiguration()
+                                                ->setRestApiKeyToken('YOUR_REST_API_KEY')
+                                                ->setOrganizationApiKeyToken('YOUR_ORGANIZATION_API_KEY');
+
+
+
+$apiInstance = new onesignal\client\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$app_id = 'YOUR_APP_ID'; // string | Your OneSignal App ID in UUID v4 format.
+
+try {
+    $result = $apiInstance->getEmailReputation($app_id);
+    print_r($result);
+} catch (\onesignal\client\ApiException $e) {
+    echo 'Exception when calling DefaultApi->getEmailReputation: ', $e->getMessage(), PHP_EOL;
+    echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    // getErrorMessages() flattens any error-envelope shape to a string[];
+    // the raw body remains on getResponseBody().
+    echo 'Error Messages: ', implode(', ', $e->getErrorMessages()), PHP_EOL;
+    echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
+} catch (\Exception $e) {
+    echo 'Exception when calling DefaultApi->getEmailReputation: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **app_id** | **string**| Your OneSignal App ID in UUID v4 format. |
+
+### Return type
+
+[**\onesignal\client\model\EmailReputationResponse**](../Model/EmailReputationResponse.md)
+
+### Authorization
+
+[rest_api_key](https://github.com/OneSignal/onesignal-php-api#configuration)
 
 ### HTTP request headers
 
