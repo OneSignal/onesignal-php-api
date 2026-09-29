@@ -1,6 +1,6 @@
 <?php
 /**
- * Journey
+ * DuplicateJourneyOverrides
  *
  * PHP version 7.3
  *
@@ -32,10 +32,10 @@ use \ArrayAccess;
 use \onesignal\client\ObjectSerializer;
 
 /**
- * Journey Class Doc Comment
+ * DuplicateJourneyOverrides Class Doc Comment
  *
  * @category Class
- * @description Full journey representation returned by the detail, create, update, and duplicate endpoints.
+ * @description Journey fields to apply over the copy as a JSON Merge Patch (RFC 7396). Accepts the same writable fields as Create journey, and none of them are required. The patch merges into the copy, not the source. The copy starts without a schedule, so an omitted schedule leaves the copy unscheduled. An object merges key by key. A null value clears a nullable field. An array such as nodes replaces the copied array. Server-controlled fields such as id or state are rejected.
  * @package  onesignal\client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -43,7 +43,7 @@ use \onesignal\client\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class Journey implements ModelInterface, ArrayAccess, \JsonSerializable
+class DuplicateJourneyOverrides implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +52,7 @@ class Journey implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Journey';
+    protected static $openAPIModelName = 'DuplicateJourneyOverrides';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,22 +60,13 @@ class Journey implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'app_id' => 'string',
         'name' => 'string',
         'description' => 'string',
-        'state' => 'string',
-        'created_at' => 'string',
-        'updated_at' => 'string',
-        'started_at' => 'string',
-        'archived_at' => 'string',
-        'created_source' => 'string',
         'audience' => '\onesignal\client\model\JourneyAudience',
         'early_exit' => '\onesignal\client\model\JourneyEarlyExit',
         'reentry_rules' => '\onesignal\client\model\JourneyReentryRules',
         'schedule' => '\onesignal\client\model\JourneySchedule',
-        'nodes' => '\onesignal\client\model\JourneyNode[]',
-        'concurrency_key' => 'string'
+        'nodes' => '\onesignal\client\model\JourneyNode[]'
     ];
 
     /**
@@ -86,22 +77,13 @@ class Journey implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'app_id' => null,
         'name' => null,
         'description' => null,
-        'state' => null,
-        'created_at' => null,
-        'updated_at' => null,
-        'started_at' => null,
-        'archived_at' => null,
-        'created_source' => null,
         'audience' => null,
         'early_exit' => null,
         'reentry_rules' => null,
         'schedule' => null,
-        'nodes' => null,
-        'concurrency_key' => null
+        'nodes' => null
     ];
 
     /**
@@ -131,22 +113,13 @@ class Journey implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'app_id' => 'app_id',
         'name' => 'name',
         'description' => 'description',
-        'state' => 'state',
-        'created_at' => 'created_at',
-        'updated_at' => 'updated_at',
-        'started_at' => 'started_at',
-        'archived_at' => 'archived_at',
-        'created_source' => 'created_source',
         'audience' => 'audience',
         'early_exit' => 'early_exit',
         'reentry_rules' => 'reentry_rules',
         'schedule' => 'schedule',
-        'nodes' => 'nodes',
-        'concurrency_key' => 'concurrency_key'
+        'nodes' => 'nodes'
     ];
 
     /**
@@ -155,22 +128,13 @@ class Journey implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'app_id' => 'setAppId',
         'name' => 'setName',
         'description' => 'setDescription',
-        'state' => 'setState',
-        'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt',
-        'started_at' => 'setStartedAt',
-        'archived_at' => 'setArchivedAt',
-        'created_source' => 'setCreatedSource',
         'audience' => 'setAudience',
         'early_exit' => 'setEarlyExit',
         'reentry_rules' => 'setReentryRules',
         'schedule' => 'setSchedule',
-        'nodes' => 'setNodes',
-        'concurrency_key' => 'setConcurrencyKey'
+        'nodes' => 'setNodes'
     ];
 
     /**
@@ -179,22 +143,13 @@ class Journey implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'app_id' => 'getAppId',
         'name' => 'getName',
         'description' => 'getDescription',
-        'state' => 'getState',
-        'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt',
-        'started_at' => 'getStartedAt',
-        'archived_at' => 'getArchivedAt',
-        'created_source' => 'getCreatedSource',
         'audience' => 'getAudience',
         'early_exit' => 'getEarlyExit',
         'reentry_rules' => 'getReentryRules',
         'schedule' => 'getSchedule',
-        'nodes' => 'getNodes',
-        'concurrency_key' => 'getConcurrencyKey'
+        'nodes' => 'getNodes'
     ];
 
     /**
@@ -238,27 +193,6 @@ class Journey implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const STATE_DRAFT = 'draft';
-    public const STATE_SCHEDULED = 'scheduled';
-    public const STATE_PROCESSING = 'processing';
-    public const STATE_ACTIVE = 'active';
-    public const STATE_ARCHIVED = 'archived';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getStateAllowableValues()
-    {
-        return [
-            self::STATE_DRAFT,
-            self::STATE_SCHEDULED,
-            self::STATE_PROCESSING,
-            self::STATE_ACTIVE,
-            self::STATE_ARCHIVED,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -275,22 +209,13 @@ class Journey implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->container['id'] = $data['id'] ?? null;
-        $this->container['app_id'] = $data['app_id'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
         $this->container['description'] = $data['description'] ?? null;
-        $this->container['state'] = $data['state'] ?? null;
-        $this->container['created_at'] = $data['created_at'] ?? null;
-        $this->container['updated_at'] = $data['updated_at'] ?? null;
-        $this->container['started_at'] = $data['started_at'] ?? null;
-        $this->container['archived_at'] = $data['archived_at'] ?? null;
-        $this->container['created_source'] = $data['created_source'] ?? null;
         $this->container['audience'] = $data['audience'] ?? null;
         $this->container['early_exit'] = $data['early_exit'] ?? null;
         $this->container['reentry_rules'] = $data['reentry_rules'] ?? null;
         $this->container['schedule'] = $data['schedule'] ?? null;
         $this->container['nodes'] = $data['nodes'] ?? null;
-        $this->container['concurrency_key'] = $data['concurrency_key'] ?? null;
     }
 
     /**
@@ -301,15 +226,6 @@ class Journey implements ModelInterface, ArrayAccess, \JsonSerializable
     public function listInvalidProperties()
     {
         $invalidProperties = [];
-
-        $allowedValues = $this->getStateAllowableValues();
-        if (!is_null($this->container['state']) && !in_array($this->container['state'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'state', must be one of '%s'",
-                $this->container['state'],
-                implode("', '", $allowedValues)
-            );
-        }
 
         return $invalidProperties;
     }
@@ -327,54 +243,6 @@ class Journey implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets id
-     *
-     * @return string|null
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string|null $id Journey UUID. Read-only.
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets app_id
-     *
-     * @return string|null
-     */
-    public function getAppId()
-    {
-        return $this->container['app_id'];
-    }
-
-    /**
-     * Sets app_id
-     *
-     * @param string|null $app_id UUID of the app the journey belongs to. Read-only.
-     *
-     * @return self
-     */
-    public function setAppId($app_id)
-    {
-        $this->container['app_id'] = $app_id;
-
-        return $this;
-    }
-
-    /**
      * Gets name
      *
      * @return string|null
@@ -387,7 +255,7 @@ class Journey implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets name
      *
-     * @param string|null $name Journey name, up to 300 characters.
+     * @param string|null $name Name for the copy, up to 300 characters. If you omit it, the copy takes the name of the source plus \" (Copy)\".
      *
      * @return self
      */
@@ -411,167 +279,13 @@ class Journey implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets description
      *
-     * @param string|null $description Journey description, up to 1024 characters. Defaults to an empty string.
+     * @param string|null $description Optional journey description, up to 1024 characters. If you omit it, the copy takes the description of the source. Send null to clear it.
      *
      * @return self
      */
     public function setDescription($description)
     {
         $this->container['description'] = $description;
-
-        return $this;
-    }
-
-    /**
-     * Gets state
-     *
-     * @return string|null
-     */
-    public function getState()
-    {
-        return $this->container['state'];
-    }
-
-    /**
-     * Sets state
-     *
-     * @param string|null $state Journey state. New journeys are created as draft. processing is transient while activation is in progress. archived is a journey that has been stopped. Change it through the state field on Update journey.
-     *
-     * @return self
-     */
-    public function setState($state)
-    {
-        $allowedValues = $this->getStateAllowableValues();
-        if (!is_null($state) && !in_array($state, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'state', must be one of '%s'",
-                    $state,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['state'] = $state;
-
-        return $this;
-    }
-
-    /**
-     * Gets created_at
-     *
-     * @return string|null
-     */
-    public function getCreatedAt()
-    {
-        return $this->container['created_at'];
-    }
-
-    /**
-     * Sets created_at
-     *
-     * @param string|null $created_at ISO 8601 creation time. Read-only.
-     *
-     * @return self
-     */
-    public function setCreatedAt($created_at)
-    {
-        $this->container['created_at'] = $created_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets updated_at
-     *
-     * @return string|null
-     */
-    public function getUpdatedAt()
-    {
-        return $this->container['updated_at'];
-    }
-
-    /**
-     * Sets updated_at
-     *
-     * @param string|null $updated_at ISO 8601 last-update time. Read-only.
-     *
-     * @return self
-     */
-    public function setUpdatedAt($updated_at)
-    {
-        $this->container['updated_at'] = $updated_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets started_at
-     *
-     * @return string|null
-     */
-    public function getStartedAt()
-    {
-        return $this->container['started_at'];
-    }
-
-    /**
-     * Sets started_at
-     *
-     * @param string|null $started_at ISO 8601 time the journey was activated, or null. Read-only. May stay null briefly after you set state to active: activation is enqueued, and started_at populates once the journey finishes processing.
-     *
-     * @return self
-     */
-    public function setStartedAt($started_at)
-    {
-        $this->container['started_at'] = $started_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets archived_at
-     *
-     * @return string|null
-     */
-    public function getArchivedAt()
-    {
-        return $this->container['archived_at'];
-    }
-
-    /**
-     * Sets archived_at
-     *
-     * @param string|null $archived_at ISO 8601 time the journey was archived, or null. Read-only.
-     *
-     * @return self
-     */
-    public function setArchivedAt($archived_at)
-    {
-        $this->container['archived_at'] = $archived_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets created_source
-     *
-     * @return string|null
-     */
-    public function getCreatedSource()
-    {
-        return $this->container['created_source'];
-    }
-
-    /**
-     * Sets created_source
-     *
-     * @param string|null $created_source Origin of the journey, for example public_api or dashboard. Read-only.
-     *
-     * @return self
-     */
-    public function setCreatedSource($created_source)
-    {
-        $this->container['created_source'] = $created_source;
 
         return $this;
     }
@@ -685,37 +399,13 @@ class Journey implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets nodes
      *
-     * @param \onesignal\client\model\JourneyNode[]|null $nodes Ordered list of journey nodes.
+     * @param \onesignal\client\model\JourneyNode[]|null $nodes Full ordered list of nodes. Replaces the copied graph. Server-assigned id fields are rejected.
      *
      * @return self
      */
     public function setNodes($nodes)
     {
         $this->container['nodes'] = $nodes;
-
-        return $this;
-    }
-
-    /**
-     * Gets concurrency_key
-     *
-     * @return string|null
-     */
-    public function getConcurrencyKey()
-    {
-        return $this->container['concurrency_key'];
-    }
-
-    /**
-     * Sets concurrency_key
-     *
-     * @param string|null $concurrency_key Opaque optimistic-concurrency token. Read-only. Pass it back on update to guard against overwriting a concurrent change (409). Send it back exactly as read; do not construct or parse it.
-     *
-     * @return self
-     */
-    public function setConcurrencyKey($concurrency_key)
-    {
-        $this->container['concurrency_key'] = $concurrency_key;
 
         return $this;
     }
