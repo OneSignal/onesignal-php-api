@@ -481,7 +481,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.16.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.17.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -835,7 +835,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.16.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.17.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -1268,7 +1268,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.16.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.17.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -1682,7 +1682,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.16.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.17.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -2016,7 +2016,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.16.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.17.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -2354,7 +2354,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.16.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.17.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -2734,7 +2734,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.16.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.17.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -3114,7 +3114,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.16.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.17.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -3452,7 +3452,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.16.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.17.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -3826,7 +3826,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.16.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.17.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -4282,7 +4282,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.16.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.17.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -4620,7 +4620,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.16.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.17.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -5038,7 +5038,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.16.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.17.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -5473,7 +5473,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.16.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.17.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -5809,7 +5809,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.16.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.17.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -6191,7 +6191,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.16.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.17.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -6214,7 +6214,7 @@ class DefaultApi
      * Delete Segment
      *
      * @param  string $app_id The OneSignal App ID for your app.  Available in Keys &amp; IDs. (required)
-     * @param  string $segment_id The segment_id can be found in the URL of the segment when viewing it in the dashboard. (required)
+     * @param  string $segment_id The segment&#39;s unique identifier. In the dashboard, go to Audience &gt; Segments, open the segment&#39;s options menu, and select Copy segment ID. You can also get it from the View Segments API or the segment&#39;s URL in the dashboard. (required)
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -6232,7 +6232,7 @@ class DefaultApi
      * Delete Segment
      *
      * @param  string $app_id The OneSignal App ID for your app.  Available in Keys &amp; IDs. (required)
-     * @param  string $segment_id The segment_id can be found in the URL of the segment when viewing it in the dashboard. (required)
+     * @param  string $segment_id The segment&#39;s unique identifier. In the dashboard, go to Audience &gt; Segments, open the segment&#39;s options menu, and select Copy segment ID. You can also get it from the View Segments API or the segment&#39;s URL in the dashboard. (required)
      *
      * @throws \onesignal\client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -6409,7 +6409,7 @@ class DefaultApi
      * Delete Segment
      *
      * @param  string $app_id The OneSignal App ID for your app.  Available in Keys &amp; IDs. (required)
-     * @param  string $segment_id The segment_id can be found in the URL of the segment when viewing it in the dashboard. (required)
+     * @param  string $segment_id The segment&#39;s unique identifier. In the dashboard, go to Audience &gt; Segments, open the segment&#39;s options menu, and select Copy segment ID. You can also get it from the View Segments API or the segment&#39;s URL in the dashboard. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -6430,7 +6430,7 @@ class DefaultApi
      * Delete Segment
      *
      * @param  string $app_id The OneSignal App ID for your app.  Available in Keys &amp; IDs. (required)
-     * @param  string $segment_id The segment_id can be found in the URL of the segment when viewing it in the dashboard. (required)
+     * @param  string $segment_id The segment&#39;s unique identifier. In the dashboard, go to Audience &gt; Segments, open the segment&#39;s options menu, and select Copy segment ID. You can also get it from the View Segments API or the segment&#39;s URL in the dashboard. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -6480,7 +6480,7 @@ class DefaultApi
      * Create request for operation 'deleteSegment'
      *
      * @param  string $app_id The OneSignal App ID for your app.  Available in Keys &amp; IDs. (required)
-     * @param  string $segment_id The segment_id can be found in the URL of the segment when viewing it in the dashboard. (required)
+     * @param  string $segment_id The segment&#39;s unique identifier. In the dashboard, go to Audience &gt; Segments, open the segment&#39;s options menu, and select Copy segment ID. You can also get it from the View Segments API or the segment&#39;s URL in the dashboard. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -6573,7 +6573,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.16.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.17.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -6856,7 +6856,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.16.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.17.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -7216,7 +7216,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.16.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.17.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -7510,7 +7510,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.16.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.17.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -7521,6 +7521,422 @@ class DefaultApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'DELETE',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation duplicateJourney
+     *
+     * Duplicate journey
+     *
+     * @param  string $app_id Your OneSignal App ID in UUID v4 format. (required)
+     * @param  string $journey_id UUID of the journey to copy. (required)
+     * @param  \onesignal\client\model\DuplicateJourneyRequest $duplicate_journey_request duplicate_journey_request (optional)
+     *
+     * @throws \onesignal\client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \onesignal\client\model\Journey|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError
+     */
+    public function duplicateJourney($app_id, $journey_id, $duplicate_journey_request = null)
+    {
+        list($response) = $this->duplicateJourneyWithHttpInfo($app_id, $journey_id, $duplicate_journey_request);
+        return $response;
+    }
+
+    /**
+     * Operation duplicateJourneyWithHttpInfo
+     *
+     * Duplicate journey
+     *
+     * @param  string $app_id Your OneSignal App ID in UUID v4 format. (required)
+     * @param  string $journey_id UUID of the journey to copy. (required)
+     * @param  \onesignal\client\model\DuplicateJourneyRequest $duplicate_journey_request (optional)
+     *
+     * @throws \onesignal\client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \onesignal\client\model\Journey|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function duplicateJourneyWithHttpInfo($app_id, $journey_id, $duplicate_journey_request = null)
+    {
+        $request = $this->duplicateJourneyRequest($app_id, $journey_id, $duplicate_journey_request);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 201:
+                    if ('\onesignal\client\model\Journey' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\onesignal\client\model\Journey' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\onesignal\client\model\Journey', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\onesignal\client\model\GenericError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\onesignal\client\model\GenericError' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\onesignal\client\model\GenericError', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\onesignal\client\model\GenericError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\onesignal\client\model\GenericError' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\onesignal\client\model\GenericError', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\onesignal\client\model\GenericError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\onesignal\client\model\GenericError' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\onesignal\client\model\GenericError', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 429:
+                    if ('\onesignal\client\model\RateLimitError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\onesignal\client\model\RateLimitError' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\onesignal\client\model\RateLimitError', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\onesignal\client\model\Journey';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 201:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\Journey',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\RateLimitError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation duplicateJourneyAsync
+     *
+     * Duplicate journey
+     *
+     * @param  string $app_id Your OneSignal App ID in UUID v4 format. (required)
+     * @param  string $journey_id UUID of the journey to copy. (required)
+     * @param  \onesignal\client\model\DuplicateJourneyRequest $duplicate_journey_request (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function duplicateJourneyAsync($app_id, $journey_id, $duplicate_journey_request = null)
+    {
+        return $this->duplicateJourneyAsyncWithHttpInfo($app_id, $journey_id, $duplicate_journey_request)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation duplicateJourneyAsyncWithHttpInfo
+     *
+     * Duplicate journey
+     *
+     * @param  string $app_id Your OneSignal App ID in UUID v4 format. (required)
+     * @param  string $journey_id UUID of the journey to copy. (required)
+     * @param  \onesignal\client\model\DuplicateJourneyRequest $duplicate_journey_request (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function duplicateJourneyAsyncWithHttpInfo($app_id, $journey_id, $duplicate_journey_request = null)
+    {
+        $returnType = '\onesignal\client\model\Journey';
+        $request = $this->duplicateJourneyRequest($app_id, $journey_id, $duplicate_journey_request);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'duplicateJourney'
+     *
+     * @param  string $app_id Your OneSignal App ID in UUID v4 format. (required)
+     * @param  string $journey_id UUID of the journey to copy. (required)
+     * @param  \onesignal\client\model\DuplicateJourneyRequest $duplicate_journey_request (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function duplicateJourneyRequest($app_id, $journey_id, $duplicate_journey_request = null)
+    {
+        // verify the required parameter 'app_id' is set
+        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $app_id when calling duplicateJourney'
+            );
+        }
+        // verify the required parameter 'journey_id' is set
+        if ($journey_id === null || (is_array($journey_id) && count($journey_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $journey_id when calling duplicateJourney'
+            );
+        }
+
+        $resourcePath = '/apps/{app_id}/journeys/{journey_id}/duplicate';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($app_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app_id' . '}',
+                ObjectSerializer::toPathValue($app_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($journey_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'journey_id' . '}',
+                ObjectSerializer::toPathValue($journey_id),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($duplicate_journey_request)) {
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($duplicate_journey_request));
+            } else {
+                $httpBody = $duplicate_journey_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        if (!empty($this->config->getRestApiKeyToken())) {
+            $headers['Authorization'] = 'Key ' . $this->config->getRestApiKeyToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        // Adding the telemetry header
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.17.0';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
@@ -7848,7 +8264,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.16.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.17.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -8231,7 +8647,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.16.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.17.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -8582,7 +8998,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.16.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.17.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -8975,7 +9391,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.16.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.17.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -9326,7 +9742,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.16.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.17.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -9666,7 +10082,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.16.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.17.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -9987,7 +10403,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.16.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.17.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -10350,7 +10766,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.16.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.17.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -10733,7 +11149,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.16.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.17.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -11113,7 +11529,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.16.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.17.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -11510,7 +11926,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.16.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.17.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -11926,7 +12342,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.16.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.17.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -11949,7 +12365,7 @@ class DefaultApi
      * View Segment
      *
      * @param  string $app_id The OneSignal App ID for your app.  Available in Keys &amp; IDs. (required)
-     * @param  string $segment_id The segment&#39;s unique identifier. Can be found using the View Segments API or in the URL of the segment when viewing it in the dashboard. (required)
+     * @param  string $segment_id The segment&#39;s unique identifier. In the dashboard, go to Audience &gt; Segments, open the segment&#39;s options menu, and select Copy segment ID. You can also get it from the View Segments API or the segment&#39;s URL in the dashboard. (required)
      * @param  bool $include_segment_detail Set to true to include segment metadata and filters in the response. (optional)
      *
      * @throws \onesignal\client\ApiException on non-2xx response
@@ -11968,7 +12384,7 @@ class DefaultApi
      * View Segment
      *
      * @param  string $app_id The OneSignal App ID for your app.  Available in Keys &amp; IDs. (required)
-     * @param  string $segment_id The segment&#39;s unique identifier. Can be found using the View Segments API or in the URL of the segment when viewing it in the dashboard. (required)
+     * @param  string $segment_id The segment&#39;s unique identifier. In the dashboard, go to Audience &gt; Segments, open the segment&#39;s options menu, and select Copy segment ID. You can also get it from the View Segments API or the segment&#39;s URL in the dashboard. (required)
      * @param  bool $include_segment_detail Set to true to include segment metadata and filters in the response. (optional)
      *
      * @throws \onesignal\client\ApiException on non-2xx response
@@ -12146,7 +12562,7 @@ class DefaultApi
      * View Segment
      *
      * @param  string $app_id The OneSignal App ID for your app.  Available in Keys &amp; IDs. (required)
-     * @param  string $segment_id The segment&#39;s unique identifier. Can be found using the View Segments API or in the URL of the segment when viewing it in the dashboard. (required)
+     * @param  string $segment_id The segment&#39;s unique identifier. In the dashboard, go to Audience &gt; Segments, open the segment&#39;s options menu, and select Copy segment ID. You can also get it from the View Segments API or the segment&#39;s URL in the dashboard. (required)
      * @param  bool $include_segment_detail Set to true to include segment metadata and filters in the response. (optional)
      *
      * @throws \InvalidArgumentException
@@ -12168,7 +12584,7 @@ class DefaultApi
      * View Segment
      *
      * @param  string $app_id The OneSignal App ID for your app.  Available in Keys &amp; IDs. (required)
-     * @param  string $segment_id The segment&#39;s unique identifier. Can be found using the View Segments API or in the URL of the segment when viewing it in the dashboard. (required)
+     * @param  string $segment_id The segment&#39;s unique identifier. In the dashboard, go to Audience &gt; Segments, open the segment&#39;s options menu, and select Copy segment ID. You can also get it from the View Segments API or the segment&#39;s URL in the dashboard. (required)
      * @param  bool $include_segment_detail Set to true to include segment metadata and filters in the response. (optional)
      *
      * @throws \InvalidArgumentException
@@ -12219,7 +12635,7 @@ class DefaultApi
      * Create request for operation 'getSegment'
      *
      * @param  string $app_id The OneSignal App ID for your app.  Available in Keys &amp; IDs. (required)
-     * @param  string $segment_id The segment&#39;s unique identifier. Can be found using the View Segments API or in the URL of the segment when viewing it in the dashboard. (required)
+     * @param  string $segment_id The segment&#39;s unique identifier. In the dashboard, go to Audience &gt; Segments, open the segment&#39;s options menu, and select Copy segment ID. You can also get it from the View Segments API or the segment&#39;s URL in the dashboard. (required)
      * @param  bool $include_segment_detail Set to true to include segment metadata and filters in the response. (optional)
      *
      * @throws \InvalidArgumentException
@@ -12322,7 +12738,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.16.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.17.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -12690,7 +13106,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.16.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.17.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -13083,7 +13499,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.16.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.17.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -13651,7 +14067,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.16.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.17.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -13987,7 +14403,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.16.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.17.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -14363,7 +14779,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.16.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.17.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -14777,7 +15193,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.16.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.17.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -15156,7 +15572,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.16.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.17.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -15509,7 +15925,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.16.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.17.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -15866,7 +16282,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.16.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.17.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -16334,7 +16750,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.16.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.17.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -16821,7 +17237,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.16.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.17.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -17197,7 +17613,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.16.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.17.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -17220,7 +17636,7 @@ class DefaultApi
      * Update Segment
      *
      * @param  string $app_id The OneSignal App ID for your app.  Available in Keys &amp; IDs. (required)
-     * @param  string $segment_id The segment&#39;s unique identifier. Can be found using the View Segments API or in the URL of the segment when viewing it in the dashboard. (required)
+     * @param  string $segment_id The segment&#39;s unique identifier. In the dashboard, go to Audience &gt; Segments, open the segment&#39;s options menu, and select Copy segment ID. You can also get it from the View Segments API or the segment&#39;s URL in the dashboard. (required)
      * @param  \onesignal\client\model\UpdateSegmentRequest $update_segment_request update_segment_request (optional)
      *
      * @throws \onesignal\client\ApiException on non-2xx response
@@ -17239,7 +17655,7 @@ class DefaultApi
      * Update Segment
      *
      * @param  string $app_id The OneSignal App ID for your app.  Available in Keys &amp; IDs. (required)
-     * @param  string $segment_id The segment&#39;s unique identifier. Can be found using the View Segments API or in the URL of the segment when viewing it in the dashboard. (required)
+     * @param  string $segment_id The segment&#39;s unique identifier. In the dashboard, go to Audience &gt; Segments, open the segment&#39;s options menu, and select Copy segment ID. You can also get it from the View Segments API or the segment&#39;s URL in the dashboard. (required)
      * @param  \onesignal\client\model\UpdateSegmentRequest $update_segment_request (optional)
      *
      * @throws \onesignal\client\ApiException on non-2xx response
@@ -17440,7 +17856,7 @@ class DefaultApi
      * Update Segment
      *
      * @param  string $app_id The OneSignal App ID for your app.  Available in Keys &amp; IDs. (required)
-     * @param  string $segment_id The segment&#39;s unique identifier. Can be found using the View Segments API or in the URL of the segment when viewing it in the dashboard. (required)
+     * @param  string $segment_id The segment&#39;s unique identifier. In the dashboard, go to Audience &gt; Segments, open the segment&#39;s options menu, and select Copy segment ID. You can also get it from the View Segments API or the segment&#39;s URL in the dashboard. (required)
      * @param  \onesignal\client\model\UpdateSegmentRequest $update_segment_request (optional)
      *
      * @throws \InvalidArgumentException
@@ -17462,7 +17878,7 @@ class DefaultApi
      * Update Segment
      *
      * @param  string $app_id The OneSignal App ID for your app.  Available in Keys &amp; IDs. (required)
-     * @param  string $segment_id The segment&#39;s unique identifier. Can be found using the View Segments API or in the URL of the segment when viewing it in the dashboard. (required)
+     * @param  string $segment_id The segment&#39;s unique identifier. In the dashboard, go to Audience &gt; Segments, open the segment&#39;s options menu, and select Copy segment ID. You can also get it from the View Segments API or the segment&#39;s URL in the dashboard. (required)
      * @param  \onesignal\client\model\UpdateSegmentRequest $update_segment_request (optional)
      *
      * @throws \InvalidArgumentException
@@ -17513,7 +17929,7 @@ class DefaultApi
      * Create request for operation 'updateSegment'
      *
      * @param  string $app_id The OneSignal App ID for your app.  Available in Keys &amp; IDs. (required)
-     * @param  string $segment_id The segment&#39;s unique identifier. Can be found using the View Segments API or in the URL of the segment when viewing it in the dashboard. (required)
+     * @param  string $segment_id The segment&#39;s unique identifier. In the dashboard, go to Audience &gt; Segments, open the segment&#39;s options menu, and select Copy segment ID. You can also get it from the View Segments API or the segment&#39;s URL in the dashboard. (required)
      * @param  \onesignal\client\model\UpdateSegmentRequest $update_segment_request (optional)
      *
      * @throws \InvalidArgumentException
@@ -17613,7 +18029,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.16.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.17.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -17913,7 +18329,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.16.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.17.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -18308,7 +18724,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.16.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.17.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -18662,7 +19078,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.16.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.17.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -19072,7 +19488,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.16.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.17.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -19389,7 +19805,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.16.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.17.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -19748,7 +20164,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.16.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.17.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -20107,7 +20523,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.16.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.17.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -20505,7 +20921,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.16.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.17.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -20865,7 +21281,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.16.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.17.0';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -21248,7 +21664,7 @@ class DefaultApi
         }
 
         // Adding the telemetry header
-        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.16.0';
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.17.0';
 
         $headers = array_merge(
             $defaultHeaders,
