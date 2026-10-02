@@ -369,7 +369,7 @@ class UpdateJourneyNodeRequest implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets annotation
      *
-     * @param string|null $annotation Optional free-text label, up to 255 characters. Stored and returned as-is with no effect on journey behavior.
+     * @param string|null $annotation Optional free-text label, up to 1024 characters. Stored and returned as-is with no effect on journey behavior.
      *
      * @return self
      */
@@ -680,7 +680,7 @@ class UpdateJourneyNodeRequest implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets branches
      *
-     * @param \onesignal\client\model\JourneyBranch[]|null $branches Branching nodes: nested branches. split_range requires 2-20 weighted branches that sum to 100. yes_no requires exactly 2 branches. wait_until requires 1-10 condition branches.
+     * @param \onesignal\client\model\JourneyBranch[]|null $branches Branching nodes: nested branches. split_range requires 2-25 weighted branches that sum to 100. yes_no requires exactly 2 branches. wait_until requires 1-25 condition branches.
      *
      * @return self
      */
