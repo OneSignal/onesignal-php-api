@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.17.0](https://github.com/OneSignal/onesignal-php-api/compare/v5.16.0...v5.17.0) (2026-10-02)
+
+### Features
+
+* add v5.17.0 package updates ([a365dd3](https://github.com/OneSignal/onesignal-php-api/commit/a365dd3eb8a8d10bb5b5d8d516409ada3b8425eb))
+* add v5.17.0 package updates ([#112](https://github.com/OneSignal/onesignal-php-api/issues/112)) ([4c1b82f](https://github.com/OneSignal/onesignal-php-api/commit/4c1b82f8933787a427ddd23065ac25b57ef4001d)), closes [OneSignal/api-client-libraries#468](https://github.com/OneSignal/api-client-libraries/issues/468) [OneSignal/api-client-libraries#469](https://github.com/OneSignal/api-client-libraries/issues/469) [OneSignal/api-client-libraries#470](https://github.com/OneSignal/api-client-libraries/issues/470)
+
 ## [5.16.0](https://github.com/OneSignal/onesignal-php-api/compare/v5.15.0...v5.16.0) (2026-09-09)
 
 ### Features
