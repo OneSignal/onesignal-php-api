@@ -205,7 +205,7 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
 );
 $template_id = 'e4d3c2b1-a09f-4f1e-8d7c-6b5a4f3e2d1c'; // string
 $app_id = 'YOUR_APP_ID'; // string
-$copy_template_request = new \onesignal\client\model\CopyTemplateRequest(); // \onesignal\client\model\CopyTemplateRequest
+$copy_template_request = new \onesignal\client\model\CopyTemplateRequest(['target_app_id' => 'YOUR_TARGET_APP_ID']); // \onesignal\client\model\CopyTemplateRequest
 
 try {
     $result = $apiInstance->copyTemplateToApp($template_id, $app_id, $copy_template_request);
@@ -565,7 +565,7 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     $config
 );
 $app_id = 'YOUR_APP_ID'; // string | Your OneSignal App ID in UUID v4 format.
-$custom_events_request = new \onesignal\client\model\CustomEventsRequest(); // \onesignal\client\model\CustomEventsRequest
+$custom_events_request = new \onesignal\client\model\CustomEventsRequest(['events' => [new \onesignal\client\model\CustomEvent(['name' => 'YOUR_NAME'])]]); // \onesignal\client\model\CustomEventsRequest
 
 try {
     $result = $apiInstance->createCustomEvents($app_id, $custom_events_request);
@@ -636,7 +636,7 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     $config
 );
 $app_id = 'YOUR_APP_ID'; // string | Your OneSignal App ID in UUID v4 format.
-$create_journey_request = new \onesignal\client\model\CreateJourneyRequest(); // \onesignal\client\model\CreateJourneyRequest
+$create_journey_request = new \onesignal\client\model\CreateJourneyRequest(['name' => 'YOUR_NAME']); // \onesignal\client\model\CreateJourneyRequest
 
 try {
     $result = $apiInstance->createJourney($app_id, $create_journey_request);
@@ -849,7 +849,7 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     $config
 );
 $app_id = 'YOUR_APP_ID'; // string | The OneSignal App ID for your app.  Available in Keys & IDs.
-$segment = new \onesignal\client\model\Segment(); // \onesignal\client\model\Segment
+$segment = new \onesignal\client\model\Segment(['name' => 'Inactive 30 days', 'filters' => [new \onesignal\client\model\FilterExpression()]]); // \onesignal\client\model\Segment
 
 try {
     $result = $apiInstance->createSegment($app_id, $segment);
@@ -994,7 +994,7 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$create_template_request = new \onesignal\client\model\CreateTemplateRequest(); // \onesignal\client\model\CreateTemplateRequest
+$create_template_request = new \onesignal\client\model\CreateTemplateRequest(['app_id' => 'YOUR_APP_ID', 'name' => 'YOUR_NAME', 'contents' => new \onesignal\client\model\LanguageStringMap()]); // \onesignal\client\model\CreateTemplateRequest
 
 try {
     $result = $apiInstance->createTemplate($create_template_request);
@@ -1721,7 +1721,7 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$estimate_notification_recipients_request = new \onesignal\client\model\EstimateNotificationRecipientsRequest(); // \onesignal\client\model\EstimateNotificationRecipientsRequest
+$estimate_notification_recipients_request = new \onesignal\client\model\EstimateNotificationRecipientsRequest(['app_id' => 'YOUR_APP_ID']); // \onesignal\client\model\EstimateNotificationRecipientsRequest
 
 try {
     $result = $apiInstance->estimateNotificationRecipients($estimate_notification_recipients_request);
@@ -2798,17 +2798,17 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     $config
 );
 $organization_id = 'YOUR_ORG_ID'; // string | The UUID of the organization to retrieve audit logs for. Must match the authenticated Organization API Key.
-$start_time = 'start_time_example'; // string | Start of the time range in ISO 8601 format (e.g. 2026-02-01T00:00:00Z). Required unless cursor is provided. Must be within the last 90 days.
-$end_time = 'end_time_example'; // string | End of the time range in ISO 8601 format. Defaults to the current time. Must be after start_time.
-$cursor = 'cursor_example'; // string | Pagination cursor returned in a previous response as next_cursor. When provided, start_time and end_time are ignored.
-$limit = 56; // int | Maximum number of events to return per page. Minimum 1, maximum 100. Values outside this range are clamped automatically by the server.
-$app_ids = array('app_ids_example'); // string[] | Filter events by app UUID. Accepts up to 10 values. Org-level events are always included.
-$actions = array('actions_example'); // string[] | Filter by action type (e.g. notification.sent, segment.created). Accepts up to 20 values.
-$actor_ids = array('actor_ids_example'); // string[] | Filter by actor UUID (the user or service that performed the action). Accepts up to 10 values.
-$actor_emails = array('actor_emails_example'); // string[] | Filter by actor email address. Accepts up to 10 values.
-$target_types = array('target_types_example'); // string[] | Filter by the type of resource the action was performed on (e.g. notification, segment, journey). Accepts up to 10 values.
-$target_ids = array('target_ids_example'); // string[] | Filter by the UUID of the resource the action was performed on. Accepts up to 10 values.
-$ip_addresses = array('ip_addresses_example'); // string[] | Filter by the IP address the action originated from. Accepts up to 10 values.
+$start_time = '2026-02-01T00:00:00Z'; // string | Start of the time range in ISO 8601 format (e.g. 2026-02-01T00:00:00Z). Required unless cursor is provided. Must be within the last 90 days.
+$end_time = '2026-02-02T00:00:00Z'; // string | End of the time range in ISO 8601 format. Defaults to the current time. Must be after start_time.
+$cursor = 'YOUR_NEXT_CURSOR'; // string | Pagination cursor returned in a previous response as next_cursor. When provided, start_time and end_time are ignored.
+$limit = 50; // int | Maximum number of events to return per page. Minimum 1, maximum 100. Values outside this range are clamped automatically by the server.
+$app_ids = array('YOUR_APP_ID'); // string[] | Filter events by app UUID. Accepts up to 10 values. Org-level events are always included.
+$actions = array('notification.sent'); // string[] | Filter by action type (e.g. notification.sent, segment.created). Accepts up to 20 values.
+$actor_ids = array('YOUR_ACTOR_ID'); // string[] | Filter by actor UUID (the user or service that performed the action). Accepts up to 10 values.
+$actor_emails = array('admin@example.com'); // string[] | Filter by actor email address. Accepts up to 10 values.
+$target_types = array('notification'); // string[] | Filter by the type of resource the action was performed on (e.g. notification, segment, journey). Accepts up to 10 values.
+$target_ids = array('YOUR_TARGET_ID'); // string[] | Filter by the UUID of the resource the action was performed on. Accepts up to 10 values.
+$ip_addresses = array('203.0.113.42'); // string[] | Filter by the IP address the action originated from. Accepts up to 10 values.
 
 try {
     $result = $apiInstance->listAuditLogs($organization_id, $start_time, $end_time, $cursor, $limit, $app_ids, $actions, $actor_ids, $actor_emails, $target_types, $target_ids, $ip_addresses);
@@ -2961,7 +2961,7 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
 );
 $app_id = 'YOUR_APP_ID'; // string | Your OneSignal App ID in UUID v4 format.
 $activity_type = 'order_status'; // string | The name of the Live Activity defined in your app. This should match the attributes struct used in your app's Live Activity implementation.
-$start_live_activity_request = new \onesignal\client\model\StartLiveActivityRequest(); // \onesignal\client\model\StartLiveActivityRequest
+$start_live_activity_request = new \onesignal\client\model\StartLiveActivityRequest(['name' => 'YOUR_NAME', 'event' => \onesignal\client\model\StartLiveActivityRequest::EVENT_START, 'activity_id' => 'YOUR_ACTIVITY_ID', 'event_attributes' => new \stdClass(), 'event_updates' => new \stdClass(), 'contents' => new \onesignal\client\model\LanguageStringMap(), 'headings' => new \onesignal\client\model\LanguageStringMap()]); // \onesignal\client\model\StartLiveActivityRequest
 
 try {
     $result = $apiInstance->startLiveActivity($app_id, $activity_type, $start_live_activity_request);
@@ -3472,7 +3472,7 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
 );
 $app_id = 'YOUR_APP_ID'; // string | The OneSignal App ID for your app.  Available in Keys & IDs.
 $activity_id = '12345'; // string | Live Activity record ID
-$update_live_activity_request = new \onesignal\client\model\UpdateLiveActivityRequest(); // \onesignal\client\model\UpdateLiveActivityRequest
+$update_live_activity_request = new \onesignal\client\model\UpdateLiveActivityRequest(['name' => 'YOUR_NAME', 'event' => \onesignal\client\model\UpdateLiveActivityRequest::EVENT_UPDATE, 'event_updates' => new \stdClass()]); // \onesignal\client\model\UpdateLiveActivityRequest
 
 try {
     $result = $apiInstance->updateLiveActivity($app_id, $activity_id, $update_live_activity_request);
@@ -3545,7 +3545,7 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
 );
 $app_id = 'YOUR_APP_ID'; // string | The OneSignal App ID for your app.  Available in Keys & IDs.
 $segment_id = 'd6c5a3e1-9f17-44a1-9d10-7c0e4a2b1c8e'; // string | The segment's unique identifier. In the dashboard, go to Audience > Segments, open the segment's options menu, and select Copy segment ID. You can also get it from the View Segments API or the segment's URL in the dashboard.
-$update_segment_request = new \onesignal\client\model\UpdateSegmentRequest(); // \onesignal\client\model\UpdateSegmentRequest
+$update_segment_request = new \onesignal\client\model\UpdateSegmentRequest(['name' => 'YOUR_NAME']); // \onesignal\client\model\UpdateSegmentRequest
 
 try {
     $result = $apiInstance->updateSegment($app_id, $segment_id, $update_segment_request);
@@ -4123,7 +4123,7 @@ $apiInstance = new onesignal\client\Api\DefaultApi(
     $config
 );
 $app_id = 'YOUR_APP_ID'; // string | Your OneSignal App ID in UUID v4 format.
-$cursor = 'cursor_example'; // string | Opaque pagination token from a previous response's next_cursor. Omit for the first page.
+$cursor = 'YOUR_NEXT_CURSOR'; // string | Opaque pagination token from a previous response's next_cursor. Omit for the first page.
 $limit = 50; // int | Maximum journeys to return per page. Minimum 1, maximum 50.
 
 try {
