@@ -190,6 +190,11 @@ class ObjectSerializer
         }
 
         $query = [];
+        // \GuzzleHttp\Psr7\Query::build casts values with (string), which fails
+        // for DateTime, so serialize date-time values as ISO 8601 first
+        if ($value instanceof \DateTimeInterface) {
+            $value = self::toString($value);
+        }
         $value = (in_array($openApiType, ['object', 'array'], true)) ? (array)$value : $value;
 
         // since \GuzzleHttp\Psr7\Query::build fails with nested arrays
@@ -207,7 +212,7 @@ class ObjectSerializer
                         // push key itself
                         $result[] = $prop;
                     }
-                    $result[$prop] = $v;
+                    $result[$prop] = ($v instanceof \DateTimeInterface) ? self::toString($v) : $v;
                 }
             }
             return $result;
@@ -268,13 +273,13 @@ class ObjectSerializer
      * If it's a datetime object, format it in ISO8601
      * If it's a boolean, convert it to "true" or "false".
      *
-     * @param string|bool|\DateTime $value the value of the parameter
+     * @param string|bool|\DateTimeInterface $value the value of the parameter
      *
      * @return string the header string
      */
     public static function toString($value)
     {
-        if ($value instanceof \DateTime) { // datetime in ISO8601 format
+        if ($value instanceof \DateTimeInterface) { // datetime in ISO8601 format
             return $value->format(self::$dateTimeFormat);
         } elseif (is_bool($value)) {
             return $value ? 'true' : 'false';

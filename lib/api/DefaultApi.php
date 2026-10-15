@@ -10421,6 +10421,886 @@ class DefaultApi
     }
 
     /**
+     * Operation getEmailProviderMetrics
+     *
+     * Get email inbox provider metrics
+     *
+     * @param  string $app_id Your OneSignal App ID in UUID v4 format. (required)
+     * @param  string $domain The sending domain to report on. Must be an email domain configured for this app. (required)
+     * @param  \DateTime $start Start of the reporting window, as an ISO 8601 timestamp (for example, &#x60;2026-08-01T00:00:00Z&#x60;). (required)
+     * @param  \DateTime $end End of the reporting window, as an ISO 8601 timestamp (for example, &#x60;2026-08-08T00:00:00Z&#x60;). (required)
+     *
+     * @throws \onesignal\client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \onesignal\client\model\EmailProviderMetricsResponse|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError
+     */
+    public function getEmailProviderMetrics($app_id, $domain, $start, $end)
+    {
+        list($response) = $this->getEmailProviderMetricsWithHttpInfo($app_id, $domain, $start, $end);
+        return $response;
+    }
+
+    /**
+     * Operation getEmailProviderMetricsWithHttpInfo
+     *
+     * Get email inbox provider metrics
+     *
+     * @param  string $app_id Your OneSignal App ID in UUID v4 format. (required)
+     * @param  string $domain The sending domain to report on. Must be an email domain configured for this app. (required)
+     * @param  \DateTime $start Start of the reporting window, as an ISO 8601 timestamp (for example, &#x60;2026-08-01T00:00:00Z&#x60;). (required)
+     * @param  \DateTime $end End of the reporting window, as an ISO 8601 timestamp (for example, &#x60;2026-08-08T00:00:00Z&#x60;). (required)
+     *
+     * @throws \onesignal\client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \onesignal\client\model\EmailProviderMetricsResponse|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getEmailProviderMetricsWithHttpInfo($app_id, $domain, $start, $end)
+    {
+        $request = $this->getEmailProviderMetricsRequest($app_id, $domain, $start, $end);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\onesignal\client\model\EmailProviderMetricsResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\onesignal\client\model\EmailProviderMetricsResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\onesignal\client\model\EmailProviderMetricsResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\onesignal\client\model\GenericError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\onesignal\client\model\GenericError' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\onesignal\client\model\GenericError', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\onesignal\client\model\GenericError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\onesignal\client\model\GenericError' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\onesignal\client\model\GenericError', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 429:
+                    if ('\onesignal\client\model\RateLimitError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\onesignal\client\model\RateLimitError' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\onesignal\client\model\RateLimitError', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\onesignal\client\model\EmailProviderMetricsResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\EmailProviderMetricsResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\RateLimitError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getEmailProviderMetricsAsync
+     *
+     * Get email inbox provider metrics
+     *
+     * @param  string $app_id Your OneSignal App ID in UUID v4 format. (required)
+     * @param  string $domain The sending domain to report on. Must be an email domain configured for this app. (required)
+     * @param  \DateTime $start Start of the reporting window, as an ISO 8601 timestamp (for example, &#x60;2026-08-01T00:00:00Z&#x60;). (required)
+     * @param  \DateTime $end End of the reporting window, as an ISO 8601 timestamp (for example, &#x60;2026-08-08T00:00:00Z&#x60;). (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getEmailProviderMetricsAsync($app_id, $domain, $start, $end)
+    {
+        return $this->getEmailProviderMetricsAsyncWithHttpInfo($app_id, $domain, $start, $end)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getEmailProviderMetricsAsyncWithHttpInfo
+     *
+     * Get email inbox provider metrics
+     *
+     * @param  string $app_id Your OneSignal App ID in UUID v4 format. (required)
+     * @param  string $domain The sending domain to report on. Must be an email domain configured for this app. (required)
+     * @param  \DateTime $start Start of the reporting window, as an ISO 8601 timestamp (for example, &#x60;2026-08-01T00:00:00Z&#x60;). (required)
+     * @param  \DateTime $end End of the reporting window, as an ISO 8601 timestamp (for example, &#x60;2026-08-08T00:00:00Z&#x60;). (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getEmailProviderMetricsAsyncWithHttpInfo($app_id, $domain, $start, $end)
+    {
+        $returnType = '\onesignal\client\model\EmailProviderMetricsResponse';
+        $request = $this->getEmailProviderMetricsRequest($app_id, $domain, $start, $end);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getEmailProviderMetrics'
+     *
+     * @param  string $app_id Your OneSignal App ID in UUID v4 format. (required)
+     * @param  string $domain The sending domain to report on. Must be an email domain configured for this app. (required)
+     * @param  \DateTime $start Start of the reporting window, as an ISO 8601 timestamp (for example, &#x60;2026-08-01T00:00:00Z&#x60;). (required)
+     * @param  \DateTime $end End of the reporting window, as an ISO 8601 timestamp (for example, &#x60;2026-08-08T00:00:00Z&#x60;). (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getEmailProviderMetricsRequest($app_id, $domain, $start, $end)
+    {
+        // verify the required parameter 'app_id' is set
+        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $app_id when calling getEmailProviderMetrics'
+            );
+        }
+        // verify the required parameter 'domain' is set
+        if ($domain === null || (is_array($domain) && count($domain) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $domain when calling getEmailProviderMetrics'
+            );
+        }
+        // verify the required parameter 'start' is set
+        if ($start === null || (is_array($start) && count($start) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $start when calling getEmailProviderMetrics'
+            );
+        }
+        // verify the required parameter 'end' is set
+        if ($end === null || (is_array($end) && count($end) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $end when calling getEmailProviderMetrics'
+            );
+        }
+
+        $resourcePath = '/apps/{app_id}/email_analytics/provider_metrics';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $domain,
+            'domain', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $start,
+            'start', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $end,
+            'end', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+
+
+        // path params
+        if ($app_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app_id' . '}',
+                ObjectSerializer::toPathValue($app_id),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        if (!empty($this->config->getRestApiKeyToken())) {
+            $headers['Authorization'] = 'Key ' . $this->config->getRestApiKeyToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        // Adding the telemetry header
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.17.0';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getEmailProviderMetricsTimeseries
+     *
+     * Get email inbox provider metrics over time
+     *
+     * @param  string $app_id Your OneSignal App ID in UUID v4 format. (required)
+     * @param  string $domain The sending domain to report on. Must be an email domain configured for this app. (required)
+     * @param  \DateTime $start Start of the reporting window, as an ISO 8601 timestamp (for example, &#x60;2026-08-01T00:00:00Z&#x60;). (required)
+     * @param  \DateTime $end End of the reporting window, as an ISO 8601 timestamp (for example, &#x60;2026-08-08T00:00:00Z&#x60;). (required)
+     * @param  string $granularity The size of each time bucket. Hourly data is only available for the last 60 days. (required)
+     * @param  string[] $providers Inbox providers to include in the totals. Omit to include all providers. Accepted values: &#x60;apple&#x60;, &#x60;att&#x60;, &#x60;canadian&#x60;, &#x60;chinese&#x60;, &#x60;comcast&#x60;, &#x60;free_fr&#x60;, &#x60;french&#x60;, &#x60;german&#x60;, &#x60;gmail&#x60;, &#x60;google_workspace&#x60;, &#x60;googlers&#x60;, &#x60;inbox_lv&#x60;, &#x60;italian&#x60;, &#x60;japanese&#x60;, &#x60;outlook_365&#x60;, &#x60;outlook_eu&#x60;, &#x60;outlook_us&#x60;, &#x60;proton&#x60;, &#x60;rackspace&#x60;, &#x60;russian&#x60;, &#x60;uk&#x60;, &#x60;united_online&#x60;, &#x60;yahoo_eu&#x60;, &#x60;yahoo_us&#x60;, &#x60;other_eu&#x60;, &#x60;other_us&#x60;, and &#x60;other&#x60;. Example: providers[]&#x3D;gmail&amp;providers[]&#x3D;yahoo_us (optional)
+     *
+     * @throws \onesignal\client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \onesignal\client\model\EmailProviderMetricsTimeseriesResponse|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError
+     */
+    public function getEmailProviderMetricsTimeseries($app_id, $domain, $start, $end, $granularity, $providers = null)
+    {
+        list($response) = $this->getEmailProviderMetricsTimeseriesWithHttpInfo($app_id, $domain, $start, $end, $granularity, $providers);
+        return $response;
+    }
+
+    /**
+     * Operation getEmailProviderMetricsTimeseriesWithHttpInfo
+     *
+     * Get email inbox provider metrics over time
+     *
+     * @param  string $app_id Your OneSignal App ID in UUID v4 format. (required)
+     * @param  string $domain The sending domain to report on. Must be an email domain configured for this app. (required)
+     * @param  \DateTime $start Start of the reporting window, as an ISO 8601 timestamp (for example, &#x60;2026-08-01T00:00:00Z&#x60;). (required)
+     * @param  \DateTime $end End of the reporting window, as an ISO 8601 timestamp (for example, &#x60;2026-08-08T00:00:00Z&#x60;). (required)
+     * @param  string $granularity The size of each time bucket. Hourly data is only available for the last 60 days. (required)
+     * @param  string[] $providers Inbox providers to include in the totals. Omit to include all providers. Accepted values: &#x60;apple&#x60;, &#x60;att&#x60;, &#x60;canadian&#x60;, &#x60;chinese&#x60;, &#x60;comcast&#x60;, &#x60;free_fr&#x60;, &#x60;french&#x60;, &#x60;german&#x60;, &#x60;gmail&#x60;, &#x60;google_workspace&#x60;, &#x60;googlers&#x60;, &#x60;inbox_lv&#x60;, &#x60;italian&#x60;, &#x60;japanese&#x60;, &#x60;outlook_365&#x60;, &#x60;outlook_eu&#x60;, &#x60;outlook_us&#x60;, &#x60;proton&#x60;, &#x60;rackspace&#x60;, &#x60;russian&#x60;, &#x60;uk&#x60;, &#x60;united_online&#x60;, &#x60;yahoo_eu&#x60;, &#x60;yahoo_us&#x60;, &#x60;other_eu&#x60;, &#x60;other_us&#x60;, and &#x60;other&#x60;. Example: providers[]&#x3D;gmail&amp;providers[]&#x3D;yahoo_us (optional)
+     *
+     * @throws \onesignal\client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \onesignal\client\model\EmailProviderMetricsTimeseriesResponse|\onesignal\client\model\GenericError|\onesignal\client\model\GenericError|\onesignal\client\model\RateLimitError|\onesignal\client\model\GenericError, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getEmailProviderMetricsTimeseriesWithHttpInfo($app_id, $domain, $start, $end, $granularity, $providers = null)
+    {
+        $request = $this->getEmailProviderMetricsTimeseriesRequest($app_id, $domain, $start, $end, $granularity, $providers);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\onesignal\client\model\EmailProviderMetricsTimeseriesResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\onesignal\client\model\EmailProviderMetricsTimeseriesResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\onesignal\client\model\EmailProviderMetricsTimeseriesResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\onesignal\client\model\GenericError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\onesignal\client\model\GenericError' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\onesignal\client\model\GenericError', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\onesignal\client\model\GenericError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\onesignal\client\model\GenericError' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\onesignal\client\model\GenericError', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 429:
+                    if ('\onesignal\client\model\RateLimitError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\onesignal\client\model\RateLimitError' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\onesignal\client\model\RateLimitError', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\onesignal\client\model\EmailProviderMetricsTimeseriesResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\EmailProviderMetricsTimeseriesResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\RateLimitError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\onesignal\client\model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getEmailProviderMetricsTimeseriesAsync
+     *
+     * Get email inbox provider metrics over time
+     *
+     * @param  string $app_id Your OneSignal App ID in UUID v4 format. (required)
+     * @param  string $domain The sending domain to report on. Must be an email domain configured for this app. (required)
+     * @param  \DateTime $start Start of the reporting window, as an ISO 8601 timestamp (for example, &#x60;2026-08-01T00:00:00Z&#x60;). (required)
+     * @param  \DateTime $end End of the reporting window, as an ISO 8601 timestamp (for example, &#x60;2026-08-08T00:00:00Z&#x60;). (required)
+     * @param  string $granularity The size of each time bucket. Hourly data is only available for the last 60 days. (required)
+     * @param  string[] $providers Inbox providers to include in the totals. Omit to include all providers. Accepted values: &#x60;apple&#x60;, &#x60;att&#x60;, &#x60;canadian&#x60;, &#x60;chinese&#x60;, &#x60;comcast&#x60;, &#x60;free_fr&#x60;, &#x60;french&#x60;, &#x60;german&#x60;, &#x60;gmail&#x60;, &#x60;google_workspace&#x60;, &#x60;googlers&#x60;, &#x60;inbox_lv&#x60;, &#x60;italian&#x60;, &#x60;japanese&#x60;, &#x60;outlook_365&#x60;, &#x60;outlook_eu&#x60;, &#x60;outlook_us&#x60;, &#x60;proton&#x60;, &#x60;rackspace&#x60;, &#x60;russian&#x60;, &#x60;uk&#x60;, &#x60;united_online&#x60;, &#x60;yahoo_eu&#x60;, &#x60;yahoo_us&#x60;, &#x60;other_eu&#x60;, &#x60;other_us&#x60;, and &#x60;other&#x60;. Example: providers[]&#x3D;gmail&amp;providers[]&#x3D;yahoo_us (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getEmailProviderMetricsTimeseriesAsync($app_id, $domain, $start, $end, $granularity, $providers = null)
+    {
+        return $this->getEmailProviderMetricsTimeseriesAsyncWithHttpInfo($app_id, $domain, $start, $end, $granularity, $providers)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getEmailProviderMetricsTimeseriesAsyncWithHttpInfo
+     *
+     * Get email inbox provider metrics over time
+     *
+     * @param  string $app_id Your OneSignal App ID in UUID v4 format. (required)
+     * @param  string $domain The sending domain to report on. Must be an email domain configured for this app. (required)
+     * @param  \DateTime $start Start of the reporting window, as an ISO 8601 timestamp (for example, &#x60;2026-08-01T00:00:00Z&#x60;). (required)
+     * @param  \DateTime $end End of the reporting window, as an ISO 8601 timestamp (for example, &#x60;2026-08-08T00:00:00Z&#x60;). (required)
+     * @param  string $granularity The size of each time bucket. Hourly data is only available for the last 60 days. (required)
+     * @param  string[] $providers Inbox providers to include in the totals. Omit to include all providers. Accepted values: &#x60;apple&#x60;, &#x60;att&#x60;, &#x60;canadian&#x60;, &#x60;chinese&#x60;, &#x60;comcast&#x60;, &#x60;free_fr&#x60;, &#x60;french&#x60;, &#x60;german&#x60;, &#x60;gmail&#x60;, &#x60;google_workspace&#x60;, &#x60;googlers&#x60;, &#x60;inbox_lv&#x60;, &#x60;italian&#x60;, &#x60;japanese&#x60;, &#x60;outlook_365&#x60;, &#x60;outlook_eu&#x60;, &#x60;outlook_us&#x60;, &#x60;proton&#x60;, &#x60;rackspace&#x60;, &#x60;russian&#x60;, &#x60;uk&#x60;, &#x60;united_online&#x60;, &#x60;yahoo_eu&#x60;, &#x60;yahoo_us&#x60;, &#x60;other_eu&#x60;, &#x60;other_us&#x60;, and &#x60;other&#x60;. Example: providers[]&#x3D;gmail&amp;providers[]&#x3D;yahoo_us (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getEmailProviderMetricsTimeseriesAsyncWithHttpInfo($app_id, $domain, $start, $end, $granularity, $providers = null)
+    {
+        $returnType = '\onesignal\client\model\EmailProviderMetricsTimeseriesResponse';
+        $request = $this->getEmailProviderMetricsTimeseriesRequest($app_id, $domain, $start, $end, $granularity, $providers);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getEmailProviderMetricsTimeseries'
+     *
+     * @param  string $app_id Your OneSignal App ID in UUID v4 format. (required)
+     * @param  string $domain The sending domain to report on. Must be an email domain configured for this app. (required)
+     * @param  \DateTime $start Start of the reporting window, as an ISO 8601 timestamp (for example, &#x60;2026-08-01T00:00:00Z&#x60;). (required)
+     * @param  \DateTime $end End of the reporting window, as an ISO 8601 timestamp (for example, &#x60;2026-08-08T00:00:00Z&#x60;). (required)
+     * @param  string $granularity The size of each time bucket. Hourly data is only available for the last 60 days. (required)
+     * @param  string[] $providers Inbox providers to include in the totals. Omit to include all providers. Accepted values: &#x60;apple&#x60;, &#x60;att&#x60;, &#x60;canadian&#x60;, &#x60;chinese&#x60;, &#x60;comcast&#x60;, &#x60;free_fr&#x60;, &#x60;french&#x60;, &#x60;german&#x60;, &#x60;gmail&#x60;, &#x60;google_workspace&#x60;, &#x60;googlers&#x60;, &#x60;inbox_lv&#x60;, &#x60;italian&#x60;, &#x60;japanese&#x60;, &#x60;outlook_365&#x60;, &#x60;outlook_eu&#x60;, &#x60;outlook_us&#x60;, &#x60;proton&#x60;, &#x60;rackspace&#x60;, &#x60;russian&#x60;, &#x60;uk&#x60;, &#x60;united_online&#x60;, &#x60;yahoo_eu&#x60;, &#x60;yahoo_us&#x60;, &#x60;other_eu&#x60;, &#x60;other_us&#x60;, and &#x60;other&#x60;. Example: providers[]&#x3D;gmail&amp;providers[]&#x3D;yahoo_us (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getEmailProviderMetricsTimeseriesRequest($app_id, $domain, $start, $end, $granularity, $providers = null)
+    {
+        // verify the required parameter 'app_id' is set
+        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $app_id when calling getEmailProviderMetricsTimeseries'
+            );
+        }
+        // verify the required parameter 'domain' is set
+        if ($domain === null || (is_array($domain) && count($domain) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $domain when calling getEmailProviderMetricsTimeseries'
+            );
+        }
+        // verify the required parameter 'start' is set
+        if ($start === null || (is_array($start) && count($start) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $start when calling getEmailProviderMetricsTimeseries'
+            );
+        }
+        // verify the required parameter 'end' is set
+        if ($end === null || (is_array($end) && count($end) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $end when calling getEmailProviderMetricsTimeseries'
+            );
+        }
+        // verify the required parameter 'granularity' is set
+        if ($granularity === null || (is_array($granularity) && count($granularity) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $granularity when calling getEmailProviderMetricsTimeseries'
+            );
+        }
+
+        $resourcePath = '/apps/{app_id}/email_analytics/provider_metrics_timeseries';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $domain,
+            'domain', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $start,
+            'start', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $end,
+            'end', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $granularity,
+            'granularity', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $providers,
+            'providers[]', // param base name
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+        // path params
+        if ($app_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app_id' . '}',
+                ObjectSerializer::toPathValue($app_id),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        if (!empty($this->config->getRestApiKeyToken())) {
+            $headers['Authorization'] = 'Key ' . $this->config->getRestApiKeyToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        // Adding the telemetry header
+        $defaultHeaders['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-php, version=5.17.0';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation getEmailReputation
      *
      * Get email reputation statistics
