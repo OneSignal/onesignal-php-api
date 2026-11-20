@@ -35,6 +35,7 @@ Method | HTTP request | Description
 [**getEmailProviderMetrics()**](DefaultApi.md#getEmailProviderMetrics) | **GET** /apps/{app_id}/email_analytics/provider_metrics | Get email inbox provider metrics
 [**getEmailProviderMetricsTimeseries()**](DefaultApi.md#getEmailProviderMetricsTimeseries) | **GET** /apps/{app_id}/email_analytics/provider_metrics_timeseries | Get email inbox provider metrics over time
 [**getEmailReputation()**](DefaultApi.md#getEmailReputation) | **GET** /apps/{app_id}/email_analytics/delivery_metrics | Get email reputation statistics
+[**getJourneySchema()**](DefaultApi.md#getJourneySchema) | **GET** /journeys/schema | Get Journey schema
 [**getNotification()**](DefaultApi.md#getNotification) | **GET** /notifications/{notification_id} | View notification
 [**getNotificationHistory()**](DefaultApi.md#getNotificationHistory) | **POST** /notifications/{notification_id}/history | Notification History
 [**getNotifications()**](DefaultApi.md#getNotifications) | **GET** /notifications | View notifications
@@ -2406,6 +2407,68 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](https://github.com/OneSignal/onesignal-php-api#full-api-reference)
 [[Back to README]](https://github.com/OneSignal/onesignal-php-api)
 
+## `getJourneySchema()`
+
+```php
+getJourneySchema($operation): \onesignal\client\model\JourneySchemaResponse
+```
+
+Get Journey schema
+
+Retrieve the JSON Schema for a Journey authoring operation without authentication or app context. The response identifies the document to validate. Schema retrieval does not validate permissions or business rules for a later write.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new onesignal\client\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$operation = 'create'; // string | The authoring operation whose schema you need.
+
+try {
+    $result = $apiInstance->getJourneySchema($operation);
+    print_r($result);
+} catch (\onesignal\client\ApiException $e) {
+    echo 'Exception when calling DefaultApi->getJourneySchema: ', $e->getMessage(), PHP_EOL;
+    echo 'Status Code: ', $e->getCode(), PHP_EOL;
+    // getErrorMessages() flattens any error-envelope shape to a string[];
+    // the raw body remains on getResponseBody().
+    echo 'Error Messages: ', implode(', ', $e->getErrorMessages()), PHP_EOL;
+    echo 'Response Body: ', $e->getResponseBody(), PHP_EOL;
+} catch (\Exception $e) {
+    echo 'Exception when calling DefaultApi->getJourneySchema: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **operation** | **string**| The authoring operation whose schema you need. |
+
+### Return type
+
+[**\onesignal\client\model\JourneySchemaResponse**](../Model/JourneySchemaResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](https://github.com/OneSignal/onesignal-php-api#full-api-reference)
+[[Back to README]](https://github.com/OneSignal/onesignal-php-api)
+
 ## `getNotification()`
 
 ```php
@@ -4395,7 +4458,7 @@ Name | Type | Description  | Notes
 ## `viewTemplates()`
 
 ```php
-viewTemplates($app_id, $limit, $offset, $channel): \onesignal\client\model\TemplatesListResponse
+viewTemplates($app_id, $limit, $offset, $channel, $name): \onesignal\client\model\TemplatesListResponse
 ```
 
 View templates
@@ -4426,9 +4489,10 @@ $app_id = 'YOUR_APP_ID'; // string | Your OneSignal App ID in UUID v4 format.
 $limit = 10; // int | Maximum number of templates. Default and max is 50.
 $offset = 0; // int | Pagination offset.
 $channel = 'push'; // string | Filter by delivery channel.
+$name = 'Welcome'; // string | Return only templates whose name contains this text, ignoring case.
 
 try {
-    $result = $apiInstance->viewTemplates($app_id, $limit, $offset, $channel);
+    $result = $apiInstance->viewTemplates($app_id, $limit, $offset, $channel, $name);
     print_r($result);
 } catch (\onesignal\client\ApiException $e) {
     echo 'Exception when calling DefaultApi->viewTemplates: ', $e->getMessage(), PHP_EOL;
@@ -4450,6 +4514,7 @@ Name | Type | Description  | Notes
  **limit** | **int**| Maximum number of templates. Default and max is 50. | [optional] [default to 50]
  **offset** | **int**| Pagination offset. | [optional] [default to 0]
  **channel** | **string**| Filter by delivery channel. | [optional]
+ **name** | **string**| Return only templates whose name contains this text, ignoring case. | [optional]
 
 ### Return type
 
